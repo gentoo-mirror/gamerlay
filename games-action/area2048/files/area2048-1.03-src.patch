@@ -1,0 +1,1217 @@
+diff -Naur a2k_src/src/bg.d a2k_src-p/src/bg.d
+--- a2k_src/src/bg.d	2005-01-18 00:34:48.000000000 +0100
++++ a2k_src-p/src/bg.d	2009-08-27 15:18:28.000000000 +0200
+@@ -14,7 +14,12 @@
+ private	import	util_snd;
+ private	import	define;
+ private	import	task;
+-private	import	stg;
++private	import	stg;
++private	import	stg01;
++private	import	stg02;
++private	import	stg03;
++private	import	stg04;
++private	import	stg05;
+ private	import	effect;
+ private	import	ship;
+ 
+@@ -79,20 +84,20 @@
+ 			TskBuf[fade_id].tx = 1.0f;
+ 			TskBuf[fade_id].wait = 60;
+ 			TskBuf[fade_id].step = 2;
+-			TskBuf[id].px = cast(float)(rand() % 1536 - 768.0f);
++                        TskBuf[id].px = cast(float)(rand() % 1536 - 768.0f);
+ 			TskBuf[id].py = cast(float)(rand() % 1536 - 768.0f);
+ 			if((rand() % 100) & 0x01){
+ 				if(TskBuf[id].px < 0.0f){
+ 					TskBuf[id].tx = +(cast(float)(rand() % 768));
+ 				}else{
+-					TskBuf[id].tx = -(cast(float)(rand() % 768));
++					TskBuf[id].tx = +(cast(float)(rand() % 768));
+ 				}
+ 				TskBuf[id].ty = TskBuf[id].py;
+ 			}else{
+ 				if(TskBuf[id].py < 0.0f){
+ 					TskBuf[id].ty = +(cast(float)(rand() % 768));
+ 				}else{
+-					TskBuf[id].ty = -(cast(float)(rand() % 768));
++					TskBuf[id].ty = +(cast(float)(rand() % 768));
+ 				}
+ 				TskBuf[id].tx = TskBuf[id].px;
+ 			}
+@@ -104,7 +109,7 @@
+ 			cam_pos = BASE_Z + cam_scr;
+ 			eid = setTSK(GROUP_08,&TSKbgZoom);
+ 			TskBuf[eid].wait = 600;
+-			TskBuf[eid].tx = BASE_Z - (cast(float)((rand() % 5000) - 2500 + 10000) / 10000.0f);
++			TskBuf[eid].tx = BASE_Z - ((cast(float)(rand() % 5000) - 2500 + 10000) / 10000.0f);
+ 			TskBuf[id].step++;
+ 			break;
+ 		case	2:
+@@ -202,22 +207,34 @@
+ 			scr_base[Y] = START_Y;
+ 			scr_ofs[X] = 0.0f;
+ 			scr_ofs[Y] = 0.0f;
+-			cam_pos = BASE_Z + cam_scr;
++			cam_pos = BASE_Z + cam_scr;
++					bg_mode = 0;
++					stg_ctrl = STG_MAIN;
+ 			switch(area_num){
+ 				case	AREA_01:
+-					bg_mode = 0;
++					bg_mode = 0;
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg01);
+ 					break;
+ 				case	AREA_02:
+-					bg_mode = 1;
++					bg_mode = 1;
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg02);
+ 					break;
+ 				case	AREA_03:
+-					bg_mode = 2;
++					bg_mode = 2;
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg03);
+ 					break;
+ 				case	AREA_04:
+-					bg_mode = 3;
++					bg_mode = 3;
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg04);
+ 					break;
+ 				case	AREA_05:
+-					bg_mode = 4;
++					bg_mode = 4;
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg05);
+ 					break;
+ 				default:
+ 					break;
+@@ -296,7 +313,7 @@
+ 						bg_obj[i].line_list.length = 1;
+ 						bg_obj[i].line_list[0][X] = +0.0f;
+ 						bg_obj[i].line_list[0][Y] = +0.0f;
+-						bg_obj[i].line_list[0][Z] = -(cast(float)(rand() % 75)) / 100.0f + 0.25f;
++						bg_obj[i].line_list[0][Z] = -cast(float)(rand() % 75) / 100.0f + 0.25f;
+ 					}
+ 					break;
+ 				case	4:
+@@ -600,8 +617,8 @@
+ 			break;
+ 		case	1:
+ 			if(TskBuf[id].wait){
+-				TskBuf[id].px  = ((rand() % (256.0f * TskBuf[id].vx)) - ((256.0f * TskBuf[id].vx) / 2)) / 256.0f;
+-				TskBuf[id].py  = ((rand() % (256.0f * TskBuf[id].vy)) - ((256.0f * TskBuf[id].vy) / 2)) / 256.0f;
++				TskBuf[id].px  = (cast(float)(rand() % (256.0f * TskBuf[id].vx)) - ((256.0f * TskBuf[id].vx) / 2)) / 256.0f;
++				TskBuf[id].py  = (cast(float)(rand() % (256.0f * TskBuf[id].vy)) - ((256.0f * TskBuf[id].vy) / 2)) / 256.0f;
+ 				TskBuf[id].vx += (0.0f - TskBuf[id].vx) / TskBuf[id].cnt;
+ 				TskBuf[id].vy += (0.0f - TskBuf[id].vy) / TskBuf[id].cnt;
+ 				scr_ofs[X] = TskBuf[id].px;
+diff -Naur a2k_src/src/boss01.d a2k_src-p/src/boss01.d
+--- a2k_src/src/boss01.d	2008-02-06 01:34:54.000000000 +0100
++++ a2k_src-p/src/boss01.d	2009-08-27 15:18:28.000000000 +0200
+@@ -7,7 +7,7 @@
+ */
+ 
+ private	import	std.stdio;
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/boss02.d a2k_src-p/src/boss02.d
+--- a2k_src/src/boss02.d	2008-02-06 01:35:18.000000000 +0100
++++ a2k_src-p/src/boss02.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/16 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/boss03.d a2k_src-p/src/boss03.d
+--- a2k_src/src/boss03.d	2008-02-06 01:35:30.000000000 +0100
++++ a2k_src-p/src/boss03.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/08 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+@@ -358,7 +358,7 @@
+ 			}
+ 			if(!cmd.isEnd()) cmd.run();
+ 			break;
+-			TskBuf[id].ang_x  = rand() % 65536;
++			TskBuf[id].ang_x  = cast(float)rand() % 65536;
+ 			TskBuf[id].ang_x *= PI / 65536.0f;
+ 			TskBuf[id].ax = 
+ 			TskBuf[id].ay = sin(TskBuf[id].ang_x) * 5.0f / PI;
+diff -Naur a2k_src/src/boss04.d a2k_src-p/src/boss04.d
+--- a2k_src/src/boss04.d	2008-02-06 01:35:34.000000000 +0100
++++ a2k_src-p/src/boss04.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/06 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/boss05.d a2k_src-p/src/boss05.d
+--- a2k_src/src/boss05.d	2008-02-06 01:35:38.000000000 +0100
++++ a2k_src-p/src/boss05.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/09 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/bulletcommand.d a2k_src-p/src/bulletcommand.d
+--- a2k_src/src/bulletcommand.d	2008-02-06 01:37:56.000000000 +0100
++++ a2k_src-p/src/bulletcommand.d	2009-08-27 15:18:28.000000000 +0200
+@@ -247,7 +247,7 @@
+ double	getRand_(BulletMLRunner* runner){
+ 	double	rand_val;
+ 	//printf("getRand_(%d)\n",BulletCommand.now.id);
+-	rand_val = rand() % 10000;
++	rand_val = cast(float)rand() % 10000;
+ 	rand_val /= 10000;
+ 	return	rand_val;
+ }
+diff -Naur a2k_src/src/effect.d a2k_src-p/src/effect.d
+--- a2k_src/src/effect.d	2008-02-06 01:35:40.000000000 +0100
++++ a2k_src-p/src/effect.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,14 +6,15 @@
+ 	2004/03/31 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+ private	import	opengl;
+ private	import	util_sdl;
+ private	import	task;
+-private	import	bg;
++private	import	bg;
++private	import	system;
+ 
+ float	fade_r = 0.0f;
+ float	fade_g = 0.0f;
+@@ -53,16 +54,16 @@
+ 			for(int i = 0; i < 3; i++){
+ 				switch(i){
+ 					case	0:
+-							tpos[X] = -((rand() % 4096) / 1024.0f + 1.0f);
+-							tpos[Y] = +((rand() % 4096) / 1024.0f + 1.0f);
++							tpos[X] = -cast(float)((rand() % 4096) / 1024.0f + 1.0f);
++							tpos[Y] = +cast(float)((rand() % 4096) / 1024.0f + 1.0f);
+ 							break;
+ 					case	1:
+-							tpos[X] =  ((rand() % 2048) / 1024.0f - 1.0f);
+-							tpos[Y] = -((rand() % 4096) / 1024.0f + 1.0f);
++							tpos[X] =  cast(float)((rand() % 2048) / 1024.0f - 1.0f);
++							tpos[Y] = -cast(float)((rand() % 4096) / 1024.0f + 1.0f);
+ 							break;
+ 					case	2:
+-							tpos[X] = +((rand() % 4096) / 1024.0f + 1.0f);
+-							tpos[Y] = +((rand() % 4096) / 1024.0f + 1.0f);
++							tpos[X] = +cast(float)((rand() % 4096) / 1024.0f + 1.0f);
++							tpos[Y] = +cast(float)((rand() % 4096) / 1024.0f + 1.0f);
+ 							break;
+ 					default:
+ 							break;
+@@ -74,8 +75,8 @@
+ 				tpos[Y] = fabs(tpos[Y]);
+ 				TskBuf[id].body_ang[i][W] = sqrt(pow(tpos[X],2.0) + pow(tpos[Y],2.0));
+ 			}
+-			TskBuf[id].tx = (rand() % 256000) / 1000.0f - 128.0f;
+-			TskBuf[id].ty = (rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].tx = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].ty = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
+ 			TskBuf[id].tx += TskBuf[id].px;
+ 			TskBuf[id].ty += TskBuf[id].py;
+ 			TskBuf[id].wait = 60;
+@@ -165,16 +166,16 @@
+ 			for(int i = 0; i < 3; i++){
+ 				switch(i){
+ 					case	0:
+-							tpos[X] = -((rand() % 12288) / 1024.0f + 3.0f);
+-							tpos[Y] = +((rand() % 12288) / 1024.0f + 3.0f);
++							tpos[X] = -(cast(float)(rand() % 12288) / 1024.0f + 3.0f);
++							tpos[Y] = +(cast(float)(rand() % 12288) / 1024.0f + 3.0f);
+ 							break;
+ 					case	1:
+-							tpos[X] =  ((rand() %  6144) / 1024.0f - 3.0f);
+-							tpos[Y] = -((rand() % 12288) / 1024.0f + 3.0f);
++							tpos[X] =  (cast(float)(rand() %  6144) / 1024.0f - 3.0f);
++							tpos[Y] = -(cast(float)(rand() % 12288) / 1024.0f + 3.0f);
+ 							break;
+ 					case	2:
+-							tpos[X] = +((rand() % 12288) / 1024.0f + 3.0f);
+-							tpos[Y] = +((rand() % 12288) / 1024.0f + 3.0f);
++							tpos[X] = +(cast(float)(rand() % 12288) / 1024.0f + 3.0f);
++							tpos[Y] = +(cast(float)(rand() % 12288) / 1024.0f + 3.0f);
+ 							break;
+ 					default:
+ 							break;
+@@ -186,8 +187,8 @@
+ 				tpos[Y] = fabs(tpos[Y]);
+ 				TskBuf[id].body_ang[i][W] = sqrt(pow(tpos[X],2.0) + pow(tpos[Y],2.0));
+ 			}
+-			TskBuf[id].tx = (rand() % 512000) / 1000.0f - 256.0f;
+-			TskBuf[id].ty = (rand() % 512000) / 1000.0f - 256.0f;
++			TskBuf[id].tx = cast(float)(rand() % 512000) / 1000.0f - 256.0f;
++			TskBuf[id].ty = cast(float)(rand() % 512000) / 1000.0f - 256.0f;
+ 			TskBuf[id].tx += TskBuf[id].px;
+ 			TskBuf[id].ty += TskBuf[id].py;
+ 			TskBuf[id].wait = 60;
+@@ -279,13 +280,13 @@
+ 			TskBuf[id].fp_draw = &TSKBrokenBodyDraw;
+ 			TskBuf[id].fp_exit = &TSKBrokenBodyExit;
+ 			TskBuf[id].alpha = 1.0f;
+-			TskBuf[id].tx = (rand() % 256000) / 1000.0f - 128.0f;
+-			TskBuf[id].ty = (rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].tx = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].ty = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
+ 			TskBuf[id].tx *= 2.0f;
+ 			TskBuf[id].ty *= 2.0f;
+ 			TskBuf[id].tx += TskBuf[id].px;
+ 			TskBuf[id].ty += TskBuf[id].py;
+-			TskBuf[id].rot_add = (rand % 30) - 15;
++			TskBuf[id].rot_add = cast(float)(rand % 30) - 15;
+ 			if(!(TskBuf[id].rot_add - 15))		TskBuf[id].rot_add = -1;
+ 			else if(!(TskBuf[id].rot_add + 15)) TskBuf[id].rot_add = +1;
+ 			if(TskBuf[id].rot_add < 0) TskBuf[id].rot_add = PI / (TskBuf[id].rot_add - 15);
+@@ -410,13 +411,13 @@
+ 			TskBuf[id].fp_draw = &TSKBrokenLineDraw;
+ 			TskBuf[id].fp_exit = &TSKBrokenLineExit;
+ 			TskBuf[id].alpha = 1.0f;
+-			TskBuf[id].tx = (rand() % 256000) / 1000.0f - 128.0f;
+-			TskBuf[id].ty = (rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].tx = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
++			TskBuf[id].ty = cast(float)(rand() % 256000) / 1000.0f - 128.0f;
+ 			TskBuf[id].tx *= 2.0f;
+ 			TskBuf[id].ty *= 2.0f;
+ 			TskBuf[id].tx += TskBuf[id].px;
+ 			TskBuf[id].ty += TskBuf[id].py;
+-			TskBuf[id].rot_add = (rand % 30) - 15;
++			TskBuf[id].rot_add = cast(float)(rand % 30) - 15;
+ 			if(!(TskBuf[id].rot_add - 15))		TskBuf[id].rot_add = -1;
+ 			else if(!(TskBuf[id].rot_add + 15)) TskBuf[id].rot_add = +1;
+ 			if(TskBuf[id].rot_add < 0) TskBuf[id].rot_add = PI / (TskBuf[id].rot_add - 15);
+diff -Naur a2k_src/src/enemy01.d a2k_src-p/src/enemy01.d
+--- a2k_src/src/enemy01.d	2008-02-06 01:35:46.000000000 +0100
++++ a2k_src-p/src/enemy01.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/03/27 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -63,8 +63,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy01Draw;
+ 			TskBuf[id].fp_exit = &TSKenemy01Exit;
+diff -Naur a2k_src/src/enemy02.d a2k_src-p/src/enemy02.d
+--- a2k_src/src/enemy02.d	2008-02-06 01:35:48.000000000 +0100
++++ a2k_src-p/src/enemy02.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/11 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -63,8 +63,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy02Draw;
+ 			TskBuf[id].fp_exit = &TSKenemy02Exit;
+diff -Naur a2k_src/src/enemy03.d a2k_src-p/src/enemy03.d
+--- a2k_src/src/enemy03.d	2008-02-06 01:35:52.000000000 +0100
++++ a2k_src-p/src/enemy03.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/11 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -63,8 +63,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy03Draw;
+diff -Naur a2k_src/src/enemy04.d a2k_src-p/src/enemy04.d
+--- a2k_src/src/enemy04.d	2008-02-06 01:35:56.000000000 +0100
++++ a2k_src-p/src/enemy04.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/11 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -53,8 +53,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy04Draw;
+@@ -132,14 +132,14 @@
+ 			TskBuf[id].vx = TskBuf[id].px;
+ 			TskBuf[id].vy = TskBuf[id].py;
+ 			if(!TskBuf[id].cnt){
+-				TskBuf[id].tx = (rand() % 512) + 256.0f;
+-				TskBuf[id].ty = (rand() % 512) + 256.0f;
++ 				TskBuf[id].tx = cast(float)(rand() % 512) + 256.0f;
++ 				TskBuf[id].ty = cast(float)(rand() % 512) + 256.0f;
+ 				if(TskBuf[id].px < ship_px) TskBuf[id].tx = +TskBuf[id].tx;
+ 				else						TskBuf[id].tx = -TskBuf[id].tx;
+ 				if(TskBuf[id].py < ship_py) TskBuf[id].ty = +TskBuf[id].ty;
+ 				else						TskBuf[id].ty = -TskBuf[id].ty;
+-				if((rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
+-				if((rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
+ 				TskBuf[id].tx = TskBuf[id].px + TskBuf[id].tx;
+ 				TskBuf[id].ty = TskBuf[id].py + TskBuf[id].ty;
+ 				if(TskBuf[id].tx < -ENEMY_AREAMAX) TskBuf[id].tx = -ENEMY_AREAMAX + 1.0f;
+diff -Naur a2k_src/src/enemy05.d a2k_src-p/src/enemy05.d
+--- a2k_src/src/enemy05.d	2008-02-06 01:35:58.000000000 +0100
++++ a2k_src-p/src/enemy05.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/05/30 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -53,8 +53,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy05Draw;
+@@ -127,42 +127,31 @@
+ 				}
+ 			}
+ 			/* 座標更新 */
+-			if(TskBuf[id].px < ship_px){
+-				if(TskBuf[id].vx > +0.0f) TskBuf[id].vx += 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vx += 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vx > +MAX_SPEED) TskBuf[id].vx = +MAX_SPEED;
+-			}else{
+-				if(TskBuf[id].vx < +0.0f) TskBuf[id].vx -= 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vx -= 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vx < -MAX_SPEED) TskBuf[id].vx = -MAX_SPEED;
+-			}
+-			if(TskBuf[id].py < ship_py){
+-				if(TskBuf[id].vy > +0.0f) TskBuf[id].vy += 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vy += 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vy > +MAX_SPEED) TskBuf[id].vy = +MAX_SPEED;
+-			}else{
+-				if(TskBuf[id].vy < +0.0f) TskBuf[id].vy -= 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vy -= 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vy < -MAX_SPEED) TskBuf[id].vy = -MAX_SPEED;
+-			}
+-			TskBuf[id].px += TskBuf[id].vx;
+-			TskBuf[id].py += TskBuf[id].vy;
+-			if(TskBuf[id].px < -ENEMY_AREAMAX){
+-				TskBuf[id].px = -ENEMY_AREAMAX;
+-				TskBuf[id].vx = -TskBuf[id].vx / 2;
+-			}
+-			if(TskBuf[id].px > +ENEMY_AREAMAX){
+-				TskBuf[id].px = +ENEMY_AREAMAX;
+-				TskBuf[id].vx = -TskBuf[id].vx / 2;
+-			}
+-			if(TskBuf[id].py < -ENEMY_AREAMAX){
+-				TskBuf[id].py = -ENEMY_AREAMAX;
+-				TskBuf[id].vy = -TskBuf[id].vy / 2;
+-			}
+-			if(TskBuf[id].py > +ENEMY_AREAMAX){
+-				TskBuf[id].py = +ENEMY_AREAMAX;
+-				TskBuf[id].vy = -TskBuf[id].vy / 2;
+-			}
++ 			TskBuf[id].vx = TskBuf[id].px;
++ 			TskBuf[id].vy = TskBuf[id].py;
++ 			if(!TskBuf[id].cnt){
++ 				TskBuf[id].tx = cast(float)(rand() % 512) + 256.0f;
++ 				TskBuf[id].ty = cast(float)(rand() % 512) + 256.0f;
++ 				if(TskBuf[id].px < ship_px) TskBuf[id].tx = +TskBuf[id].tx;
++ 				else						TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(TskBuf[id].py < ship_py) TskBuf[id].ty = +TskBuf[id].ty;
++ 				else						TskBuf[id].ty = -TskBuf[id].ty;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
++ 				TskBuf[id].tx = TskBuf[id].px + TskBuf[id].tx;
++ 				TskBuf[id].ty = TskBuf[id].py + TskBuf[id].ty;
++ 				if(TskBuf[id].tx < -ENEMY_AREAMAX) TskBuf[id].tx = -ENEMY_AREAMAX + 1.0f;
++ 				if(TskBuf[id].tx > +ENEMY_AREAMAX) TskBuf[id].tx = +ENEMY_AREAMAX - 1.0f;
++ 				if(TskBuf[id].ty < -ENEMY_AREAMAX) TskBuf[id].ty = -ENEMY_AREAMAX + 1.0f;
++ 				if(TskBuf[id].ty > +ENEMY_AREAMAX) TskBuf[id].ty = +ENEMY_AREAMAX - 1.0f;
++ 				TskBuf[id].cnt = 180;
++  			}else{
++ 				TskBuf[id].cnt--;
++  			}
++ 			TskBuf[id].px += (TskBuf[id].tx - TskBuf[id].px) / (180 / 4);
++ 			TskBuf[id].py += (TskBuf[id].ty - TskBuf[id].py) / (180 / 4);
++ 			TskBuf[id].vx -= TskBuf[id].px;
++ 			TskBuf[id].vy -= TskBuf[id].py;
+ 			TskBuf[id].rot = atan2(-TskBuf[id].vx, -TskBuf[id].vy);
+ 			break;
+ 		default:
+diff -Naur a2k_src/src/enemy06.d a2k_src-p/src/enemy06.d
+--- a2k_src/src/enemy06.d	2008-02-06 01:36:00.000000000 +0100
++++ a2k_src-p/src/enemy06.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/04 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -65,8 +65,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy06Draw;
+@@ -145,14 +145,14 @@
+ 			TskBuf[id].vx = TskBuf[id].px;
+ 			TskBuf[id].vy = TskBuf[id].py;
+ 			if(TskBuf[id].cnt == TskBuf[id].mov_cnt){
+-				TskBuf[id].tx = (rand() % 512) + 256.0f;
+-				TskBuf[id].ty = (rand() % 512) + 256.0f;
++ 				TskBuf[id].tx = cast(float)(rand() % 512) + 256.0f;
++ 				TskBuf[id].ty = cast(float)(rand() % 512) + 256.0f;
+ 				if(TskBuf[id].px < ship_px) TskBuf[id].tx = +TskBuf[id].tx;
+ 				else						TskBuf[id].tx = -TskBuf[id].tx;
+ 				if(TskBuf[id].py < ship_py) TskBuf[id].ty = +TskBuf[id].ty;
+ 				else						TskBuf[id].ty = -TskBuf[id].ty;
+-				if((rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
+-				if((rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
+ 				TskBuf[id].tx = TskBuf[id].px + TskBuf[id].tx;
+ 				TskBuf[id].ty = TskBuf[id].py + TskBuf[id].ty;
+ 				if(TskBuf[id].tx < -ENEMY_AREAMAX) TskBuf[id].tx = -ENEMY_AREAMAX + 1.0f;
+diff -Naur a2k_src/src/enemy07.d a2k_src-p/src/enemy07.d
+--- a2k_src/src/enemy07.d	2008-02-06 01:36:02.000000000 +0100
++++ a2k_src-p/src/enemy07.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/05 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -63,8 +63,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy07Draw;
+@@ -137,42 +137,31 @@
+ 				}
+ 			}
+ 			/* 座標更新 */
+-			if(TskBuf[id].px < ship_px){
+-				if(TskBuf[id].vx > +0.0f) TskBuf[id].vx += 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vx += 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vx > +MAX_SPEED) TskBuf[id].vx = +MAX_SPEED;
+-			}else{
+-				if(TskBuf[id].vx < +0.0f) TskBuf[id].vx -= 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vx -= 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vx < -MAX_SPEED) TskBuf[id].vx = -MAX_SPEED;
+-			}
+-			if(TskBuf[id].py < ship_py){
+-				if(TskBuf[id].vy > +0.0f) TskBuf[id].vy += 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vy += 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vy > +MAX_SPEED) TskBuf[id].vy = +MAX_SPEED;
+-			}else{
+-				if(TskBuf[id].vy < +0.0f) TskBuf[id].vy -= 1.0f / SPEED_RATE * 2.0f;
+-				else					  TskBuf[id].vy -= 1.0f / SPEED_RATE * 1.5f;
+-				if(TskBuf[id].vy < -MAX_SPEED) TskBuf[id].vy = -MAX_SPEED;
+-			}
+-			TskBuf[id].px += TskBuf[id].vx;
+-			TskBuf[id].py += TskBuf[id].vy;
+-			if(TskBuf[id].px < -ENEMY_AREAMAX){
+-				TskBuf[id].px = -ENEMY_AREAMAX;
+-				TskBuf[id].vx = -TskBuf[id].vx / 2;
+-			}
+-			if(TskBuf[id].px > +ENEMY_AREAMAX){
+-				TskBuf[id].px = +ENEMY_AREAMAX;
+-				TskBuf[id].vx = -TskBuf[id].vx / 2;
+-			}
+-			if(TskBuf[id].py < -ENEMY_AREAMAX){
+-				TskBuf[id].py = -ENEMY_AREAMAX;
+-				TskBuf[id].vy = -TskBuf[id].vy / 2;
+-			}
+-			if(TskBuf[id].py > +ENEMY_AREAMAX){
+-				TskBuf[id].py = +ENEMY_AREAMAX;
+-				TskBuf[id].vy = -TskBuf[id].vy / 2;
+-			}
++ 			TskBuf[id].vx = TskBuf[id].px;
++ 			TskBuf[id].vy = TskBuf[id].py;
++ 			if(!TskBuf[id].cnt){
++ 				TskBuf[id].tx = cast(float)(rand() % 512) + 256.0f;
++ 				TskBuf[id].ty = cast(float)(rand() % 512) + 256.0f;
++ 				if(TskBuf[id].px < ship_px) TskBuf[id].tx = +TskBuf[id].tx;
++ 				else						TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(TskBuf[id].py < ship_py) TskBuf[id].ty = +TskBuf[id].ty;
++ 				else						TskBuf[id].ty = -TskBuf[id].ty;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].tx = -TskBuf[id].tx;
++ 				if(cast(float)(rand() % 100) > 97) TskBuf[id].ty = -TskBuf[id].ty;
++ 				TskBuf[id].tx = TskBuf[id].px + TskBuf[id].tx;
++ 				TskBuf[id].ty = TskBuf[id].py + TskBuf[id].ty;
++ 				if(TskBuf[id].tx < -ENEMY_AREAMAX) TskBuf[id].tx = -ENEMY_AREAMAX + 1.0f;
++ 				if(TskBuf[id].tx > +ENEMY_AREAMAX) TskBuf[id].tx = +ENEMY_AREAMAX - 1.0f;
++ 				if(TskBuf[id].ty < -ENEMY_AREAMAX) TskBuf[id].ty = -ENEMY_AREAMAX + 1.0f;
++ 				if(TskBuf[id].ty > +ENEMY_AREAMAX) TskBuf[id].ty = +ENEMY_AREAMAX - 1.0f;
++ 				TskBuf[id].cnt = 180;
++  			}else{
++ 				TskBuf[id].cnt--;
++  			}
++ 			TskBuf[id].px += (TskBuf[id].tx - TskBuf[id].px) / (180 / 4);
++ 			TskBuf[id].py += (TskBuf[id].ty - TskBuf[id].py) / (180 / 4);
++ 			TskBuf[id].vx -= TskBuf[id].px;
++ 			TskBuf[id].vy -= TskBuf[id].py;
+ 			TskBuf[id].rot = atan2(-TskBuf[id].vx, -TskBuf[id].vy);
+ 			break;
+ 		default:
+diff -Naur a2k_src/src/enemy08.d a2k_src-p/src/enemy08.d
+--- a2k_src/src/enemy08.d	2008-02-06 01:36:04.000000000 +0100
++++ a2k_src-p/src/enemy08.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/05 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	SDL;
+ private	import	opengl;
+@@ -65,8 +65,8 @@
+ 	switch(TskBuf[id].step){
+ 		case	0:
+ 			TskBuf[id].tskid |= TSKID_ZAKO;
+-			TskBuf[id].px = (rand() % 1536) - 768.0f;
+-			TskBuf[id].py = (rand() % 1536) - 768.0f;
++			TskBuf[id].px = (cast(float)(rand() % 1536) - 768.0f);
++			TskBuf[id].py = (cast(float)(rand() % 1536) - 768.0f);
+ 			TskBuf[id].tid = ship_id;
+ 			TskBuf[id].fp_int = null;
+ 			TskBuf[id].fp_draw = &TSKenemy08Draw;
+diff -Naur a2k_src/src/enemy.d a2k_src-p/src/enemy.d
+--- a2k_src/src/enemy.d	2008-02-06 01:35:42.000000000 +0100
++++ a2k_src-p/src/enemy.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/14 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	SDL;
+ private	import	opengl;
+ private	import	util_sdl;
+@@ -158,6 +158,7 @@
+ 	return;
+ }
+ 
++
+ void	TSKeshotInt(int id)
+ {
+ 	TskBuf[id].step = -1;
+@@ -165,6 +166,7 @@
+ 	return;
+ }
+ 
++
+ void	TSKeshotDrawSimple(int id)
+ {
+ 	float[XYZ]	pos;
+@@ -198,6 +200,7 @@
+ 	glEnd();
+ }
+ 
++
+ void	TSKeshotDrawActive(int id)
+ {
+ 	float[XYZ]	pos;
+@@ -231,6 +234,7 @@
+ 	glEnd();
+ }
+ 
++
+ void	TSKeshotExit(int id)
+ {
+ 	BulletCommand	cmd = TskBuf[id].bullet_command;
+@@ -243,6 +247,7 @@
+ 	}
+ }
+ 
++
+ float	getShipDirection(int id)
+ {
+ 	float	px,py;
+@@ -257,3 +262,4 @@
+ 	return	dir;
+ }
+ 
++
+diff -Naur a2k_src/src/init.d a2k_src-p/src/init.d
+--- a2k_src/src/init.d	2005-05-19 22:31:30.000000000 +0200
++++ a2k_src-p/src/init.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2003/12/01 jumpei isshiki
+ */
+ 
+-private	import	std.stdio;
++private	import	std.c.stdio;
+ private	import	std.stream;
+ private	import	util_sdl;
+ private	import	util_snd;
+@@ -101,7 +101,7 @@
+ 		fd.open("score.dat");
+ 		if(fd.size() != 12){
+ 			fd.close();
+-			writefln("score.dat initialized");
++			printf("score.dat initialized");
+ 		    fd.create("score.dat");
+ 			fd.write(high_easy);
+ 			fd.write(high_normal);
+@@ -112,7 +112,7 @@
+ 			fd.read(high_hard);
+ 		}
+ 	} catch (Error e) {
+-		writefln("score.dat initialized");
++		printf("score.dat initialized");
+ 	    fd.create("score.dat");
+ 		fd.write(high_easy);
+ 		fd.write(high_normal);
+@@ -126,7 +126,7 @@
+ 	try {
+ 		if(fd.size() != 12){
+ 			fd.close();
+-			writefln("config.dat initialized");
++			printf("config.dat initialized");
+ 		    fd.create("config.dat");
+ 			fd.write(pad_type);
+ 			fd.write(vol_se);
+@@ -139,7 +139,7 @@
+ 			volumeSNDmusic(vol_music);
+ 		}
+ 	} catch (Error e) {
+-		writefln("config.dat initialized");
++		printf("config.dat initialized");
+ 	    fd.create("config.dat");
+ 		fd.write(pad_type);
+ 		fd.write(vol_se);
+diff -Naur a2k_src/src/luminous.d a2k_src-p/src/luminous.d
+--- a2k_src/src/luminous.d	2008-02-06 01:39:52.000000000 +0100
++++ a2k_src-p/src/luminous.d	2009-08-27 15:18:28.000000000 +0200
+@@ -7,7 +7,7 @@
+ */
+ 
+ private	import std.math;
+-private	import std.string;
++private	import std.c.string;
+ private	import opengl;
+ private	import util_sdl;
+ private	import task;
+diff -Naur a2k_src/src/main.d a2k_src-p/src/main.d
+--- a2k_src/src/main.d	2008-02-07 00:42:58.000000000 +0100
++++ a2k_src-p/src/main.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,8 +6,9 @@
+ 	2003/11/28 jumpei isshiki
+ */
+ 
+-private	import	std.c.windows.windows;
+-private	import	SDL;
++//private	import	std.c.windows.windows;
++private	import	SDL;
++private	import	SDL_Keysym;
+ private	import	opengl;
+ private	import	util_sdl;
+ private	import	util_pad;
+@@ -31,25 +32,29 @@
+ int		pause = 0;
+ int		pause_flag = 0;
+ int		skip = 0;
+-
++/*
+ extern (Windows)
+ int		WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+ {
++*/
++public int main(char[][] args) {
+ 	int		result;
+-  
++/*  
+ 	gc_init();
+ 	_minit();
+ 
+ 	try{
+ 		_moduleCtor();
+-		_moduleUnitTests();
++		_moduleUnitTests();
++*/
+ 		result = boot();
++/*
+ 	}catch (Object o){
+ 		MessageBoxA(null, cast(char*)o.toString(), "Error", MB_OK | MB_ICONEXCLAMATION);
+ 		result = 0;
+ 	}
+ 	gc_term();
+-
++*/
+ 	return result;
+ }
+ 
+diff -Naur a2k_src/src/middle01.d a2k_src-p/src/middle01.d
+--- a2k_src/src/middle01.d	2008-02-06 01:36:06.000000000 +0100
++++ a2k_src-p/src/middle01.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/05/05 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/middle02.d a2k_src-p/src/middle02.d
+--- a2k_src/src/middle02.d	2008-02-06 01:36:08.000000000 +0100
++++ a2k_src-p/src/middle02.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/03 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/middle03.d a2k_src-p/src/middle03.d
+--- a2k_src/src/middle03.d	2008-02-06 01:36:12.000000000 +0100
++++ a2k_src-p/src/middle03.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/06/07 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/middle04.d a2k_src-p/src/middle04.d
+--- a2k_src/src/middle04.d	2008-02-06 01:36:14.000000000 +0100
++++ a2k_src-p/src/middle04.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/07/05 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/middle05.d a2k_src-p/src/middle05.d
+--- a2k_src/src/middle05.d	2008-02-06 01:36:16.000000000 +0100
++++ a2k_src-p/src/middle05.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/07/06 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.random;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/ship.d a2k_src-p/src/ship.d
+--- a2k_src/src/ship.d	2008-02-12 23:41:50.000000000 +0100
++++ a2k_src-p/src/ship.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2003/12/01 jumpei isshiki
+ */
+ 
+-private	import	std.math;
++private	import	std.c.math;
+ private	import	std.intrinsic;
+ private	import	std.random;
+ private	import	SDL;
+diff -Naur a2k_src/src/stg.d a2k_src-p/src/stg.d
+--- a2k_src/src/stg.d	2005-05-19 22:52:14.000000000 +0200
++++ a2k_src-p/src/stg.d	2009-08-27 15:18:28.000000000 +0200
+@@ -91,25 +91,36 @@
+ void	TSKstgCtrl(int id)
+ {
+ 	switch(TskBuf[id].step){
+-		case	0:
++		case	0:
+ 			area_num = AREA_01;
+-			scene_num = SCENE_01;
+-			debug{
+-				//area_num = AREA_02;
+-				//area_num = AREA_03;
+-				//area_num = AREA_04;
+-				//area_num = AREA_05;
+-				//scene_num = SCENE_02;
+-				//scene_num = SCENE_03;
+-				//scene_num = SCENE_04;
+-				//scene_num = SCENE_05;
+-				//scene_num = SCENE_06;
+-				//scene_num = SCENE_07;
+-				//scene_num = SCENE_08;
+-				//scene_num = SCENE_09;
+-				//scene_num = SCENE_10;
+-			}
+-			stg_bgm = -1;
++			scene_num = SCENE_01;
++
++			switch(area_num){
++				case	AREA_01:
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg01);
++					break;
++				case	AREA_02:
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg02);
++					break;
++				case	AREA_03:
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg03);
++					break;
++				case	AREA_04:
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg04);
++					break;
++				case	AREA_05:
++					stg_ctrl = STG_MAIN;
++					setTSK(GROUP_01,&TSKstg05);
++					break;
++				default:
++					g_step = GSTEP_CLEAR;
++					break;
++			}
++			stg_bgm = -1;
+ 			stg_ctrl = STG_INIT;
+ 			TskBuf[id].step++;
+ 			break;
+@@ -177,7 +188,7 @@
+ {
+ 	switch(TskBuf[id].step){
+ 		case	0:
+-			stg_ctrl = STG_INIT;
++//			stg_ctrl = ;
+ 			TskBuf[id].step++;
+ 			break;
+ 		case	1:
+diff -Naur a2k_src/src/system.d a2k_src-p/src/system.d
+--- a2k_src/src/system.d	2005-05-19 22:31:20.000000000 +0200
++++ a2k_src-p/src/system.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/03/24 jumpei isshiki
+ */
+ 
+-private	import	std.stdio;
++private	import	std.c.stdio;
+ private	import	std.math;
+ private	import	std.random;
+ private	import	std.string;
+@@ -22,6 +22,11 @@
+ private	import	stg;
+ private	import	bg;
+ private	import	ship;
++
++const real PI =		0x1.921fb54442d1846ap+1; 
++const real PI_2 =  1.57079632679489661923; 
++const real PI_4 =  0.78539816339744830962; 
++const real SQRT2 = 1.41421356237309504880;
+ 
+ private	char[]	str_buf;
+ private	int		wrk1_time;
+diff -Naur a2k_src/src/task.d a2k_src-p/src/task.d
+--- a2k_src/src/task.d	2008-02-07 00:38:58.000000000 +0100
++++ a2k_src-p/src/task.d	2009-08-27 15:18:28.000000000 +0200
+@@ -153,7 +153,9 @@
+ 			TskBuf[i].fp_exit = null;
+ 			TskBuf[i].image = null;
+ 			TskBuf[i].bullet_command = null;
+-			TskBuf[i].bullet_state = null;
++			TskBuf[i].bullet_state = null;
++                        TskBuf[i].bullet_accx = 0;
++                        TskBuf[i].bullet_accy = 0;
+ 		}
+ 		TskBuf[i].tskid = TSKID_NONE;
+ 		TskBuf[i].entry = -1;
+diff -Naur a2k_src/src/title.d a2k_src-p/src/title.d
+--- a2k_src/src/title.d	2008-02-12 23:50:14.000000000 +0100
++++ a2k_src-p/src/title.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,7 +6,7 @@
+ 	2004/04/08 jumpei isshiki
+ */
+ 
+-private	import	std.stdio;
++private	import	std.c.stdio;
+ private	import	std.math;
+ private	import	std.string;
+ private	import	SDL;
+diff -Naur a2k_src/src/util_ascii.d a2k_src-p/src/util_ascii.d
+--- a2k_src/src/util_ascii.d	2005-05-19 22:30:50.000000000 +0200
++++ a2k_src-p/src/util_ascii.d	2009-08-27 15:18:28.000000000 +0200
+@@ -13,7 +13,15 @@
+ 
+ const float	ASC_SIZE = (16.0f + 2.0f);
+ 
+-private	float[][]	ascii_font = [
++float[][] ascii_font;
++
++
++
++private	char[]	ascii_dict = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.:!?\"'-=+ 0123456789";
++
++void	initASCII()
++{
++static float[][]	af = [
+ 									/* 'A' */
+ 									[
+ 										3, 0, 11, 2,
+@@ -328,10 +336,14 @@
+ 									],
+ 								];
+ 
+-private	char[]	ascii_dict = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.:!?\"'-=+ 0123456789";
++	ascii_font.length = af.length;
++	for (int i = 0; i < ascii_font.length; i++) {
++	    ascii_font[i].length = af[i].length;
++	    for (int j = 0; j < ascii_font[i].length; j++) {
++	    	ascii_font[i][j] = af[i][j];
++	    }
++	}
+ 
+-void	initASCII()
+-{
+ 	for(int i = 0; i < ascii_font.length; i++){
+ 		for(int j = 0; j < ascii_font[i].length; j += 4){
+ 			ascii_font[i][j+2] += 1.0f;
+diff -Naur a2k_src/src/util_pad.d a2k_src-p/src/util_pad.d
+--- a2k_src/src/util_pad.d	2008-02-12 23:46:38.000000000 +0100
++++ a2k_src-p/src/util_pad.d	2009-08-27 15:18:28.000000000 +0200
+@@ -7,7 +7,8 @@
+ */
+ 
+ private	import	SDL;
+-
++private	import	SDL_Keysym;
++private	import	SDL_keyboard;
+ enum{
+ 	PAD_UP = 0x01,
+ 	PAD_DOWN = 0x02,
+diff -Naur a2k_src/src/util_sdl.d a2k_src-p/src/util_sdl.d
+--- a2k_src/src/util_sdl.d	2008-02-06 01:41:02.000000000 +0100
++++ a2k_src-p/src/util_sdl.d	2009-08-27 15:18:28.000000000 +0200
+@@ -6,9 +6,12 @@
+ 	2003/11/28 jumpei isshiki
+ */
+ 
++private	import	std.stdio;
+ private	import	std.string;
+-private	import	SDL;
++private	import	SDL;
++private	import	SDL_mouse;
+ private	import	opengl;
++private	import	util_pad;
+ private	import	define;
+ 
+ enum{
+@@ -30,11 +33,18 @@
+ 	EX,
+ 	EY,
+ }
+-
++
++struct VEC_POS {
++	float	px;
++	float	py;
++	float	pz;
++}
+ 
+ SDL_Surface*	primary;
+ SDL_Surface*[]	offscreen;
+-
++
++const float SCREEN_RATIOX = cast(float)(SCREEN_X / 2.0f);
++const float SCREEN_RATIOY = cast(float)(SCREEN_Y / 2.0f);
+ const float	BASE_Z = 2.0f;
+ float		cam_scr = -0.75f;
+ float		cam_pos;
+@@ -43,20 +53,27 @@
+ private	int		height = SCREEN_Y;
+ private	float	nearPlane = 0.0f;
+ private	float	farPlane = 1000.0f;
+-
++private	GLuint TEXTURE_NONE = 0xffffffff;
+ private	GLuint[]	tex_bank;
+ 
+-int		initSDL()
++int		initSDL()
++
+ {
+ 	if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0){
+ 		return	0;
+     }
+ 
+ 	Uint32	videoFlags;
+-	videoFlags = SDL_OPENGL | SDL_FULLSCREEN;
++//	videoFlags = SDL_OPENGL | SDL_FULLSCREEN;
+ 	//videoFlags = SDL_OPENGL | SDL_RESIZABLE;
+ 	debug{
+-		videoFlags = SDL_OPENGL | SDL_RESIZABLE;
++ 		if((pads & PAD_BUTTON1)){
++ 			videoFlags = SDL_OPENGL | SDL_FULLSCREEN;
++ 		}else{
++ 			videoFlags = SDL_OPENGL | SDL_RESIZABLE;
++ 		}
++ 	}else{
++ 		videoFlags = SDL_OPENGL | SDL_FULLSCREEN;
+ 	}
+ 	primary = SDL_SetVideoMode(width, height, 0, videoFlags);
+ 	if(primary == null){
+@@ -67,14 +84,15 @@
+ 	tex_bank.length  = SURFACE_MAX;
+ 	for(int i = 0; i < SURFACE_MAX; i++){
+ 		offscreen[i] = null;
+-		tex_bank[i]  = cast(GLuint)-1;
++ 		tex_bank[i]  = TEXTURE_NONE;
+ 	}
+ 
+ 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+     resizedSDL(width, height);
+ 	SDL_ShowCursor(SDL_DISABLE);
+ 
+-	SDL_WM_SetCaption(cast(char*)PROJECT_NAME, null);
++	SDL_WM_SetCaption(cast(char*)PROJECT_NAME, null);
++ 	SDL_WM_SetIcon(SDL_LoadBMP("icon.bmp"), null);
+ 
+ 	return	1;
+ }
+@@ -96,9 +114,9 @@
+ 	SDL_ShowCursor(SDL_ENABLE);
+ 	SDL_Quit();
+ }
++
+ 
+-
+-void	readSDLtexture(char[] fname, int bank)
++void readSDLtexture(char[] fname, int bank)
+ {
+ 	offscreen[bank] = SDL_LoadBMP(toStringz(fname));
+ 	if(offscreen[bank]){
+@@ -110,31 +128,28 @@
+ 	}
+ }
+ 
+-
+-void	bindSDLtexture(int bank)
++void bindSDLtexture(int bank)
+ {
+-	if(tex_bank[bank] != -1) glBindTexture(GL_TEXTURE_2D, tex_bank[bank]);
++	if(tex_bank[bank] != TEXTURE_NONE) glBindTexture(GL_TEXTURE_2D, tex_bank[bank]);
+ }
+ 
+-
+-void	clearSDL()
++void clearSDL()
+ {
+ 	glClear(GL_COLOR_BUFFER_BIT);
+ }
+ 
+-
+-void	flipSDL()
++void flipSDL()
+ {
+ 	glFlush();
+ 	SDL_GL_SwapBuffers();
+ }
+ 
+-
+-void	resizedSDL(int w, int h)
++void resizedSDL(int w, int h)
+ {
+ 	glViewport(0, 0, w, h);
+ 	glMatrixMode(GL_PROJECTION);
+ 	glLoadIdentity();
++	w = (w ? w : 1);
+ 	glFrustum(-nearPlane,nearPlane,
+ 			  -nearPlane * h / w,
+ 			   nearPlane * h / w,

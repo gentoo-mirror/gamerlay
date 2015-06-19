@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+ <email>mva@mva.name</email>
+ <description>
+	If you have any issues, please contact me, or try to find me in IRC on Freenode, OFTC or RusNet.
+ </description> 
+ <name>Vadim A. Misbakh-Soloviov</name>
+</maintainer>
+<longdescription>
+WAKING MARS is a one-of-a-kind adventure in which you jetpack through
+subterranean Mars encountering a host of extraordinary alien lifeforms
+that operate as a living, breathing ecosystem. Learn and master the
+behaviors of these creatures to create ecosystems of your own design
+if you are to survive and discover the secrets of Mars’ past.
+
+In 2097, life is discovered on Mars. When your mission of first contact
+becomes trapped by a cave-in, you must master the alien ecosystem to survive.
+Soon you stumble upon more than anyone expected, and with time running out,
+you will make a decision that determines the fate of a lost planet.
+</longdescription> 
+<use>
+</use>
+</pkgmetadata>

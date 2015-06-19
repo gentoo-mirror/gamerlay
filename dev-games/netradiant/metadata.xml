@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<use>
+		<flag name='h2data'>Install h2data tool</flag>
+		<flag name='q2map'>Install q2map tool</flag>
+		<flag name='q3data'>Install q3data tool</flag>
+		<flag name='q3map2'>Install q3map2 tool</flag>
+		<flag name='qdata3'>Install qdata3 tool</flag>
+		<flag name='darkplaces'>Install DarkPlaces pack</flag>
+		<flag name='nexuiz'>Install Nexuiz pack</flag>
+		<flag name='openarena'>Install OpenArena non GPL pack</flag>
+		<flag name='osirion'>Install Osirion pack</flag>
+		<flag name='quake1'>Install Quake non GPL pack</flag>
+		<flag name='quake2'>Install Quake2 non GPL pack</flag>
+		<flag name='quake2world'>Install Quake2World pack</flag>
+		<flag name='quake3'>Install Quake3 non GPL pack</flag>
+		<flag name='tremulous'>Install Tremulous non GPL pack</flag>
+		<flag name='ufoai'>Install UFO: Alien Invasion non GPL pack</flag>
+		<flag name='warsow'>Install Warsow pack</flag>
+		<flag name='xonotic'>Install Xonotic pack</flag>
+	</use>
+</pkgmetadata>

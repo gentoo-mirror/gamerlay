@@ -1,0 +1,12 @@
+diff -Naur src/World.cpp src-gentoo/World.cpp
+--- src/World.cpp	2005-12-07 20:32:58.000000000 +0100
++++ src-gentoo/World.cpp	2007-11-01 11:31:46.000000000 +0100
+@@ -712,7 +712,7 @@
+     Sphere::loadTexture("Textures/welcome.bmp", &this->welcomeTextureId);
+     Sphere::loadTexture("Textures/white.bmp", &this->whiteTextureId);
+     Sphere::loadTexture("Textures/sphere.bmp", &this->smallSphereTextureId);
+-    char filename[15] = "Textures/i.bmp";
++    char filename[255] = "Textures/i.bmp";
+     for (int i=0; i<10; i++)
+     {
+         filename[9] = '0' + i;

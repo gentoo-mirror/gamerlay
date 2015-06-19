@@ -1,0 +1,498 @@
+diff -Naur Sound.cpp Sound.cpp
+--- Sound.cpp	2009-10-02 12:17:55.000000000 +0200
++++ Sound.cpp	2009-10-02 12:23:34.000000000 +0200
+@@ -1,375 +1,109 @@
+ #include "Sound.h"
+-#if SOUND_SYSTEM == USE_FMODEX
+-FMOD_RESULT result;
+-FMOD::System *pSystem;
+-#endif
+-void InitializeSoundSystem()
+-{
+-//#if SOUND_SYSTEM == USE_BASS
+-//#else
+-//#endif
+-#if SOUND_SYSTEM == USE_FMODEX
+-	result = FMOD::System_Create(&pSystem);		// Create the main system object.
+-	if (result != FMOD_OK)
+-	{
+-		return;
+-	}
+-
+-	result = pSystem->init(100, FMOD_INIT_NORMAL, 0);	// Initialize FMOD.
+-	if (result != FMOD_OK)
+-	{
+-		return;
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+-	if (BASS_Init(-1,44100,BASS_DEVICE_SPEAKERS,0,NULL)==FALSE)
+-	{
+-		return;
+-	}
+-#else
+-	FSOUND_Init(44100, 96, 0);
+-#endif
+-}
+-void ShutDownSoundSystem()
+-{
+-#if SOUND_SYSTEM == USE_FMODEX
+-	pSystem->close();
+-#elif SOUND_SYSTEM == USE_BASS
+-	BASS_Free();
+-#else
+-	FSOUND_Close();  
+-#endif
+-}
+-void UpdateSoundSystem()
+-{
+-#if SOUND_SYSTEM == USE_FMODEX
+-	pSystem->update();
+-#endif
+-}
+-void SoundSystemPause(bool paused)
+-{
+-#if SOUND_SYSTEM == USE_BASS
+-	paused?
+-		BASS_Pause(): BASS_Start();
+-#endif
+-}
+ 
+-void SetGlobalVolume(int music, int sfx)
++void Sound::Volume(int channel,int vol)
+ {
+-#if SOUND_SYSTEM == USE_BASS
+-	BASS_SetConfig(BASS_CONFIG_GVOL_SAMPLE,sfx);
+-	BASS_SetConfig(BASS_CONFIG_GVOL_MUSIC,music);
+-#endif
+-}
+-void StopAllSound()
+-{
+-#if SOUND_SYSTEM == USE_BASS
+-	BASS_Stop();
+-	SoundSystemPause(false);
+-#endif
++	FSOUND_SetVolume(channel,vol);
+ }
+-
+-
+-
+ bool Sample::Load(char* sound, bool loop)
+ {
+-#if SOUND_SYSTEM == USE_FMODEX
+-	if(loop)
+-		pSystem->createSound(sound,FMOD_2D | FMOD_LOOP_NORMAL,NULL,&pSample);
+-	else
+-		pSystem->createSound(sound,FMOD_2D,NULL,&pSample);
+-	if(pSample == 0)
+-	{
+-		return false;
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+-	if(loop)
+-		pSample = BASS_SampleLoad(FALSE,sound,0,0,1,BASS_SAMPLE_LOOP);
+-	else
+-		pSample = BASS_SampleLoad(FALSE,sound,0,0,1,0);
+-	if(pSample == 0)
+-	{
+-		return false;
+-	}
+-#else
+ 	if(loop)
+ 	{
+ 		if((pSample = FSOUND_Sample_Load(FSOUND_FREE,sound,FSOUND_NORMAL | FSOUND_LOOP_NORMAL,0,0))==0)
+ 		{
+-				return false;
++			printf("Failed to load sample: %s\n",sound);
++			return false;
+ 		}
+ 	}
+ 	else
+ 	{
+ 		if((pSample = FSOUND_Sample_Load(FSOUND_FREE,sound,FSOUND_NORMAL | FSOUND_LOOP_OFF,0,0))==0)
+ 		{
++			printf("Failed to load sample: %s\n",sound);
+ 			return false;
+ 		}
+ 	}
+-#endif
+ 	return true;
+ }
+ int Sample::Play()
+ {
+ 	if(pSample)
+-#if SOUND_SYSTEM == USE_FMODEX
+-	{
+-		FMOD::Channel* c;
+-		pSystem->playSound(FMOD_CHANNEL_FREE,pSample,false,&c);
+-		c->getIndex(&miChannelID);
+-		return miChannelID;
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+-	{
+-		BASS_ChannelPlay(BASS_SampleGetChannel(pSample,FALSE),TRUE);
+-	}
+-#else
+ 		return(FSOUND_PlaySound(FSOUND_FREE,pSample));
+-#endif
+ 	return -1;
+ }
+ void Sample::Play(int channel)
+ {
+ 	if(pSample)
+-#if SOUND_SYSTEM == USE_FMODEX
+-	{
+-//		FMOD::Channel* c;
+-//		pSystem->getChannel(channel,&c);
+-		pSystem->playSound((FMOD_CHANNELINDEX)(channel),pSample,false,NULL);
+-		miChannelID = channel;
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+-	{
+-		Stop(0);
+-		BASS_ChannelPlay(BASS_SampleGetChannel(pSample,FALSE),FALSE);
+-	}
+-#else
+ 		FSOUND_PlaySound(channel,pSample);
+-#endif
+ }
+ void Sample::Stop(int channel)
+ {
+-#if SOUND_SYSTEM == USE_FMODEX
+-	FMOD::Channel* c;
+-	pSystem->getChannel(miChannelID,&c);
+-	c->stop();
+-#elif SOUND_SYSTEM == USE_BASS
+-	BASS_SampleStop(pSample);
+-#else
+ 	FSOUND_StopSound(channel);
+-#endif
+ }
+ void Sample::Discard()
+ {
+ 	if(pSample)
+-#if SOUND_SYSTEM == USE_FMODEX
+-		pSample->release();
+-#elif SOUND_SYSTEM == USE_BASS
+-		BASS_SampleFree(pSample);
+-#else
+ 		FSOUND_Sample_Free(pSample);
+-#endif
+ //	pSample = 0;
+ }
+ void Sample::SetFrequency(int channel,int frequency)
+ {
+-#if SOUND_SYSTEM == USE_FMODEX
+ 	FSOUND_SetFrequency(channel,frequency);
+-#endif
+ }
+ void Sample::SetDefaults(int  deffreq, int defvol, int defpan, int defpri, int varfreq, int varvol, int varpan)
+ {
+-#if SOUND_SYSTEM == USE_FMODEX
+ 	FSOUND_Sample_SetDefaultsEx(pSample,deffreq,defvol,defpan,defpri,varfreq,varvol,varpan);
+-#endif
+ }
+-void Sample::Volume(int channel,int vol)
+-{
+-#if SOUND_SYSTEM == USE_FMODEX
+-	FSOUND_SetVolume(channel,vol);
+-#elif SOUND_SYSTEM == USE_BASS
+-	BASS_ChannelSetAttributes(pSample,-1,vol,-101);
+-#endif
+-}
+-//================================================================================================//
+-						/***********************
+-						** streams **	
+-						************************/
+-//================================================================================================//
+ bool Stream::Load(char* stream, bool loop)
+ {
+-	if((pStream = BASS_StreamCreateFile(FALSE,stream, 0, 0, loop? BASS_SAMPLE_LOOP:0))==0)
+-	{
+-		return false;
+-	}
+-	return true;
+-}
+-int Stream::Play()
+-{
+-	BASS_ChannelPlay(pStream,true);
+-	return 0;
+-}
+-void Stream::Play(int channel)
+-{
+-	if(pStream)
+-	{
+-		if(BASS_ChannelPlay(pStream,false)==FALSE)
+-			printf("Failed to play\n");
+-
+-	}
+-}
+-void Stream::Stop(int channel)
+-{
+-	BASS_ChannelStop(pStream);
+-}
+-void Stream::Discard()
+-{
+-	BASS_StreamFree(pStream);
+-}
+-void Stream::Volume(int channel,int vol)
+-{
+-	BASS_ChannelSetAttributes(pStream,-1,vol,-101);
+-}
+-//================================================================================================//
+-						/***********************
+-						** modules **	
+-						************************/
+-//================================================================================================//
+-bool Track::Load(char* stream, bool loop)
+-{
+-#if SOUND_SYSTEM == USE_FMODEX
+-	if(loop)
+-		pSystem->createSound(stream,FMOD_2D | FMOD_LOOP_NORMAL,NULL,&pStream);
+-	else
+-		pSystem->createSound(stream,FMOD_2D | FMOD_ACCURATETIME,NULL,&pStream);
+-	if(pStream == 0)
+-	{
+-		return false;
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+ 	if(loop)
+-		pStream = BASS_MusicLoad(FALSE,stream,0,0,BASS_SAMPLE_LOOP,0);
+-	else
+-		pStream = BASS_MusicLoad(FALSE,stream,0,0,0,0);
+-	if(pStream == 0)
+ 	{
+-		return false;
+-	}
+-#else
+-	if(loop)
+-	{
+-		if((pStream = FMUSIC_LoadSong(stream))==0)
++		if((pStream = FSOUND_Stream_Open(stream,FSOUND_NORMAL | FSOUND_LOOP_NORMAL,0,0))==0)
+ 		{
++			printf("Failed to load sample: %s\n",stream);
+ 			return false;
+ 		}
+-		 FMUSIC_SetLooping(pStream,true);
+ 	}
+ 	else
+ 	{
+-		if((pStream = FMUSIC_LoadSong(stream))==0)
++		if((pStream = FSOUND_Stream_Open(stream,FSOUND_NORMAL,0,0))==0)
+ 		{
++			printf("Failed to load sample: %s\n",stream);
+ 			return false;
+ 		}
+-		 FMUSIC_SetLooping(pStream,false);
+ 	}
+-#endif
+ 	return true;
+ }
+-int Track::Play()
++int Stream::Play()
+ {
+ 	if(pStream)
+-	{
+-#if SOUND_SYSTEM == USE_FMODEX
+-		FMOD::Channel* c;
+-		pSystem->playSound(FMOD_CHANNEL_FREE,pStream,false,&c);
+-		c->getIndex(&miChannelID);
+-#elif SOUND_SYSTEM == USE_BASS
+-		BASS_ChannelPlay(pStream,true);
+-#else
+-		miChannelID = FMUSIC_PlaySong(pStream);
+-#endif
+-		return miChannelID;
+-	}
++		return(FSOUND_Stream_Play(FSOUND_FREE,pStream));
+ 	return -1;
+ }
+-void Track::Play(int channel)
++void Stream::Play(int channel)
+ {
+ 	if(pStream)
+-	{
+-#if SOUND_SYSTEM == USE_FMODEX
+-	//	FMOD::Channel* c;
+-	// 	pSystem->getChannel(channel,&c);
+-		pSystem->playSound((FMOD_CHANNELINDEX)(channel),pStream,false,NULL);
+-//		pSystem->playSound(FMOD_CHANNEL_REUSE,pStream,false,&c);
+-		miChannelID = channel;
+-#elif SOUND_SYSTEM == USE_BASS
+-		BASS_ChannelPlay(pStream,true);
+-#else
+-		miChannelID = FMUSIC_PlaySong(pStream);
+-#endif
+-	}
++		FSOUND_Stream_Play(channel,pStream);
++//		return(FSOUND_Stream_Play(channel,pStream));
++//	return -1;
+ }
+-void Track::Stop(int i)
++void Stream::Stop(int channel)
+ {
+ 	if(pStream)
+-#if SOUND_SYSTEM == USE_FMODEX
+-	{
+-		FMOD::Channel* c;
+-		pSystem->getChannel(miChannelID,&c);
+-		c->stop();
+-	}
+-#elif SOUND_SYSTEM == USE_BASS
+-		BASS_ChannelStop(pStream);
+-#else
+-		FMUSIC_StopSong(pStream);
+-#endif
++		FSOUND_Stream_Stop(pStream);
+ }
+-void Track::Discard()
++void Stream::Discard()
+ {
+ 	if(pStream)
+-#if SOUND_SYSTEM == USE_FMODEX
+-		pStream->release();
+-#elif SOUND_SYSTEM == USE_BASS
+-		BASS_MusicFree(pStream);
+-#else
+-		 FMUSIC_FreeSong(pStream);
+-#endif
++		FSOUND_Stream_Close(pStream);
+ 	pStream = 0;
+ }
+-bool Track::IsFinished()
+-{
+-	if(pStream)
+-	{
+-#if SOUND_SYSTEM == USE_FMODEX
+-		FMOD::Channel* c;
+-		pSystem->getChannel(miChannelID,&c);
+-		bool playing;
+-		c->isPlaying(&playing);
+-		if(!playing)
+-#elif SOUND_SYSTEM == USE_BASS
+-		if(BASS_ChannelIsActive(pStream) == BASS_ACTIVE_STOPPED)
+-#else
+-		if(FMUSIC_IsFinished(pStream))
+-#endif
+-			return true;
+-	}
+-	return false;
+-}
+-bool Track::IsPlaying()
++void Stream::Seek(int ms, int channel)
+ {
+ 	if(pStream)
+ 	{
+-#if SOUND_SYSTEM == USE_FMODEX
+-		FMOD::Channel* c;
+-		pSystem->getChannel(miChannelID,&c);
+-		bool playing;
+-		c->isPlaying(&playing);
+-		if(playing)
+-#elif SOUND_SYSTEM == USE_BASS
+-		if(BASS_ChannelIsActive(pStream) == BASS_ACTIVE_PLAYING)
+-#else
+-		if(FMUSIC_IsPlaying(pStream))
+-#endif
+-			return true;
++		FSOUND_Stream_Play(channel,pStream);
++		FSOUND_SetPaused(channel,true);
++		FSOUND_Stream_SetTime(pStream,ms);
++		FSOUND_SetPaused(channel,false);
+ 	}
+-	return false;
+ }
+\ Kein Zeilenumbruch am Dateiende.
+diff -Naur Sound.h Sound.h
+--- Sound.h	2009-10-02 12:17:55.000000000 +0200
++++ Sound.h	2009-10-02 12:23:34.000000000 +0200
+@@ -1,25 +1,7 @@
+ #pragma once
+-//#define USE_FMODEX
+-#define USE_FMODEX 0
+-#define USE_FMOD 2
+-#define USE_BASS 1
+-
+-#define SOUND_SYSTEM USE_BASS
+-#if SOUND_SYSTEM == USE_FMODEX
+-#include <FMODEX/fmod.hpp>
+-#elif SOUND_SYSTEM == USE_BASS
+-#include <bass.h>
+-#else
+-#include <FMOD/fmod.h>
+-#endif
++#include <fmod.h>
+ #include <stdio.h>
+ 
+-void InitializeSoundSystem();
+-void ShutDownSoundSystem();
+-void UpdateSoundSystem();
+-void SetGlobalVolume(int music, int sfx);
+-void SoundSystemPause(bool paused);
+-void StopAllSound();
+ class Sound
+ {
+ public:
+@@ -27,9 +9,7 @@
+ 	virtual int Play()=0;//returns channel
+ 	virtual void Stop(int channel)=0;
+ 	virtual void Discard()=0;
+-	virtual void Volume(int channel,int vol)=0;
+-
+-	int miChannelID;
++	void Volume(int channel,int vol);
+ };
+ 
+ 
+@@ -45,49 +25,20 @@
+ 	void Discard();
+ 	void SetFrequency(int channel,int frequency);
+ 	void SetDefaults(int  deffreq, int defvol, int defpan, int defpri, int varfreq, int varvol, int varpan);
+-	void Volume(int channel,int vol);
+ private:
+-#if SOUND_SYSTEM == USE_FMODEX
+-	FMOD::Sound * pSample;
+-#elif SOUND_SYSTEM == USE_BASS
+-	HSAMPLE  pSample;
+-#else
+ 	FSOUND_SAMPLE* pSample;
+-#endif
+ };
+-
+ class Stream : public Sound
+ {
+ public:
+ 	Stream(){pStream = 0;}
++//	~Stream(){ Discard(); }
+ 	bool Load(char* sound, bool loop);
+ 	int Play();
+ 	void Play(int channel);
+ 	void Stop(int channel);
+ 	void Discard();
+-	void Volume(int channel,int vol);
+-private:
+-	HSTREAM pStream;
+-};
+-
+-class Track : public Sound
+-{
+-public:
+-	Track(){pStream = 0;}
+-	bool Load(char* sound, bool loop);
+-	int Play();
+-	void Play(int channel);
+-	void Stop(int i);
+-	void Discard();
+-	bool IsFinished();
+-	bool IsPlaying();
+-	void Volume(int channel,int vol);
++	void Seek(int ms, int channel);
+ private:
+-#if SOUND_SYSTEM == USE_FMODEX
+-	FMOD::Sound* pStream;
+-#elif SOUND_SYSTEM == USE_BASS
+-	HMUSIC pStream;
+-#else
+-	FMUSIC_MODULE* pStream;
+-#endif
++	FSOUND_STREAM* pStream;
+ };

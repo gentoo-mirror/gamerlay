@@ -1,0 +1,25 @@
+diff -Naur smw1.7/_src/leveleditor.cpp smw1.7/_src-p/leveleditor.cpp
+--- smw1.7/_src/leveleditor.cpp	2007-12-29 21:54:50.000000000 +0100
++++ smw1.7/_src-p/leveleditor.cpp	2009-09-01 13:25:38.000000000 +0200
+@@ -454,8 +454,8 @@
+ 							done = true;
+ 					}
+ 
+-					if(event.key.keysym.sym == SDLK_INSERT)
+-						takescreenshot();
++			//		if(event.key.keysym.sym == SDLK_INSERT)
++			//			takescreenshot();
+ 
+ 					if(event.key.keysym.sym == SDLK_t)
+ 						return EDITOR_TILES;
+diff -Naur smw1.7/_src/path.cpp smw1.7/_src-p/path.cpp
+--- smw1.7/_src/path.cpp	2007-12-29 21:54:50.000000000 +0100
++++ smw1.7/_src-p/path.cpp	2009-09-01 13:22:25.000000000 +0200
+@@ -1,6 +1,7 @@
+ #include <string>
+ #include <iostream>
+ #include <sys/stat.h>
++#include <cstring>
+ 
+ #ifdef _WIN32
+ 	#ifndef _XBOX

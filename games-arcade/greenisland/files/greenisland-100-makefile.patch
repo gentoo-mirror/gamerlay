@@ -1,0 +1,27 @@
+diff -Naur src/Makefile src/Makefile
+--- src/Makefile	2008-05-14 03:08:04.000000000 +0200
++++ src/Makefile	2009-10-19 14:53:38.000000000 +0200
+@@ -5,14 +5,13 @@
+ CFLAGS = $(DEFAULT_CFLAGS)
+ CXXFLAGS = $(DEFAULT_CFLAGS)
+ #LDFLAGS = `sdl-config --libs`
+-LDFLAGS = -L/usr/local/mingw32/lib -logg -lvorbis -lvorbisenc -lvorbisfile -lsmpeg -lmingw32 -lSDL_gfx -lSDL_mixer -lSDLmain -lSDL -mwindows -mno-cygwin
+-
++LDFLAGS = -lSDL_gfx -lSDL_mixer
+ OBJS = ram.o util_snd.o function.o dconv.o scene.o title.o init.o act.o option.o ending.o logo.o stageselect.o demo.o
+ 
+ SOURCES = $(patsubst %.o, %.c, $(OBJS))
+ 
+ ifeq ($(wildcard .depend),.depend)
+-do-it-all: RotateGear
++do-it-all: ../greenisland
+ include .depend
+ else
+ do-it-all: depend recursive
+@@ -28,5 +27,5 @@
+ clean:
+ 	$(RM) $(OBJS) *~ .depend RotateGear.exe
+ 
+-RotateGear: $(OBJS)
++../greenisland: $(OBJS)
+ 	$(CXX) -o $@ $(OBJS) $(LDFLAGS)

@@ -1,0 +1,157 @@
+diff -Naur a2k-o/a2k_src/src/gctrl.d a2k/a2k_src/src/gctrl.d
+--- a2k-o/a2k_src/src/gctrl.d	2005-01-18 02:03:08.000000000 +0100
++++ a2k/a2k_src/src/gctrl.d	2009-08-29 12:21:15.000000000 +0200
+@@ -6,6 +6,12 @@
+ 	2004/04/08 jumpei isshiki
+ */
+ 
++private import  SDL;
++private import  std.stdio;
++private import  std.math;
++private import  std.file;
++private import  std.path;
++private import  std.string;
+ private	import	std.random;
+ private	import	util_snd;
+ private	import	util_pad;
+@@ -72,6 +78,30 @@
+ private	float rank_max;
+ private	float rank_min;
+ 
++public static char[] pref_dir() {
++
++  char * home = getenv("HOME");
++
++  if (home is null)
++
++    throw new Error("HOME environment variable undefined");
++
++  char[] dir = std.string.toString(home) ~ "/.area2048";
++
++  try {
++
++    mkdir(dir);
++
++  } catch (FileException e) {
++
++  }
++
++  return dir;
++
++}
++
++
++
+ void	TSKgctrl(int id)
+ {
+ 	switch(TskBuf[id].step){
+diff -Naur a2k-o/a2k_src/src/init.d a2k/a2k_src/src/init.d
+--- a2k-o/a2k_src/src/init.d	2009-08-29 12:15:08.000000000 +0200
++++ a2k/a2k_src/src/init.d	2009-08-29 12:08:58.000000000 +0200
+@@ -98,11 +98,11 @@
+ 	auto File fd = new File;
+ 
+ 	try {
+-		fd.open("score.dat");
++		fd.open(pref_dir() ~ "/" ~ "score.dat");
+ 		if(fd.size() != 12){
+ 			fd.close();
+ 			printf("score.dat initialized");
+-		    fd.create("score.dat");
++		    fd.create(pref_dir() ~ "/" ~ "score.dat");
+ 			fd.write(high_easy);
+ 			fd.write(high_normal);
+ 			fd.write(high_hard);
+@@ -113,7 +113,7 @@
+ 		}
+ 	} catch (Error e) {
+ 		printf("score.dat initialized");
+-	    fd.create("score.dat");
++	    fd.create(pref_dir() ~ "/" ~ "score.dat");
+ 		fd.write(high_easy);
+ 		fd.write(high_normal);
+ 		fd.write(high_hard);
+@@ -122,12 +122,12 @@
+ 		fd.close();
+     }
+ 
+-	fd.open("config.dat");
++	fd.open(pref_dir() ~ "/" ~ "config.dat");
+ 	try {
+ 		if(fd.size() != 12){
+ 			fd.close();
+ 			printf("config.dat initialized");
+-		    fd.create("config.dat");
++		    fd.create(pref_dir() ~ "/" ~ "config.dat");
+ 			fd.write(pad_type);
+ 			fd.write(vol_se);
+ 			fd.write(vol_music);
+@@ -140,7 +140,7 @@
+ 		}
+ 	} catch (Error e) {
+ 		printf("config.dat initialized");
+-	    fd.create("config.dat");
++	    fd.create(pref_dir() ~ "/" ~ "config.dat");
+ 		fd.write(pad_type);
+ 		fd.write(vol_se);
+ 		fd.write(vol_music);
+@@ -153,13 +153,13 @@
+ void	configSAVE()
+ {
+ 	auto File fd = new File;
+-    fd.create("score.dat");
++    fd.create(pref_dir() ~ "/" ~ "score.dat");
+ 	fd.write(high_easy);
+ 	fd.write(high_normal);
+ 	fd.write(high_hard);
+ 	fd.close();
+ 
+-    fd.create("config.dat");
++    fd.create(pref_dir() ~ "/" ~ "config.dat");
+ 	fd.write(pad_type);
+ 	fd.write(vol_se);
+ 	fd.write(vol_music);
+diff -Naur a2k-o/a2k_src/src/main.d a2k/a2k_src/src/main.d
+--- a2k-o/a2k_src/src/main.d	2009-08-29 12:15:08.000000000 +0200
++++ a2k/a2k_src/src/main.d	2009-08-29 12:39:56.000000000 +0200
+@@ -7,7 +7,7 @@
+ */
+ 
+ //private	import	std.c.windows.windows;
+-private	import	SDL;
++private	import	SDL;
+ private	import	SDL_Keysym;
+ private	import	opengl;
+ private	import	util_sdl;
+@@ -36,8 +36,8 @@
+ extern (Windows)
+ int		WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+ {
+-*/
+-public int main(char[][] args) {
++*/
++public int main(char[][] args) {
+ 	int		result;
+ /*  
+ 	gc_init();
+@@ -45,10 +45,10 @@
+ 
+ 	try{
+ 		_moduleCtor();
+-		_moduleUnitTests();
++		_moduleUnitTests();
+ */
+ 		result = boot();
+-/*
++/*
+ 	}catch (Object o){
+ 		MessageBoxA(null, cast(char*)o.toString(), "Error", MB_OK | MB_ICONEXCLAMATION);
+ 		result = 0;
+@@ -103,6 +103,7 @@
+ 	initTSK();
+ 	initASCII();
+ 	bulletINIT();
++	configSAVE();
+ 	configINIT();
+ 
+ 	game_exec = 1;

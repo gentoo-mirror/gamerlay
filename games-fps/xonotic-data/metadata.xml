@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<use>
+		<flag name="client">Install files for client. Disabling is experimental.</flag>
+		<flag name="convert">Use cached-converter.sh for converting tga to jpeg</flag>
+		<flag name="low">Use low preset of cached-converter.sh: compress wav to ogg, lower jpeg quality.</flag>
+		<flag name="zip">Compress resources dirs in zip archives.</flag>
+	</use>
+</pkgmetadata>

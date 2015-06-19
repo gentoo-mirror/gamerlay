@@ -1,0 +1,2 @@
+move dev-games/tiled-qt dev-games/tiled
+move games-util/steam-installer games-util/steam-base

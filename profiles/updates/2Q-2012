@@ -1,0 +1,3 @@
+move games-engines/residual games-engines/residualvm
+move games-engines/residual-tools games-engines/residualvm-tools
+

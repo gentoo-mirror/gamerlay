@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>marcel@frostworx.de</email>
+	<name>Marcel Unbehaun</name>
+</maintainer>
+  <longdescription lang="en">
+A library to extract ps3 xmb p3t themes
+</longdescription>
+</pkgmetadata>

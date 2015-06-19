@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>ComputerDruid@gmail.com</email>
+<name>Dan Johnson</name>
+</maintainer>
+<longdescription lang="en">
+Jamestown is a neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars.
+</longdescription>
+</pkgmetadata>
+

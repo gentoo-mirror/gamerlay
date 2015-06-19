@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>marcel@frostworx.de</email>
+	<name>Marcel Unbehaun</name>
+</maintainer>
+  <longdescription lang="en">
+a renderlib for mikumikudance pmd model and vmd motion files
+</longdescription>
+  <use>
+    <flag name="bullet">enable bullet physics</flag>
+    <flag name="sfml">enable sfml texture loading</flag>
+  </use>
+</pkgmetadata>

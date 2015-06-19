@@ -1,0 +1,15 @@
+--- PuzzleMoppetSource/Litha Engine/source/Engine.cppO	2011-09-17 15:06:28.000000000 +0200
++++ PuzzleMoppetSource/Litha Engine/source/Engine.cpp	2012-07-14 10:07:32.120033849 +0200
+@@ -781,10 +781,11 @@
+ 	// this engine. Obviously this event cannot be stored or transmitted over a network
+ 	// in case the pointer gets invalidated.
+ 	// Also the pointer will probably not be valid on 64 bit systems.
++/*
+ 	Event event("IrrlichtEvent");
+ 	event["SEvent"] = (u32)&irrEvent;
+ 	newEvents.push_back(event);
+-	
++*/	
+ 	// Send 'em all!
+ 	for (u32 i = 0; i < newEvents.size(); i ++)
+ 		PostEvent(newEvents[i]);

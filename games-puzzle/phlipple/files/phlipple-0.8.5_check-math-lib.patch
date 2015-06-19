@@ -1,0 +1,17 @@
+diff -Nuar phlipple-0.8.5.orig/configure.ac phlipple-0.8.5/configure.ac
+--- phlipple-0.8.5.orig/configure.ac	2014-08-02 01:58:49.961024685 +0600
++++ phlipple-0.8.5/configure.ac	2014-08-02 02:02:28.574032234 +0600
+@@ -14,11 +14,13 @@
+ 
+ AC_CHECK_LIB(GL, main, [], AC_MSG_ERROR([OpenGL library not found.]))
+ AC_CHECK_LIB(GLU, gluPerspective, [], AC_MSG_ERROR([GLU library not found.]))
++AC_CHECK_LIB(m, cos, [], AC_MSG_ERROR([math library not found.]))
+ 
+ AC_CHECK_HEADER(GL/gl.h, [], AC_MSG_ERROR(no GL/gl.h found))
+ AC_CHECK_HEADER(GL/glu.h, [], AC_MSG_ERROR(no GL/glu.h found))
+ AC_CHECK_HEADER(SDL/SDL_image.h, [], AC_MSG_ERROR(no SDL/SDL_image.h found))
+ AC_CHECK_HEADER(SDL/SDL_mixer.h, [], AC_MSG_ERROR(no SDL/SDL_mixer.h found))
++AC_CHECK_HEADER(math.h, [], AC_MSG_ERROR(no math.h found))
+ 
+ AC_ARG_WITH(icondir,
+ 	AS_HELP_STRING([--with-icondir=DIR],[icon files [DATAROOTDIR/pixmaps]]),

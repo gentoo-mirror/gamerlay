@@ -1,0 +1,322 @@
+diff -Naur dave-org/analog_effects.cpp dave/analog_effects.cpp
+--- dave-org/analog_effects.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/analog_effects.cpp	2008-09-02 14:26:36.000000000 +0200
+@@ -881,7 +881,7 @@
+ MotionBlur::MotionBlur() : chroma(1.0f), amount(0.3f), prog(NULL), blurred_fbo(NULL), blurred_texture(NULL)
+ {
+   if (game->get_ext()->shaders && game->get_ext()->fbo) {
+-    prog = new GLProgram("graphics/motion_blur_vert.glsl", "graphics/motion_blur_frag.glsl");
++    prog = new GLProgram("/usr/share/games/dave/graphics/motion_blur_vert.glsl", "/usr/share/games/dave/graphics/motion_blur_frag.glsl");
+     prog->use();
+     prog->set_int("current", 0);
+     prog->set_int("blurred", 1);
+@@ -938,7 +938,7 @@
+ {
+   if (!game->get_ext()->shaders || !game->get_ext()->fbo)
+     return;
+-  prog = new GLProgram("graphics/gaussian_blur_vert.glsl", "graphics/gaussian_blur_frag.glsl");
++  prog = new GLProgram("/usr/share/games/dave/graphics/gaussian_blur_vert.glsl", "/usr/share/games/dave/graphics/gaussian_blur_frag.glsl");
+   prog->use();
+   prog->set_int("image", 0);
+   prog->unuse();
+@@ -982,7 +982,7 @@
+ TV::TV() : zoom(0.0f), started_zooming_at(-1000.0f), zooming_in(false)
+ {
+   room = new Scene();
+-  tv = new Model("graphics/telq.3ds");
++  tv = new Model("/usr/share/games/dave/graphics/telq.3ds");
+   tv->set_texture(          lib["toelloe.png"            ]);
+   tv->set_self_illumination(&proxy);
+   tv->set_environment(      lib["tv_environment.png"     ]);
+@@ -1060,7 +1060,7 @@
+ PalNoise::PalNoise()
+ {
+   noise = lib["pal_noise.png"];
+-  prog = new GLProgram("graphics/noise_vert.glsl", "graphics/noise_frag.glsl");
++  prog = new GLProgram("/usr/share/games/dave/graphics/noise_vert.glsl", "/usr/share/games/dave/graphics/noise_frag.glsl");
+ }
+ 
+ PalNoise::~PalNoise()
+@@ -1123,7 +1123,7 @@
+   set_bend(0.0f);
+   offset = 0.0f;
+   if (game->get_ext()->shaders)
+-    prog = new GLProgram("graphics/tape_vert.glsl", "graphics/tape_frag.glsl");
++    prog = new GLProgram("/usr/share/games/dave/graphics/tape_vert.glsl", "/usr/share/games/dave/graphics/tape_frag.glsl");
+ }
+ 
+ TapeDistortion::~TapeDistortion()
+diff -Naur dave-org/editor.cpp dave/editor.cpp
+--- dave-org/editor.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/editor.cpp	2008-09-02 14:22:30.000000000 +0200
+@@ -101,7 +101,7 @@
+ 
+   for (int pass=0; pass<2; pass++) {
+     struct dirent *dir;
+-    DIR *d = opendir("graphics");
++    DIR *d = opendir("/usr/share/games/dave/graphics");
+     if (d) {
+       while ((dir = readdir(d)) != NULL) {
+         string name = dir->d_name;
+diff -Naur dave-org/game.cpp dave/game.cpp
+--- dave-org/game.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/game.cpp	2008-09-02 14:37:18.000000000 +0200
+@@ -260,7 +260,7 @@
+   dave_kuopio->add_ability(new Ability(Ability::LASER_PULSE));
+   dave_kuopio->set_flags(Level::Block::MONOCHROME, true);
+   if (ext.shaders)
+-    kuopio_prog = new GLProgram("graphics/kuopio_vert.glsl", "graphics/kuopio_frag.glsl");
++    kuopio_prog = new GLProgram("/usr/share/games/dave/graphics/kuopio_vert.glsl", "/usr/share/games/dave/graphics/kuopio_frag.glsl");
+   cerr<<"dave lisätty\n";
+   current_level->reset();
+   cerr<<"vihulaiset lisätty\n";
+@@ -291,10 +291,10 @@
+ 
+   remote = new Remote();
+ 
+-  img_rewind = new Image("graphics/rewind.png", true);
+-  img_stop   = new Image("graphics/stop.png"  , true);
+-  img_play   = new Image("graphics/play.png"  , true);
+-  img_record = new Image("graphics/rec.png"   , true);
++  img_rewind = new Image("/usr/share/games/dave/graphics/rewind.png", true);
++  img_stop   = new Image("/usr/share/games/dave/graphics/stop.png"  , true);
++  img_play   = new Image("/usr/share/games/dave/graphics/play.png"  , true);
++  img_record = new Image("/usr/share/games/dave/graphics/rec.png"   , true);
+ }
+ 
+ Game::~Game()
+@@ -824,7 +824,7 @@
+ {
+   const bool gfin = game_completed;
+   render();
+-  Mix_Music *vaapukka = Mix_LoadMUS("audio/Kirahvi_nimelta_Tuike_-_Vaapukkamehulaulu.ogg");
++  Mix_Music *vaapukka = Mix_LoadMUS("/usr/share/games/dave/audio/Kirahvi_nimelta_Tuike_-_Vaapukkamehulaulu.ogg");
+   Mix_PlayMusic(vaapukka, -1);
+   if (fin)
+     Mix_SetMusicPosition(224.0);
+@@ -844,7 +844,7 @@
+ 
+     set<int> pages;
+     struct dirent *dir;
+-    DIR *d = opendir("graphics");
++    DIR *d = opendir("/usr/share/games/dave/graphics");
+     if (d) {
+       while ((dir = readdir(d)) != NULL) {
+         const char *name = dir->d_name;
+@@ -870,7 +870,7 @@
+       teletext[page] = new Teletext();
+       teletext[page]->set_text(string(41 * 26, ' '));
+       ostringstream fname;
+-      fname << "graphics/page" << page << ".tv";
++      fname << "/usr/share/games/dave/graphics/page" << page << ".tv";
+       ifstream main_text(fname.str().c_str(), ios_base::in | ios_base::binary);
+       string::size_type pos = 0;
+       for   (int y=0; y<25; y++) {
+@@ -1009,7 +1009,7 @@
+       if (!prev_credits) {
+ 	static Mix_Music *noman;
+ 	if (!noman)
+-	  noman = Mix_LoadMUS("audio/Delicious_Orange_-_No-Man.ogg");
++	  noman = Mix_LoadMUS("/usr/share/games/dave/audio/Delicious_Orange_-_No-Man.ogg");
+ 	Mix_PlayMusic(noman, -1);
+ 	start = 0.001f * SDL_GetTicks();
+       }
+@@ -1301,7 +1301,7 @@
+ 
+ void Game::save_config() const
+ {
+-  ofstream f("dave.conf", ios_base::out | ios_base::binary);
++  ofstream f("/etc/games/dave/dave.conf", ios_base::out | ios_base::binary);
+   for (map<string, string>::const_iterator i=config.begin(); i!=config.end(); ++i) {
+     f << i->first;
+     int si = 20 - i->first.size();
+@@ -1318,11 +1318,11 @@
+   // Parsing file
+   config.clear();
+   ifstream f;
+-  f.open("dave.conf", ios_base::in | ios_base::binary);
++  f.open("/etc/games/dave/dave.conf", ios_base::in | ios_base::binary);
+   if (!f.good()) {
+     f.close();
+     f.clear();
+-    f.open("dave.conf.sample", ios_base::in | ios_base::binary);
++    f.open("/etc/games/dave/dave.conf.sample", ios_base::in | ios_base::binary);
+   }
+   if (!f.good()) {
+ 	char cwd[128];
+@@ -1367,10 +1367,10 @@
+ string Game::get_level_filename() const
+ {
+   switch (current_level_number) {
+-    case 0: return "levels/practice.dave";
+-    case 1: return "levels/avaruus.dave";
+-    case 2: return "levels/ruohikko.dave";
+-    case 3: return "levels/videonauhuri.dave";
++    case 0: return "/usr/share/games/dave/levels/practice.dave";
++    case 1: return "/usr/share/games/dave/levels/avaruus.dave";
++    case 2: return "/usr/share/games/dave/levels/ruohikko.dave";
++    case 3: return "/usr/share/games/dave/levels/videonauhuri.dave";
+     default:
+       throw;
+   }
+diff -Naur dave-org/level.cpp dave/level.cpp
+--- dave-org/level.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/level.cpp	2008-09-02 14:29:41.000000000 +0200
+@@ -503,7 +503,7 @@
+         starfield[i].set_texture(lib["star.png"]);
+         background_scene->add_model(&starfield[i]);
+         if (!i)
+-          starfield[i].load_shader("graphics/starfield_vert.glsl", "graphics/starfield_frag.glsl");
++          starfield[i].load_shader("/usr/share/games/dave/graphics/starfield_vert.glsl", "/usr/share/games/dave/graphics/starfield_frag.glsl");
+         else
+           starfield[i].use_same_shader_as(&starfield[0]);
+       }
+@@ -520,12 +520,12 @@
+   else if (lev == 2) {  // Grass
+     if (rocket == NULL) {
+       background_scene = new Scene();
+-      rocket = new Model("graphics/roket.3ds");
++      rocket = new Model("/usr/share/games/dave/graphics/roket.3ds");
+       background_scene->add_model(rocket);
+-      valley = new Model("graphics/laakso.3ds");
++      valley = new Model("/usr/share/games/dave/graphics/laakso.3ds");
+       valley->set_texture(lib["laakso.png"]);
+       background_scene->add_model(valley);
+-      sun = new Model("graphics/aurinko.3ds");
++      sun = new Model("/usr/share/games/dave/graphics/aurinko.3ds");
+       sun->set_texture(lib["aurinko.png"]);
+       background_scene->add_model(sun);
+       gaussian = new GaussianBlur();
+@@ -577,28 +577,28 @@
+     (*i)->handle(this, dt, time);
+ 
+   if (current_music[0] == NULL) {
+-    current_music         [0] = Mix_LoadMUS("audio/thyks-video_cleaner_fluid.ogg");
+-    current_music_reversed[0] = Mix_LoadMUS("audio/thyks-video_cleaner_fluid_reverse.ogg");
++    current_music         [0] = Mix_LoadMUS("/usr/share/games/dave/audio/thyks-video_cleaner_fluid.ogg");
++    current_music_reversed[0] = Mix_LoadMUS("/usr/share/games/dave/audio/thyks-video_cleaner_fluid_reverse.ogg");
+     intro                 [0] = NULL;
+     current_music         [1] = current_music[0];
+     current_music_reversed[1] = current_music_reversed[0];
+     intro                 [1] = NULL;
+-    current_music         [2] = Mix_LoadMUS("audio/sid000loop.ogg");
+-    current_music_reversed[2] = Mix_LoadMUS("audio/sid000loop_reverse.ogg");
+-    intro                 [2] = Mix_LoadMUS("audio/sid000intro.ogg");
+-    current_music         [3] = Mix_LoadMUS("audio/sid002loop.ogg");
+-    current_music_reversed[3] = Mix_LoadMUS("audio/sid002loop_reverse.ogg");
+-    intro                 [3] = Mix_LoadMUS("audio/sid002intro.ogg");
+-
+-    ch_lever    = Mix_LoadWAV("audio/avaruusvipu.ogg");
+-    ch_lazor    = Mix_LoadWAV("audio/lazor.ogg");
+-    ch_pink     = Mix_LoadWAV("audio/pink_noise_10s.ogg");
+-    ch_piuingg  = Mix_LoadWAV("audio/piuingg.ogg");
+-    ch_random   = Mix_LoadWAV("audio/random.ogg");
+-    ch_tv_noise = Mix_LoadWAV("audio/tv_noise_10s.ogg");
+-    ch_tilu     = Mix_LoadWAV("audio/tilulilu.ogg");
+-    ch_charge   = Mix_LoadWAV("audio/charge.ogg");
+-    ch_pack     = Mix_LoadWAV("audio/pack.ogg");
++    current_music         [2] = Mix_LoadMUS("/usr/share/games/dave/audio/sid000loop.ogg");
++    current_music_reversed[2] = Mix_LoadMUS("/usr/share/games/dave/audio/sid000loop_reverse.ogg");
++    intro                 [2] = Mix_LoadMUS("/usr/share/games/dave/audio/sid000intro.ogg");
++    current_music         [3] = Mix_LoadMUS("/usr/share/games/dave/audio/sid002loop.ogg");
++    current_music_reversed[3] = Mix_LoadMUS("/usr/share/games/dave/audio/sid002loop_reverse.ogg");
++    intro                 [3] = Mix_LoadMUS("/usr/share/games/dave/audio/sid002intro.ogg");
++
++    ch_lever    = Mix_LoadWAV("/usr/share/games/dave/audio/avaruusvipu.ogg");
++    ch_lazor    = Mix_LoadWAV("/usr/share/games/dave/audio/lazor.ogg");
++    ch_pink     = Mix_LoadWAV("/usr/share/games/dave/audio/pink_noise_10s.ogg");
++    ch_piuingg  = Mix_LoadWAV("/usr/share/games/dave/audio/piuingg.ogg");
++    ch_random   = Mix_LoadWAV("/usr/share/games/dave/audio/random.ogg");
++    ch_tv_noise = Mix_LoadWAV("/usr/share/games/dave/audio/tv_noise_10s.ogg");
++    ch_tilu     = Mix_LoadWAV("/usr/share/games/dave/audio/tilulilu.ogg");
++    ch_charge   = Mix_LoadWAV("/usr/share/games/dave/audio/charge.ogg");
++    ch_pack     = Mix_LoadWAV("/usr/share/games/dave/audio/pack.ogg");
+ 
+     play_music(false);
+     Mix_VolumeMusic(SDL_MIX_MAXVOLUME);
+diff -Naur dave-org/library.cpp dave/library.cpp
+--- dave-org/library.cpp	2008-08-12 16:38:51.000000000 +0200
++++ dave/library.cpp	2008-09-02 14:27:09.000000000 +0200
+@@ -102,7 +102,7 @@
+     Image *l = new Image();
+     string ff;
+ 
+-    ff = "graphics/" + filename;
++    ff = "/usr/share/games/dave/graphics/" + filename;
+     if (l->load(ff, true))
+       return l;
+ 
+diff -Naur dave-org/model.cpp dave/model.cpp
+--- dave-org/model.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/model.cpp	2008-09-02 14:27:54.000000000 +0200
+@@ -160,7 +160,7 @@
+   build_kdtree(kdtree, hash);
+ 
+   char buf[64];
+-  sprintf(buf, "graphics/aocache%x.tmp", hash);
++  sprintf(buf, "/usr/share/games/dave/graphics/aocache%x.tmp", hash);
+ 
+   FILE* fp = fopen(buf, "rb");
+   if (fp)
+@@ -598,9 +598,9 @@
+ 
+   if (using_shader) {
+     if (game->get_ext()->simple_shaders == false)
+-      program = new GLProgram("graphics/telq_vert.glsl", "graphics/telq_frag.glsl");
++      program = new GLProgram("/usr/share/games/dave/graphics/telq_vert.glsl", "/usr/share/games/dave/graphics/telq_frag.glsl");
+     else
+-      program = new GLProgram("graphics/telq_vert.glsl", "graphics/telq_frag.mac.glsl");
++      program = new GLProgram("/usr/share/games/dave/graphics/telq_vert.glsl", "/usr/share/games/dave/graphics/telq_frag.mac.glsl");
+     program->use();
+     program->set_int("tex", 0);
+     program->set_int("self_illum", 1);
+diff -Naur dave-org/opengl.cpp dave/opengl.cpp
+--- dave-org/opengl.cpp	2008-08-12 16:38:51.000000000 +0200
++++ dave/opengl.cpp	2008-09-02 14:24:50.000000000 +0200
+@@ -72,7 +72,7 @@
+ 	fprintf(stderr, "Compling shader '%s', '%s'...", vertFile, fragFile);
+ 	prog = glCreateProgramObjectARB();
+ 
+-	load_file("graphics/std.glsl", buffer);
++	load_file("/usr/share/games/dave/graphics/std.glsl", buffer);
+ 
+ 	static const char* src[2] = { buffer, buffer2 };
+ 
+diff -Naur dave-org/remote.cpp dave/remote.cpp
+--- dave-org/remote.cpp	2008-08-13 21:43:21.000000000 +0200
++++ dave/remote.cpp	2008-09-02 14:31:24.000000000 +0200
+@@ -38,11 +38,11 @@
+ static Storyboard/*<256>*/ record(Storyboard::PLAYBACK, 1  );   // Records the movements of Dave while record button is pressed
+ 
+ Remote::Remote() :
+-  Model("graphics/remote/runko.3DS"),
++  Model("/usr/share/games/dave/graphics/remote/runko.3DS"),
+   pressed(NOTHING),
+   paused(false),
+   screen_texture(GL_RGB8, 512, 512),
+-  grid("graphics/lcd_grid.png", false)
++  grid("/usr/share/games/dave/graphics/lcd_grid.png", false)
+ {
+   set_texture(lib["remote/mappi3.png"]);
+   scene = new Scene();
+@@ -51,17 +51,17 @@
+   set_position(0.0f, 0.0f, /*-23.0f*/ -40.0f);
+   //set_rotation(90.0f, 0.0f, 0.0f);
+ 
+-  screen = new Model("graphics/remote/nayttooikee2.3DS");
++  screen = new Model("/usr/share/games/dave/graphics/remote/nayttooikee2.3DS");
+   add_model(screen);
+   screen->set_texture(new TextureProxy(&screen_texture));
+-  gaps = new Model("graphics/remote/nreunat.3DS");
++  gaps = new Model("/usr/share/games/dave/graphics/remote/nreunat.3DS");
+   add_model(gaps);
+   gaps->set_texture(lib["remote/napit.png"]);
+   button_count = 27;
+   buttons = new Model [button_count] ();
+   for (int i=0; i<button_count; i++) {
+     ostringstream s;
+-    s << "graphics/remote/n" << i + 1 << "ya.3DS";
++    s << "/usr/share/games/dave/graphics/remote/n" << i + 1 << "ya.3DS";
+     buttons[i].load(s.str());
+     buttons[i].set_texture(lib["remote/napit.png"]);
+     add_model(&buttons[i]);

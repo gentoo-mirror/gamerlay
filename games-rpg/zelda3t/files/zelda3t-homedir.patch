@@ -1,0 +1,143 @@
+diff -Naur Zelda3T_US-src-linux/src/Joueur.cpp Zelda3T_US-src-linux/src/Joueur.cpp
+--- Zelda3T_US-src-linux/src/Joueur.cpp	2010-01-16 17:58:24.000000000 +0100
++++ Zelda3T_US-src-linux/src/Joueur.cpp	2010-10-10 11:31:13.000000000 +0200
+@@ -18,6 +18,7 @@
+ #include "Projectile.h"
+ #include "Jeu.h"
+ #include "Keyboard.h"
++#include <sys/stat.h> // for mkdir
+ 
+ Joueur::Joueur(Jeu* jeu, int nmsv) : Personnage(), numSave(nmsv), temps(0), xdep2(0), 
+ ydep2(0), dirdep2(S), magie(0), magiemax(32), typeanim(AUCUNE), minanim(0), fleche(0), 
+@@ -93,9 +94,24 @@
+     //if (!gpJeu->isDonjon()) {zone = 21; xd = 86; yd = 24; dird = S;}
+     int tps = temps + ((SDL_GetTicks()-TimeB)/1000);
+     if (tps > 359999) tps = 359999;
++    
++    // write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zelda3t/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "3t");
++	// end of user home  
++    
+     ostringstream im;
+     im << numSave;
+-    ofstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::out | ios::binary);
++    ofstream f((savepath + im.str() + ".dat").c_str(),ios::out | ios::binary);
+     f.write((char *)&tps,sizeof(int));
+     f.write((char *)&zone,sizeof(int));
+     f.write((char *)&xd,sizeof(int));
+@@ -161,9 +177,23 @@
+ 
+ void Joueur::load() {
+     int zone;
++    // write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zelda3t/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "3t");
++	// end of user home
++	
+     ostringstream im;
+     im << numSave;
+-    ifstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::in | ios::binary);
++    ifstream f((savepath + im.str() + ".dat").c_str(),ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&temps,sizeof(int));
+     f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
+diff -Naur Zelda3T_US-src-linux/src/Keyboard.cpp Zelda3T_US-src-linux/src/Keyboard.cpp
+--- Zelda3T_US-src-linux/src/Keyboard.cpp	2009-08-14 08:10:58.000000000 +0200
++++ Zelda3T_US-src-linux/src/Keyboard.cpp	2010-10-10 11:28:51.000000000 +0200
+@@ -13,6 +13,7 @@
+ #include <SDL/SDL.h>
+ 
+ #include "Keyboard.h"
++#include <sys/stat.h> // for mkdir
+ 
+ Keyboard::Keyboard(Jeu* jeu, Carte* carte, Encyclopedie* encycl, Poissons* poissons,
+ SDL_Surface* screen, int m, bool e) : 
+@@ -30,7 +31,22 @@
+ }
+ 
+ void Keyboard::saveP() {
+-    ofstream f("data/save/system.dat",ios::out | ios::binary);
++	
++	// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zelda3t/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++// end of user home  
++	
++    ofstream f(savepath,ios::out | ios::binary);
+     f.write((char *)&volume,sizeof(int));
+     f.write((char *)&volson,sizeof(int));
+     f.write((char *)&temps,sizeof(int));
+@@ -39,7 +55,20 @@
+ }
+ 
+ void Keyboard::loadP() {
+-    ifstream f("data/save/system.dat",ios::in | ios::binary);
++	// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zelda3t/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++// end of user home  
++    ifstream f(savepath,ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&volume,sizeof(int));
+     f.read((char *)&volson,sizeof(int));
+@@ -778,8 +807,22 @@
+         case 9 :
+             if (keys[SDLK_RETURN] && tmp == 0) {
+                 if (ligneVal==0) {
++					// write the saves into users home  
++					char savepath[500];
++					strcpy(savepath, getenv("HOME"));
++					strcat(savepath,"/.zelda3t/");
++	
++					FILE *pathcheck = fopen(savepath,"r");
++					if(!pathcheck)
++					{
++					mkdir(savepath, 0755);
++					}
++	
++					strcat(savepath, "3t");
++					// end of user home
++					
+                     ostringstream oss; oss << (ligne+1);
+-                    remove(("data/save/3t" + oss.str() + ".dat").c_str());
++                    remove((savepath + oss.str() + ".dat").c_str());
+                     mode = 4; gpJeu->getGenerique()->initSelection();
+                     gpJeu->getAudio()->playSound(2);
+                 }

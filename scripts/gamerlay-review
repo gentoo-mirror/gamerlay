@@ -1,0 +1,167 @@
+#!/bin/bash
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# gamerlay-review - Automates the Gentoo GamerLay Overlay commit process
+# Released into the public domain.
+
+source /etc/init.d/functions.sh
+
+BLUE=$BRACKET
+BOLD=$'\e[0;01m'
+DARKGREEN=$'\e[32m'
+GREEN=$GOOD
+LIGHTBLUE=$HILITE
+RED=$BAD
+YELLOW=$WARN
+
+tmpdir="/tmp/$(basename ${0}).$$"
+patchset=${tmpdir}/$(basename ${0})-patchset.patch
+summary_changes=${tmpdir}/$(basename ${0})-summary-changes.log
+opt_norepoman=0
+opt_quiet=0
+opt_verbose=0
+
+fatal() {
+    eerror "!!! Error: $*"
+}
+
+#TODO: Interesting thing to handle a backtrace in case of problems ? (ala ebuild.sh)
+#backtrace() {
+#    if [ $opt_verbose == 1 ]; then
+#	eerror "Call stack:"
+#	set ${FUNCNAME[*]}; shift
+#	while [ $# > 1 ]; do
+#	    eerror "  $(basename ${0}): Called ${1}"
+#	    shift
+#	done
+#    fi
+#    exit $1
+#}
+
+eend_or_die() {
+    eend $1 || exit $?
+}
+
+usage() {
+cat <<EOF
+${BOLD}Usage:${NORMAL} ${LIGHTBLUE}gamerlay-review${NORMAL} [ ${GREEN}options${NORMAL} ] ${BLUE}message${NORMAL}
+
+${GREEN}options${NORMAL}:      
+  ${BOLD}--help, -h${NORMAL}       Show help
+  ${BOLD}--norepoman, -p${NORMAL}  Skip repoman check
+  ${BOLD}--quiet, -q${NORMAL}      Don't ask for confirmation
+  ${BOLD}--verbose, -v${NORMAL}    Show detailed information during commit
+
+${BLUE}message${NORMAL}:
+  Commit message describing changes.
+EOF
+  exit ${1:-0}
+}
+
+git_command() {
+
+    local errlog=${tmpdir}/error.log
+    local git_command_stdout=""
+    local retval=""
+
+    if [ $opt_verbose == 1 ]; then
+	einfo "${FUNCNAME[0]}: $*"
+    fi
+    
+    if [ "$1" = "-o" ]; then
+	shift; git_command_stdout=$1; shift
+	git $* 2>${errlog} >$git_command_stdout || retval=$?
+    else
+	git $* 2>${errlog} >/dev/null || retval=$?
+    fi
+
+    if [ -n "$retval" ]; then
+	fatal "${FUNCNAME[0]}: $* failed"
+	return $retval
+    fi
+}
+
+git_checkout() {
+    git_command checkout ${1}
+}
+
+while [ $# > 0 ]; do
+    case "${1}" in 
+	--help|-h)
+	    usage ;;
+	--norepoman|-p)
+	    opt_norepoman=1
+	    shift ;;
+	--quiet|-q)
+	    opt_quiet=1
+	    shift ;;
+	--verbose|-v)
+	    opt_verbose=1
+	    shift ;;
+	-*)
+	    usage 1 ;;
+	*)
+	    break ;;
+    esac
+done
+
+if [ -z "$*" ]; then
+    fatal "You must give a commit message, see gamerlay-review -h for more details"
+    exit 1
+fi
+
+if [ $opt_norepoman = 0 ]; then
+    ebegin "Running repoman"
+    repoman full || fatal "Please fix repoman QA errors before continue"
+    eend_or_die $?
+fi
+
+mkdir -p ${tmpdir}
+ebegin "Computing differences between the two working branches"
+git_command -o ${summary_changes} diff --name-status master && \
+sed -e '/^A\tDocumentation\/[a-zA-Z0-9\._][a-zA-Z0-9\._]*$/d'  \
+    -e '/^A\tscripts\/[a-zA-Z0-9\._][a-zA-Z0-9\._]*/d' -i ${summary_changes} && \
+git_command -o ${patchset} diff --patch-with-stat --full-index master
+eend_or_die $?
+
+ebegin "Synchronizing devel and stable branches"
+git_checkout master && git_command apply --whitespace=nowarn ${patchset}
+eend_or_die $?
+
+rm -rf Documentation/ scripts/
+ebegin "Adding local changes to the working stable branch"
+git_command add "*" && git_command commit -a -m "$*"
+eend_or_die $?
+
+echo
+echo "${DARKGREEN}The following local changes will be pushed to the stable branch on the repository:${NORMAL}"
+echo
+
+cat ${summary_changes}
+
+if [ $opt_quiet = 0 ]; then
+    echo
+    echo -n "${BOLD}Commit changes?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "
+    read choice
+    echo
+    
+    case "$choice" in
+	y*|Y*|"")
+	    ;;
+	*)
+	    echo "Quitting."
+	    echo
+	    exit 1 ;;
+    esac
+fi
+
+ebegin "Adding a tag to the working devel branch"
+git_checkout devel && \
+git_command tag -a Reviewed_up_$(data +%Y_%m_%d) -m "Reviewed up $(data +%Y/%m/%d)" && \
+git_command push
+eend_or_die $?
+ebegin "Pushing working copy of the stable branch to the repository"
+git_checkout master && git_command push
+eend_or_die $?
+rm -rf ${tmpdir}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>playboys</herd>
+	<maintainer>
+		<email>premek@vohnout.cz</email>
+		<name>Přemysl</name>
+		<description>KBang is an open-sources implementation of the popular card game Bang!</description>
+	</maintainer>
+	<use>
+	        <flag name='server'>Compile and install server compotents</flag>  
+	</use>
+</pkgmetadata>

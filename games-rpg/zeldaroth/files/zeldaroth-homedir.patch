@@ -1,0 +1,141 @@
+diff -Naur ZeldaROTH_US-src-linux/src/Joueur.cpp ZeldaROTH_US-src-linux/src/Joueur.cpp
+--- ZeldaROTH_US-src-linux/src/Joueur.cpp	2009-02-18 23:59:34.000000000 +0100
++++ ZeldaROTH_US-src-linux/src/Joueur.cpp	2010-10-10 11:48:46.000000000 +0200
+@@ -17,6 +17,7 @@
+ #include "Texte.h"
+ #include "Projectile.h"
+ #include "Jeu.h"
++#include <sys/stat.h> // for mkdir
+ 
+ Joueur::Joueur(Jeu* jeu, int nmsv) : Personnage(), numSave(nmsv), temps(0), xdep2(0), 
+ ydep2(0), dirdep2(S), magie(0), 
+@@ -114,9 +115,23 @@
+     if (!gpJeu->isDonjon()) {zone = 21; xd = 86; yd = 24; dird = S;}
+     int tps = temps + ((SDL_GetTicks()-TimeB)/1000);
+     if (tps > 359999) tps = 359999;
++    // write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaroth/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "roth");
++	// end of user home
++	
+     ostringstream im;
+     im << numSave;
+-    ofstream f(("data/save/roth" + im.str() + ".dat").c_str(),ios::out | ios::binary);
++    ofstream f((savepath + im.str() + ".dat").c_str(),ios::out | ios::binary);
+     f.write((char *)&tps,sizeof(int));
+     f.write((char *)&zone,sizeof(int));
+     f.write((char *)&xd,sizeof(int));
+@@ -157,9 +172,22 @@
+ 
+ void Joueur::load() {
+     int zone;
++    // write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaroth/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "roth");
++	// end of user home
+     ostringstream im;
+     im << numSave;
+-    ifstream f(("data/save/roth" + im.str() + ".dat").c_str(),ios::in | ios::binary);
++    ifstream f((savepath + im.str() + ".dat").c_str(),ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&temps,sizeof(int));
+     f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
+diff -Naur ZeldaROTH_US-src-linux/src/Keyboard.cpp ZeldaROTH_US-src-linux/src/Keyboard.cpp
+--- ZeldaROTH_US-src-linux/src/Keyboard.cpp	2009-02-18 23:56:22.000000000 +0100
++++ ZeldaROTH_US-src-linux/src/Keyboard.cpp	2010-10-10 11:49:55.000000000 +0200
+@@ -19,6 +19,7 @@
+ #include "Projectile.h"
+ #include "Jeu.h"*/
+ #include "Keyboard.h"
++#include <sys/stat.h> // for mkdir
+ 
+ Keyboard::Keyboard(Jeu* jeu, Carte* carte, Encyclopedie* encycl, SDL_Surface* screen, int m) : 
+     gpJeu(jeu), gpCarte(carte), gpEncyclopedie(encycl), mode(m), gFullScreen(1), 
+@@ -33,7 +34,21 @@
+ }
+ 
+ void Keyboard::saveP() {
+-    ofstream f("data/save/system.dat",ios::out | ios::binary);
++	// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaroth/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++// end of user home
++
++    ofstream f(savepath,ios::out | ios::binary);
+     f.write((char *)&volume,sizeof(int));
+     f.write((char *)&volson,sizeof(int));
+     f.write((char *)&temps,sizeof(int));
+@@ -42,7 +57,21 @@
+ }
+ 
+ void Keyboard::loadP() {
+-    ifstream f("data/save/system.dat",ios::in | ios::binary);
++	// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaroth/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++	// end of user home
++	
++    ifstream f(savepath,ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&volume,sizeof(int));
+     f.read((char *)&volson,sizeof(int));
+@@ -564,8 +593,22 @@
+         case 9 :
+             if (keys[SDLK_RETURN] && tmp == 0) {
+                 if (ligneVal==0) {
++						// write the saves into users home  
++						char savepath[500];
++						strcpy(savepath, getenv("HOME"));
++						strcat(savepath,"/.zeldaroth/");
++	
++						FILE *pathcheck = fopen(savepath,"r");
++						if(!pathcheck)
++						{
++						mkdir(savepath, 0755);
++						}
++	
++						strcat(savepath, "roth");
++						// end of user home
++						
+                     ostringstream oss; oss << (ligne+1);
+-                    remove(("data/save/roth" + oss.str() + ".dat").c_str());
++                    remove((savepath + oss.str() + ".dat").c_str());
+                     mode = 4; gpJeu->getGenerique()->initSelection();
+                     gpJeu->getAudio()->playSound(2);
+                 }

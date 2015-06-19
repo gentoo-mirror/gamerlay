@@ -1,0 +1,20 @@
+diff -Naur src/interface.h src/interface.h
+--- src/interface.h	2009-01-20 17:26:16.000000000 +0100
++++ src/interface.h	2009-12-06 11:02:28.000000000 +0100
+@@ -27,6 +27,7 @@
+ #include <boost/smart_ptr.hpp>
+ #include <boost/any.hpp>
+ #include <boost/regex.hpp>
++#include <boost/lexical_cast.hpp>
+ 
+ #include <ist/iterator.h>
+ #include <ist/ist_i3d.h>
+diff -Naur src/thread_specific.h src/thread_specific.h
+--- src/thread_specific.h	2009-01-08 03:23:22.000000000 +0100
++++ src/thread_specific.h	2009-12-06 11:02:51.000000000 +0100
+@@ -1,4 +1,5 @@
+ #include "stdafx.h"
++#include <boost/lexical_cast.hpp>
+ 
+ namespace exception {
+ 

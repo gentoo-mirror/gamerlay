@@ -1,0 +1,12 @@
+--- CMakeLists.txt-O	2012-07-13 11:49:06.000000000 +0200
++++ CMakeLists.txt	2012-07-13 11:59:31.590809749 +0200
+@@ -48,6 +48,9 @@
+ # Fribidi library needed for bi-directional texts
+ 	find_library(FRIBIDI_LIBRARY fribidi)
+ 
++	find_package(PkgConfig)
++	pkg_check_modules(GLIB glib-2.0)
++   include_directories(${GLIB_INCLUDE_DIRS})
+ # set the executable output path
+ if(APPLE)
+ 	set(EXECUTABLE_OUTPUT_PATH ${MARS_BINARY_DIR})

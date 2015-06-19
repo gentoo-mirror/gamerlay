@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>frostworks@gmx.de</email>
+	<name>Marcel Unbehaun</name>
+</maintainer>
+  <longdescription lang="en">
+Typhon is a slim and transparent programlauncher - perfect for a hotkey.
+</longdescription>
+</pkgmetadata>

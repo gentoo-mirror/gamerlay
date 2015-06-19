@@ -1,0 +1,25 @@
+diff -Naur PuzzleMoppetSource-o/Litha Engine/CMakeLists.txt PuzzleMoppetSource/Litha Engine/CMakeLists.txt
+--- PuzzleMoppetSource-o/Litha Engine/CMakeLists.txt	2012-07-13 18:19:24.600053643 +0200
++++ PuzzleMoppetSource/Litha Engine/CMakeLists.txt	2012-07-13 18:34:48.960062962 +0200
+@@ -57,11 +57,19 @@
+ # (things required by both litha engine and individual projects)
+ # (actually some of these probably aren't required by both...)
+ 
+-include_directories(${rootDir} ${rootDir}/include ${rootDir}/thirdparty/irrlicht-1.6.1/include)
++include_directories(${rootDir} ${rootDir}/include /usr/include/irrlicht)
+ 
+ link_directories(${rootDir}/thirdparty/irrlicht-1.6.1/lib/${irrlichtLibDir})
+ 
+-
++#find_package(PkgConfig)
++#pkg_check_modules(IRR irrlicht)
++#include_directories(${IRR_INCLUDE_DIRS})
++#link_directories(${IRR_LIBRARY_DIRS})
++
++#find_package(PkgConfig)
++#pkg_check_modules(ODE ode)
++#ADD_DEFINITIONS (${ODE_INCLUDE_DIRS})
++ADD_DEFINITIONS ( -DdSINGLE )
+ 
+ ########## LITHA ENGINE CONFIG ########
+ 

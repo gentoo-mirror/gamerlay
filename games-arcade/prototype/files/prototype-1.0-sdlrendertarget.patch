@@ -1,0 +1,104 @@
+diff -Naur Engine.h Engine.h
+--- Engine.h	2009-10-02 08:18:49.000000000 +0200
++++ Engine.h	2009-10-02 08:24:25.000000000 +0200
+@@ -183,7 +183,7 @@
+ 		void RenderWaterTransparent(const float interp);
+ 
+ 	// render target related
+-		SDL_RenderTarget *pMainTarget,*pPostTarget, *p64x64Target, *p256x256Target;
++//		SDL_RenderTarget *pMainTarget,*pPostTarget, *p64x64Target, *p256x256Target;
+ 
+ 		void BindMainContext();
+ 		void FinalizeMainContext();
+diff -Naur PostEffects.cpp PostEffects.cpp
+--- PostEffects.cpp	2009-10-02 08:19:42.000000000 +0200
++++ PostEffects.cpp	2009-10-02 08:25:09.000000000 +0200
+@@ -12,9 +12,9 @@
+ 		return;
+ 	}
+ 	glEnable(GL_TEXTURE_2D);
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Lock_pBuffer(pMainTarget);
+-//#endif
++#endif
+ 	UTIL_GL::GL2D::SetOrtho(1024,512);
+ 
+ }
+@@ -29,9 +29,9 @@
+ 		return;
+ 
+ 	glEnable(GL_TEXTURE_2D);
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Unlock_pBuffer(pMainTarget);
+-//#endif
++#endif
+ 	RenderMainContext();
+ }
+ //================================================================================================//
+@@ -42,10 +42,10 @@
+ void Engine::RenderMainContext()
+ {
+ 	glEnable(GL_TEXTURE_2D);
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Bind_pBuffer(*pMainTarget);
+-//#endif
+-//	UTIL_GL::GL2D::SetOrtho(640,480);
++#endif
++	UTIL_GL::GL2D::SetOrtho(640,480);
+ 	glColor4f(1,1,1,1);
+ 	glDisable(GL_BLEND);
+ 	glBegin(GL_QUADS);
+@@ -83,11 +83,11 @@
+ 	if(!bRenderTargetSupport)
+ 		return;
+ 
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Unlock_pBuffer(pMainTarget);
+ 	glEnable(GL_TEXTURE_2D);
+ 	UTIL_SDL::Lock_pBuffer(p64x64Target);
+-//#endif
++#endif
+ 	glClearColor(0,0,0,0);
+ 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ 	glViewport(0,0,64,64);
+@@ -101,11 +101,11 @@
+ 
+ 	px+=64;
+ 	glEnable(GL_TEXTURE_2D);
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Unlock_pBuffer(p64x64Target);
+ 	BindMainContext();
+ 	UTIL_SDL::Bind_pBuffer(*p64x64Target);
+-//#endif
++#endif
+ 	glDisable(GL_BLEND);
+ 	float hpx = (1.0f/64.0f)*0.5f;
+ 	float hpy = (1.0f/64.0f)*0.5f;
+@@ -183,9 +183,9 @@
+ 	if(x1<0)x1=0;
+ 	x2=(x2-x1)+32;
+ 	if(x2>640)x2=640;
+-//#ifdef SDL_VERSION_1_3
++#ifdef SDL_VERSION_1_3
+ 	UTIL_SDL::Bind_pBuffer(*pMainTarget);
+-//#endif
++#endif
+ 	UTIL_GL::SetBlend(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+ 	glColor4f(1,1.0f,1,1);
+ 
+diff -Naur UTIL_SDL.h UTIL_SDL.h
+--- UTIL_SDL.h	2009-10-02 08:21:29.000000000 +0200
++++ UTIL_SDL.h	2009-10-02 08:25:33.000000000 +0200
+@@ -3,6 +3,7 @@
+ #include "UTIL_openGL.h"
+ #include "Log.h"
+ #define SDL_VERSION_1_3
++#undef SDL_VERSION_1_3
+ //================================================================================================//
+ 									/*****************
+ 									 ** SDL helpers **

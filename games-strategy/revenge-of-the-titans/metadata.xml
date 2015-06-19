@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>azamat.hackimov@gmail.com</email>
+<name>Azamat H. Hackimov</name>
+</maintainer>
+<longdescription lang="en">
+Defeat the returning Titan horde in a series of epic ground battles.
+</longdescription>
+<use>
+<flag name="hib">Install game from Humble Indie Bundle package</flag>
+</use>
+</pkgmetadata>

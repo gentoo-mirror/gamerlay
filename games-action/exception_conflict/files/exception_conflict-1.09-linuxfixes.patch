@@ -1,0 +1,112 @@
+diff -Naur src/character/rule_base.h src-diff/character/rule_base.h
+--- src/character/rule_base.h	2008-12-31 18:41:14.000000000 +0100
++++ src-diff/character/rule_base.h	2009-04-17 14:10:31.000000000 +0200
+@@ -68,7 +68,7 @@
+     ~RuleBase()
+     {
+       g_round2 = false;
+-      g_rand.reset();
++//      g_rand.reset();
+     }
+ 
+     float getDrawPriority() { return 10.0f; }
+diff -Naur src/app.cc src-patch/app.cc
+--- src/app.cc	2009-01-21 05:52:46.000000000 +0100
++++ src-patch/app.cc	2009-07-15 12:09:08.000000000 +0200
+@@ -1516,7 +1516,7 @@
+ 
+       base+=sgui::Point(0, 25);
+       new sgui::Label(this, base, sgui::Size(60, 20), L"ブルーム");
+-      swprintf(buf, L"%.1f", conf.bloom);
++      //swprintf(buf, L"%.1f", conf.bloom);
+       b = new sgui::Button(this, base+sgui::Point(55, 0), sgui::Size(20, 20), L"<", BU_BLOOM_DEC);
+       new sgui::ToolTip(b, L"シェーダ有効時の、明るい部分をぼかして\n眩しい感じにするエフェクトの強弱を設定します。\nシェーダを使わない設定の場合変化はありません。");
+       m_bloom = new sgui::Label(this, base+sgui::Point(80, 0), sgui::Size(20, 20), buf);
+diff -Naur src/game.h src-patch/game.h
+--- src/game.h	2009-01-21 05:13:50.000000000 +0100
++++ src-patch/game.h	2009-07-15 12:09:49.000000000 +0200
+@@ -100,7 +100,9 @@
+ 
+     void save()
+     {
+-      FILE *f = fopen("config", "wb");
++      char path[PATH_MAX];
++      snprintf(path, PATH_MAX, "%s/.exception_conflict/config", getenv("HOME"));
++      FILE *f = fopen(path, "wb");
+       if(!f) {
+         return;
+       }
+@@ -181,7 +183,9 @@
+ 
+     void load()
+     {
+-      FILE *in = fopen("config", "rb");
++      char path[PATH_MAX];
++      snprintf(path, PATH_MAX, "%s/.exception_conflict/config", getenv("HOME"));
++      FILE *in = fopen(path, "rb");
+       if(!in) {
+         return;
+       }
+diff -Naur src/lib/sgui/sgui.h src-patch/lib/sgui/sgui.h
+--- src/lib/sgui/sgui.h	2009-01-16 16:38:20.000000000 +0100
++++ src-patch/lib/sgui/sgui.h	2009-07-15 12:10:35.000000000 +0200
+@@ -23,7 +23,7 @@
+   #include <dirent.h>
+ #endif
+ #include <boost/thread.hpp>
+-#include <FTGL/FTGLTextureFont.h>
++#include <FTGL/ftgl.h>
+ #include <SDL/SDL.h>
+ #include "sgui.h"
+ 
+diff -Naur src/main.cc src-patch/main.cc
+--- src/main.cc	2009-01-16 16:38:20.000000000 +0100
++++ src-patch/main.cc	2009-07-15 12:11:04.000000000 +0200
+@@ -33,6 +33,9 @@
+   char *hoge = new char[128];
+ #endif
+ 
++  char cfg_path[PATH_MAX];
++  snprintf(cfg_path, PATH_MAX, "%s/.exception_conflict/", getenv("HOME"));
++  mkdir(cfg_path, 0755);
+ 
+   while(exception::FindProcess("updater.exe")) {
+     sgui::Sleep(100);
+diff -Naur src/Rakefile src-patch/Rakefile
+--- src/Rakefile	2009-01-01 19:13:42.000000000 +0100
++++ src-patch/Rakefile	2009-07-15 12:12:04.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ CFLAGS = "-O2 -I ./ -I lib #{`freetype-config --cflags`} #{`sdl-config --cflags`}".gsub(/\n/, '')
+ LFLAGS = ''
+-LIBS = "-L lib/ist -L lib/sgui -lsgui -list -lboost_regex-gcc41-mt -lboost_date_time-gcc41-mt -lboost_system-gcc41-mt -lboost_thread-gcc41-mt -lz -lpng -lGL -lGLU -lGLEW -lftgl #{`sdl-config --libs`} -lSDL_mixer #{`freetype-config --libs`}".gsub(/\n/, '')
++LIBS = "-L lib/ist -L lib/sgui -lsgui -list -lboost_regex-mt -lboost_date_time-mt -lboost_system-mt -lboost_thread-mt -lz -lpng -lGL -lGLU -lGLEW -lftgl #{`sdl-config --libs`} -lSDL_mixer #{`freetype-config --libs`}".gsub(/\n/, '')
+ CC = 'g++'
+ 
+ SRCS = Dir.glob("{.,character}/*.cc")
+@@ -25,11 +25,10 @@
+ 
+ 
+ task "default" => "all"
+-task "all" => ["ist", "sgui", "exception"]
++task "all" => ["ist", "sgui", "exception_conflict"]
+ 
+-file "exception" => OBJS do |t|
++file "exception_conflict" => OBJS do |t|
+   sh "#{CC} -o #{t.name} #{t.prerequisites.join(' ')} #{CFLAGS} #{LIBS}"
+-  sh "cp #{t.name} ../#{t.name}"
+ end
+ 
+ rule ".o" => ".cc" do |t|
+diff -Naur src/system.h src-patch/system.h
+--- src/system.h	2009-01-14 21:34:42.000000000 +0100
++++ src-patch/system.h	2009-07-15 12:12:13.000000000 +0200
+@@ -1,7 +1,7 @@
+ #ifndef system_h
+ #define system_h
+ 
+-#include <windows.h>
++//#include <windows.h>
+ #include <vector>
+ #include <string>
+ #include <functional>

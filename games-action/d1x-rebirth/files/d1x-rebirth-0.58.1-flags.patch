@@ -1,0 +1,27 @@
+--- d1x-rebirth_v0.58.1-src/SConstruct
++++ d1x-rebirth_v0.58.1-src/SConstruct
+@@ -218,7 +218,6 @@
+ 			env.Append(CPPFLAGS = ['-g'])
+ 		else:
+ 			env.Append(CPPDEFINES = ['NDEBUG', 'RELEASE'])
+-			env.Append(CPPFLAGS = ['-O2'])
+ 
+ 		# profiler?
+ 		if (self.user_settings.profiler == 1):
+@@ -352,6 +351,7 @@
+ 			self.common_sources += self.sources_use_udp
+ 
+ 		env.Append(CPPDEFINES = [('SHAREPATH', '\\"' + str(self.user_settings.sharepath) + '\\"')])
++		env.Append(LINKFLAGS = [str(self.platform_settings.lflags)])
+ 
+ 	def _register_program(self,dxxstr,program_specific_objects=[]):
+ 		env = self.env
+@@ -364,7 +364,7 @@
+ 			versid_cppdefines.append(('DESCENT_VERSION_EXTRA', '\\"%s\\"' % self.user_settings.extra_version))
+ 		objects.append(self.env.StaticObject(target='%s%s%s' % (self.user_settings.builddir, 'main/vers_id', self.env["OBJSUFFIX"]), source='main/vers_id.c', CPPDEFINES=versid_cppdefines))
+ 		# finally building program...
+-		env.Program(target='%s%s' % (self.user_settings.builddir, str(exe_target)), source = objects, LIBS = self.platform_settings.libs, LINKFLAGS = str(self.platform_settings.lflags))
++		env.Program(target='%s%s' % (self.user_settings.builddir, str(exe_target)), source = objects, LIBS = self.platform_settings.libs)
+ 		if (sys.platform != 'darwin'):
+ 			env.Install(self.user_settings.BIN_DIR, str(exe_target))
+ 			env.Alias('install', self.user_settings.BIN_DIR)

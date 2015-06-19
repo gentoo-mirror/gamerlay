@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd></herd>
+<maintainer>
+<email>ComputerDruid@gmail.com</email>
+<name>Dan Johnson</name>
+</maintainer>
+<maintainer>
+<email>azamat.hackimov@gmail.com</email>
+<name>Azamat H. Hackimov</name>
+</maintainer>
+<longdescription lang="en">
+Voxatron is an action/adventure game set in a world completely made of tiny cubes that can be built, blasted to smithereens, and collapse in per-voxel detail. Watch voxel snow settle on the scene perfectly, shoot the voxel leaves off a voxel tree or cut through the trunk and watch the whole thing collapse into voxels. There are lots of voxels in this game.
+</longdescription>
+</pkgmetadata>
+

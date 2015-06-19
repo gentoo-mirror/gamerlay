@@ -1,0 +1,1230 @@
+diff -Naur a2k_src/import/opengl.d a2k_src/import/opengl.d
+--- a2k_src/import/opengl.d	2008-02-12 22:20:18.000000000 +0100
++++ a2k_src/import/opengl.d	2009-08-27 15:18:28.000000000 +0200
+@@ -1,16 +1,6 @@
+-version (Win32) {
+-	import std.c.windows.windows;
+-}
+-extern(System):
+-
+-/* Please use this code with old D compiler.
+-version (Win32) {
+-	extern(Windows):
+-}
+-else {
++
+ 	extern(C):
+-}
+-*/
++
+ 
+ alias uint GLenum;
+ alias ubyte GLboolean;
+@@ -1122,7 +1112,7 @@
+ /*************************************************************/
+ 
+ void /*APIENTRY*/glAccum (GLenum op, GLfloat value);
+-void /*APIENTRY*/glAlphaFunc (GLenum func, GLclampf cref);
++void /*APIENTRY*/glAlphaFunc (GLenum func, GLclampf);
+ GLboolean /*APIENTRY*/glAreTexturesResident (GLsizei n, GLuint *textures, GLboolean *residences);
+ void /*APIENTRY*/glArrayElement (GLint i);
+ void /*APIENTRY*/glBegin (GLenum mode);
+@@ -1375,7 +1365,7 @@
+ void /*APIENTRY*/glScissor (GLint x, GLint y, GLsizei width, GLsizei height);
+ void /*APIENTRY*/glSelectBuffer (GLsizei size, GLuint *buffer);
+ void /*APIENTRY*/glShadeModel (GLenum mode);
+-void /*APIENTRY*/glStencilFunc (GLenum func, GLint cref, GLuint mask);
++void /*APIENTRY*/glStencilFunc (GLenum func, GLint, GLuint mask);
+ void /*APIENTRY*/glStencilMask (GLuint mask);
+ void /*APIENTRY*/glStencilOp (GLenum fail, GLenum zfail, GLenum zpass);
+ void /*APIENTRY*/glTexCoord1d (GLdouble s);
+diff -Naur a2k_src/import/openglu.d a2k_src/import/openglu.d
+--- a2k_src/import/openglu.d	2008-02-12 22:20:14.000000000 +0100
++++ a2k_src/import/openglu.d	2009-08-27 15:18:28.000000000 +0200
+@@ -1,15 +1,6 @@
+-import opengl;
+ 
+-extern(System):
+-
+-/* Please use this code with old D compiler.
+-version (Win32) {
+-	extern(Windows):
+-}
+-else {
+ 	extern(C):
+-}
+-*/
++
+ 
+ GLubyte* gluErrorString (
+     GLenum   errCode);
+diff -Naur a2k_src/import/SDL_active.d a2k_src/import/SDL_active.d
+--- a2k_src/import/SDL_active.d	2006-07-26 23:24:30.000000000 +0200
++++ a2k_src/import/SDL_active.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ /* Include file for SDL application focus event handling */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_audio.d a2k_src/import/SDL_audio.d
+--- a2k_src/import/SDL_audio.d	2006-07-26 23:24:40.000000000 +0200
++++ a2k_src/import/SDL_audio.d	2009-08-27 15:18:28.000000000 +0200
+@@ -20,10 +20,10 @@
+     slouken@devolution.com
+ */
+ 
+-public import SDL_types;
+-public import SDL_error;
+-public import SDL_rwops;
+-public import SDL_byteorder;
++import SDL_types;
++import SDL_error;
++import SDL_rwops;
++import SDL_byteorder;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_cdrom.d a2k_src/import/SDL_cdrom.d
+--- a2k_src/import/SDL_cdrom.d	2006-07-26 23:24:42.000000000 +0200
++++ a2k_src/import/SDL_cdrom.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ /* This is the CD-audio control API for Simple DirectMedia Layer */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL.d a2k_src/import/SDL.d
+--- a2k_src/import/SDL.d	2006-07-26 23:24:12.000000000 +0200
++++ a2k_src/import/SDL.d	2009-08-27 15:18:28.000000000 +0200
+@@ -33,60 +33,60 @@
+ public import SDL_byteorder;
+ public import SDL_Version;
+ 
+-extern(C):
+-
+-/* As of version 0.5, SDL is loaded dynamically into the application */
+-
+-/* These are the flags which may be passed to SDL_Init() -- you should
+-   specify the subsystems which you will be using in your application.
+-*/
+-const uint SDL_INIT_TIMER		= 0x00000001;
+-const uint SDL_INIT_AUDIO		= 0x00000010;
+-const uint SDL_INIT_VIDEO		= 0x00000020;
+-const uint SDL_INIT_CDROM		= 0x00000100;
+-const uint SDL_INIT_JOYSTICK	= 0x00000200;
+-const uint SDL_INIT_NOPARACHUTE	= 0x00100000;	/* Don't catch fatal signals */
+-const uint SDL_INIT_EVENTTHREAD	= 0x01000000;	/* Not supported on all OS's */
+-const uint SDL_INIT_EVERYTHING	= 0x0000FFFF;
+-
+-/* This function loads the SDL dynamically linked library and initializes 
+- * the subsystems specified by 'flags' (and those satisfying dependencies)
+- * Unless the SDL_INIT_NOPARACHUTE flag is set, it will install cleanup
+- * signal handlers for some commonly ignored fatal signals (like SIGSEGV)
+- */
+-int SDL_Init(Uint32 flags);
+-
+-/* This function initializes specific SDL subsystems */
+-int SDL_InitSubSystem(Uint32 flags);
+-
+-/* This function cleans up specific SDL subsystems */
+-void SDL_QuitSubSystem(Uint32 flags);
+-
+-/* This function returns mask of the specified subsystems which have
+-   been initialized.
+-   If 'flags' is 0, it returns a mask of all initialized subsystems.
+-*/
+-Uint32 SDL_WasInit(Uint32 flags);
+-
+-/* This function cleans up all initialized subsystems and unloads the
+- * dynamically linked library.  You should call it upon all exit conditions.
+- */
+-void SDL_Quit();
+-
+-void SDL_SetModuleHandle(void *hInst);
+-//extern(Windows) void* GetModuleHandle(char*);
+-extern(Windows) void* GetModuleHandleA(char*);
+-
+-static this()
+-{
+-	/* Load SDL dynamic link library */
+-	if (SDL_Init(SDL_INIT_NOPARACHUTE) < 0)
+-		throw new Error("Error loading SDL");
+-//	SDL_SetModuleHandle(GetModuleHandle(null));
+-	SDL_SetModuleHandle(GetModuleHandleA(null));
+-}
+-
+-static ~this()
+-{
+-	SDL_Quit();
+-}
++extern(C):
++
++/* As of version 0.5, SDL is loaded dynamically into the application */
++
++/* These are the flags which may be passed to SDL_Init() -- you should
++   specify the subsystems which you will be using in your application.
++*/
++const uint SDL_INIT_TIMER		= 0x00000001;
++const uint SDL_INIT_AUDIO		= 0x00000010;
++const uint SDL_INIT_VIDEO		= 0x00000020;
++const uint SDL_INIT_CDROM		= 0x00000100;
++const uint SDL_INIT_JOYSTICK	= 0x00000200;
++const uint SDL_INIT_NOPARACHUTE	= 0x00100000;	/* Don't catch fatal signals */
++const uint SDL_INIT_EVENTTHREAD	= 0x01000000;	/* Not supported on all OS's */
++const uint SDL_INIT_EVERYTHING	= 0x0000FFFF;
++
++/* This function loads the SDL dynamically linked library and initializes 
++ * the subsystems specified by 'flags' (and those satisfying dependencies)
++ * Unless the SDL_INIT_NOPARACHUTE flag is set, it will install cleanup
++ * signal handlers for some commonly ignored fatal signals (like SIGSEGV)
++ */
++int SDL_Init(Uint32 flags);
++
++/* This function initializes specific SDL subsystems */
++int SDL_InitSubSystem(Uint32 flags);
++
++/* This function cleans up specific SDL subsystems */
++void SDL_QuitSubSystem(Uint32 flags);
++
++/* This function returns mask of the specified subsystems which have
++   been initialized.
++   If 'flags' is 0, it returns a mask of all initialized subsystems.
++*/
++Uint32 SDL_WasInit(Uint32 flags);
++
++/* This function cleans up all initialized subsystems and unloads the
++ * dynamically linked library.  You should call it upon all exit conditions.
++ */
++void SDL_Quit();
++
++/+
++void SDL_SetModuleHandle(void *hInst);
++extern(Windows) void* GetModuleHandle(char*);
++
++static this()
++{
++	/* Load SDL dynamic link library */
++	if (SDL_Init(SDL_INIT_NOPARACHUTE) < 0)
++		throw new Error("Error loading SDL");
++	SDL_SetModuleHandle(GetModuleHandle(null));
++}
++
++static ~this()
++{
++	SDL_Quit();
++}
+++/
+diff -Naur a2k_src/import/SDL_endian.d a2k_src/import/SDL_endian.d
+--- a2k_src/import/SDL_endian.d	2006-09-14 01:57:50.000000000 +0200
++++ a2k_src/import/SDL_endian.d	2009-08-27 15:18:28.000000000 +0200
+@@ -34,9 +34,9 @@
+          and other data sources.
+ */
+ 
+-public import SDL_types;
+-public import SDL_rwops;
+-public import SDL_byteorder;
++import SDL_types;
++import SDL_rwops;
++import SDL_byteorder;
+ 
+ extern(C):
+ 
+@@ -47,7 +47,7 @@
+ */
+ 
+ Uint16 SDL_Swap16(Uint16 D) {
+-	return cast(Uint16)((D<<8)|(D>>8));
++	return((D<<8)|(D>>8));
+ }
+ 
+ Uint32 SDL_Swap32(Uint32 D) {
+diff -Naur a2k_src/import/SDL_events.d a2k_src/import/SDL_events.d
+--- a2k_src/import/SDL_events.d	2006-07-26 23:25:46.000000000 +0200
++++ a2k_src/import/SDL_events.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,12 +22,12 @@
+ 
+ /* Include file for SDL event handling */
+ 
+-public import SDL_types;
+-public import SDL_active;
+-public import SDL_keyboard;
+-public import SDL_mouse;
+-public import SDL_joystick;
+-public import SDL_syswm;
++import SDL_types;
++import SDL_active;
++import SDL_keyboard;
++import SDL_mouse;
++import SDL_joystick;
++import SDL_syswm;
+ 
+ extern(C):
+ 
+@@ -304,7 +304,7 @@
+   If 'state' is set to SDL_QUERY, SDL_EventState() will return the 
+   current processing state of the specified event.
+ */
+-const int SDL_QUERY	= -1;
++const uint SDL_QUERY	= -1;
+ const uint SDL_IGNORE	= 0;
+ const uint SDL_DISABLE	= 0;
+ const uint SDL_ENABLE	= 1;
+diff -Naur a2k_src/import/SDL_image.d a2k_src/import/SDL_image.d
+--- a2k_src/import/SDL_image.d	2006-07-26 23:24:58.000000000 +0200
++++ a2k_src/import/SDL_image.d	2009-08-27 15:18:28.000000000 +0200
+@@ -26,7 +26,7 @@
+ 
+ /* A simple library to load images of various formats as SDL surfaces */
+ 
+-public import SDL;
++import SDL;
+ 
+ extern (C) {
+ 
+diff -Naur a2k_src/import/SDL_joystick.d a2k_src/import/SDL_joystick.d
+--- a2k_src/import/SDL_joystick.d	2006-07-26 23:25:10.000000000 +0200
++++ a2k_src/import/SDL_joystick.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ /* Include file for SDL joystick event handling */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_keyboard.d a2k_src/import/SDL_keyboard.d
+--- a2k_src/import/SDL_keyboard.d	2006-07-26 23:25:14.000000000 +0200
++++ a2k_src/import/SDL_keyboard.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,11 +22,11 @@
+ 
+ /* Include file for SDL keyboard event handling */
+ 
+-public import SDL_types;
++import SDL_types;
+ // !!! A hack! struct SDL_keysym is defined in this module,
+ // !!! so we need to resolve the nameclash...
+ // !!! Definitely won't work on *NIX but for now will do.
+-public import SDL_Keysym;
++import SDL_Keysym;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_keysym.d a2k_src/import/SDL_keysym.d
+--- a2k_src/import/SDL_keysym.d	2002-01-04 23:31:22.000000000 +0100
++++ a2k_src/import/SDL_keysym.d	1970-01-01 01:00:00.000000000 +0100
+@@ -1,308 +0,0 @@
+-/*
+-    SDL - Simple DirectMedia Layer
+-    Copyright (C) 1997, 1998, 1999, 2000, 2001  Sam Lantinga
+-
+-    This library is free software; you can redistribute it and/or
+-    modify it under the terms of the GNU Library General Public
+-    License as published by the Free Software Foundation; either
+-    version 2 of the License, or (at your option) any later version.
+-
+-    This library is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-    Library General Public License for more details.
+-
+-    You should have received a copy of the GNU Library General Public
+-    License along with this library; if not, write to the Free
+-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-
+-    Sam Lantinga
+-    slouken@devolution.com
+-*/
+-
+-/* What we really want is a mapping of every raw key on the keyboard.
+-   To support international keyboards, we use the range 0xA1 - 0xFF
+-   as international virtual keycodes.  We'll follow in the footsteps of X11...
+-   The names of the keys
+- */
+- 
+-alias int SDLKey;
+-enum {
+-	/* The keyboard syms have been cleverly chosen to map to ASCII */
+-	SDLK_UNKNOWN		= 0,
+-	SDLK_FIRST		= 0,
+-	SDLK_BACKSPACE		= 8,
+-	SDLK_TAB		= 9,
+-	SDLK_CLEAR		= 12,
+-	SDLK_RETURN		= 13,
+-	SDLK_PAUSE		= 19,
+-	SDLK_ESCAPE		= 27,
+-	SDLK_SPACE		= 32,
+-	SDLK_EXCLAIM		= 33,
+-	SDLK_QUOTEDBL		= 34,
+-	SDLK_HASH		= 35,
+-	SDLK_DOLLAR		= 36,
+-	SDLK_AMPERSAND		= 38,
+-	SDLK_QUOTE		= 39,
+-	SDLK_LEFTPAREN		= 40,
+-	SDLK_RIGHTPAREN		= 41,
+-	SDLK_ASTERISK		= 42,
+-	SDLK_PLUS		= 43,
+-	SDLK_COMMA		= 44,
+-	SDLK_MINUS		= 45,
+-	SDLK_PERIOD		= 46,
+-	SDLK_SLASH		= 47,
+-	SDLK_0			= 48,
+-	SDLK_1			= 49,
+-	SDLK_2			= 50,
+-	SDLK_3			= 51,
+-	SDLK_4			= 52,
+-	SDLK_5			= 53,
+-	SDLK_6			= 54,
+-	SDLK_7			= 55,
+-	SDLK_8			= 56,
+-	SDLK_9			= 57,
+-	SDLK_COLON		= 58,
+-	SDLK_SEMICOLON		= 59,
+-	SDLK_LESS		= 60,
+-	SDLK_EQUALS		= 61,
+-	SDLK_GREATER		= 62,
+-	SDLK_QUESTION		= 63,
+-	SDLK_AT			= 64,
+-	/* 
+-	   Skip uppercase letters
+-	 */
+-	SDLK_LEFTBRACKET	= 91,
+-	SDLK_BACKSLASH		= 92,
+-	SDLK_RIGHTBRACKET	= 93,
+-	SDLK_CARET		= 94,
+-	SDLK_UNDERSCORE		= 95,
+-	SDLK_BACKQUOTE		= 96,
+-	SDLK_a			= 97,
+-	SDLK_b			= 98,
+-	SDLK_c			= 99,
+-	SDLK_d			= 100,
+-	SDLK_e			= 101,
+-	SDLK_f			= 102,
+-	SDLK_g			= 103,
+-	SDLK_h			= 104,
+-	SDLK_i			= 105,
+-	SDLK_j			= 106,
+-	SDLK_k			= 107,
+-	SDLK_l			= 108,
+-	SDLK_m			= 109,
+-	SDLK_n			= 110,
+-	SDLK_o			= 111,
+-	SDLK_p			= 112,
+-	SDLK_q			= 113,
+-	SDLK_r			= 114,
+-	SDLK_s			= 115,
+-	SDLK_t			= 116,
+-	SDLK_u			= 117,
+-	SDLK_v			= 118,
+-	SDLK_w			= 119,
+-	SDLK_x			= 120,
+-	SDLK_y			= 121,
+-	SDLK_z			= 122,
+-	SDLK_DELETE		= 127,
+-	/* End of ASCII mapped keysyms */
+-
+-	/* International keyboard syms */
+-	SDLK_WORLD_0		= 160,		/* 0xA0 */
+-	SDLK_WORLD_1		= 161,
+-	SDLK_WORLD_2		= 162,
+-	SDLK_WORLD_3		= 163,
+-	SDLK_WORLD_4		= 164,
+-	SDLK_WORLD_5		= 165,
+-	SDLK_WORLD_6		= 166,
+-	SDLK_WORLD_7		= 167,
+-	SDLK_WORLD_8		= 168,
+-	SDLK_WORLD_9		= 169,
+-	SDLK_WORLD_10		= 170,
+-	SDLK_WORLD_11		= 171,
+-	SDLK_WORLD_12		= 172,
+-	SDLK_WORLD_13		= 173,
+-	SDLK_WORLD_14		= 174,
+-	SDLK_WORLD_15		= 175,
+-	SDLK_WORLD_16		= 176,
+-	SDLK_WORLD_17		= 177,
+-	SDLK_WORLD_18		= 178,
+-	SDLK_WORLD_19		= 179,
+-	SDLK_WORLD_20		= 180,
+-	SDLK_WORLD_21		= 181,
+-	SDLK_WORLD_22		= 182,
+-	SDLK_WORLD_23		= 183,
+-	SDLK_WORLD_24		= 184,
+-	SDLK_WORLD_25		= 185,
+-	SDLK_WORLD_26		= 186,
+-	SDLK_WORLD_27		= 187,
+-	SDLK_WORLD_28		= 188,
+-	SDLK_WORLD_29		= 189,
+-	SDLK_WORLD_30		= 190,
+-	SDLK_WORLD_31		= 191,
+-	SDLK_WORLD_32		= 192,
+-	SDLK_WORLD_33		= 193,
+-	SDLK_WORLD_34		= 194,
+-	SDLK_WORLD_35		= 195,
+-	SDLK_WORLD_36		= 196,
+-	SDLK_WORLD_37		= 197,
+-	SDLK_WORLD_38		= 198,
+-	SDLK_WORLD_39		= 199,
+-	SDLK_WORLD_40		= 200,
+-	SDLK_WORLD_41		= 201,
+-	SDLK_WORLD_42		= 202,
+-	SDLK_WORLD_43		= 203,
+-	SDLK_WORLD_44		= 204,
+-	SDLK_WORLD_45		= 205,
+-	SDLK_WORLD_46		= 206,
+-	SDLK_WORLD_47		= 207,
+-	SDLK_WORLD_48		= 208,
+-	SDLK_WORLD_49		= 209,
+-	SDLK_WORLD_50		= 210,
+-	SDLK_WORLD_51		= 211,
+-	SDLK_WORLD_52		= 212,
+-	SDLK_WORLD_53		= 213,
+-	SDLK_WORLD_54		= 214,
+-	SDLK_WORLD_55		= 215,
+-	SDLK_WORLD_56		= 216,
+-	SDLK_WORLD_57		= 217,
+-	SDLK_WORLD_58		= 218,
+-	SDLK_WORLD_59		= 219,
+-	SDLK_WORLD_60		= 220,
+-	SDLK_WORLD_61		= 221,
+-	SDLK_WORLD_62		= 222,
+-	SDLK_WORLD_63		= 223,
+-	SDLK_WORLD_64		= 224,
+-	SDLK_WORLD_65		= 225,
+-	SDLK_WORLD_66		= 226,
+-	SDLK_WORLD_67		= 227,
+-	SDLK_WORLD_68		= 228,
+-	SDLK_WORLD_69		= 229,
+-	SDLK_WORLD_70		= 230,
+-	SDLK_WORLD_71		= 231,
+-	SDLK_WORLD_72		= 232,
+-	SDLK_WORLD_73		= 233,
+-	SDLK_WORLD_74		= 234,
+-	SDLK_WORLD_75		= 235,
+-	SDLK_WORLD_76		= 236,
+-	SDLK_WORLD_77		= 237,
+-	SDLK_WORLD_78		= 238,
+-	SDLK_WORLD_79		= 239,
+-	SDLK_WORLD_80		= 240,
+-	SDLK_WORLD_81		= 241,
+-	SDLK_WORLD_82		= 242,
+-	SDLK_WORLD_83		= 243,
+-	SDLK_WORLD_84		= 244,
+-	SDLK_WORLD_85		= 245,
+-	SDLK_WORLD_86		= 246,
+-	SDLK_WORLD_87		= 247,
+-	SDLK_WORLD_88		= 248,
+-	SDLK_WORLD_89		= 249,
+-	SDLK_WORLD_90		= 250,
+-	SDLK_WORLD_91		= 251,
+-	SDLK_WORLD_92		= 252,
+-	SDLK_WORLD_93		= 253,
+-	SDLK_WORLD_94		= 254,
+-	SDLK_WORLD_95		= 255,		/* 0xFF */
+-
+-	/* Numeric keypad */
+-	SDLK_KP0		= 256,
+-	SDLK_KP1		= 257,
+-	SDLK_KP2		= 258,
+-	SDLK_KP3		= 259,
+-	SDLK_KP4		= 260,
+-	SDLK_KP5		= 261,
+-	SDLK_KP6		= 262,
+-	SDLK_KP7		= 263,
+-	SDLK_KP8		= 264,
+-	SDLK_KP9		= 265,
+-	SDLK_KP_PERIOD		= 266,
+-	SDLK_KP_DIVIDE		= 267,
+-	SDLK_KP_MULTIPLY	= 268,
+-	SDLK_KP_MINUS		= 269,
+-	SDLK_KP_PLUS		= 270,
+-	SDLK_KP_ENTER		= 271,
+-	SDLK_KP_EQUALS		= 272,
+-
+-	/* Arrows + Home/End pad */
+-	SDLK_UP			= 273,
+-	SDLK_DOWN		= 274,
+-	SDLK_RIGHT		= 275,
+-	SDLK_LEFT		= 276,
+-	SDLK_INSERT		= 277,
+-	SDLK_HOME		= 278,
+-	SDLK_END		= 279,
+-	SDLK_PAGEUP		= 280,
+-	SDLK_PAGEDOWN		= 281,
+-
+-	/* Function keys */
+-	SDLK_F1			= 282,
+-	SDLK_F2			= 283,
+-	SDLK_F3			= 284,
+-	SDLK_F4			= 285,
+-	SDLK_F5			= 286,
+-	SDLK_F6			= 287,
+-	SDLK_F7			= 288,
+-	SDLK_F8			= 289,
+-	SDLK_F9			= 290,
+-	SDLK_F10		= 291,
+-	SDLK_F11		= 292,
+-	SDLK_F12		= 293,
+-	SDLK_F13		= 294,
+-	SDLK_F14		= 295,
+-	SDLK_F15		= 296,
+-
+-	/* Key state modifier keys */
+-	SDLK_NUMLOCK		= 300,
+-	SDLK_CAPSLOCK		= 301,
+-	SDLK_SCROLLOCK		= 302,
+-	SDLK_RSHIFT		= 303,
+-	SDLK_LSHIFT		= 304,
+-	SDLK_RCTRL		= 305,
+-	SDLK_LCTRL		= 306,
+-	SDLK_RALT		= 307,
+-	SDLK_LALT		= 308,
+-	SDLK_RMETA		= 309,
+-	SDLK_LMETA		= 310,
+-	SDLK_LSUPER		= 311,		/* Left "Windows" key */
+-	SDLK_RSUPER		= 312,		/* Right "Windows" key */
+-	SDLK_MODE		= 313,		/* "Alt Gr" key */
+-	SDLK_COMPOSE		= 314,		/* Multi-key compose key */
+-
+-	/* Miscellaneous function keys */
+-	SDLK_HELP		= 315,
+-	SDLK_PRINT		= 316,
+-	SDLK_SYSREQ		= 317,
+-	SDLK_BREAK		= 318,
+-	SDLK_MENU		= 319,
+-	SDLK_POWER		= 320,		/* Power Macintosh power key */
+-	SDLK_EURO		= 321,		/* Some european keyboards */
+-	SDLK_UNDO		= 322,		/* Atari keyboard has Undo */
+-
+-	/* Add any other keys here */
+-
+-	SDLK_LAST
+-}
+-
+-/* Enumeration of valid key mods (possibly OR'd together) */
+-alias int SDLMod;
+-enum {
+-	KMOD_NONE  = 0x0000,
+-	KMOD_LSHIFT= 0x0001,
+-	KMOD_RSHIFT= 0x0002,
+-	KMOD_LCTRL = 0x0040,
+-	KMOD_RCTRL = 0x0080,
+-	KMOD_LALT  = 0x0100,
+-	KMOD_RALT  = 0x0200,
+-	KMOD_LMETA = 0x0400,
+-	KMOD_RMETA = 0x0800,
+-	KMOD_NUM   = 0x1000,
+-	KMOD_CAPS  = 0x2000,
+-	KMOD_MODE  = 0x4000,
+-	KMOD_RESERVED = 0x8000
+-}
+-
+-const uint KMOD_CTRL	= (KMOD_LCTRL|KMOD_RCTRL);
+-const uint KMOD_SHIFT	= (KMOD_LSHIFT|KMOD_RSHIFT);
+-const uint KMOD_ALT		= (KMOD_LALT|KMOD_RALT);
+-const uint KMOD_META	= (KMOD_LMETA|KMOD_RMETA);
+diff -Naur a2k_src/import/SDL_Keysym.d a2k_src/import/SDL_Keysym.d
+--- a2k_src/import/SDL_Keysym.d	1970-01-01 01:00:00.000000000 +0100
++++ a2k_src/import/SDL_Keysym.d	2009-08-27 15:18:28.000000000 +0200
+@@ -0,0 +1,308 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997, 1998, 1999, 2000, 2001  Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@devolution.com
++*/
++
++/* What we really want is a mapping of every raw key on the keyboard.
++   To support international keyboards, we use the range 0xA1 - 0xFF
++   as international virtual keycodes.  We'll follow in the footsteps of X11...
++   The names of the keys
++ */
++ 
++alias int SDLKey;
++enum {
++	/* The keyboard syms have been cleverly chosen to map to ASCII */
++	SDLK_UNKNOWN		= 0,
++	SDLK_FIRST		= 0,
++	SDLK_BACKSPACE		= 8,
++	SDLK_TAB		= 9,
++	SDLK_CLEAR		= 12,
++	SDLK_RETURN		= 13,
++	SDLK_PAUSE		= 19,
++	SDLK_ESCAPE		= 27,
++	SDLK_SPACE		= 32,
++	SDLK_EXCLAIM		= 33,
++	SDLK_QUOTEDBL		= 34,
++	SDLK_HASH		= 35,
++	SDLK_DOLLAR		= 36,
++	SDLK_AMPERSAND		= 38,
++	SDLK_QUOTE		= 39,
++	SDLK_LEFTPAREN		= 40,
++	SDLK_RIGHTPAREN		= 41,
++	SDLK_ASTERISK		= 42,
++	SDLK_PLUS		= 43,
++	SDLK_COMMA		= 44,
++	SDLK_MINUS		= 45,
++	SDLK_PERIOD		= 46,
++	SDLK_SLASH		= 47,
++	SDLK_0			= 48,
++	SDLK_1			= 49,
++	SDLK_2			= 50,
++	SDLK_3			= 51,
++	SDLK_4			= 52,
++	SDLK_5			= 53,
++	SDLK_6			= 54,
++	SDLK_7			= 55,
++	SDLK_8			= 56,
++	SDLK_9			= 57,
++	SDLK_COLON		= 58,
++	SDLK_SEMICOLON		= 59,
++	SDLK_LESS		= 60,
++	SDLK_EQUALS		= 61,
++	SDLK_GREATER		= 62,
++	SDLK_QUESTION		= 63,
++	SDLK_AT			= 64,
++	/* 
++	   Skip uppercase letters
++	 */
++	SDLK_LEFTBRACKET	= 91,
++	SDLK_BACKSLASH		= 92,
++	SDLK_RIGHTBRACKET	= 93,
++	SDLK_CARET		= 94,
++	SDLK_UNDERSCORE		= 95,
++	SDLK_BACKQUOTE		= 96,
++	SDLK_a			= 97,
++	SDLK_b			= 98,
++	SDLK_c			= 99,
++	SDLK_d			= 100,
++	SDLK_e			= 101,
++	SDLK_f			= 102,
++	SDLK_g			= 103,
++	SDLK_h			= 104,
++	SDLK_i			= 105,
++	SDLK_j			= 106,
++	SDLK_k			= 107,
++	SDLK_l			= 108,
++	SDLK_m			= 109,
++	SDLK_n			= 110,
++	SDLK_o			= 111,
++	SDLK_p			= 112,
++	SDLK_q			= 113,
++	SDLK_r			= 114,
++	SDLK_s			= 115,
++	SDLK_t			= 116,
++	SDLK_u			= 117,
++	SDLK_v			= 118,
++	SDLK_w			= 119,
++	SDLK_x			= 120,
++	SDLK_y			= 121,
++	SDLK_z			= 122,
++	SDLK_DELETE		= 127,
++	/* End of ASCII mapped keysyms */
++
++	/* International keyboard syms */
++	SDLK_WORLD_0		= 160,		/* 0xA0 */
++	SDLK_WORLD_1		= 161,
++	SDLK_WORLD_2		= 162,
++	SDLK_WORLD_3		= 163,
++	SDLK_WORLD_4		= 164,
++	SDLK_WORLD_5		= 165,
++	SDLK_WORLD_6		= 166,
++	SDLK_WORLD_7		= 167,
++	SDLK_WORLD_8		= 168,
++	SDLK_WORLD_9		= 169,
++	SDLK_WORLD_10		= 170,
++	SDLK_WORLD_11		= 171,
++	SDLK_WORLD_12		= 172,
++	SDLK_WORLD_13		= 173,
++	SDLK_WORLD_14		= 174,
++	SDLK_WORLD_15		= 175,
++	SDLK_WORLD_16		= 176,
++	SDLK_WORLD_17		= 177,
++	SDLK_WORLD_18		= 178,
++	SDLK_WORLD_19		= 179,
++	SDLK_WORLD_20		= 180,
++	SDLK_WORLD_21		= 181,
++	SDLK_WORLD_22		= 182,
++	SDLK_WORLD_23		= 183,
++	SDLK_WORLD_24		= 184,
++	SDLK_WORLD_25		= 185,
++	SDLK_WORLD_26		= 186,
++	SDLK_WORLD_27		= 187,
++	SDLK_WORLD_28		= 188,
++	SDLK_WORLD_29		= 189,
++	SDLK_WORLD_30		= 190,
++	SDLK_WORLD_31		= 191,
++	SDLK_WORLD_32		= 192,
++	SDLK_WORLD_33		= 193,
++	SDLK_WORLD_34		= 194,
++	SDLK_WORLD_35		= 195,
++	SDLK_WORLD_36		= 196,
++	SDLK_WORLD_37		= 197,
++	SDLK_WORLD_38		= 198,
++	SDLK_WORLD_39		= 199,
++	SDLK_WORLD_40		= 200,
++	SDLK_WORLD_41		= 201,
++	SDLK_WORLD_42		= 202,
++	SDLK_WORLD_43		= 203,
++	SDLK_WORLD_44		= 204,
++	SDLK_WORLD_45		= 205,
++	SDLK_WORLD_46		= 206,
++	SDLK_WORLD_47		= 207,
++	SDLK_WORLD_48		= 208,
++	SDLK_WORLD_49		= 209,
++	SDLK_WORLD_50		= 210,
++	SDLK_WORLD_51		= 211,
++	SDLK_WORLD_52		= 212,
++	SDLK_WORLD_53		= 213,
++	SDLK_WORLD_54		= 214,
++	SDLK_WORLD_55		= 215,
++	SDLK_WORLD_56		= 216,
++	SDLK_WORLD_57		= 217,
++	SDLK_WORLD_58		= 218,
++	SDLK_WORLD_59		= 219,
++	SDLK_WORLD_60		= 220,
++	SDLK_WORLD_61		= 221,
++	SDLK_WORLD_62		= 222,
++	SDLK_WORLD_63		= 223,
++	SDLK_WORLD_64		= 224,
++	SDLK_WORLD_65		= 225,
++	SDLK_WORLD_66		= 226,
++	SDLK_WORLD_67		= 227,
++	SDLK_WORLD_68		= 228,
++	SDLK_WORLD_69		= 229,
++	SDLK_WORLD_70		= 230,
++	SDLK_WORLD_71		= 231,
++	SDLK_WORLD_72		= 232,
++	SDLK_WORLD_73		= 233,
++	SDLK_WORLD_74		= 234,
++	SDLK_WORLD_75		= 235,
++	SDLK_WORLD_76		= 236,
++	SDLK_WORLD_77		= 237,
++	SDLK_WORLD_78		= 238,
++	SDLK_WORLD_79		= 239,
++	SDLK_WORLD_80		= 240,
++	SDLK_WORLD_81		= 241,
++	SDLK_WORLD_82		= 242,
++	SDLK_WORLD_83		= 243,
++	SDLK_WORLD_84		= 244,
++	SDLK_WORLD_85		= 245,
++	SDLK_WORLD_86		= 246,
++	SDLK_WORLD_87		= 247,
++	SDLK_WORLD_88		= 248,
++	SDLK_WORLD_89		= 249,
++	SDLK_WORLD_90		= 250,
++	SDLK_WORLD_91		= 251,
++	SDLK_WORLD_92		= 252,
++	SDLK_WORLD_93		= 253,
++	SDLK_WORLD_94		= 254,
++	SDLK_WORLD_95		= 255,		/* 0xFF */
++
++	/* Numeric keypad */
++	SDLK_KP0		= 256,
++	SDLK_KP1		= 257,
++	SDLK_KP2		= 258,
++	SDLK_KP3		= 259,
++	SDLK_KP4		= 260,
++	SDLK_KP5		= 261,
++	SDLK_KP6		= 262,
++	SDLK_KP7		= 263,
++	SDLK_KP8		= 264,
++	SDLK_KP9		= 265,
++	SDLK_KP_PERIOD		= 266,
++	SDLK_KP_DIVIDE		= 267,
++	SDLK_KP_MULTIPLY	= 268,
++	SDLK_KP_MINUS		= 269,
++	SDLK_KP_PLUS		= 270,
++	SDLK_KP_ENTER		= 271,
++	SDLK_KP_EQUALS		= 272,
++
++	/* Arrows + Home/End pad */
++	SDLK_UP			= 273,
++	SDLK_DOWN		= 274,
++	SDLK_RIGHT		= 275,
++	SDLK_LEFT		= 276,
++	SDLK_INSERT		= 277,
++	SDLK_HOME		= 278,
++	SDLK_END		= 279,
++	SDLK_PAGEUP		= 280,
++	SDLK_PAGEDOWN		= 281,
++
++	/* Function keys */
++	SDLK_F1			= 282,
++	SDLK_F2			= 283,
++	SDLK_F3			= 284,
++	SDLK_F4			= 285,
++	SDLK_F5			= 286,
++	SDLK_F6			= 287,
++	SDLK_F7			= 288,
++	SDLK_F8			= 289,
++	SDLK_F9			= 290,
++	SDLK_F10		= 291,
++	SDLK_F11		= 292,
++	SDLK_F12		= 293,
++	SDLK_F13		= 294,
++	SDLK_F14		= 295,
++	SDLK_F15		= 296,
++
++	/* Key state modifier keys */
++	SDLK_NUMLOCK		= 300,
++	SDLK_CAPSLOCK		= 301,
++	SDLK_SCROLLOCK		= 302,
++	SDLK_RSHIFT		= 303,
++	SDLK_LSHIFT		= 304,
++	SDLK_RCTRL		= 305,
++	SDLK_LCTRL		= 306,
++	SDLK_RALT		= 307,
++	SDLK_LALT		= 308,
++	SDLK_RMETA		= 309,
++	SDLK_LMETA		= 310,
++	SDLK_LSUPER		= 311,		/* Left "Windows" key */
++	SDLK_RSUPER		= 312,		/* Right "Windows" key */
++	SDLK_MODE		= 313,		/* "Alt Gr" key */
++	SDLK_COMPOSE		= 314,		/* Multi-key compose key */
++
++	/* Miscellaneous function keys */
++	SDLK_HELP		= 315,
++	SDLK_PRINT		= 316,
++	SDLK_SYSREQ		= 317,
++	SDLK_BREAK		= 318,
++	SDLK_MENU		= 319,
++	SDLK_POWER		= 320,		/* Power Macintosh power key */
++	SDLK_EURO		= 321,		/* Some european keyboards */
++	SDLK_UNDO		= 322,		/* Atari keyboard has Undo */
++
++	/* Add any other keys here */
++
++	SDLK_LAST
++}
++
++/* Enumeration of valid key mods (possibly OR'd together) */
++alias int SDLMod;
++enum {
++	KMOD_NONE  = 0x0000,
++	KMOD_LSHIFT= 0x0001,
++	KMOD_RSHIFT= 0x0002,
++	KMOD_LCTRL = 0x0040,
++	KMOD_RCTRL = 0x0080,
++	KMOD_LALT  = 0x0100,
++	KMOD_RALT  = 0x0200,
++	KMOD_LMETA = 0x0400,
++	KMOD_RMETA = 0x0800,
++	KMOD_NUM   = 0x1000,
++	KMOD_CAPS  = 0x2000,
++	KMOD_MODE  = 0x4000,
++	KMOD_RESERVED = 0x8000
++}
++
++const uint KMOD_CTRL	= (KMOD_LCTRL|KMOD_RCTRL);
++const uint KMOD_SHIFT	= (KMOD_LSHIFT|KMOD_RSHIFT);
++const uint KMOD_ALT		= (KMOD_LALT|KMOD_RALT);
++const uint KMOD_META	= (KMOD_LMETA|KMOD_RMETA);
+diff -Naur a2k_src/import/SDL_mixer.d a2k_src/import/SDL_mixer.d
+--- a2k_src/import/SDL_mixer.d	2006-07-26 23:24:04.000000000 +0200
++++ a2k_src/import/SDL_mixer.d	2009-08-27 15:18:28.000000000 +0200
+@@ -24,7 +24,7 @@
+ 
+ /* $Id: SDL_mixer.h,v 1.24 2002/05/21 05:45:59 slouken Exp $ */
+ 
+-public import SDL;
++import SDL;
+ 
+ extern (C) {
+ 
+diff -Naur a2k_src/import/SDL_mouse.d a2k_src/import/SDL_mouse.d
+--- a2k_src/import/SDL_mouse.d	2006-07-26 23:25:18.000000000 +0200
++++ a2k_src/import/SDL_mouse.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,8 +22,8 @@
+ 
+ /* Include file for SDL mouse event handling */
+ 
+-public import SDL_types;
+-public import SDL_video;
++import SDL_types;
++import SDL_video;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_mutex.d a2k_src/import/SDL_mutex.d
+--- a2k_src/import/SDL_mutex.d	2006-07-26 23:25:20.000000000 +0200
++++ a2k_src/import/SDL_mutex.d	2009-08-27 15:18:28.000000000 +0200
+@@ -25,7 +25,7 @@
+ 	These are independent of the other SDL routines.
+ */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_quit.d a2k_src/import/SDL_quit.d
+--- a2k_src/import/SDL_quit.d	2006-07-26 23:25:22.000000000 +0200
++++ a2k_src/import/SDL_quit.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ /* Include file for SDL quit event handling */
+ 
+-public import SDL_events;
++import SDL_events;
+ 
+ /* 
+   An SDL_QUITEVENT is generated when the user tries to close the application
+diff -Naur a2k_src/import/SDL_rwops.d a2k_src/import/SDL_rwops.d
+--- a2k_src/import/SDL_rwops.d	2006-07-26 23:25:24.000000000 +0200
++++ a2k_src/import/SDL_rwops.d	2009-08-27 15:18:28.000000000 +0200
+@@ -24,7 +24,7 @@
+    data sources.  It can easily be extended to files, memory, etc.
+ */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_sound.d a2k_src/import/SDL_sound.d
+--- a2k_src/import/SDL_sound.d	2006-07-26 23:25:26.000000000 +0200
++++ a2k_src/import/SDL_sound.d	2009-08-27 15:18:28.000000000 +0200
+@@ -62,7 +62,7 @@
+ 
+ // convert to D by shinichiro.h
+ 
+-public import SDL;
++import SDL;
+ 
+ extern (C) {
+ 	const int SOUND_VER_MAJOR = 1;
+diff -Naur a2k_src/import/SDL_syswm.d a2k_src/import/SDL_syswm.d
+--- a2k_src/import/SDL_syswm.d	2006-07-26 23:25:32.000000000 +0200
++++ a2k_src/import/SDL_syswm.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ /* Include file for SDL custom system window manager hooks */
+ 
+-public import SDL_Version;
++import SDL_Version;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_thread.d a2k_src/import/SDL_thread.d
+--- a2k_src/import/SDL_thread.d	2006-07-26 23:25:36.000000000 +0200
++++ a2k_src/import/SDL_thread.d	2009-08-27 15:18:28.000000000 +0200
+@@ -25,8 +25,8 @@
+ 	These are independent of the other SDL routines.
+ */
+ 
+-public import SDL_types;
+-public import SDL_mutex;
++import SDL_types;
++import SDL_mutex;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_timer.d a2k_src/import/SDL_timer.d
+--- a2k_src/import/SDL_timer.d	2006-07-26 23:25:38.000000000 +0200
++++ a2k_src/import/SDL_timer.d	2009-08-27 15:18:28.000000000 +0200
+@@ -20,7 +20,7 @@
+     slouken@devolution.com
+ */
+ 
+-public import SDL_types;
++import SDL_types;
+ 
+ extern(C):
+ 
+diff -Naur a2k_src/import/SDL_version.d a2k_src/import/SDL_version.d
+--- a2k_src/import/SDL_version.d	2006-07-26 23:25:40.000000000 +0200
++++ a2k_src/import/SDL_version.d	1970-01-01 01:00:00.000000000 +0100
+@@ -1,75 +0,0 @@
+-/*
+-    SDL - Simple DirectMedia Layer
+-    Copyright (C) 1997, 1998, 1999, 2000, 2001  Sam Lantinga
+-
+-    This library is free software; you can redistribute it and/or
+-    modify it under the terms of the GNU Library General Public
+-    License as published by the Free Software Foundation; either
+-    version 2 of the License, or (at your option) any later version.
+-
+-    This library is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-    Library General Public License for more details.
+-
+-    You should have received a copy of the GNU Library General Public
+-    License along with this library; if not, write to the Free
+-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-
+-    Sam Lantinga
+-    slouken@devolution.com
+-*/
+-
+-/* This header defines the current SDL version */
+-
+-public import SDL_types;
+-
+-extern(C):
+-
+-/* Printable format: "%d.%d.%d", MAJOR, MINOR, PATCHLEVEL
+-*/
+-const uint SDL_MAJOR_VERSION	= 1;
+-const uint SDL_MINOR_VERSION	= 2;
+-const uint SDL_PATCHLEVEL		= 6;
+-
+-struct SDL_version {
+-	Uint8 major;
+-	Uint8 minor;
+-	Uint8 patch;
+-}
+-
+-/* This macro can be used to fill a version structure with the compile-time
+- * version of the SDL library.
+- */
+-void SDL_VERSION(SDL_version* X)
+-{
+-	X.major = SDL_MAJOR_VERSION;
+-	X.minor = SDL_MINOR_VERSION;
+-	X.patch = SDL_PATCHLEVEL;
+-}
+-
+-/* This macro turns the version numbers into a numeric value:
+-   (1,2,3) -> (1203)
+-   This assumes that there will never be more than 100 patchlevels
+-*/
+-uint SDL_VERSIONNUM(Uint8 X, Uint8 Y, Uint8 Z)
+-{
+-	return X * 1000 + Y * 100 + Z;
+-}
+-
+-/* This is the version number macro for the current SDL version */
+-const uint SDL_COMPILEDVERSION = SDL_MAJOR_VERSION * 1000 +
+-									SDL_MINOR_VERSION * 100 +
+-									SDL_PATCHLEVEL;
+-
+-/* This macro will evaluate to true if compiled with SDL at least X.Y.Z */
+-bit SDL_VERSION_ATLEAST(Uint8 X, Uint8 Y, Uint8 Z)
+-{
+-	return (SDL_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z));
+-}
+-
+-/* This function gets the version of the dynamically linked SDL library.
+-   it should NOT be used to fill a version structure, instead you should
+-   use the SDL_Version() macro.
+- */
+-SDL_version * SDL_Linked_Version();
+diff -Naur a2k_src/import/SDL_Version.d a2k_src/import/SDL_Version.d
+--- a2k_src/import/SDL_Version.d	1970-01-01 01:00:00.000000000 +0100
++++ a2k_src/import/SDL_Version.d	2009-08-27 15:18:28.000000000 +0200
+@@ -0,0 +1,75 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997, 1998, 1999, 2000, 2001  Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@devolution.com
++*/
++
++/* This header defines the current SDL version */
++
++import SDL_types;
++
++extern(C):
++
++/* Printable format: "%d.%d.%d", MAJOR, MINOR, PATCHLEVEL
++*/
++const uint SDL_MAJOR_VERSION	= 1;
++const uint SDL_MINOR_VERSION	= 2;
++const uint SDL_PATCHLEVEL		= 6;
++
++struct SDL_version {
++	Uint8 major;
++	Uint8 minor;
++	Uint8 patch;
++}
++
++/* This macro can be used to fill a version structure with the compile-time
++ * version of the SDL library.
++ */
++void SDL_VERSION(SDL_version* X)
++{
++	X.major = SDL_MAJOR_VERSION;
++	X.minor = SDL_MINOR_VERSION;
++	X.patch = SDL_PATCHLEVEL;
++}
++
++/* This macro turns the version numbers into a numeric value:
++   (1,2,3) -> (1203)
++   This assumes that there will never be more than 100 patchlevels
++*/
++uint SDL_VERSIONNUM(Uint8 X, Uint8 Y, Uint8 Z)
++{
++	return X * 1000 + Y * 100 + Z;
++}
++
++/* This is the version number macro for the current SDL version */
++const uint SDL_COMPILEDVERSION = SDL_MAJOR_VERSION * 1000 +
++									SDL_MINOR_VERSION * 100 +
++									SDL_PATCHLEVEL;
++
++/* This macro will evaluate to true if compiled with SDL at least X.Y.Z */
++bit SDL_VERSION_ATLEAST(Uint8 X, Uint8 Y, Uint8 Z)
++{
++	return (SDL_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z));
++}
++
++/* This function gets the version of the dynamically linked SDL library.
++   it should NOT be used to fill a version structure, instead you should
++   use the SDL_Version() macro.
++ */
++SDL_version * SDL_Linked_Version();
+diff -Naur a2k_src/import/SDL_video.d a2k_src/import/SDL_video.d
+--- a2k_src/import/SDL_video.d	2006-07-26 23:25:42.000000000 +0200
++++ a2k_src/import/SDL_video.d	2009-08-27 15:18:28.000000000 +0200
+@@ -22,9 +22,9 @@
+ 
+ /* Header file for access to the SDL raw framebuffer window */
+ 
+-public import SDL_types;
+-public import SDL_mutex;
+-public import SDL_rwops;
++import SDL_types;
++import SDL_mutex;
++import SDL_rwops;
+ 
+ extern(C):
+ 

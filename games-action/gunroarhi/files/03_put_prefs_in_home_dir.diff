@@ -1,0 +1,92 @@
+diff -Naur gr_hi/src/abagames/gr/prefmanager.d gr_hi-p/src/abagames/gr/prefmanager.d
+--- gr_hi/src/abagames/gr/prefmanager.d	2005-09-11 02:47:40.000000000 +0200
++++ gr_hi-p/src/abagames/gr/prefmanager.d	2009-08-28 12:09:08.000000000 +0200
+@@ -6,6 +6,9 @@
+ module abagames.gr.prefmanager;
+ 
+ private import std.stream;
++private import std.c.stdlib;
++private import std.string;
++private import std.file;
+ private import abagames.util.prefmanager;
+ private import abagames.gr.gamemanager;
+ 
+@@ -16,18 +19,31 @@
+  private:
+   static const int VERSION_NUM = 14;
+   static const int VERSION_NUM_13 = 13;
+-  static const char[] PREF_FILE = "gr.prf";
++  static const char[] PREF_FILE = "gunroar.prf";
+   PrefData _prefData;
+ 
+   public this() {
+     _prefData = new PrefData;
+   }
+ 
++  public static char[] pref_dir()
++  {
++    char * home = getenv("HOME");
++    if (home is null)
++      throw new Error("HOME environment variable not defined");
++    char[] dir = std.string.toString(home) ~ "/.gunroarhi";
++    try {
++      mkdir(dir);
++    } catch (FileException e) {
++    }
++    return dir;
++  }
++
+   public void load() {
+     auto File fd = new File;
+     try {
+       int ver;
+-      fd.open(PREF_FILE);
++      fd.open(pref_dir() ~ "/" ~ PREF_FILE);
+       fd.read(ver);
+       if (ver == VERSION_NUM_13)
+         _prefData.loadVer13(fd);
+@@ -45,7 +61,7 @@
+ 
+   public void save() {
+     auto File fd = new File;
+-    fd.create(PREF_FILE);
++    fd.create(pref_dir() ~ "/" ~ PREF_FILE);
+     fd.write(VERSION_NUM);
+     _prefData.save(fd);
+     fd.close();
+diff -Naur gr_hi/src/abagames/gr/replay.d gr_hi-p/src/abagames/gr/replay.d
+--- gr_hi/src/abagames/gr/replay.d	2006-04-06 11:02:54.000000000 +0200
++++ gr_hi-p/src/abagames/gr/replay.d	2009-08-28 12:10:19.000000000 +0200
+@@ -12,13 +12,13 @@
+ private import abagames.util.sdl.mouse;
+ private import abagames.gr.gamemanager;
+ private import abagames.gr.mouseandpad;
++private import abagames.gr.prefmanager;
+ 
+ /**
+  * Save/Load a replay data.
+  */
+ public class ReplayData {
+  public:
+-  static const char[] dir = "replay";
+   static const int VERSION_NUM = -11; //otoyan change
+   InputRecord!(PadState) padInputRecord;
+   InputRecord!(TwinStickState) twinStickInputRecord;
+@@ -32,7 +32,7 @@
+ 
+   public void save(char[] fileName) {
+     auto File fd = new File;
+-    fd.create(dir ~ "/" ~ fileName);
++    fd.create(PrefManager.pref_dir() ~ "/" ~ fileName);
+     fd.write(VERSION_NUM);
+     fd.write(seed);
+     fd.write(score);
+@@ -59,7 +59,7 @@
+ 
+   public void load(char[] fileName) {
+     auto File fd = new File;
+-    fd.open(dir ~ "/" ~ fileName);
++    fd.open(PrefManager.pref_dir() ~ "/" ~ fileName);
+     int ver;
+     fd.read(ver);
+     if (ver != VERSION_NUM)

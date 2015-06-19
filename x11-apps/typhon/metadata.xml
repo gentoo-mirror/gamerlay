@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>frostworks@gmx.de</email>
+	<name>Marcel Unbehaun</name>
+</maintainer>
+  <longdescription lang="en">
+Typhon is a slim and themeable opengl dashboard / program launcher.
+</longdescription>
+  <use>
+	<flag name="mmd">enable mikumikudance model support</flag> 
+	<flag name="p3t">enabled shared libp3t support</flag>
+  </use>
+</pkgmetadata>

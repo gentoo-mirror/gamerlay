@@ -1,0 +1,24 @@
+--- PuzzleMoppetSource/Litha Engine/projects/Puzzle/CMakeLists.txtO	2011-09-17 15:06:24.000000000 +0200
++++ PuzzleMoppetSource/Litha Engine/projects/Puzzle/CMakeLists.txt	2012-07-14 09:52:14.060028541 +0200
+@@ -26,18 +26,8 @@
+ 
+ 
+ # No need to modify these lines.
+-add_executable(${projectName}_FullVersion ${sourceFiles})
++add_executable(puzzlemoppet ${sourceFiles})
+ if (projectProperties)
+-	set_target_properties(${projectName}_FullVersion ${projectProperties})
++	set_target_properties(puzzlemoppet ${projectProperties})
+ endif (projectProperties)
+-target_link_libraries(${projectName}_FullVersion ${projectLibs})
+-
+-
+-# Special for this project: Trial version!
+-add_executable(${projectName}_TrialVersion ${sourceFiles})
+-if (projectProperties)
+-	set_target_properties(${projectName}_TrialVersion ${projectProperties} COMPILE_FLAGS -DTRIAL)
+-else (projectProperties)
+-	set_target_properties(${projectName}_TrialVersion PROPERTIES COMPILE_FLAGS -DTRIAL)
+-endif (projectProperties)
+-target_link_libraries(${projectName}_TrialVersion ${projectLibs})
++target_link_libraries(puzzlemoppet ${projectLibs})

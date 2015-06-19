@@ -1,0 +1,55 @@
+diff -Naur Font.cpp Font.cpp
+--- Font.cpp	2009-10-02 12:17:55.000000000 +0200
++++ Font.cpp	2009-10-02 12:28:33.000000000 +0200
+@@ -1,6 +1,7 @@
+ #include "Font.h"
+-#include <windows.h>
+-#include <gl/gl.h>
++//#include <windows.h>
++#include <GL/gl.h>
++#include <cstring>
+ Font::Font()
+ {
+ 	mScale = 1.0f;
+diff -Naur Game.h Game.h
+--- Game.h	2009-10-02 12:17:55.000000000 +0200
++++ Game.h	2009-10-02 12:26:36.000000000 +0200
+@@ -1,12 +1,12 @@
+ #pragma once
+-#include <sdl.h>
++#include <SDL/SDL.h>
+ #ifdef WIN32
+ #include <windows.h>
+ #endif
+-#include <gl/gl.h>
+-#include <il/il.h>
+-#include <il/ilu.h>
+-#include <il/ilut.h>
++#include <GL/gl.h>
++#include <IL/il.h>
++#include <IL/ilu.h>
++#include <IL/ilut.h>
+ #include "Timer.h"
+ #include "Button.h"
+ #include "FileIO.h"
+diff -Naur Main.cpp Main.cpp
+--- Main.cpp	2009-10-02 12:17:55.000000000 +0200
++++ Main.cpp	2009-10-02 12:26:47.000000000 +0200
+@@ -1,6 +1,6 @@
+ #include "Game.h"
+ #include <iostream>
+-#include <tchar.h>
++//#include <tchar.h>
+ /*=================================*/
+ /*=  Main Entry					  =*/
+ /*=================================*/
+diff -Naur Timer.h Timer.h
+--- Timer.h	2009-10-02 12:17:55.000000000 +0200
++++ Timer.h	2009-10-02 12:26:12.000000000 +0200
+@@ -1,5 +1,5 @@
+ #pragma once
+-#include <sdl.h>
++#include <SDL/SDL.h>
+ class Timer
+ {
+ private:

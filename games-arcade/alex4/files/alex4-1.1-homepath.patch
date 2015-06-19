@@ -1,0 +1,120 @@
+diff -Naur alex4src/src/main.c alex4src/src/main.c
+--- alex4src/src/main.c	2009-08-21 18:46:35.000000000 +0200
++++ alex4src/src/main.c	2009-08-21 20:14:55.000000000 +0200
+@@ -41,7 +41,6 @@
+ 
+ #include "../data/data.h"
+ 
+-
+ // some game status defines
+ #define GS_OK				1
+ #define GS_GAMEOVER			2
+@@ -155,8 +154,9 @@
+ void log2file(char *format, ...) {
+ 	va_list ptr; /* get an arg pointer */
+  	FILE *fp;
+-	
+-	fp = fopen("log.txt", "at");
++	char log_path[300];
++	sprintf(log_path, "%s/.alex4/log.txt", getenv("HOME"));
++	fp = fopen(log_path, "at");
+ 	if (fp) {
+ 		/* initialize ptr to point to the first argument after the format string */
+ 		va_start(ptr, format);
+@@ -183,7 +183,7 @@
+ 
+ 	// check if the file name allready exists
+ 	do {
+-		sprintf(buf, "a4_%03d.pcx", number ++);
++		sprintf(buf,"%s/.alex4/a4_%03d.pcx", getenv("HOME"), number ++);
+ 		if (!exists(buf)) ok = 1;
+ 		if (number > 999) return;
+ 	} while(!ok);
+@@ -625,7 +625,9 @@
+ 	log2file(" initializing allegro");
+ 	text_mode(-1);
+ 	garble_string(init_string, 53);
+-	set_config_file("alex4.ini");
++	char cfg_file[300];
++	sprintf(cfg_file, "%s/.alex4/alex4.ini", getenv("HOME"));
++	set_config_file(cfg_file);
+ 	set_window_close_button(FALSE);
+ 	
+ 	// install timers
+@@ -728,7 +730,9 @@
+ 
+ 	// load options
+ 	log2file(" loading options");
+-	pf = pack_fopen("alex4.sav", "rp");
++	char sav_path[300];
++	sprintf(sav_path, "%s/.alex4/alex4.sav", getenv("HOME"));
++	pf = pack_fopen(sav_path, "rp");
+ 	if (pf) {
+ 		load_options(&options, pf);
+ 		pack_fclose(pf);
+@@ -740,7 +744,9 @@
+ 
+ 	// loading highscores
+ 	log2file(" loading hiscores");
+-	pf = pack_fopen("alex4.hi", "rp");
++	char hi_path[300];
++	sprintf(hi_path, "%s/.alex4/alex4.hi", getenv("HOME"));
++	pf = pack_fopen(hi_path, "rp");
+ 	if (pf) {
+ 		load_hisc_table(hisc_table, pf);
+ 		load_hisc_table(hisc_table_space, pf);
+@@ -1004,14 +1010,18 @@
+ 	// only save if everything was inited ok!
+ 	if (init_ok) {
+ 		log2file(" saving options");
+-		pf = pack_fopen("alex4.sav", "wp");
++		char sav_path[300];
++		sprintf(sav_path, "%s/.alex4/alex4.sav", getenv("HOME"));
++		pf = pack_fopen(sav_path, "wp");
+ 		if (pf) {
+ 			save_options(&options, pf);
+ 			pack_fclose(pf);
+ 		}
+ 		
+ 		log2file(" saving highscores");
+-		pf = pack_fopen("alex4.hi", "wp");
++		char hi_path[300];
++		sprintf(hi_path, "%s/.alex4/alex4.hi", getenv("HOME"));
++		pf = pack_fopen(hi_path, "wp");
+ 		if (pf) {
+ 			save_hisc_table(hisc_table, pf);
+ 			save_hisc_table(hisc_table_space, pf);
+@@ -2890,7 +2900,9 @@
+ 
+ 				// save options
+ 				log2file(" saving options");
+-				pf = pack_fopen("alex4.sav", "wp");
++				char sav_path[300];
++				sprintf(sav_path, "%s/.alex4/alex4.sav", getenv("HOME"));
++				pf = pack_fopen(sav_path, "wp");
+ 				if (pf) {
+ 					save_options(&options, pf);
+ 					pack_fclose(pf);
+@@ -2983,7 +2995,11 @@
+ 
+ 
+ // main
+-int main(int argc, char **argv) {   
++int main(int argc, char **argv) { 
++	char cfg_path[300];
++	char log_path[300];
++	sprintf(cfg_path, "%s/.alex4/", getenv("HOME"));
++	mkdir(cfg_path, 0755);  
+ 	FILE *fp;
+ 	int i;
+ 	char full_path[1024];
+@@ -2998,7 +3014,8 @@
+ 
+ 
+ 	// start logfile
+-	fp = fopen("log.txt", "wt");
++	sprintf(log_path, "%s/.alex4/log.txt", getenv("HOME"));
++	fp = fopen(log_path, "wt");
+ 	if (fp) {
+ 		fprintf(fp, "Alex 4 (%s) - log file\n-------------------\n", GAME_VERSION_STR);
+ 		fclose(fp);

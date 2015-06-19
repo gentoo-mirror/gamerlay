@@ -1,0 +1,151 @@
+diff -Naur ZeldaOLB_US-src-linux/src/Joueur.cpp ZeldaOLB_US-src-linux/src/Joueur.cpp
+--- ZeldaOLB_US-src-linux/src/Joueur.cpp	2009-03-15 13:49:57.000000000 +0100
++++ ZeldaOLB_US-src-linux/src/Joueur.cpp	2010-10-10 11:52:17.000000000 +0200
+@@ -18,6 +18,9 @@
+ #include "Projectile.h"
+ #include "Jeu.h"
+ #include "Keyboard.h"
++#include <sys/stat.h>
++
++
+ 
+ Joueur::Joueur(Jeu* jeu, int nmsv) : Personnage(), numSave(nmsv), temps(0), xdep2(0), 
+ ydep2(0), dirdep2(S), magie(0), 
+@@ -133,9 +136,24 @@
+     //if (!gpJeu->isDonjon()) {zone = 21; xd = 86; yd = 24; dird = S;}
+     int tps = temps + ((SDL_GetTicks()-TimeB)/1000);
+     if (tps > 359999) tps = 359999;
++  
++// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaolb/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "olb");
++// end of user home  
++
+     ostringstream im;
+     im << numSave;
+-    ofstream f(("data/save/olb" + im.str() + ".dat").c_str(),ios::out | ios::binary);
++    ofstream f((savepath + im.str() + ".dat").c_str(),ios::out | ios::binary);
+     f.write((char *)&tps,sizeof(int));
+     f.write((char *)&zone,sizeof(int));
+     f.write((char *)&xd,sizeof(int));
+@@ -188,9 +206,24 @@
+ 
+ void Joueur::load() {
+     int zone;
++    
++// read saves from users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaolb/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "olb");
++// end of user home  
++    
+     ostringstream im;
+     im << numSave;
+-    ifstream f(("data/save/olb" + im.str() + ".dat").c_str(),ios::in | ios::binary);
++    ifstream f((savepath + im.str() + ".dat").c_str(),ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&temps,sizeof(int));
+     f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
+diff -Naur ZeldaOLB_US-src-linux/src/Keyboard.cpp ZeldaOLB_US-src-linux/src/Keyboard.cpp
+--- ZeldaOLB_US-src-linux/src/Keyboard.cpp	2009-03-15 13:46:19.000000000 +0100
++++ ZeldaOLB_US-src-linux/src/Keyboard.cpp	2010-10-10 12:14:24.000000000 +0200
+@@ -13,6 +13,7 @@
+ #include <SDL/SDL.h>
+ 
+ #include "Keyboard.h"
++#include <sys/stat.h> // for mkdir
+ 
+ Keyboard::Keyboard(Jeu* jeu, Carte* carte, Encyclopedie* encycl, SDL_Surface* screen, int m) : 
+     gpJeu(jeu), gpCarte(carte), gpEncyclopedie(encycl), mode(m), gFullScreen(1), 
+@@ -28,7 +29,23 @@
+ }
+ 
+ void Keyboard::saveP() {
+-    ofstream f("data/save/system.dat",ios::out | ios::binary);
++	
++// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaolb/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++	
++// end of user home  
++
++    ofstream f(savepath,ios::out | ios::binary);
+     f.write((char *)&volume,sizeof(int));
+     f.write((char *)&volson,sizeof(int));
+     f.write((char *)&temps,sizeof(int));
+@@ -37,7 +54,23 @@
+ }
+ 
+ void Keyboard::loadP() {
+-    ifstream f("data/save/system.dat",ios::in | ios::binary);
++	
++// write the saves into users home  
++    char savepath[500];
++    strcpy(savepath, getenv("HOME"));
++	strcat(savepath,"/.zeldaolb/");
++	
++	FILE *pathcheck = fopen(savepath,"r");
++	if(!pathcheck)
++	{
++	mkdir(savepath, 0755);
++	}
++	
++	strcat(savepath, "system.dat");
++	
++// end of user home  
++	
++    ifstream f(savepath,ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&volume,sizeof(int));
+     f.read((char *)&volson,sizeof(int));
+@@ -622,8 +655,23 @@
+         case 9 :
+             if (keys[SDLK_RETURN] && tmp == 0) {
+                 if (ligneVal==0) {
++					// write the saves into users home  
++					char savepath[500];
++					strcpy(savepath, getenv("HOME"));
++					strcat(savepath,"/.zeldaolb/");
++	
++					FILE *pathcheck = fopen(savepath,"r");
++					if(!pathcheck)
++					{
++					mkdir(savepath, 0755);
++					}
++	
++					strcat(savepath, "olb");
++	
++					// end of user home  
++					
+                     ostringstream oss; oss << (ligne+1);
+-                    remove(("data/save/olb" + oss.str() + ".dat").c_str());
++                    remove((savepath + oss.str() + ".dat").c_str());
+                     mode = 4; gpJeu->getGenerique()->initSelection();
+                     gpJeu->getAudio()->playSound(2);
+                 }
