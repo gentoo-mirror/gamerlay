@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 inherit cmake-utils eutils games versionator unpacker
 
 DESCRIPTION="ZDoom is an enhanced port of the official DOOM source code"
@@ -12,18 +12,18 @@ SRC_URI="http://www.zdoom.org/files/${PN}/$(get_version_component_range 1-2)/${P
 LICENSE="BSD BUILD DOOM"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk mmx"
+IUSE="cpu_flags_x86_mmx gtk"
 
 RDEPEND="app-arch/bzip2
-	media-libs/fmod
+	media-libs/fmod:1
 	media-libs/libsdl:0
 	media-sound/fluidsynth
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/libXcursor
 	gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}
-	mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
+	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
 S="${WORKDIR}"
 
@@ -44,7 +44,7 @@ src_configure() {
 		"-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc"
 #		"-DSHARE_DIR=\"${GAMES_DATADIR}/doom-data\""
 		$(cmake-utils_use_no gtk GTK)
-		$(cmake-utils_use_no mmx ASM)
+		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
 	)
 	cmake-utils_src_configure
 }
