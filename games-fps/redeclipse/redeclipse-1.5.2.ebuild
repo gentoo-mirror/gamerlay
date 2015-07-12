@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -10,7 +10,7 @@ MAJOR_VERSION=$(get_version_component_range 1-2)
 
 DESCRIPTION="First-person ego-shooter, built as a total conversion of Cube Engine 2"
 HOMEPAGE="http://www.redeclipse.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${MAJOR_VERSION}/${PN}_${PV}_nix.tar.bz2"
+SRC_URI="http://www.indiedb.com/downloads/mirror/86141/100/0789359bfb023138a8c5520fcb632b7d -> ${PN}_${PV}_nix.tar.bz2"
 
 # According to doc/license.txt file
 LICENSE="HPND ZLIB CC-BY-SA-3.0"
@@ -30,32 +30,14 @@ DEPEND="!dedicated? (
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
-#S=${WORKDIR}/${PN}
-
 src_prepare() {
-	# Respect GAMES_DATADIR
-	epatch "${FILESDIR}"/${P}_gamesdatadir.patch
-#	sed -e "s:\(addpackagedir(\"\)data:\1${GAMES_DATADIR}/${PN}/data:" \
-#		-e "s:::"
-#
-#		-i src/engine/server.cpp
-
 	# Unbundle enet
-	sed	-e "s:\(client\)\: libenet:\1\::" \
-		-e "s:\(server\)\: libenet:\1\::" \
-		-e "s:-Lenet/.libs ::" \
-		-e "s:-Ienet/include ::" \
-		-i src/core.mk
-	sed -e ":src/enet \\:d" -i src/dist.mk
+	epatch "${FILESDIR}/${P}_unbundle-enet.patch"
 	rm -r src/enet
-
-	#respect LDFLAGS
-#	sed -e "/^client/,+1s:-o reclient:-o reclient \$(LDFLAGS):" \
-#		-e "/^server/,+1s:-o reserver:-o reserver \$(LDFLAGS):" \
-#		-i src/core.mk
 
 	# Menu and mans
 	sed -e "s:@APPNAME@:${PN}:" \
+		-e "/^Keywords=/s/$/;/" \
 		src/install/nix/redeclipse.desktop.am \
 		> src/install/nix/redeclipse.desktop
 
@@ -72,11 +54,9 @@ src_prepare() {
 		-e "s:@REDECLIPSE@:${PN}:g" \
 		doc/man/redeclipse-server.6.am \
 		> doc/man/redeclipse-server.6
-
 }
 
 src_compile() {
-#	cd src
 	if ! use dedicated ; then
 		emake CXXFLAGS="${CXXFLAGS}" STRIP= -C src client server
 	else
@@ -85,18 +65,24 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin src/${PN}_server
-	doman doc/man/redeclipse-server.6
-	dodoc readme.txt doc/examples/servinit.cfg
-	if ! use dedicated ; then
-		dogamesbin src/redeclipse
+	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	insinto "${dir}"
+	doins -r config data
 
-		insinto "${GAMES_DATADIR}"/${PN}
-		doins -r data game
+	exeinto "${dir}"
+	doexe src/redeclipse_server_linux
+	if ! use dedicated ; then
+		doexe src/redeclipse_linux
 		newicon src/install/nix/${PN}_x128.png ${PN}.png
 		domenu src/install/nix/redeclipse.desktop
 		doman doc/man/redeclipse.6
 	fi
+
+	games_make_wrapper "${PN}" "${dir}/redeclipse_linux" "${dir}"
+	games_make_wrapper "${PN}_server" "${dir}/redeclipse_server_linux" "${dir}"
+
+	doman doc/man/redeclipse-server.6
+	dodoc readme.txt doc/examples/servinit.cfg
 
 	prepgamesdirs
 }
