@@ -9,9 +9,9 @@ inherit cmake-utils games git-2
 DESCRIPTION="An open-source reimplementation of the popular UFO: Enemy Unknown"
 HOMEPAGE="http://openxcom.org/"
 # For translation files
-SRC_URI="http://openxcom.org/git_builds/openxcom_git_master_2015_01_23_1405.zip"
+SRC_URI="http://openxcom.org/git_builds/openxcom_git_master_2015_08_06_1651.zip"
 EGIT_REPO_URI="https://github.com/SupSuper/OpenXcom.git"
-EGIT_COMMIT=18bba3f2a886161ff4077e75b56ae88fc5e96236
+EGIT_COMMIT=9a8641a7993c53e5f81f6748f08af3d7a4b72d8f
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/OpenXcom"
 
-DOCS=( README.txt )
+DOCS=( README.md )
 
 src_configure() {
 	mycmakeargs=(
@@ -48,8 +48,16 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	use doc && dohtml -r "${CMAKE_BUILD_DIR}"/docs/html/*
-	insinto "${GAMES_DATADIR}/${PN}/data/"
-	doins -r "../openxcom/data/Language/"
+
+	for i in "common" "standard/xcom1" "standard/xcom2" ; do
+		insinto "${GAMES_DATADIR}/${PN}/${i}/"
+		doins -r "../openxcom/${i}/Language/"
+	done
+#	insinto "${GAMES_DATADIR}/${PN}/standard/xcom1/Language/"
+#	doins -r "../openxcom/standard/xcom1/Language/"
+#	insinto "${GAMES_DATADIR}/${PN}/standard/xcom2/Language/"
+#	doins -r "../openxcom/standard/xcom2/Language/"
+
 	doicon res/linux/icons/openxcom.svg
 	domenu res/linux/openxcom.desktop
 
