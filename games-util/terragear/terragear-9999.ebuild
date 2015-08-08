@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit cmake-utils git-2
 
@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND=">=dev-games/simgear-3.1.0
 	dev-libs/boost
-	sci-libs/gdal
+	>=sci-libs/gdal-2.0.0
 	>=sci-mathematics/cgal-4.0[gmp]
 "
 
