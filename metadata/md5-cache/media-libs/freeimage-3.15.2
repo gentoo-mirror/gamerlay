@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=dc7ad4cd7b613a965eeed3b23b0de871
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=2
+DEPEND=virtual/jpeg >=media-libs/libpng-1.5.4 >=media-libs/tiff-4 sys-libs/zlib media-libs/openjpeg media-libs/openexr app-arch/unzip
+DESCRIPTION=Image library supporting many formats
+LICENSE=|| ( GPL-2 GPL-3 FIPL-1.0 )
+IUSE=cxx doc
+SRC_URI=mirror://sourceforge/freeimage/FreeImage3152.zip doc? ( mirror://sourceforge/freeimage/FreeImage3152.pdf ) http://ftp.gentoo.ru/people/winterheart/distfiles/FreeImage-3.15.2-patches.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://freeimage.sourceforge.net/
+RDEPEND=virtual/jpeg >=media-libs/libpng-1.5.4 >=media-libs/tiff-4 sys-libs/zlib media-libs/openjpeg media-libs/openexr

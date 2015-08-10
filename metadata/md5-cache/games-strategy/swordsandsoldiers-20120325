@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=604ef04168581132b67c4674dc61e2ad
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
+DESCRIPTION=A vibrant, side-scrolling strategy game.
+LICENSE=as-is
+RESTRICT=fetch strip
+SRC_URI=x86? ( swordsandsoldiers-20120325-i386.tar.gz ) amd64? ( swordsandsoldiers-20120325-amd64.tar.gz )
+KEYWORDS=-* ~amd64 ~x86
+HOMEPAGE=http://www.swordsandsoldiers.com/
+RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/json-c media-libs/aalib media-libs/alsa-lib media-libs/flac media-libs/fontconfig media-libs/freetype media-libs/glu media-libs/libogg media-libs/libsdl media-libs/libsndfile media-libs/libvorbis virtual/opengl media-libs/openal media-sound/pulseaudio net-libs/libasyncns sys-apps/attr sys-apps/dbus sys-apps/tcp-wrappers sys-apps/util-linux sys-devel/gcc sys-libs/gdbm sys-libs/glibc sys-libs/gpm sys-libs/libcap sys-libs/ncurses sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrender x11-libs/libXtst x11-libs/libXxf86vm games-misc/games-envd

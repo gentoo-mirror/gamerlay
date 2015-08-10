@@ -1,0 +1,13 @@
+_eclasses_=unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	unpacker	adf17fdc9e28e5120b70bc0de7630985	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=86edd06a32449c62a4a871f2f4b36e1d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=4
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/expat dev-libs/zziplib media-libs/fontconfig media-libs/freeimage media-libs/freetype media-libs/ilmbase media-libs/lcms media-libs/libjpeg-turbo media-libs/libpng media-libs/libraw media-libs/openexr media-libs/openjpeg media-libs/tiff sys-apps/util-linux sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXaw x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXi x11-libs/libXinerama x11-libs/libXmu x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender x11-libs/libXt x11-libs/libXxf86vm
+DESCRIPTION=An action role-playing game, made by the creators of Diablo
+LICENSE=as-is
+RESTRICT=fetch
+SRC_URI=Torchlight-2012-09-26.sh
+KEYWORDS=-* ~amd64 ~x86
+HOMEPAGE=http://torchlightgame.com/
+RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/expat dev-libs/zziplib media-libs/fontconfig media-libs/freeimage media-libs/freetype media-libs/ilmbase media-libs/lcms media-libs/libjpeg-turbo media-libs/libpng media-libs/libraw media-libs/openexr media-libs/openjpeg media-libs/tiff sys-apps/util-linux sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXaw x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXi x11-libs/libXinerama x11-libs/libXmu x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender x11-libs/libXt x11-libs/libXxf86vm games-misc/games-envd

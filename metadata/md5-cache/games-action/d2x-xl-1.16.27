@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	games	9e5e9ee0b325a8a10823f9b385ca2036	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1f5da9d38ded9e8ff05bb8ec4f620a0b
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
+DEPEND=media-libs/glew >=media-libs/libsdl-1.2.8:0 media-libs/sdl-image:0 media-libs/sdl-mixer:0 media-libs/sdl-net:0 net-misc/curl virtual/opengl app-arch/p7zip icon? ( media-gfx/icoutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Descent 2 engine supporting high-resolution textures
+LICENSE=D1X
+IUSE=descent1 descent2 descent2-vertigo debug icon models openmp sounds textures
+RESTRICT=mirror
+SRC_URI=http://www.descent2.de/files/d2x-xl-src-1.16.27.7z http://www.descent2.de/files/d2x-xl-data-1.15.295.7z mirror://sourceforge/d2x-xl/d2x-xl-src-1.16.27.7z mirror://sourceforge/d2x-xl/d2x-xl-data-1.15.295.7z models? ( http://www.descent2.de/files/models/hires-models.7z ) sounds? ( http://www.descent2.de/files/sound/hires-sounds.7z ) textures? ( http://www.descent2.de/files/textures/D1-hires-ceilings.7z http://www.descent2.de/files/textures/D1-hires-doors.7z http://www.descent2.de/files/textures/D1-hires-fans-grates.7z http://www.descent2.de/files/textures/D1-hires-lava.7z http://www.descent2.de/files/textures/D1-hires-lights.7z http://www.descent2.de/files/textures/D1-hires-metal.7z http://www.descent2.de/files/textures/D1-hires-rock.7z http://www.descent2.de/files/textures/D1-hires-signs.7z http://www.descent2.de/files/textures/D1-hires-special.7z http://www.descent2.de/files/textures/D1-hires-switches.7z http://www.descent2.de/files/textures/D2-hires-ceilings.7z http://www.descent2.de/files/textures/D2-hires-doors.7z http://www.descent2.de/files/textures/D2-hires-fans-grates.7z http://www.descent2.de/files/textures/D2-hires-lava-water.7z http://www.descent2.de/files/textures/D2-hires-lights.7z http://www.descent2.de/files/textures/D2-hires-metal.7z http://www.descent2.de/files/textures/D2-hires-rock.7z http://www.descent2.de/files/textures/D2-hires-signs.7z http://www.descent2.de/files/textures/D2-hires-special.7z http://www.descent2.de/files/textures/D2-hires-switches.7z )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.descent2.de/
+RDEPEND=media-libs/glew >=media-libs/libsdl-1.2.8:0 media-libs/sdl-image:0 media-libs/sdl-mixer:0 media-libs/sdl-net:0 net-misc/curl virtual/opengl descent1? ( games-action/descent1-data ) descent2? ( games-action/descent2-data ) descent2-vertigo? ( games-action/descent2-vertigo ) games-misc/games-envd
