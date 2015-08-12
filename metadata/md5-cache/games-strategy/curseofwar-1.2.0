@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=21ae2b59742ae25d1d58827663ec932f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+EAPI=5
+DEPEND=ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A fast-paced action strategy game implemented using ncurses user interface.
+LICENSE=GPL-3
+IUSE=ncurses sdl
+REQUIRED_USE=|| ( ncurses sdl )
+SRC_URI=https://github.com/a-nikolaev/curseofwar/archive/v1.2.0.tar.gz -> curseofwar-1.2.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/a-nikolaev/curseofwar/wiki
+RDEPEND=ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl ) games-misc/games-envd

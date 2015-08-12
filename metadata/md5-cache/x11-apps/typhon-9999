@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=30237d779c24b8dcc8f217f462f3114f
+SLOT=0
+DEFINED_PHASES=compile configure install preinst prepare test unpack
+EAPI=4
+DEPEND=virtual/opengl dev-libs/tinyxml media-libs/libpng >=media-libs/libsfml-2.0 sys-libs/zlib mmd? ( media-libs/libmmd ) p3t? ( media-libs/libp3t ) sys-devel/make >=dev-util/cmake-2.8 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=A slim and themeable opengl dashboard / program launcher
+LICENSE=GPL-3
+IUSE=debug mmd +p3t
+HOMEPAGE=https://code.google.com/p/typhon-launcher/
+RDEPEND=virtual/opengl dev-libs/tinyxml media-libs/libpng >=media-libs/libsfml-2.0 sys-libs/zlib mmd? ( media-libs/libmmd ) p3t? ( media-libs/libp3t )
