@@ -1,8 +1,7 @@
 # This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
 # your descriptions to your package's metadata.xml ONLY.
-# * generated automatically using egencache *
+# * generated automatically using pmaint *
 
-app-emulation/emul-linux-x86-wxGTK:development - Install pkgconfig files
 dev-games/netradiant:darkplaces - Install DarkPlaces pack
 dev-games/netradiant:h2data - Install h2data tool
 dev-games/netradiant:nexuiz - Install Nexuiz pack
@@ -20,12 +19,6 @@ dev-games/netradiant:tremulous - Install Tremulous non GPL pack
 dev-games/netradiant:ufoai - Install UFO: Alien Invasion non GPL pack
 dev-games/netradiant:warsow - Install Warsow pack
 dev-games/netradiant:xonotic - Install Xonotic pack
-dev-games/openscenegraph:fox - Build examples using x11-libs/fox library
-dev-games/openscenegraph:gdal - Enable support for sci-libs/gdal library
-dev-games/openscenegraph:itk - Build dev-tcltk/itk plugin
-dev-games/openscenegraph:openinventor - Build OpenInventor plugin
-dev-games/openscenegraph:osgapps - Build osg applications
-dev-games/openscenegraph:xrandr - Enable support for the X xrandr extension
 dev-games/simgear:headless - Build headless version of simgear (useful for terragear on a server)
 games-action/d1x-rebirth:data - Install data files
 games-action/d1x-rebirth:linguas_de - Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign
@@ -38,27 +31,13 @@ games-action/d2x-rebirth:linguas_de - Provides German translations for the game'
 games-action/d2x-rebirth:music - Adds music support
 games-action/d2x-rebirth:opl3-musicpack - Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip
 games-action/d2x-rebirth:sc55-musicpack - Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module
+games-arcade/fretsonfire:guitarhero - Enable Guitar Hero song importer
 games-arcade/frogatto:extras - Install additional modules
 games-arcade/myman:internal - Use internal display engine. Instead of ncurses/slang
 games-arcade/openggs:editor - useflag for the optional leveleditor
 games-arcade/smw:editor - useflag for the optional leveleditor
 games-arcade/ultrastardx:projectm - enable visuals
 games-board/kbang:server - Compile and install server compotents
-games-emulation/pcsx2-meta:cdvdiso - enable cdvdiso plugin support
-games-emulation/pcsx2-meta:cdvdlinuz - enable cdvdlinuz plugin support
-games-emulation/pcsx2-meta:cdvdnull - enable cdvdnull plugin support
-games-emulation/pcsx2-meta:dev9null - enable dev9null plugin support
-games-emulation/pcsx2-meta:fwnull - enable fwnull plugin support
-games-emulation/pcsx2-meta:gsdx - enable gsdx plugin support
-games-emulation/pcsx2-meta:gsnull - enable gsnull plugin support
-games-emulation/pcsx2-meta:onepad - enable onepad plugin support
-games-emulation/pcsx2-meta:padnull - enable padnull plugin support
-games-emulation/pcsx2-meta:spu2-x - enable spu2-x plugin support
-games-emulation/pcsx2-meta:spu2null - enable spu2null plugin support
-games-emulation/pcsx2-meta:usbnull - enable usbnull plugin support
-games-emulation/pcsx2-meta:zerogs - enable zerogs plugin support
-games-emulation/pcsx2-meta:zerospu - enable zerospu plugin support
-games-emulation/pcsx2-meta:zzogl - enable zzogl plugin support
 games-fps/dhewm3:roe - Adds support for the Resurrection of Evil expansion
 games-fps/xonotic:experimental - Use experimental master git branch instead of div0-stable
 games-fps/xonotic:maps - Download and install maps
@@ -86,10 +65,8 @@ games-util/desurium:gtest - enable runtime checks through gtest
 games-util/desurium:tools - install useful tools e.g. uploader
 games-util/desurium-meta:32bit - add support for 32bit games in desurium
 games-util/desurium-meta:games-deps - RUNTIME USE FLAG install known dependencies of games in desura
-games-util/steam-launcher:steamruntime - Enables the Steam runtime environment that uses bundled libraries instead of installed system libraries.
 media-libs/libmmd:bullet - enable bullet physics
 media-libs/libmmd:sfml - enable sfml texture loading
 x11-apps/dunan:fmod - Add sound support (fmod)
 x11-apps/typhon:mmd - enable mikumikudance model support
 x11-apps/typhon:p3t - enabled shared libp3t support
-x11-apps/typhon:sfe - enabled shared sfemovie support
