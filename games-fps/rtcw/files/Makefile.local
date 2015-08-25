@@ -30,11 +30,10 @@
 #COPYDIR		# the target installation directory
 #TEMPDIR		# specify userdefined directory for temp files
 CFLAGS=-march=native -mtune=native -O3 -pipe
+V=1
 USE_INTERNAL_LIBS=0
 USE_LOCAL_HEADERS=0
 USE_MUMBLE=0
 USE_VOIP=0
 USE_CODEC_OPUS=0
 NO_STRIP=1
-
-#CLIENT_CFLAGS+=-I/usr/include/opus
