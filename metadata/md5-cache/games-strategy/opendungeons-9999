@@ -6,5 +6,5 @@ HOMEPAGE=http://opendungeons.sourceforge.net
 LICENSE=GPL-3 CC-BY-SA-3.0
 RDEPEND=>=dev-games/cegui-0.7.0[ogre,opengl] >=dev-games/ogre-1.7.0[cg,freeimage,ois,opengl] dev-games/ois dev-libs/boost games-strategy/opendungeons-data media-libs/freetype:2 media-libs/glew >=media-libs/libsfml-2 media-libs/libsndfile media-libs/openal virtual/jpeg virtual/opengl
 SLOT=0
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9de02ccedf29a87c17808e55946374fe
