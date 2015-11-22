@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install postinst preinst setup
 DEPEND=app-arch/bzip2 dev-libs/atk dev-libs/expat dev-libs/glib dev-libs/libffi dev-libs/nspr dev-libs/nss media-libs/fontconfig media-libs/freetype:2 =media-libs/libpng-1.5* virtual/opengl sys-apps/util-linux sys-libs/zlib x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+ x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender x11-libs/libXt x11-libs/libXxf86vm x11-libs/pango x11-libs/pixman amd64? ( app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-gtklibs app-emulation/emul-linux-x86-opengl app-emulation/emul-linux-x86-xlibs )
 DESCRIPTION=Point-and-click adventure about robot in steam-punk world
 EAPI=5
@@ -11,5 +11,5 @@ REQUIRED_USE=amd64? ( multilib )
 RESTRICT=fetch mirror
 SLOT=0
 SRC_URI=Machinarium_full_en.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	games	0657bdc2419f46bd28c841221b32e2ab	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=ff9816e9c6b2b18f719308bdeffd12e7
