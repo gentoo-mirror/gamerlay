@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Play as a strange spider-like demon who explores the stories of three human characters.
+EAPI=5
+HOMEPAGE=http://closuregame.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=as-is
+RDEPEND=dev-libs/json-c media-gfx/nvidia-cg-toolkit media-libs/aalib media-libs/alsa-lib media-libs/flac media-libs/freealut media-libs/libogg media-libs/libsdl media-libs/libsndfile media-libs/libvorbis virtual/opengl media-libs/openal media-sound/pulseaudio net-libs/libasyncns sys-apps/attr sys-apps/dbus sys-apps/tcp-wrappers sys-apps/util-linux sys-devel/gcc sys-libs/gdbm sys-libs/glibc sys-libs/gpm sys-libs/libcap sys-libs/ncurses x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXtst x11-libs/libXxf86vm games-misc/games-envd
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=Closure-Linux-1.1-2012-12-28.sh
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=f1a0a20be4ed0159188237154cea1380

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=media-libs/aldumb-0.9.3 media-libs/allegro:0 >=media-libs/dumb-0.9.3 media-libs/freetype:2 media-libs/libogg media-libs/libtheora media-libs/libvorbis
+DESCRIPTION=A game/runtime interpreter for the Adventure Game Studio engine
+EAPI=5
+HOMEPAGE=http://www.adventuregamestudio.co.uk/
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=>=media-libs/aldumb-0.9.3 media-libs/allegro:0 >=media-libs/dumb-0.9.3 media-libs/freetype:2 media-libs/libogg media-libs/libtheora media-libs/libvorbis games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/adventuregamestudio/ags/archive/v.3.3.0-hotfix2.tar.gz -> ags-v.3.3.0-hotfix2.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=40903017c49b092c8b7d53ea01bc434a
