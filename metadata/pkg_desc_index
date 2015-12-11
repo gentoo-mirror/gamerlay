@@ -107,7 +107,6 @@ games-puzzle/crayon-physics-deluxe 55: 2D physics puzzle / sandbox game, where y
 games-puzzle/cubosphere 0.3: game similar to the PSX game Kula World / Roll Away
 games-puzzle/hex-a-hop 1.1.0: a hexagonal tile-based puzzle game
 games-puzzle/laserreaction 1.0: laser game entry for ludum dare 10
-games-puzzle/londonlaw 0.3.0_pre2 9999: Clone of the famous Scotland Yard board game
 games-puzzle/numptyphysics 142: a drawing puzzle game in the spirit of Crayon Physics using the same excellent Box2D engine
 games-puzzle/offspringfling 1.1.3: A game about a poor forest creature that has misplaced all of her children.
 games-puzzle/osmos 1.6.1: Play as a single-celled organism absorbing others
