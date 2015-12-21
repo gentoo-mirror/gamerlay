@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst setup unpack
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
 DEPEND=app-arch/bzip2 app-arch/xz-utils media-libs/freeimage media-libs/freetype:2 media-libs/ilmbase virtual/jpeg media-libs/lcms media-libs/libogg media-libs/libpng media-libs/libraw media-libs/libvorbis virtual/opengl media-libs/openal media-libs/openexr media-libs/openjpeg media-libs/tiff sys-libs/zlib x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXxf86vm video_cards_intel? ( media-libs/libtxc_dxtn ) video_cards_nouveau? ( media-libs/libtxc_dxtn ) video_cards_radeon? ( media-libs/libtxc_dxtn ) video_cards_nvidia? ( x11-drivers/nvidia-drivers )
 DESCRIPTION=3d action-adventure game. Spiritual successor to Lugaru.
 EAPI=5
@@ -10,6 +10,6 @@ RDEPEND=app-arch/bzip2 app-arch/xz-utils media-libs/freeimage media-libs/freetyp
 RESTRICT=fetch strip
 SLOT=0
 SRC_URI=overgrowth-a194-linux.sh
-_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_configure:games src_compile:games src_install:-
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	a8dfd875e0a0eaa6accad260cd038779	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=bb34e55447f517571da9b3d560ff647a

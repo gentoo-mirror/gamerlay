@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
 DEPEND=dev-python/pyyaml =games-engines/fife-0.3.2.2 dev-python/python-distutils-extra =dev-lang/python-2.7* =dev-lang/python-2.7*[sqlite]
 DESCRIPTION=Anno-like real time strategy game
 EAPI=3
@@ -8,6 +8,6 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pyyaml =games-engines/fife-0.3.2.2 dev-python/python-distutils-extra =dev-lang/python-2.7* =dev-lang/python-2.7*[sqlite] games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/unknownhorizons/unknown-horizons-2011.1a.tar.xz
-_eclass_exported_funcs=pkg_preinst:games pkg_postrm:distutils pkg_postinst:games pkg_setup:games src_prepare:distutils src_configure:games src_compile:- src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	a8dfd875e0a0eaa6accad260cd038779	multilib	3972ca401cf7dbb430df9995f5d8d580	python	6db27cc2b9cbfa3f47e984065ead123f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclass_exported_funcs=pkg_preinst:games pkg_postrm:distutils pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:base src_configure:games src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python	6db27cc2b9cbfa3f47e984065ead123f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=c4ea8ea2f166ce97c056ec24687b6658
