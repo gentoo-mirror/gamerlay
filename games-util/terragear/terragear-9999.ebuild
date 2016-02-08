@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,12 +18,13 @@ IUSE=""
 DEPEND=">=dev-games/simgear-3.1.0
 	dev-libs/boost
 	>=sci-libs/gdal-2.0.0
-	>=sci-mathematics/cgal-4.0[gmp]
+	sci-mathematics/cgal[gmp]
 "
 
 RDEPEND="${DEPEND}
 	app-arch/unzip
 "
+CMAKE_BUILD_TYPE="Release"
 
 src_configure() {
 	mycmakeargs=(
