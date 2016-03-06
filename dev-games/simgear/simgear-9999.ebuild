@@ -1,26 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-EGIT_BRANCH="next"
-EGIT_PROJECT="simgear.git"
-
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}
-		git://mapserver.flightgear.org/${PN}/"
+EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}"
+EGIT_BRANCH="next"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug headless test"
+IUSE="curl debug headless test"
 
 COMMON_DEPEND="
 	sys-libs/zlib
+	curl? ( net-misc/curl )
 	!headless? (
 		>=dev-games/openscenegraph-3.2[png]
 		dev-libs/expat
@@ -39,14 +37,15 @@ DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_CURL=$(usex curl)
 		-DENABLE_LIBSVN=OFF
 		-DENABLE_RTI=OFF
 		-DENABLE_SOUND=ON
+		-DENABLE_TESTS=$(usex test)
 		-DSG_SVN_CLIENT=ON
+		-DSIMGEAR_HEADLESS=$(usex headless)
 		-DSIMGEAR_SHARED=ON
 		-DSYSTEM_EXPAT=ON
-		$(cmake-utils_use headless SIMGEAR_HEADLESS)
-		$(cmake-utils_use_enable test TESTS)
 	)
 	cmake-utils_src_configure
 }

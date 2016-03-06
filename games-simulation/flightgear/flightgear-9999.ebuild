@@ -1,30 +1,33 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-EGIT_BRANCH="next"
-EGIT_PROJECT="flightgear.git"
-
-inherit games cmake-utils git-2
+inherit cmake-utils git-r3
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="http://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-		git://mapserver.flightgear.org/${PN}/"
+EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}"
+EGIT_BRANCH="next"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug fgcom fgpanel +jsbsim oldfdm test +udev +yasim"
+IUSE="dbus debug fgcom fgpanel +jsbsim oldfdm qt5 test +udev +yasim"
 
 COMMON_DEPEND="
 	dev-db/sqlite:3
 	>=dev-games/openscenegraph-3.2[png]
-	>=dev-games/simgear-9999[-headless]
+	~dev-games/simgear-${PV}[-headless]
 	sys-libs/zlib
 	virtual/opengl
+	dbus? ( sys-apps/dbus )
+	qt5? (
+		>=dev-qt/qtcore-5.4.1:5
+		>=dev-qt/qtgui-5.4.1:5
+		>=dev-qt/qtwidgets-5.4.1:5
+	)
 	udev? ( virtual/udev )
 	fgpanel? (
 		media-libs/freeglut
@@ -44,8 +47,7 @@ DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}
-		-DFG_DATA_DIR="${GAMES_DATADIR}"/${PN}-live
+		-DFG_DATA_DIR=/usr/share/${PN}-live
 		-DENABLE_FGADMIN=OFF
 		-DLOGGING=ON
 		-DENABLE_PROFILE=OFF
@@ -53,15 +55,17 @@ src_configure() {
 		-DSIMGEAR_SHARED=ON
 		-DSP_FDMS=OFF
 		-DSYSTEM_SQLITE=ON
-		$(cmake-utils_use_enable fgcom)
-		$(cmake-utils_use_enable fgcom IAX)
-		$(cmake-utils_use_with fgpanel)
-		$(cmake-utils_use_enable jsbsim)
-		$(cmake-utils_use_enable oldfdm LARCSIM)
-		$(cmake-utils_use_enable oldfdm UIUC_MODEL)
-		$(cmake-utils_use_enable test TESTS)
-		$(cmake-utils_use udev EVENT_INPUT)
-		$(cmake-utils_use_enable yasim)
+		-DUSE_DBUS=$(usex dbus)
+		-DENABLE_FGCOM=$(usex fgcom)
+		-DENABLE_IAX=$(usex fgcom)
+		-DWITH_FGPANEL=$(usex fgpanel)
+		-DENABLE_JSBSIM=$(usex jsbsim)
+		-DENABLE_LARCSIM=$(usex oldfdm)
+		-DENABLE_UIUC_MODEL=$(usex oldfdm)
+		-DENABLE_QT=$(usex qt5)
+		-DENABLE_TESTS=$(usex test)
+		-DEVENT_INPUT=$(usex udev)
+		-DENABLE_YASIM=$(usex yasim)
 	)
 
 	cmake-utils_src_configure
@@ -71,25 +75,19 @@ src_install() {
 	cmake-utils_src_install
 	doicon -s scalable icons/scalable/flightgear.svg
 	newmenu package/${PN}.desktop ${PN}.desktop
-	prepgamesdirs
 }
 
 pkg_postinst() {
 	elog "FlightGear is now installed, but to run it you"
 	elog "have to download fgdata as well, which is expected under"
-	elog "${GAMES_DATADIR}/${PN}-live"
+	elog "/usr/share/${PN}-live"
 	elog
 	elog "You can save it anywhere else but then you have to set"
 	elog "FG_ROOT to that directory or create an \"--fg-root=\" entry in ~/.fgfsrc"
 	elog
 	elog "To download fgdata, use"
-	elog "\"git clone git://mapserver.flightgear.org/fgdata/ SOMEPATH\"."
+	elog "\"git clone git://git.code.sf.net/p/flightgear/fgdata SOMEPATH\"."
 	elog
 	elog "Don't forget that before updating FlightGear you will most likely"
 	elog "have to update Simgear, too"
-	elog
-	elog
-	elog "It is recommended that you install a launcher,"
-	elog "as it provides easy access to startup options:"
-	elog "* games-simulation/fgrun"
 }

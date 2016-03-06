@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 DESCRIPTION="Terrain editing programs for FlightGear"
 HOMEPAGE="http://terragear.sourceforge.net/"
