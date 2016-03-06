@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-libs/zlib !headless? ( >=dev-games/openscenegraph-3.2[png] dev-libs/expat media-libs/openal virtual/opengl ) >=dev-libs/boost-1.37 sys-devel/make >=dev-util/cmake-2.8.12 dev-vcs/git
+DEPEND=sys-libs/zlib curl? ( net-misc/curl ) !headless? ( >=dev-games/openscenegraph-3.2[png] dev-libs/expat media-libs/openal virtual/opengl ) >=dev-libs/boost-1.37 sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Development library for simulation games
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.simgear.org/
-IUSE=debug headless test
+IUSE=curl debug headless test
 LICENSE=GPL-2
-RDEPEND=sys-libs/zlib !headless? ( >=dev-games/openscenegraph-3.2[png] dev-libs/expat media-libs/openal virtual/opengl )
+RDEPEND=sys-libs/zlib curl? ( net-misc/curl ) !headless? ( >=dev-games/openscenegraph-3.2[png] dev-libs/expat media-libs/openal virtual/opengl )
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-2 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=b5b8f4f84d3864552adbcd422360fcc9
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0ff2b15fd0fee1d2f477ca2a0de62c40
