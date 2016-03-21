@@ -26,7 +26,7 @@ DEPEND="!dedicated? (
 		virtual/opengl
 		x11-libs/libX11
 	)
-	net-libs/enet:1.3
+	>=net-libs/enet-1.3.9:1.3
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
@@ -45,6 +45,8 @@ src_prepare() {
 		-e "s:@DATADIR@:${GAMES_DATADIR}:g" \
 		-e "s:@DOCDIR@:${GAMES_DATADIR_BASE}/doc/${PF}:" \
 		-e "s:@REDECLIPSE@:${PN}:g" \
+		-e "s:@APPNAME@:${PN}:g" \
+		-e "s:@CAPPNAME@:REDECLIPSE:g" \
 		doc/man/redeclipse.6.am \
 		> doc/man/redeclipse.6
 
@@ -52,6 +54,8 @@ src_prepare() {
 		-e "s:@DATADIR@:${GAMES_DATADIR}:g" \
 		-e "s:@DOCDIR@:${GAMES_DATADIR_BASE}/doc/${PF}:" \
 		-e "s:@REDECLIPSE@:${PN}:g" \
+		-e "s:@APPNAME@:${PN}:g" \
+		-e "s:@CAPPNAME@:REDECLIPSE:g" \
 		doc/man/redeclipse-server.6.am \
 		> doc/man/redeclipse-server.6
 }
