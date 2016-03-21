@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -10,7 +10,7 @@ MAJOR_VERSION=$(get_version_component_range 1-2)
 
 DESCRIPTION="First-person ego-shooter, built as a total conversion of Cube Engine 2"
 HOMEPAGE="http://www.redeclipse.net/"
-SRC_URI="http://www.indiedb.com/downloads/mirror/86141/100/0789359bfb023138a8c5520fcb632b7d -> ${PN}_${PV}_nix.tar.bz2"
+SRC_URI="http://www.indiedb.com/downloads/mirror/87522/100/342c6b2c3783dcee476cdf0457a0d5e7 -> ${PN}_${PV}_nix.tar.bz2"
 
 # According to doc/license.txt file
 LICENSE="HPND ZLIB CC-BY-SA-3.0"
