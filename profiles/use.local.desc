@@ -2,6 +2,8 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+dev-games/aseprite:memleak - Enable memory-leaks detector (only for developers)
+dev-games/aseprite:webp - Enable webp image format support
 dev-games/netradiant:darkplaces - Install DarkPlaces pack
 dev-games/netradiant:h2data - Install h2data tool
 dev-games/netradiant:nexuiz - Install Nexuiz pack
