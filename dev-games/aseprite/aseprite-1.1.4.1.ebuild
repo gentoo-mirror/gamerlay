@@ -23,6 +23,7 @@ RDEPEND="dev-libs/tinyxml
 	media-libs/giflib
 	webp? ( media-libs/libwebp )
 	media-libs/libpng:0
+	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libX11
@@ -30,8 +31,7 @@ RDEPEND="dev-libs/tinyxml
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
-PATCHES=( "${FILESDIR}"/${P}_underlinking.patch
-	"${FILESDIR}"/${P}_cmake.patch )
+PATCHES=( "${FILESDIR}"/${P}_underlinking.patch )
 
 DOCS=( docs/files/ase.txt
 	docs/files/fli.txt
@@ -50,7 +50,7 @@ src_prepare() {
 		sed -i '/-DNDEBUG/d' CMakeLists.txt || die
 	fi
 	# Replace to actual version
-	sed -i -e "s:1.1.2-dev:1.1.3:g" src/config.h data/gui.xml || die
+#	sed -i -e "s:1.1.2-dev:1.1.3:g" src/config.h data/gui.xml || die
 }
 
 src_configure() {
