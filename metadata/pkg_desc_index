@@ -91,8 +91,6 @@ games-fps/doom3-gpl 9999: 3rd installment of the classic iD 3D first-person shoo
 games-fps/redeclipse 1.5.3: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rtcw 9999: Return to Castle Wolfenstein - IORTCW Project
 games-fps/xonotic 9999: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-games-fps/xonotic-data 9999: Xonotic data files
-games-fps/xonotic-maps 9999: Xonotic maps
 games-fps/zdoom 2.7.1 9999: ZDoom is an enhanced port of the official DOOM source code
 games-mud/kildclient 2.11.0: Powerful MUD client with a built-in PERL interpreter
 games-mud/tf 9999: A small, flexible, screen-oriented MUD client (aka TinyFugue)
