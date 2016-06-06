@@ -58,6 +58,8 @@ games-simulation/flightgear:fgpanel - Enable the standalone panel utility
 games-simulation/flightgear:jsbsim - Enable the JSBSim flight dynamics model
 games-simulation/flightgear:oldfdm - Enable the UIUC/LaRCsim flight dynamics model
 games-simulation/flightgear:yasim - Enable the YASim flight dynamics model
+games-sports/stuntrally:editor - Build and install maps editor
+games-sports/stuntrally:game - Build and install game client itself
 games-strategy/revenge-of-the-titans:hib - Install game from Humble Indie Bundle package
 games-util/desurium:32bit - add support for 32bit games in desurium
 games-util/desurium:bundled-wxgtk - build own wxGTK+-2.9.3 (recommended)

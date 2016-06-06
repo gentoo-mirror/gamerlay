@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/jsoncpp net-libs/liboauth net-misc/curl dev-libs/boost dev-libs/tinyxml
+DESCRIPTION=a professional, portable, thread-safe library for computing hash sums
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/rhash
+KEYWORDS=~amd64 ~x86
+LICENSE=RHash
+RDEPEND=dev-libs/jsoncpp net-libs/liboauth net-misc/curl dev-libs/boost dev-libs/tinyxml
+SLOT=0
+SRC_URI=mirror://sourceforge/rhash/rhash-1.2.10-src.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cb247b6d1f1e6f5a59d31e0517efaf12
