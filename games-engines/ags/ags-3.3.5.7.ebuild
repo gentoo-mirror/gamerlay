@@ -1,16 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=5
-
-inherit games
-
-MY_PV=${PV/_p/-hotfix}
+EAPI=6
 
 DESCRIPTION="A game/runtime interpreter for the Adventure Game Studio engine"
-HOMEPAGE="http://www.adventuregamestudio.co.uk/"
-SRC_URI="https://github.com/adventuregamestudio/ags/archive/v.${MY_PV}.tar.gz -> ${PN}-v.${MY_PV}.tar.gz"
+HOMEPAGE="http://www.adventuregamestudio.co.uk/ http://www.adventuregamestudio.co.uk/"
+SRC_URI="https://github.com/adventuregamestudio/ags/releases/download/v.${PV}/${PN}_linux_v.${PV}.tar.xz"
 
 LICENSE="Artistic-2"
 SLOT="0"
@@ -27,9 +23,10 @@ DEPEND="
 	media-libs/libvorbis"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-v.${MY_PV}"
+S="${WORKDIR}/${PN}_linux_v.${PV}"
 
 src_prepare() {
+	eapply_user
 	sed -i -e "s:-O2 -g -fsigned-char::" Engine/Makefile-defs.linux \
 		|| die
 }
@@ -39,7 +36,7 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin Engine/ags
+	dobin Engine/ags
 	dodoc README.md
 }
 
@@ -48,5 +45,4 @@ pkg_postinst() {
 	ewarn "    ${PN} /path/to/gamedir"
 	ewarn "or"
 	ewarn "    ${PN} /path/to/game.exe"
-	games_pkg_postinst
 }

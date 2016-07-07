@@ -2,20 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib toolchain-funcs flag-o-matic
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="http://www.aseprite.org"
 SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-v${PV}-Source.zip"
 
-LICENSE="GPL-2 FTL"
+# See https://github.com/aseprite/aseprite#credits
+# Some bundled third-party packages built-in:
+# gtest duktape modp_b64 simpleini
+LICENSE="BSD GPL-2 MIT"
 SLOT="0"
-# giflib still unkeyworded
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug memleak webp"
+IUSE="debug test webp"
 
 RDEPEND="dev-libs/tinyxml
 	media-libs/allegro:0[X,png]
@@ -49,8 +51,6 @@ src_prepare() {
 	if use debug ; then
 		sed -i '/-DNDEBUG/d' CMakeLists.txt || die
 	fi
-	# Replace to actual version
-#	sed -i -e "s:1.1.2-dev:1.1.3:g" src/config.h data/gui.xml || die
 }
 
 src_configure() {
@@ -69,8 +69,9 @@ src_configure() {
 		-DUSE_SHARED_PIXMAN=ON
 		-DUSE_SHARED_TINYXML=ON
 		-DUSE_SHARED_ZLIB=ON
-		$(cmake-utils_use_with webp WEBP_SUPPORT)
-		$(cmake-utils_use_enable memleak)
+		-DUSE_SHARED_LIBWEBP=ON
+		-DWITH_WEBP_SUPPORT="$(usex webp)"
+		-DENABLE_TESTS="$(usex test)"
 	)
 
 	cmake-utils_src_configure

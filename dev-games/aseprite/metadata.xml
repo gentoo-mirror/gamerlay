@@ -8,7 +8,6 @@
     Animated sprite editor and pixel art tool
   </longdescription>
   <use>
-    <flag name="memleak">Enable memory-leaks detector (only for developers)</flag>
 	<flag name="webp">Enable webp image format support</flag>
   </use>
 </pkgmetadata>
