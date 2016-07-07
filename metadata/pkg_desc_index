@@ -82,7 +82,7 @@ games-arcade/tokitori 20130703: Help a baby chicken save all the eggs.
 games-arcade/ultrastardx 9999: A free and open source karaoke game
 games-arcade/waking-mars 1.0.4: 
 games-board/kbang 9999: KBang is an open source implementation of the popular card game Bang!
-games-engines/ags 3.3.0_p2: A game/runtime interpreter for the Adventure Game Studio engine
+games-engines/ags 3.3.5.7: A game/runtime interpreter for the Adventure Game Studio engine
 games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
 games-engines/fife 0.3.2.2 0.3.3-r2 0.3.3-r3 0.3.5 9999: Flexible Isometric Free Engine
 games-engines/massacre 9999: A crossplatform despair simulator engine
