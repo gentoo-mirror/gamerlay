@@ -17,23 +17,25 @@ LICENSE="BSD GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug test webp"
+IUSE="debug kde gtk3 test webp"
 
 RDEPEND="dev-libs/tinyxml
 	media-libs/allegro:0[X,png]
 	media-libs/freetype
-	media-libs/giflib
+	media-libs/giflib:=
 	webp? ( media-libs/libwebp )
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libX11
-	x11-libs/pixman"
+	x11-libs/pixman
+	gtk3? ( dev-cpp/gtkmm:3.0 )
+	kde? (
+		dev-qt/qtcore:5
+		kde-frameworks/kio:5 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
-
-PATCHES=( "${FILESDIR}"/${P}_underlinking.patch )
 
 DOCS=( docs/files/ase.txt
 	docs/files/fli.txt
@@ -51,6 +53,9 @@ src_prepare() {
 	if use debug ; then
 		sed -i '/-DNDEBUG/d' CMakeLists.txt || die
 	fi
+
+	# Fix shebang in thumbnailer
+	sed -i -e 's:#!/usr/bin/sh:#!/bin/sh:' desktop/aseprite-thumbnailer || die
 }
 
 src_configure() {
@@ -70,9 +75,30 @@ src_configure() {
 		-DUSE_SHARED_TINYXML=ON
 		-DUSE_SHARED_ZLIB=ON
 		-DUSE_SHARED_LIBWEBP=ON
+		-DWITH_DESKTOP_INTEGRATION=ON
+		-DWITH_GTK_FILE_DIALOG_SUPPORT="$(usex gtk3)"
+		-DWITH_QT_THUMBNAILER="$(usex kde)"
 		-DWITH_WEBP_SUPPORT="$(usex webp)"
 		-DENABLE_TESTS="$(usex test)"
 	)
-
 	cmake-utils_src_configure
+
+#	if use kde; then
+#		mycmakeargs=( )
+#		CMAKE_USE_DIR="${S}/desktop/kde" \
+#			BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
+#			cmake-utils_src_configure
+#	fi
 }
+
+#src_compile() {
+#	cmake-utils_src_compile
+#	use kde && BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
+#		cmake-utils_src_compile
+#}
+
+#src_install() {
+#	cmake-utils_src_install
+#	use kde && BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
+#		cmake-utils_src_install
+#}
