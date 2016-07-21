@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=6
+MULTILIB_COMPAT=( abi_x86_32 )
 
-inherit games unpacker-nixstaller
+inherit eutils multilib-minimal unpacker-nixstaller
 
 DESCRIPTION="Retro-inspired brick-breaking game"
 HOMEPAGE="http://www.shattergame.com"
@@ -14,32 +14,20 @@ RESTRICT="fetch strip"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="
-	x86? (
-		virtual/opengl
-		dev-libs/expat
-		media-gfx/nvidia-cg-toolkit
-		media-libs/fontconfig
-		media-libs/freetype:2
-		media-libs/libsdl
-		net-dns/libidn
-		sys-libs/zlib
-		x11-libs/libdrm
-		x11-libs/libX11
-		x11-libs/libXau
-		x11-libs/libXdmcp
-		x11-libs/libXext
-		x11-libs/libxcb
-	)
-	amd64? (
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-sdl
-		app-emulation/emul-linux-x86-xlibs
-	)
+	virtual/opengl
+	media-gfx/nvidia-cg-toolkit[${MULTILIB_USEDEP}]
+	media-libs/fontconfig[${MULTILIB_USEDEP}]
+	media-libs/libsdl2[${MULTILIB_USEDEP}]
+	media-libs/mesa[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXft[${MULTILIB_USEDEP}]
 "
 
 S="${WORKDIR}"
@@ -66,7 +54,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	insinto "${dir}"
 	doins -r data pkcmn.pak
 
@@ -76,16 +64,16 @@ src_install() {
 	# Broken dep
 	insinto "${dir}/lib"
 	doins lib/libfmod{event,eventnet,ex}-4.36.21.so
-	# Only for AMD64
-	use amd64 && doins lib/libCg{,GL}.so
+	doins lib/libsteam_api.so
 
 	doicon "${MY_PN}.png"
 	newicon "Settings.png" "${MY_PN}-Settings.png"
+
 	make_desktop_entry "${PN}" "${MY_PN}" "${MY_PN}"
 	make_desktop_entry "${PN}-settings" "${MY_PN} Settings" "${MY_PN}-Settings"
-	games_make_wrapper "${PN}" "./${MY_PN}.bin.x86" "${dir}" "${dir}/lib"
-	games_make_wrapper "${PN}-settings" "./SettingsEditor.bin.x86" "${dir}" "${dir}/lib"
+
+	make_wrapper "${PN}" "./${MY_PN}.bin.x86" "${dir}" "${dir}/lib"
+	make_wrapper "${PN}-settings" "./SettingsEditor.bin.x86" "${dir}" "${dir}/lib"
 
 	dodoc README.linux
-	prepgamesdirs
 }
