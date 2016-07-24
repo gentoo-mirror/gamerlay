@@ -139,7 +139,7 @@ games-simulation/fgrun 3.5.0_p20150118 9999: A graphical frontend for the Flight
 games-simulation/fgx 9999: Launcher for FlightGear Flight Simulator, based on Qt
 games-simulation/flightgear 9999: Open Source Flight Simulator
 games-simulation/flightgear-data 9999: FlightGear data files
-games-sports/stuntrally 1.9 1.9-r1 9999: Rally game focused on closed rally tracks with possible stunt elements (jumps, loops, pipes).
+games-sports/stuntrally 2.6 9999: Rally game focused on closed rally tracks with possible stunt elements (jumps, loops, pipes).
 games-sports/stuntrally-tracks 9999: A set of tracks for games-sports/stuntrally-9999
 games-strategy/anomaly 20130402: An extraordinary mixture of action and strategy in a reversed tower defense formula.
 games-strategy/anomaly-korea 20130613: An extraordinary mixture of action and strategy in a reversed tower defense formula.
