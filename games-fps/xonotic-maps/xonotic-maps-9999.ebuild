@@ -1,10 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+# QA: FUCKING CRAP!!!
+# TODO: ask Nikoli to rewrite if I ever find him
 
-inherit games check-reqs
+EAPI=6
+
+inherit check-reqs
 
 MY_PN="${PN%-maps}"
 DESCRIPTION="Xonotic maps"
@@ -13,6 +15,7 @@ HOMEPAGE="http://www.xonotic.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="unofficial"
+KEYWORDS=""
 
 RDEPEND=""
 DEPEND="
@@ -22,19 +25,18 @@ DEPEND="
 S="${WORKDIR}"
 RESTRICT="test"
 
-if use unofficial; then
-	CHECKREQS_DISK_USR="1G"
-else
-	CHECKREQS_DISK_USR="155M"
-fi
-
 pkg_pretend() {
+	if use unofficial; then
+		CHECKREQS_DISK_USR="1G"
+	else
+		CHECKREQS_DISK_USR="155M"
+	fi
+
 	check-reqs_pkg_pretend
 }
 
 pkg_setup() {
 	check-reqs_pkg_setup
-	games_pkg_setup
 
 	ewarn "Downloaded pk3 files will be stored in \"xonotic-maps\" subdirectory of your DISTDIR"
 	echo
@@ -61,6 +63,7 @@ src_unpack() {
 
 	# FETCHCOMMAND from make.globals is example
 	local WGET="/usr/bin/wget -t 3 -T 60"
+	local SED="sed"
 	local base_url="http://beta.xonotic.org/autobuild-bsp/"
 
 	einfo "Downloading lists"
@@ -70,32 +73,22 @@ src_unpack() {
 	$WGET -O official_maps.html \
 		'http://git.xonotic.org/?p=xonotic/xonotic-maps.pk3dir.git;a=tree;f=maps' || die
 
-	grep -e '\.map</a>' official_maps.html |\
-		sed -e 's,.*">\([^<]*\).map<\/a>.*,\1,' > official_maps.txt || die
+	grep -e '\.map</a>' official_maps.html | ${SED} -e 's,.*">\([^<]*\).map<\/a>.*,\1,' > official_maps.txt || die
 	[ -s official_maps.txt ] || die "List of official maps is empty"
 	cp official_maps.txt install_maps.txt || die
 
 	if use unofficial; then
 	# For maps not in master branch we need to download fullpk3
 		# AllMaps - OfficialMaps = UnofficialMaps
-		grep all_maps.html \
-			-e '<td class="mapname">' |\
-		sed -e 's,.*="mapname">\([^<]*\)<.*,\1,' |\
-		sort -u |\
-		grep -v -x -e '' \
-			-f official_maps.txt |\
-		sed -e 's,$,-full,' > unofficial_maps.txt
+		grep all_maps.html -e '<td class="mapname">' | ${SED} -e 's,.*="mapname">\([^<]*\)<.*,\1,' |\
+		sort -u | grep -v -x -e '' -f official_maps.txt | ${SED} -e 's,$,-full,' > unofficial_maps.txt
 		[ -s unofficial_maps.txt ] || die "List of unofficial maps is empty"
 		cat unofficial_maps.txt >> install_maps.txt
 	fi
 
 	latest_pk3_version() {
 		# latest builds of maps are above
-		latest_version="$(
-			grep all_maps.html -m1 \
-				-e "href=\"${name%-full}-.*.pk3\">bspk3<" |\
-			sed -e "s,.*href=\"${name%-full}-\([^\"]*\).pk3\">bspk3<.*,\1,"
-		)"
+		latest_version="$(grep all_maps.html -m1 -e "href=\"${name%-full}-.*.pk3\">bspk3<" |sed -e "s,.*href=\"${name%-full}-\([^\"]*\).pk3\">bspk3<.*,\1,")"
 	}
 
 	validate_pk3() {
@@ -111,14 +104,8 @@ src_unpack() {
 	# If map becomes official, it changes branch and git hashes in name => no need to check both fullpk3 and bsppk3
 	einfo "Cleaning \"${MAPS_STORE_DIR}\""
 	for file in "${MAPS_STORE_DIR}"/*; do
-		local name="$(
-			echo "${file}" |\
-			sed -e "s,${MAPS_STORE_DIR}/\([^/]*\)-[0-9a-f]\{40\}-[0-9a-f]\{40\}.pk3$,\1,"
-		)"
-		local version="$(
-			echo "${file}" |\
-			sed -e "s,${MAPS_STORE_DIR}/${name}-\([0-9a-f]\{40\}-[0-9a-f]\{40\}\).pk3$,\1,"
-		)"
+		local name="$(echo "${file}" |sed -e "s,${MAPS_STORE_DIR}/\([^/]*\)-[0-9a-f]\{40\}-[0-9a-f]\{40\}.pk3$,\1,")"
+		local version="$(echo "${file}"|sed -e "s,${MAPS_STORE_DIR}/${name}-\([0-9a-f]\{40\}-[0-9a-f]\{40\}\).pk3$,\1,")"
 		latest_pk3_version
 
 		if [ "${version}" != "${latest_version}" ]; then
@@ -161,6 +148,4 @@ src_install() {
 	while read file; do
 		nonfatal doins "${MAPS_STORE_DIR}/${file}" || ewarn "installing \"${file}\" failed"
 	done < install_files.txt
-
-	prepgamesdirs
 }
