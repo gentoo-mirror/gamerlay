@@ -125,12 +125,14 @@ games-puzzle/zen-puzzle-garden 1.3: Try to solve seemingly impossible puzzles th
 games-puzzle/zenbound2 20120325: A calm and meditative game of wrapping rope around wooden sculptures.
 games-rpg/amnesia-tdd 1.2.1: Amnesia: The Dark Descent is a first person survival horror. A game about immersion, discovery and living through a nightmare.
 games-rpg/avadon 1.0: Epic fantasy role-playing adventure in an enormous and unique world.
+games-rpg/divinity-original-sin-ee 2.0.0.1: Divinity: Original Sin - Enhanced Edition (GOG edition)
 games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel (English translation)
 games-rpg/lonesurvivor 1.11d_p1: 2D sidescrolling psychological survival adventure game
 games-rpg/machinarium 1.0: Point-and-click adventure about robot in steam-punk world
 games-rpg/solarus 9999: Zelda Mystery of Solarus DX
 games-rpg/soulfu 1.5.2: Secret of Ultimate Legendary Fantasy: Unleashed
 games-rpg/torchlight 1.15.20120926 1.15.20130521: An action role-playing game, made by the creators of Diablo
+games-rpg/torchlight2 20150401: An action role-playing game, made by the creators of Diablo
 games-rpg/zelda3t 1.9: The Legend of Zelda - Time to Triumph
 games-rpg/zeldaolb 3.6: The Legend of Zelda - Onilink Begins
 games-rpg/zeldaroth 6.11: The Legend of Zelda - Return of the Hylian
@@ -165,6 +167,7 @@ games-util/grfcodec 9999: A suite of programs to modify openttd/Transport Tycoon
 games-util/lgogdownloader 2.6 9999: Linux compatible gog.com downloader
 games-util/massacre-data 9999: A crossplatform despair simulator data
 games-util/nforenum 4.0.0 9999: A tool checking NFO code for errors
+games-util/qjoypad 4.3.0: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/quickbms 0.5.2: Files extractor and reimporter, archives and file formats parser
 games-util/rejoystick 0.8.1: Program which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/steam-launcher 1.0.0.49: Installer, launcher and supplementary files for Valve's Steam client

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/libXtst dev-qt/qtgui:4 x11-proto/inputproto x11-proto/xextproto x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Translate gamepad/joystick input into key strokes/mouse actions in X
+EAPI=6
+HOMEPAGE=https://github.com/panzi/qjoypad
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXtst dev-qt/qtgui:4
+SLOT=0
+SRC_URI=https://github.com/panzi/qjoypad/archive/v4.3.0.tar.gz -> qjoypad-4.3.0.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0f738d907cd056ca02d14536338ef3f9
