@@ -27,7 +27,7 @@ fi
 
 RDEPEND="
 	game? (
-		dev-games/ogre[cg,boost,ois,freeimage,opengl,zip]
+		dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision]
 		dev-games/mygui[ogre]
 		media-libs/libsdl2
 		media-libs/libvorbis
