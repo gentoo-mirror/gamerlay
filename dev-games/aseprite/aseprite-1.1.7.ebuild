@@ -17,10 +17,10 @@ LICENSE="BSD GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug kde gtk3 test webp"
+IUSE="bundled-libs debug kde gtk3 test webp"
 
 RDEPEND="dev-libs/tinyxml
-	media-libs/allegro:0[X,png]
+	!bundled-libs? ( media-libs/allegro:0[X,png] )
 	media-libs/freetype
 	media-libs/giflib:=
 	webp? ( media-libs/libwebp )
@@ -35,7 +35,9 @@ RDEPEND="dev-libs/tinyxml
 		dev-qt/qtcore:5
 		kde-frameworks/kio:5 )"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+	gtk3? ( virtual/pkgconfig )
+	webp? ( virtual/pkgconfig )"
 
 DOCS=( docs/files/ase.txt
 	docs/files/fli.txt
@@ -45,6 +47,8 @@ DOCS=( docs/files/ase.txt
 	README.md )
 
 S="${WORKDIR}"
+
+PATCHES=( "${FILESDIR}/${P}_type-punned_pointer.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -63,7 +67,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_UPDATER=OFF
 		-DFULLSCREEN_PLATFORM=ON
-		-DUSE_SHARED_ALLEGRO4=ON
+		-DUSE_SHARED_ALLEGRO4=$(usex !bundled-libs)
 		-DUSE_SHARED_CURL=ON
 		-DUSE_SHARED_FREETYPE=ON
 		-DUSE_SHARED_GIFLIB=ON
@@ -85,6 +89,14 @@ src_configure() {
 }
 
 src_install() {
-	newicon "${S}/data/icons/ase64.png" "${PN}.png"
+	newicon -s 64 "${S}/data/icons/ase64.png" "${PN}.png"
 	cmake-utils_src_install
+}
+
+pkg_postinst() {
+	if use !bundled-libs ; then
+		ewarn "Aseprite has been built with system-wide Allegro 4."
+		ewarn "Please note that you will not be able to resize the main window."
+		ewarn "To enable resizing enable USE-flag bundled-libs and rebuild package."
+	fi
 }
