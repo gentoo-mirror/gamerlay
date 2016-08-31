@@ -168,13 +168,11 @@ games-util/lgogdownloader 2.6 9999: Linux compatible gog.com downloader
 games-util/massacre-data 9999: A crossplatform despair simulator data
 games-util/nforenum 4.0.0 9999: A tool checking NFO code for errors
 games-util/qjoypad 4.3.0: Translate gamepad/joystick input into key strokes/mouse actions in X
-games-util/quickbms 0.5.2: Files extractor and reimporter, archives and file formats parser
 games-util/rejoystick 0.8.1: Program which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/steam-launcher 1.0.0.49: Installer, launcher and supplementary files for Valve's Steam client
 games-util/taxidraw 9999: a taxiway editor for FlightGear and X-Plane
 games-util/terragear 9999: Terrain editing programs for FlightGear
 media-libs/desurium-cef 4 5 5-r1 9999: highly patched CEF by desurium.
-media-libs/freeimage 3.15.2: Image library supporting many formats
 media-libs/libmmd 0.7.4.3: a renderlib for mikumiku dance pmd model and vmd motion files
 media-libs/libp3t 0.9.0: A library to extract ps3 xmb p3t themes
 media-libs/mysdl 1.0: a gaming framework and library
