@@ -164,7 +164,7 @@ games-util/fgcom 9999: A VoIP client for FlightGear
 games-util/fteqcc-xonotic 9999: QC compiler for Xonotic
 games-util/gmqcc 0.2.9 9999: An Improved Quake C Compiler
 games-util/grfcodec 9999: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
-games-util/lgogdownloader 2.6 9999: Linux compatible gog.com downloader
+games-util/lgogdownloader 2.28 9999: Linux compatible gog.com downloader
 games-util/massacre-data 9999: A crossplatform despair simulator data
 games-util/nforenum 4.0.0 9999: A tool checking NFO code for errors
 games-util/qjoypad 4.3.0: Translate gamepad/joystick input into key strokes/mouse actions in X
