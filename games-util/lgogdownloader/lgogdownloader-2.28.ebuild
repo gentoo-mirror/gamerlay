@@ -3,15 +3,15 @@
 
 EAPI="6"
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="Linux compatible gog.com downloader"
 HOMEPAGE="https://sites.google.com/site/gogdownloader/"
-EGIT_REPO_URI="https://github.com/Sude-/lgogdownloader.git"
+SRC_URI="https://github.com/Sude-/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="WTFPL"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

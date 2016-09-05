@@ -29,6 +29,7 @@ DEPEND="
 "
 RESTRICT="test"
 
+pkg_pretend() {
 if use !client; then
 	CHECKREQS_DISK_BUILD="3000M"
 	CHECKREQS_DISK_USR="320M"
@@ -42,7 +43,8 @@ else
 	fi
 fi
 
-pkg_pretend() {
+	export CHECKREQS_DISK_USR CHECKREQS_DISK_USR
+
 	check-reqs_pkg_pretend
 }
 
