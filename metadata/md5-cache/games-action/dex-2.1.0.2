@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=app-arch/unzip dev-util/xdelta3
+DESCRIPTION=2D Action-RPG with a rich cyberpunk world
+EAPI=6
+HOMEPAGE=http://en.dreadlocks.cz/games/dex/
+IUSE=+gog
+KEYWORDS=amd64 x86
+LICENSE=EULA
+RDEPEND=dev-libs/glib media-libs/mesa virtual/libc x11-libs/gdk-pixbuf x11-libs/gtk+ x11-libs/libX11 x11-libs/libXcursor x11-libs/libXrandr
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=gog? ( gog_dex_2.1.0.2.sh patch_dex_2.0.1.2.sh )
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_md5_=dee0dbf496bd0e865ed15bd363171926
