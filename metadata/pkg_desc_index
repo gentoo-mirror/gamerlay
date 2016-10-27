@@ -87,7 +87,7 @@ games-engines/fife 0.3.2.2 0.3.3-r2 0.3.3-r3 0.3.5 9999: Flexible Isometric Free
 games-engines/massacre 9999: A crossplatform despair simulator engine
 games-engines/openxcom 1.0.0 1.0.0_p20150806: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
-games-fps/brutal-doom 20: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
+games-fps/brutal-doom 20b: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
 games-fps/dhewm3 9999: A Doom 3 GPL source modification.
 games-fps/doom3-gpl 9999: 3rd installment of the classic iD 3D first-person shooter
 games-fps/redeclipse 1.5.3: First-person ego-shooter, built as a total conversion of Cube Engine 2

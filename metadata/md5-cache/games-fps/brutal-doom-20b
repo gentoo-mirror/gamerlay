@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=app-arch/unzip
+DESCRIPTION=A mod that attempts to make Doom faster placed, harder, gorier and more violent.
+EAPI=6
+HOMEPAGE=http://www.moddb.com/mods/brutal-doom/
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND
+RDEPEND=>=games-fps/zdoom-2.7.0
+SLOT=0
+SRC_URI=http://www.moddb.com/downloads/mirror/95667/102/0a5526fb58bc1f38fee7e14f586ddd7b -> brutal20b.zip
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=b2696481e3607387853f1c495b22a9bb
