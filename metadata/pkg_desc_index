@@ -95,7 +95,7 @@ games-fps/rtcw 9999: Return to Castle Wolfenstein - IORTCW Project
 games-fps/xonotic 9999: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/xonotic-data 9999: Xonotic data files
 games-fps/xonotic-maps 9999: Xonotic maps
-games-fps/zdoom 2.7.1 9999: ZDoom is an enhanced port of the official DOOM source code
+games-fps/zdoom 2.8.1: ZDoom is an enhanced port of the official DOOM source code
 games-mud/kildclient 2.11.0: Powerful MUD client with a built-in PERL interpreter
 games-mud/tf 9999: A small, flexible, screen-oriented MUD client (aka TinyFugue)
 games-puzzle/2048-qt 0.1.5-r1: A Qt-based version of the game 2048

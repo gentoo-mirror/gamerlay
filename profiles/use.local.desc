@@ -54,6 +54,7 @@ games-fps/xonotic-data:convert - Use cached-converter.sh for converting tga to j
 games-fps/xonotic-data:low - Use low preset of cached-converter.sh: compress wav to ogg, lower jpeg quality.
 games-fps/xonotic-data:zip - Compress resources dirs in zip archives.
 games-fps/xonotic-maps:unofficial - Install unofficial maps. May be incomplete, unstable or broken.
+games-fps/zdoom:asm - Enable assembly implementations
 games-simulation/flightgear:fgcom - Build fgcom libs and utilities
 games-simulation/flightgear:fgpanel - Enable the standalone panel utility
 games-simulation/flightgear:jsbsim - Enable the JSBSim flight dynamics model
