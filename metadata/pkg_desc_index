@@ -1,5 +1,5 @@
 dev-cpp/luabind 0.9: creates bindings for lua on c++
-dev-games/aseprite 1.1.7: Animated sprite editor & pixel art tool
+dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
 dev-games/mcedit 0.1.8_p665: MCEdit, Minecraft World Editor
 dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-games/simgear 9999: Development library for simulation games
