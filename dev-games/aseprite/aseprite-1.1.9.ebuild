@@ -10,12 +10,13 @@ DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="http://www.aseprite.org"
 SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-v${PV}-Source.zip"
 
-# See https://github.com/aseprite/aseprite#credits
+# See https://github.com/aseprite/aseprite#license
 # Some bundled third-party packages built-in:
 # gtest duktape modp_b64 simpleini
-LICENSE="BSD GPL-2 MIT"
+LICENSE="Aseprite-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 IUSE="bundled-libs debug kde gtk3 test webp"
 
