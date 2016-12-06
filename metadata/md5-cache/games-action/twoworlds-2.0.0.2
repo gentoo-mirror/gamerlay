@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Action RPG with open world
+EAPI=6
+HOMEPAGE=https://en.wikipedia.org/wiki/Two_Worlds_(video_game)
+IUSE=+gog
+KEYWORDS=amd64 x86
+LICENSE=EULA
+RDEPEND=app-emulation/wine app-emulation/winetricks
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=gog? ( gog_two_worlds_epic_edition_2.0.0.2.sh )
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_md5_=062178653151d3bcd10d177651637d63

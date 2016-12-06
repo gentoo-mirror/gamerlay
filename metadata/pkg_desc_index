@@ -26,6 +26,7 @@ games-action/gradleunison 0.10: jumpei isshiki's HelloWorldProject (2006/09/02)
 games-action/gunroar 0.15: Guns, Guns, Guns! 360-degree gunboat shooter, 'Gunroar'
 games-action/gunroarhi 0.30: Guns, Guns, Guns! 360-degree gunboat shooter, fork of ABAs 'Gunroar'
 games-action/hammerfight 20110812: 2D battles of flying machines equipped with various slashing, piercing and blunt weaponry
+games-action/lugaru 9999: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/overgrowth 1_alpha194: 3d action-adventure game. Spiritual successor to Lugaru.
 games-action/parsec47 0.2: Defeat retro enemies modenly. Retromodern hispeed shmup, 'PARSEC47'.
 games-action/projectl 1.001: Sword action STG inspired by projectN developed by D.K
@@ -40,6 +41,7 @@ games-action/titanion 0.3: Strike down super high-velocity swooping insects. Fix
 games-action/torustrooper 0.22: Speed! More speed! Speeding ship sailing through barrage, 'Torus Trooper'
 games-action/torustrooperpure 0.2: Brake down and Burn up! original:Torus Trooper (ABA)
 games-action/tumikifighters 0.2: Stick more enemies and become much stronger. Sticky 2D shooter, 'TUMIKI Fighters'.
+games-action/twoworlds 2.0.0.2: Action RPG with open world
 games-action/valandrick 0.1a: Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
 games-action/voxatron 0.2.3: A voxelicious action adventure
 games-action/zlock 0.20: jumpei isshiki's HelloWorldProject (2006/09/09)
@@ -149,6 +151,7 @@ games-strategy/anomaly-mobilecampaign 20130613: An extraordinary mixture of acti
 games-strategy/curseofwar 1.2.0: A fast-paced action strategy game implemented using ncurses user interface.
 games-strategy/defcon 1.6.1: http://www.introversion.co.uk/defcon/
 games-strategy/glest 3.2.2-r1: Cross-platform 3D realtime strategy game
+games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 games-strategy/opendungeons 9999: An open source, real time strategy game based on the Dungeon Keeper series
 games-strategy/opendungeons-data 9999: Data files for opendungeons
 games-strategy/revenge-of-the-titans 1.80.20: Defeat the returning Titan horde in a series of epic ground battles.
