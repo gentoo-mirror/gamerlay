@@ -1,4 +1,5 @@
 dev-cpp/luabind 0.9: creates bindings for lua on c++
+dev-db/mariadb-connector-c 2.3.1 9999: C client library for MariaDB/MySQL
 dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
 dev-games/mcedit 0.1.8_p665: MCEdit, Minecraft World Editor
 dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
@@ -78,7 +79,7 @@ games-arcade/shatter 1.0.20130609: Retro-inspired brick-breaking game
 games-arcade/sleepwalker 20130613: Guide a hero safely through various traps, clear obstructions from his path, and shift his surroundings to create a safe passage to the cozy bed.
 games-arcade/smw 1.7: Super Mario War is a Super Mario multiplayer game.
 games-arcade/stealthbastarddeluxe 1.63.4: The fast-paced, nail-biting antidote to tippy-toed sneaking simulators that the world had so desperately been craving.
-games-arcade/supermeatboy 2012.06.07: A platformer where you play as an animated cube of meat
+games-arcade/supermeatboy 2013.11.11: A platformer where you play as an animated cube of meat
 games-arcade/tokitori 20130703: Help a baby chicken save all the eggs.
 games-arcade/ultrastardx 9999: A free and open source karaoke game
 games-arcade/waking-mars 1.0.4: 
