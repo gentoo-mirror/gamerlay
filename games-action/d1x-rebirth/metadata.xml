@@ -17,7 +17,7 @@
       music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
     <flag name="textures">Include high resolution (640x480) backgrounds,
       briefing images and fonts</flag>
-	<flag name="music">Adds music support</flag>
-	<flag name="data">Install data files</flag>
+    <flag name="music">Adds music support</flag>
+    <flag name="data">Install data files</flag>
   </use>
 </pkgmetadata>
