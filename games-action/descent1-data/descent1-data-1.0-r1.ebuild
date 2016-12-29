@@ -12,7 +12,7 @@ MY_EXE="setup_descent_1_2.exe"
 
 DESCRIPTION="Data files for Descent 1"
 HOMEPAGE="http://www.interplay.com/games/support.php?id=263"
-SRC_URI="http://www.dxx-rebirth.com/download/dxx/res/d1datapt.zip
+SRC_URI="cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-content-10to14a-patch.zip )
 	!cdinstall? ( $MY_EXE )"
 
 # See readme.txt
@@ -102,7 +102,10 @@ src_unpack() {
 	mv missions/descent.pig . || die 'descent.pig not found'
 
 	# Unpack data file patches
-	unpack d1datapt.zip
+	if use cdinstall; then
+		mkdir d1datapt && cd d1datapt
+		unpack ../descent-game-content-10to14a-patch.zip
+	fi
 
 	mkdir doc || die "mkdir doc failed"
 	mv missions/*.txt missions/*.pdf doc/ # ignore fail
