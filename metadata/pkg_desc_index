@@ -21,6 +21,7 @@ games-action/descent1-data 1.0-r1: Data files for Descent 1
 games-action/descent2-data 1.0-r2: Data files for Descent 2
 games-action/descent2-vertigo 1.0: Data files for Descent 2: The Vertigo Series
 games-action/dex 2.1.0.2: 2D Action-RPG with a rich cyberpunk world
+games-action/dxx-rebirth 0.59.100: Descent Rebirth - enhanced Descent 1 & 2 engine
 games-action/exception_conflict 1.09: outstanding shmup using opengl and sdl
 games-action/fieldrunners 1.0.0: Defend and control the field using a diverse selection of upgradeable towers.
 games-action/gradleunison 0.10: jumpei isshiki's HelloWorldProject (2006/09/02)
