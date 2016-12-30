@@ -10,7 +10,7 @@ MY_P=${PN}_v${PV}-src
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"
 HOMEPAGE="http://www.dxx-rebirth.com/"
 SRC_URI="http://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
-	opl3-musicpack? ( 
+	opl3-musicpack? (
 		descent1? ( http://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa )
 		descent2? ( http://www.dxx-rebirth.com/download/dxx/res/d2xr-opl3-music.dxa ) )
 	sc55-musicpack? (
@@ -37,15 +37,14 @@ REQUIRED_USE="|| ( descent1 descent2 )
 DEPEND="dev-games/physfs[hog,mvl,zip]
 	media-libs/libsdl:0[X,sound,joystick,opengl?,video]
 	music? (
-		media-libs/sdl-mixer:0[midi,timidity,vorbis]
-	)
+		media-libs/sdl-mixer:0[midi,timidity,vorbis] )
 	opengl? (
 		virtual/opengl
-		virtual/glu
-	)"
-RDEPEND="data? (
-	descent1? ( || ( games-action/descent1-data games-action/descent1-demodata ) )
-	descent2? ( || ( games-action/descent2-data games-action/descent2-demodata ) ) )"
+		virtual/glu )"
+RDEPEND="${DEPEND}
+	data? (
+		descent1? ( || ( games-action/descent1-data games-action/descent1-demodata ) )
+		descent2? ( || ( games-action/descent2-data games-action/descent2-demodata ) ) )"
 
 S="${WORKDIR}/${MY_P}"
 
