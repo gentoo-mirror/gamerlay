@@ -10,7 +10,7 @@ inherit cdrom eutils games
 # Not possible to apply official 1.2 patch under Linux, so provide our own
 # http://www.interplay.com/support/support.php?id=104
 # Should only be needed for original DOS CD-ROM release
-MY_PATCH="http://totktonada.ru/gentoo/distfiles/d2xptch12.tgz"
+MY_PATCH="http://www.dxx-rebirth.com/download/dxx/misc/d2xptch12.tgz"
 
 # For GOG install
 MY_EXE="setup_descent_1_2.exe"
