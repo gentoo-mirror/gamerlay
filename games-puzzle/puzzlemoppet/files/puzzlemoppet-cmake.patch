@@ -1,5 +1,5 @@
---- PuzzleMoppetSource/Litha Engine/projects/Puzzle/CMakeLists.txtO	2011-09-17 15:06:24.000000000 +0200
-+++ PuzzleMoppetSource/Litha Engine/projects/Puzzle/CMakeLists.txt	2012-07-14 09:52:14.060028541 +0200
+--- a/projects/Puzzle/CMakeLists.txt	2011-09-17 15:06:24.000000000 +0200
++++ b/projects/Puzzle/CMakeLists.txt	2012-07-14 09:52:14.060028541 +0200
 @@ -26,18 +26,8 @@
  
  
