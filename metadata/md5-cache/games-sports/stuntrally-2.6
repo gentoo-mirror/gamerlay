@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=game? ( dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision] dev-games/mygui[ogre] media-libs/libsdl2 media-libs/libvorbis media-libs/libogg media-libs/openal sci-physics/bullet[bullet3,extras] ) dev-libs/boost net-libs/enet:1.3 virtual/libstdc++ sys-devel/make >=dev-util/cmake-3.5.2
+DEPEND=game? ( dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision] dev-games/mygui[ogre] media-libs/libsdl2 media-libs/libvorbis media-libs/libogg media-libs/openal sci-physics/bullet[bullet3,extras] ) dev-libs/boost net-libs/enet:1.3 virtual/libstdc++ sys-devel/make >=dev-util/cmake-3.6.3
 DESCRIPTION=Rally game focused on closed rally tracks with possible stunt elements (jumps, loops, pipes).
 EAPI=6
 HOMEPAGE=http://stuntrally.tuxfamily.org/
@@ -11,5 +11,5 @@ REQUIRED_USE=editor? ( game )
 SLOT=0
 SRC_URI=https://github.com/stuntrally/stuntrally/archive/2.6.tar.gz -> stuntrally-2.6.tgz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	b602fb1ae4bc807a6756bb8b187fbe54	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=fd72dd99bbe1b8b6d284682cbd0998fa
