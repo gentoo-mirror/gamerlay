@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=x11-libs/libXext irrlicht? ( dev-games/irrlicht ) sdl? ( media-libs/libsdl2 media-libs/sdl-ttf media-libs/sdl2-image[png] ) opengl? ( virtual/opengl virtual/glu ) allegro? ( media-libs/allegro:0 ) sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Lightweight cross platform GUI C++ library designed for games
+EAPI=6
+HOMEPAGE=http://fifengine.github.io/fifechan/
+IUSE=allegro +opengl +sdl irrlicht
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/libXext irrlicht? ( dev-games/irrlicht ) sdl? ( media-libs/libsdl2 media-libs/sdl-ttf media-libs/sdl2-image[png] ) opengl? ( virtual/opengl virtual/glu ) allegro? ( media-libs/allegro:0 )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=bf904599f5de6a38a39962e9ecfb3440
