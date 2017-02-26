@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mplichta@gmail.com</email>
+		<name>Michal Plichta</name>
+	</maintainer>
+	<use>
+		<flag name="allegro">Support for <pkg>media-libs/allegro</pkg></flag>
+		<flag name="irrlicht">Support for <pkg>dev-games/irrlicht</pkg></flag>
+	</use>
+</pkgmetadata>
