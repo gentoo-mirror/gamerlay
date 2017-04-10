@@ -1,8 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=2
+EAPI=6
 
 inherit eutils fdo-mime multilib
 
@@ -16,21 +15,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 
-RDEPEND="app-arch/unzip
-	x86? ( dev-libs/libxml2
-		dev-libs/nspr
-		dev-libs/nss
-		media-libs/libpng
-		net-misc/curl
-		www-plugins/adobe-flash
-		x11-libs/cairo
-		x11-libs/gtk+ )
-	amd64? ( app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-gtklibs )"
+RDEPEND="
+	app-arch/unzip
+	dev-libs/libxml2
+	dev-libs/nspr
+	dev-libs/nss
+	media-libs/libpng
+	net-misc/curl
+	www-plugins/adobe-flash
+	x11-libs/cairo
+	x11-libs/gtk+
+"
 
 QA_PRESTRIPPED=".*\.so /opt/Adobe/AirSDK/bin/adl"
 QA_EXECSTACK="*/libCore.so */libcurl.so */libadobecertstore.so */libadobecp.so"
-QA_TEXTRELS="*/libcurl.so"
+QA_TEXTRELS="*/libcurl.so */libadobecertstore.so"
+
+S="${WORKDIR}"
 
 src_install() {
 	local sdkdir=opt/Adobe/AirSDK
@@ -45,8 +46,7 @@ src_install() {
 	insinto /${sdkdir}
 	doins -r * || die "doins failed"
 
-	cd "${D}"
-	fperms 0755 ${sdkdir}/bin/* ${sdkdir}/"${rtdir}"/{libCore.so,Resources/lib*.so*} \
+	fperms 0755 /${sdkdir}/bin/* /${sdkdir}/"${rtdir}"/{libCore.so,Resources/lib*.so*} \
 		|| die "chmod failed"
 
 	use x86 && make_wrapper adl /${sdkdir}/bin/adl . /usr/lib/nss:/usr/lib/nspr:/opt/netscape/plugins /opt/bin
