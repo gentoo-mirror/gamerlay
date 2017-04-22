@@ -92,6 +92,7 @@ games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
 games-engines/massacre 9999: A crossplatform despair simulator engine
 games-engines/openxcom 1.0.0 1.0.0_p20150806: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
+games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 20b: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
 games-fps/dhewm3 9999: A Doom 3 GPL source modification.
 games-fps/doom3-gpl 9999: 3rd installment of the classic iD 3D first-person shooter
@@ -164,6 +165,7 @@ games-strategy/uplink 1.6: Crack into virtual computer systems
 games-strategy/vcmi 0.98 9999: Heroes of Might and Magic III game engine rewrite
 games-strategy/vcmi-data 0.90: Core data for vcmi
 games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-only.
+games-strategy/wyrmsun 2.7.1: Strategy game based on history, mythology and fiction
 games-util/desurium 0.8.0_rc9 0.8.0_rc9-r1 0.8.0_rc10-r1 0.8.0_rc10-r2 9999: Free software version of Desura game client
 games-util/desurium-meta 0 1: Desurium game client and dependencies (meta)
 games-util/fgcom 9999: A VoIP client for FlightGear
@@ -184,6 +186,7 @@ media-libs/libmmd 0.7.4.3: a renderlib for mikumiku dance pmd model and vmd moti
 media-libs/libp3t 0.9.0: A library to extract ps3 xmb p3t themes
 media-libs/mysdl 1.0: a gaming framework and library
 media-libs/nite 1.4.1.2: primesense nite kinect drivers
+media-sound/oaml 1.1: Open Adaptive Music Library
 x11-apps/briareos 0.7 0.8: A slim and transparent programlauncher - perfect for a hotkey.
 x11-apps/dunan 0.5.1 0.6: animated 3D MMD models on the desktop
 x11-apps/typhon 9999: A slim and themeable opengl dashboard / program launcher
