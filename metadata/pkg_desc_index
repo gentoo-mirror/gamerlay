@@ -4,7 +4,7 @@ dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
 dev-games/mcedit 0.1.8_p665: MCEdit, Minecraft World Editor
 dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-games/simgear 9999: Development library for simulation games
-dev-libs/box2d 2.0.1 2.1.2: Box2D is an open source physics engine written primarily for games.
+dev-libs/box2d 2.0.1: Box2D is an open source physics engine written primarily for games.
 dev-libs/d0_blind_id 0.5 9999: Blind-ID library for user identification using RSA blind signatures
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 dev-libs/libbulletml 0.0.6-r1: A Library of Bullet Markup Language
@@ -46,7 +46,6 @@ games-action/zlock 0.20: jumpei isshiki's HelloWorldProject (2006/09/09)
 games-arcade/VVVVVV 2.01: Retro-styled open-world 2D puzzle platformer
 games-arcade/alex4 1.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors guaranteed!
 games-arcade/alienhunter32k 1.0: Transplant remake (Amiga-PD) - multiscrolling arcade shootergame
-games-arcade/aquaria 9999: A 2D scroller set in a massive ocean world
 games-arcade/atomorun2008 1.0: Matthias Thurau's great OpenGL 3D platform-game Atomorun2008
 games-arcade/canabalt 2p: Retro-styled 2D platformer-autorunner
 games-arcade/capsized 06102013: A fast paced 2d platformer, focused on intense action and exploration.
@@ -62,7 +61,6 @@ games-arcade/gianasreturn 1.001: Unofficial sequel of The Great Giana Sisters
 games-arcade/greenisland 100: multiplatform platform puzzle game
 games-arcade/hurrican 9999: a free and opensource Remake of the famous Turrican
 games-arcade/jamestown 1.0.1.1324610248: A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars.
-games-arcade/mars-game 0.7.5 9999: M.A.R.S. a ridiculous shooter
 games-arcade/maxfighter 1.0: Vertically-scrolling asteroids-style shoot-em-up
 games-arcade/megamario 1.6: Mario remake
 games-arcade/metalslug3 20140609: Famous 2D shooting game
@@ -82,7 +80,6 @@ games-arcade/ultrastardx 9999: A free and open source karaoke game
 games-arcade/waking-mars 1.0.4: 
 games-board/kbang 9999: KBang is an open source implementation of the popular card game Bang!
 games-engines/ags 3.3.5.7: A game/runtime interpreter for the Adventure Game Studio engine
-games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
 games-engines/fifechan 0.1.4 9999: Lightweight cross platform GUI C++ library designed for games
 games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
 games-engines/massacre 9999: A crossplatform despair simulator engine
@@ -90,7 +87,6 @@ games-engines/openxcom 1.0.0 1.0.0_p20150806: An open-source reimplementation of
 games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
 games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 20b: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
-games-fps/dhewm3 9999: A Doom 3 GPL source modification.
 games-fps/doom3-gpl 9999: 3rd installment of the classic iD 3D first-person shooter
 games-fps/redeclipse 1.5.3: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rtcw 9999: Return to Castle Wolfenstein - IORTCW Project
@@ -139,7 +135,6 @@ games-rpg/zelda3t 1.9: The Legend of Zelda - Time to Triumph
 games-rpg/zeldaolb 3.6: The Legend of Zelda - Onilink Begins
 games-rpg/zeldaroth 6.11: The Legend of Zelda - Return of the Hylian
 games-simulation/babylon5-ifh-dao 1.15: Danger and Opportunity - a prequel for Babylon 5: I've Found Her
-games-simulation/fgrun 3.5.0_p20150118 9999: A graphical frontend for the FlightGear Flight Simulator
 games-simulation/fgx 9999: Launcher for FlightGear Flight Simulator, based on Qt
 games-simulation/flightgear 9999: Open Source Flight Simulator
 games-simulation/flightgear-data 9999: FlightGear data files
@@ -164,7 +159,6 @@ games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-on
 games-strategy/wyrmsun 2.7.1: Strategy game based on history, mythology and fiction
 games-util/desurium 0.8.0_rc9 0.8.0_rc9-r1 0.8.0_rc10-r1 0.8.0_rc10-r2 9999: Free software version of Desura game client
 games-util/desurium-meta 0 1: Desurium game client and dependencies (meta)
-games-util/fgcom 9999: A VoIP client for FlightGear
 games-util/fteqcc-xonotic 9999: QC compiler for Xonotic
 games-util/gmqcc 0.2.9 9999: An Improved Quake C Compiler
 games-util/grfcodec 9999: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
@@ -178,11 +172,8 @@ games-util/taxidraw 9999: a taxiway editor for FlightGear and X-Plane
 games-util/terragear 9999: Terrain editing programs for FlightGear
 media-libs/desurium-cef 4 5 5-r1 9999: highly patched CEF by desurium.
 media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
-media-libs/libmmd 0.7.4.3: a renderlib for mikumiku dance pmd model and vmd motion files
-media-libs/libp3t 0.9.0: A library to extract ps3 xmb p3t themes
 media-libs/mysdl 1.0: a gaming framework and library
 media-libs/nite 1.4.1.2: primesense nite kinect drivers
 media-sound/oaml 1.1: Open Adaptive Music Library
 x11-apps/briareos 0.7 0.8: A slim and transparent programlauncher - perfect for a hotkey.
 x11-apps/dunan 0.5.1 0.6: animated 3D MMD models on the desktop
-x11-apps/typhon 9999: A slim and themeable opengl dashboard / program launcher
