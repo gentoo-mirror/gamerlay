@@ -23,6 +23,9 @@ RDEPEND="
 	librocket? ( dev-libs/libRocket )
 	cegui? ( dev-games/cegui )
 	fifechan? ( games-engines/fifechan )
+	dev-libs/tinyxml
+	media-libs/libpng
+	media-libs/mesa
 	>=dev-libs/boost-1.33.1
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
