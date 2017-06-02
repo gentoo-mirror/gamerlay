@@ -4,7 +4,7 @@ dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
 dev-games/mcedit 0.1.8_p665: MCEdit, Minecraft World Editor
 dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-games/simgear 9999: Development library for simulation games
-dev-libs/box2d 2.0.1: Box2D is an open source physics engine written primarily for games.
+dev-libs/box2d 2.3.1: Box2D is an open source physics engine written primarily for games.
 dev-libs/d0_blind_id 0.5 9999: Blind-ID library for user identification using RSA blind signatures
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 dev-libs/libbulletml 0.0.6-r1: A Library of Bullet Markup Language
@@ -62,6 +62,7 @@ games-arcade/gianasreturn 1.001: Unofficial sequel of The Great Giana Sisters
 games-arcade/greenisland 100: multiplatform platform puzzle game
 games-arcade/hurrican 9999: a free and opensource Remake of the famous Turrican
 games-arcade/jamestown 1.0.1.1324610248: A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars.
+games-arcade/mars-game 0.7.5 9999: M.A.R.S. a ridiculous shooter
 games-arcade/maxfighter 1.0: Vertically-scrolling asteroids-style shoot-em-up
 games-arcade/megamario 1.6: Mario remake
 games-arcade/metalslug3 20140609: Famous 2D shooting game
