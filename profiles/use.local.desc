@@ -72,8 +72,3 @@ games-util/desurium:gtest - enable runtime checks through gtest
 games-util/desurium:tools - install useful tools e.g. uploader
 games-util/desurium-meta:32bit - add support for 32bit games in desurium
 games-util/desurium-meta:games-deps - RUNTIME USE FLAG install known dependencies of games in desura
-media-libs/libmmd:bullet - enable bullet physics
-media-libs/libmmd:sfml - enable sfml texture loading
-x11-apps/dunan:fmod - Add sound support (fmod)
-x11-apps/typhon:mmd - enable mikumikudance model support
-x11-apps/typhon:p3t - enabled shared libp3t support
