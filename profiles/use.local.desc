@@ -1,0 +1,74 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+dev-db/mariadb-connector-c:mysqlcompat - Enable mysqlclient library symbolic links
+dev-games/aseprite:bundled-libs - Use the upstream provided bundled version of allegro 4.4.2
+dev-games/aseprite:gtk3 - Enable support for the experimental native GTK File Dialog
+dev-games/aseprite:webp - Enable webp image format support
+dev-games/netradiant:darkplaces - Install DarkPlaces pack
+dev-games/netradiant:h2data - Install h2data tool
+dev-games/netradiant:nexuiz - Install Nexuiz pack
+dev-games/netradiant:openarena - Install OpenArena non GPL pack
+dev-games/netradiant:osirion - Install Osirion pack
+dev-games/netradiant:q2map - Install q2map tool
+dev-games/netradiant:q3data - Install q3data tool
+dev-games/netradiant:q3map2 - Install q3map2 tool
+dev-games/netradiant:qdata3 - Install qdata3 tool
+dev-games/netradiant:quake1 - Install Quake non GPL pack
+dev-games/netradiant:quake2 - Install Quake2 non GPL pack
+dev-games/netradiant:quake2world - Install Quake2World pack
+dev-games/netradiant:quake3 - Install Quake3 non GPL pack
+dev-games/netradiant:tremulous - Install Tremulous non GPL pack
+dev-games/netradiant:ufoai - Install UFO: Alien Invasion non GPL pack
+dev-games/netradiant:warsow - Install Warsow pack
+dev-games/netradiant:xonotic - Install Xonotic pack
+dev-games/simgear:headless - Build headless version of simgear (useful for terragear on a server)
+games-action/d1x-rebirth:data - Install data files
+games-action/d1x-rebirth:linguas_de - Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign
+games-action/d1x-rebirth:music - Adds music support
+games-action/d1x-rebirth:opl3-musicpack - Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip
+games-action/d1x-rebirth:sc55-musicpack - Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module
+games-action/d1x-rebirth:textures - Include high resolution (640x480) backgrounds, briefing images and fonts
+games-action/d2x-rebirth:data - Install data files
+games-action/d2x-rebirth:linguas_de - Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign
+games-action/d2x-rebirth:music - Adds music support
+games-action/d2x-rebirth:opl3-musicpack - Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip
+games-action/d2x-rebirth:sc55-musicpack - Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module
+games-arcade/fretsonfire:guitarhero - Enable Guitar Hero song importer
+games-arcade/frogatto:extras - Install additional modules
+games-arcade/myman:internal - Use internal display engine. Instead of ncurses/slang
+games-arcade/openggs:editor - useflag for the optional leveleditor
+games-arcade/smw:editor - useflag for the optional leveleditor
+games-arcade/ultrastardx:projectm - enable visuals
+games-board/kbang:server - Compile and install server compotents
+games-engines/fifechan:allegro - Support for media-libs/allegro
+games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
+games-fps/dhewm3:roe - Adds support for the Resurrection of Evil expansion
+games-fps/xonotic:experimental - Use experimental master git branch instead of div0-stable
+games-fps/xonotic:maps - Download and install maps
+games-fps/xonotic:ode - Enable ODE physics engine support
+games-fps/xonotic:s3tc - Install media-libs/libtxc_dxtn for S3TC texture (de)compression, works with mesa drivers only
+games-fps/xonotic:sdl2 - Use SDL2 instead of SDL-1.2
+games-fps/xonotic:server - Enable compilation of server
+games-fps/xonotic:videocapture - Enable video capture feature
+games-fps/xonotic-data:client - Install files for client. Disabling is experimental.
+games-fps/xonotic-data:convert - Use cached-converter.sh for converting tga to jpeg
+games-fps/xonotic-data:low - Use low preset of cached-converter.sh: compress wav to ogg, lower jpeg quality.
+games-fps/xonotic-data:zip - Compress resources dirs in zip archives.
+games-fps/xonotic-maps:unofficial - Install unofficial maps. May be incomplete, unstable or broken.
+games-fps/zdoom:asm - Enable assembly implementations
+games-simulation/flightgear:fgcom - Build fgcom libs and utilities
+games-simulation/flightgear:fgpanel - Enable the standalone panel utility
+games-simulation/flightgear:jsbsim - Enable the JSBSim flight dynamics model
+games-simulation/flightgear:oldfdm - Enable the UIUC/LaRCsim flight dynamics model
+games-simulation/flightgear:yasim - Enable the YASim flight dynamics model
+games-sports/stuntrally:editor - Build and install maps editor
+games-sports/stuntrally:game - Build and install game client itself
+games-strategy/revenge-of-the-titans:hib - Install game from Humble Indie Bundle package
+games-util/desurium:32bit - add support for 32bit games in desurium
+games-util/desurium:bundled-wxgtk - build own wxGTK+-2.9.3 (recommended)
+games-util/desurium:gtest - enable runtime checks through gtest
+games-util/desurium:tools - install useful tools e.g. uploader
+games-util/desurium-meta:32bit - add support for 32bit games in desurium
+games-util/desurium-meta:games-deps - RUNTIME USE FLAG install known dependencies of games in desura
