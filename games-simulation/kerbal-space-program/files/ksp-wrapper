@@ -1,0 +1,43 @@
+#!/bin/sh
+
+arch="$(uname -m)"
+arch="${arch/i[2-6]/x}"
+PV="__PV__"
+s_dir="/usr/share/kerbal-space-program-${PV}"
+t_dir="${HOME}/.local/share/kerbal-space-program"
+
+
+mkdir -p "${t_dir}"
+cd "${t_dir}";
+
+IPV=$(cat .version 2>/dev/null)
+
+if [[ "${IPV}" != "${PV}" ]]; then
+	cat .content 2>/dev/null | rev | while read t; do
+		if [[ -d "${t}" ]]; then
+			rmdir "${f}" &>/dev/null
+		else
+			rm "${t}" &>/dev/null
+		fi
+	done
+
+	echo -n '' > .content # truncate -s0 ?
+	cd "${s_dir}"
+
+	find * | while read t; do
+		if [[ -d "${t}" ]]; then
+			mkdir -p "${t_dir}/${t}"
+		else
+		# Hardlinks with owner/rights change is not allowed,
+		# and symlinks doesn't work (game engine dereferences
+		# them and still complains on missing write access)
+			cp "${s_dir}/${t}" "${t_dir}/${t}"
+		fi
+		echo "${t}" >> "${t_dir}"/.content
+	done
+	echo "${PV}" > "${t_dir}"/.version
+fi
+
+export LC_NUMERIC="C"
+cd "${t_dir}";
+exec "./KSP.${arch}" "$@"
