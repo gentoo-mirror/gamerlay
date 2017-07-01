@@ -74,7 +74,7 @@ src_unpack() {
 
 	find . -name .DS_Store -delete
 
-	sed -e "s@__PV__@${PF}@" "${FILESDIR}/ksp-wrapper" > "${T}"/ksp-wrapper
+	sed -e "s@__PV__@${PV}@" "${FILESDIR}/ksp-wrapper" > "${T}"/ksp-wrapper
 }
 
 src_install() {
