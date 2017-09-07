@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
+DESCRIPTION=Frontier: Elite 2 with OpenGL support
+EAPI=6
+HOMEPAGE=http://tom.noflag.org.uk/glfrontier.html
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL
+RDEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
+SLOT=0
+SRC_URI=http://tom.noflag.org.uk/glfrontier/frontvm3-20060623.tar.bz2 http://tom.noflag.org.uk/misc/frontvm-audio-20060222.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=b7398b192c79abb85eb994afa9c15157

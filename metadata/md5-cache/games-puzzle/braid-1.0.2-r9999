@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Platform game where you manipulate flow of time
+EAPI=5
+HOMEPAGE=http://braid-game.com
+IUSE=linguas_ru
+KEYWORDS=~amd64 ~x86
+LICENSE=Arphic MIT
+RDEPEND=media-libs/libsdl[joystick,sound,video] x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdmcp x11-libs/libXext virtual/opengl media-gfx/nvidia-cg-toolkit games-misc/games-envd
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=braid-linux-build2.run.bin linguas_ru? ( braid-rus.tar.bz2 )
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	adf17fdc9e28e5120b70bc0de7630985	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a8539e54b4e23325e8c86867fa961b0c
