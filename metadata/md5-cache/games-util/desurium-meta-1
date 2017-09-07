@@ -7,5 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=metapackage
 RDEPEND=games-deps? ( dev-lang/mono[-minimal] gnome-base/libglade media-libs/libogg media-libs/libpng:1.2 media-libs/libsdl[X,joystick,opengl,sound,video] media-libs/libtheora media-libs/libvorbis media-libs/openal media-libs/sdl-gfx media-libs/sdl-image[gif,jpeg,png,tiff] media-libs/sdl-ttf[X] virtual/ffmpeg[X,mp3,sdl,theora,truetype] >=virtual/jre-1.6 amd64? ( 32bit? ( app-emulation/emul-linux-x86-gtklibs app-emulation/emul-linux-x86-gtkmmlibs app-emulation/emul-linux-x86-medialibs app-emulation/emul-linux-x86-opengl app-emulation/emul-linux-x86-sdl app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-xlibs[opengl] ) ) ) games-util/desurium[32bit?] media-libs/desurium-cef
 SLOT=0
-_eclass_exported_funcs=-
 _md5_=0d1ba9d61faa8dc2737c1324398123a6
