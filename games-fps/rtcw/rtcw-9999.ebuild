@@ -55,7 +55,6 @@ RDEPEND="client? ( media-libs/libsdl2
 	#voip? ( media-libs/speex )"
 
 dir=${GAMES_PREFIX_OPT}/${PN}
-ARCHITECTURE=$(uname -m)
 
 use_switch() {
 	local flag="${1}" cfg_option="${2}" cfg_val=0
@@ -127,6 +126,8 @@ src_prepare(){
 
 	use curl && echo "USE_CURL_DLOPEN=0" >> ${makefile}
 	use openal && echo "USE_OPENAL_DLOPEN=0" >> ${makefile}
+
+	export ARCHITECTURE=$(uname -m)
 }
 
 src_compile() {
