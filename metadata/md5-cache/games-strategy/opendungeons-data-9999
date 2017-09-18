@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=http://opendungeons.sourceforge.net
 LICENSE=GPL-3 CC-BY-SA-3.0
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=d94f8e09158b952eb379865d624204bd
