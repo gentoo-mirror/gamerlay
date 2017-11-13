@@ -8,15 +8,15 @@ inherit eutils
 DESCRIPTION="A combination of platformer and role playing game"
 HOMEPAGE="http://www.unepicgame.com/"
 
-GOG_MAGIC="2.13.0.16"
+GOG_MAGIC="1_3_1_15547"
 
-SRC_PH="gog_${PN//-/_}@PH@_${GOG_MAGIC}.sh"
+SRC_PH="${PN//-/_}@PH@_${GOG_MAGIC}.sh"
 SRC_URI="
-	l10n_en? ( ${SRC_PH//@PH@} )
-	l10n_es? ( ${SRC_PH//@PH@/_spanish} )
-	l10n_ja? ( ${SRC_PH//@PH@/_japanese} )
-	l10n_ru? ( ${SRC_PH//@PH@/_russian} )
-	l10n_zh-CN? ( ${SRC_PH//@PH@/_chinese} )
+	l10n_en? ( ${SRC_PH//@PH@/_en} )
+	l10n_es? ( ${SRC_PH//@PH@/_es} )
+	l10n_ja? ( ${SRC_PH//@PH@/_ja} )
+	l10n_ru? ( ${SRC_PH//@PH@/_ru} )
+	l10n_zh-CN? ( ${SRC_PH//@PH@/_zh} )
 "
 
 RESTRICT="fetch strip"
