@@ -5,8 +5,8 @@ EAPI=6
 
 inherit eutils
 
-DESCRIPTION="A combination of platformer and role playing game"
-HOMEPAGE="http://www.unepicgame.com/"
+DESCRIPTION="A space flight simulation"
+HOMEPAGE="http://kerbalspaceprogram.com/"
 
 GOG_MAGIC="1_3_1_15547"
 
