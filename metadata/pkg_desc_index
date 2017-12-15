@@ -85,7 +85,7 @@ games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
 games-engines/fifechan 0.1.4 9999: Lightweight cross platform GUI C++ library designed for games
 games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
 games-engines/massacre 9999: A crossplatform despair simulator engine
-games-engines/openxcom 1.0.0 1.0.0_p20150806: An open-source reimplementation of the popular UFO: Enemy Unknown
+games-engines/openxcom 1.0.0_p20171215: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
 games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 20b: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
