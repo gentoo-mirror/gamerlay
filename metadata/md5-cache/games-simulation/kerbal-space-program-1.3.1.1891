@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( l10n_en l10n_es l10n_ja l10n_ru l10n_zh-CN )
 RESTRICT=fetch strip
 SLOT=0
 SRC_URI=l10n_en? ( kerbal_space_program_en_1_3_1_15547.sh ) l10n_es? ( kerbal_space_program_es_1_3_1_15547.sh ) l10n_ja? ( kerbal_space_program_ja_1_3_1_15547.sh ) l10n_ru? ( kerbal_space_program_ru_1_3_1_15547.sh ) l10n_zh-CN? ( kerbal_space_program_zh_1_3_1_15547.sh )
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=b7d2ac9b2c9b3b8001c5148421e10381
