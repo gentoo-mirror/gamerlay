@@ -5,7 +5,7 @@ EAPI=6
 HOMEPAGE=http://www.moddb.com/mods/brutal-doom/
 KEYWORDS=~amd64 ~x86
 LICENSE=HPND
-RDEPEND=>=games-fps/zdoom-2.7.0
+RDEPEND=|| ( >=games-fps/zdoom-2.7.0 >=games-fps/gzdoom-3.0.0 )
 SLOT=0
-SRC_URI=http://www.moddb.com/downloads/mirror/95667/102/0a5526fb58bc1f38fee7e14f586ddd7b -> brutal20b.zip
-_md5_=b2696481e3607387853f1c495b22a9bb
+SRC_URI=http://www.moddb.com/downloads/mirror/122563/102/d740616df58ec6ef1495c9b094f06b13 -> BrutalDoomv20b_R3.zip
+_md5_=ae8e0787dcb427156f5640c5a0fef643
