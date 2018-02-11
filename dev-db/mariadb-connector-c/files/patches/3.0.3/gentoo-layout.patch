@@ -1,0 +1,55 @@
+diff --git a/cmake/install.cmake b/cmake/install.cmake
+--- a/cmake/install.cmake	2015-01-29 13:21:48.000000000 -0500
++++ b/cmake/install.cmake	2015-03-18 14:43:14.682768210 -0400
+@@ -31,12 +31,12 @@
+ ENDIF()
+ 
+ SET(INSTALL_LAYOUT ${INSTALL_LAYOUT} CACHE
+-  STRING "Installation layout. Currently supported options are DEFAULT (tar.gz and zip), RPM and DEB")
++  STRING "Installation layout. Currently supported options are DEFAULT (tar.gz and zip), GENTOO, DEB, and RPM")
+ 
+ # On Windows we only provide zip and .msi. Latter one uses a different packager. 
+ IF(UNIX)
+   IF(INSTALL_LAYOUT MATCHES "RPM")
+     SET(libmariadb_prefix "/usr")
+-  ELSEIF(INSTALL_LAYOUT MATCHES "DEFAULT|DEB")
++  ELSEIF(INSTALL_LAYOUT MATCHES "DEFAULT|DEB|GENTOO")
+     SET(libmariadb_prefix ${CMAKE_INSTALL_PREFIX})
+   ENDIF()
+ ENDIF()
+@@ -47,7 +47,7 @@
+ ENDIF()
+ 
+ # check if the specified installation layout is valid
+-SET(VALID_INSTALL_LAYOUTS "DEFAULT" "RPM" "DEB")
++SET(VALID_INSTALL_LAYOUTS "DEFAULT" "RPM" "DEB" "GENTOO")
+ LIST(FIND VALID_INSTALL_LAYOUTS "${INSTALL_LAYOUT}" layout_no)
+ IF(layout_no EQUAL -1)
+   MESSAGE(FATAL_ERROR "Invalid installation layout ${INSTALL_LAYOUT}. Please specify one of the following layouts: ${VALID_INSTALL_LAYOUTS}")
+@@ -71,6 +71,16 @@
+ SET(INSTALL_PLUGINDIR_DEFAULT "lib/mariadb/plugin")
+ SET(LIBMARIADB_STATIC_DEFAULT "mariadbclient")
+ #
++# Gentoo layout
++#
++SET(SUFFIX_INSTALL_DIR_GENTOO "")
++SET(BIN_INSTALL_DIR_GENTOO "bin")
++SET(LIB_INSTALL_DIR_GENTOO "lib")
++SET(INCLUDE_INSTALL_DIR_GENTOO "include/mariadb")
++SET(DOCS_INSTALL_DIR_GENTOO "share/docs")
++SET(PLUGIN_INSTALL_DIR_GENTOO "lib/mariadb/plugin")
++SET(LIBMARIADB_STATIC_GENTOO "mariadbclient")
++#
+ # RPM layout
+ #
+ SET(INSTALL_BINDIR_RPM "bin")
+@@ -121,9 +131,6 @@
+   SET(INSTALL_PREFIXDIR_${INSTALL_LAYOUT} ${INSTALL_PREFIXDIR})
+ ENDIF()
+ 
+-IF(DEFINED INSTALL_SUFFIXDIR)
+-  SET(INSTALL_SUFFIXDIR_${INSTALL_LAYOUT} ${INSTALL_SUFFIXDIR})
+-ENDIF()
+ 
+ FOREACH(dir "BIN" "LIB" "INCLUDE" "DOCS" "PLUGIN")
+   SET(INSTALL_${dir}DIR ${INSTALL_${dir}DIR_${INSTALL_LAYOUT}})
