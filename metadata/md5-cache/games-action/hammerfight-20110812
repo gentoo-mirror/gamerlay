@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=2D battles of flying machines equipped with various slashing, piercing and blunt weaponry
 EAPI=3

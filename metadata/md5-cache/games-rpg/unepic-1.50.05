@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst setup unpack
+DEFINED_PHASES=install nofetch postinst setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=A combination of platformer and role playing game
 EAPI=6

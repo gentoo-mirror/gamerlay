@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Legendary Worms™ Game. SinglePlayer-only.
 EAPI=5
 HOMEPAGE=http://www.team17.com/games/worms/worms-reloaded/

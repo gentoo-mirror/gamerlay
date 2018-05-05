@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DEPEND=media-libs/alsa-lib media-libs/freeglut media-libs/libogg media-libs/libvorbis virtual/opengl x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXxf86vm
 DESCRIPTION=Defend and control the field using a diverse selection of upgradeable towers.
 EAPI=5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Enjoy a funky 70s-style soundtrack while keeping the airport safe from hammers, scissors, and other illegal goods.
 EAPI=5
 HOMEPAGE=http://www.11bitstudios.com/games/9/funky-smugglers

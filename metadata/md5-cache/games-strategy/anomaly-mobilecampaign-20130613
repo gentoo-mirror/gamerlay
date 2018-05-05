@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=An extraordinary mixture of action and strategy in a reversed tower defense formula.
 EAPI=5
 HOMEPAGE=http://www.anomalythegame.com/

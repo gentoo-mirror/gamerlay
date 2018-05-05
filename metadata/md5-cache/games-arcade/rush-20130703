@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=A simple puzzler that’ll have you mesmerized with a synchronized swarm of brightly colored blocks.
 EAPI=5
 HOMEPAGE=http://twotribes.com/message/rush/

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Help a baby chicken save all the eggs.
 EAPI=5
 HOMEPAGE=http://www.tokitori.com/

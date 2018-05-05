@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Guide a hero safely through various traps, clear obstructions from his path, and shift his surroundings to create a safe passage to the cozy bed.
 EAPI=5
 HOMEPAGE=http://www.11bitstudios.com/games/12/sleepwalker-s-journey

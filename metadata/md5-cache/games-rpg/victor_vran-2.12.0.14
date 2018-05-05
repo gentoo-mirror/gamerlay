@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install nofetch unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=An isometric Action-RPG with a massive selection of items, powers and so on
 EAPI=6

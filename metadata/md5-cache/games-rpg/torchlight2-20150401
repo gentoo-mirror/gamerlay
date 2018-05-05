@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install nofetch unpack
 DEPEND=
 DESCRIPTION=An action role-playing game, made by the creators of Diablo
 EAPI=6

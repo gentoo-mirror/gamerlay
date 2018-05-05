@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Develop your telekinetic strength by pushing a Cube within a geometric universe.
 EAPI=5
 HOMEPAGE=http://mobigame.net/

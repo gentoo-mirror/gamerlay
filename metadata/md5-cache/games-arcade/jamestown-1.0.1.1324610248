@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars.
 EAPI=3
 HOMEPAGE=http://www.finalformgames.com/jamestown/

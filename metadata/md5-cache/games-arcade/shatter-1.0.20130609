@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install test unpack
+DEFINED_PHASES=compile configure install nofetch test unpack
 DESCRIPTION=Retro-inspired brick-breaking game
 EAPI=6
 HOMEPAGE=http://www.shattergame.com

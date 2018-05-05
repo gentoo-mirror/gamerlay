@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DEPEND=app-arch/bzip2 app-arch/xz-utils media-libs/freeimage media-libs/freetype:2 media-libs/ilmbase virtual/jpeg media-libs/lcms media-libs/libogg media-libs/libpng media-libs/libraw media-libs/libvorbis virtual/opengl media-libs/openal media-libs/openexr media-libs/openjpeg media-libs/tiff sys-libs/zlib x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXxf86vm video_cards_intel? ( media-libs/libtxc_dxtn ) video_cards_nouveau? ( media-libs/libtxc_dxtn ) video_cards_radeon? ( media-libs/libtxc_dxtn ) video_cards_nvidia? ( x11-drivers/nvidia-drivers )
 DESCRIPTION=3d action-adventure game. Spiritual successor to Lugaru.
 EAPI=5
