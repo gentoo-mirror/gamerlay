@@ -6,7 +6,7 @@
  
 +	find_package(PkgConfig)
 +	pkg_check_modules(GLIB glib-2.0)
-+   include_directories(${GLIB_INCLUDE_DIRS})
++	include_directories(${GLIB_INCLUDE_DIRS})
  # set the executable output path
  if(APPLE)
  	set(EXECUTABLE_OUTPUT_PATH ${MARS_BINARY_DIR})
