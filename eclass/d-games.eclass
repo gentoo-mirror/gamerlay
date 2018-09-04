@@ -11,27 +11,20 @@
 # in D programming language.
 
 # base added for PATCHES=( ${FILESDIR}/patch ) support
-inherit eutils base games
-
 # @ECLASS-VARIABLE: EAPI
 # @DESCRIPTION:
 # By default we want EAPI 2 which might be redefinable to newer versions later.
 case ${EAPI:-0} in
-	2) : ;;
-	*) DEPEND="EAPI-TOO-OLD" ;;
+	[2-7]) : ;;
+	*) die "d-games.eclass doesn't support your EAPI" ;;
 esac
 
 EXPORT_FUNCTIONS src_prepare
 
 d-games_src_prepare() {
 	# not eapi-handled due to danger of change for sys package in future.
-	if ! built_with_use sys-devel/gcc d; then
-		ewarn "sys-devel/gcc must be built with d useflag"
-		die "recompile gcc with USE=\"d\""
+	if ! has_version sys-devel/gcc[d]; then
+		ewarn "sys-devel/gcc must be built with d useflag (although, some new versions have no this flag anymore)"
+		die "recompile gcc with USE=\"d\" (or install the version that have this flag at all, and select this version to be used for this package"
 	fi
-
-	# TODO: add check for correct gcc version selected in profile.
-
-	base_src_prepare
-	games_src_prepare
 }

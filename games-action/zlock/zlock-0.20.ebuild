@@ -47,7 +47,7 @@ src_prepare(){
 }
 
 src_install() {
-	dogamesbin ${PN} || die "dogamesbin failed"
+	dobin ${PN} || die "dobin failed"
 
 	local datadir="${GAMES_DATADIR}"/${PN}
 
@@ -56,9 +56,4 @@ src_install() {
 	doins -r *.xml *.bmp *.ogg *.wav || die
 	make_desktop_entry ${PN} ${PN}
 	dodoc readme*
-	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
 }

@@ -4,8 +4,6 @@
 
 EAPI=5
 
-inherit games
-
 DESCRIPTION="A voxelicious action adventure"
 HOMEPAGE="http://www.lexaloffle.com/voxatron.php"
 SRC_URI="${PN}_${PV}_i386.tar.gz"
@@ -17,9 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}
-	x86? ( media-libs/libsdl[opengl] )
-	amd64? ( app-emulation/emul-linux-x86-sdl )"
+RDEPEND="
+	${DEPEND}
+	media-libs/libsdl[abi_x86_32,opengl]
+"
 
 pkg_nofetch() {
 	ewarn
@@ -37,7 +36,6 @@ src_install() {
 	doexe vox
 	newicon lexaloffle-vox.png ${PN}.png
 	make_desktop_entry ${PN} Voxatron ${PN}
-	games_make_wrapper ${PN} ./vox ${dir} ${dir}
+	make_wrapper ${PN} ./vox ${dir} ${dir}
 	dodoc ${PN}.txt
-	prepgamesdirs
 }
