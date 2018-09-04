@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile install postinst prepare unpack
 DEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer
 DESCRIPTION=Matthias Thurau's great OpenGL 3D platform-game Atomorun2008
 EAPI=2
 HOMEPAGE=http://atomorun2008.whosme.de/
 KEYWORDS=~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer games-misc/games-envd
+RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer
 SLOT=0
 SRC_URI=http://atomorun2008.whosme.de/atomorun2008-1.0.tar.bz2
-_eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	d-games	1c750264f84b7d760cf868e355c685ef	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	games	be6b136152d095d3e15031e2c725eb3f	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=d-games	b424c488941f0c39161a02d1a12607aa
 _md5_=6af8aa89c79e1f00361ade2bd0427c85

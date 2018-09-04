@@ -1,12 +1,12 @@
 DEFINED_PHASES=install postinst prepare
 DEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbulletml
-DESCRIPTION=jumpei isshiki's HelloWorldProject (2006/09/09)
+DESCRIPTION=Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
 EAPI=2
-HOMEPAGE=http://homepage2.nifty.com/isshiki/prog_win_d.html
+HOMEPAGE=http://www.asahi-net.or.jp/~cs8k-cyu/
 KEYWORDS=~ppc ~x86
 LICENSE=BSD
 RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbulletml
 SLOT=0
-SRC_URI=http://isshiki.la.coocan.jp/game/RefLectBall.zip
+SRC_URI=http://www.asahi-net.or.jp/~cs8k-cyu/windows/vr0_1a.zip mirror://debian/pool/main/v/val-and-rick/val-and-rick_0.1a.dfsg1-2.diff.gz
 _eclasses_=d-games	b424c488941f0c39161a02d1a12607aa
-_md5_=9b1a287c6fa047dda6c96f03ef59fbc7
+_md5_=7800e9bb98b09fbbe6712aaa4ea7a010

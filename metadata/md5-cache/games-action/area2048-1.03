@@ -1,12 +1,12 @@
-DEFINED_PHASES=install postinst prepare
+DEFINED_PHASES=install postinst prepare unpack
 DEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbulletml
-DESCRIPTION=jumpei isshiki's HelloWorldProject (2006/09/09)
+DESCRIPTION=jumpei isshiki's HelloWorldProject (2005/01/17)
 EAPI=2
 HOMEPAGE=http://homepage2.nifty.com/isshiki/prog_win_d.html
 KEYWORDS=~ppc ~x86
 LICENSE=BSD
 RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbulletml
 SLOT=0
-SRC_URI=http://isshiki.la.coocan.jp/game/RefLectBall.zip
+SRC_URI=http://homepage2.nifty.com/isshiki/a2k.zip http://homepage2.nifty.com/isshiki/a2k_src.zip
 _eclasses_=d-games	b424c488941f0c39161a02d1a12607aa
-_md5_=9b1a287c6fa047dda6c96f03ef59fbc7
+_md5_=ca0291f921c1f481dbaa7fec22c3d1c0
