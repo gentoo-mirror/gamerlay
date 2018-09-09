@@ -8,13 +8,17 @@ inherit eutils
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="1_3_1_15547"
+GOG_MAGIC="22594"
 
-SRC_PH="${PN//-/_}@PH@_${GOG_MAGIC}.sh"
+SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
 SRC_URI="
+	l10n_de? ( ${SRC_PH//@PH@/_de} )
 	l10n_en? ( ${SRC_PH//@PH@/_en} )
 	l10n_es? ( ${SRC_PH//@PH@/_es} )
+	l10n_fr? ( ${SRC_PH//@PH@/_fr} )
+	l10n_it? ( ${SRC_PH//@PH@/_it} )
 	l10n_ja? ( ${SRC_PH//@PH@/_ja} )
+	l10n_pt-BR? ( ${SRC_PH//@PH@/_pt} )
 	l10n_ru? ( ${SRC_PH//@PH@/_ru} )
 	l10n_zh-CN? ( ${SRC_PH//@PH@/_zh} )
 "
@@ -25,7 +29,7 @@ LICENSE="EULA"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-L10NS="l10n_en l10n_es l10n_ja l10n_ru l10n_zh-CN"
+L10NS="l10n_de l10n_en l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
 IUSE="${L10NS}"
 REQUIRED_USE="^^ ( ${L10NS} )"
 
@@ -65,10 +69,14 @@ src_unpack() {
 
 	cd "${S}"
 
-	use l10n_es && unzip -oq KSP-LANG-ES-ES.zip && rm KSP-LANG-ES-ES.zip
-	use l10n_ja && unzip -oq KSP-LANG-JA.zip && rm KSP-LANG-JA.zip
-	use l10n_ru && unzip -oq KSP-LANG-RU.zip && rm KSP-LANG-RU.zip
-	use l10n_zh-CN && unzip -oq KSP-LANG-ZH-CN.zip && rm KSP-LANG-ZH-CN.zip
+	use l10n_de && unzip -oq ksp-lang-de-de.zip && rm ksp-lang-de-de.zip
+	use l10n_es && unzip -oq ksp-lang-es-es.zip && rm ksp-lang-es-es.zip
+	use l10n_fr && unzip -oq ksp-lang-fr-fr.zip && rm ksp-lang-fr-fr.zip
+	use l10n_it && unzip -oq ksp-lang-it-it.zip && rm ksp-lang-it-it.zip
+	use l10n_ja && unzip -oq ksp-lang-ja.zip && rm ksp-lang-ja.zip
+	use l10n_pt-BR && unzip -oq ksp-lang-pt-br.zip && rm ksp-lang-pt-br.zip
+	use l10n_ru && unzip -oq ksp-lang-ru.zip && rm ksp-lang-ru.zip
+	use l10n_zh-CN && unzip -oq ksp-lang-zh-cn.zip && rm ksp-lang-zh-cn.zip
 
 	rm -r "${WORKDIR}/tmp"
 
