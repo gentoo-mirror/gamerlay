@@ -7,5 +7,5 @@ IUSE=unofficial
 LICENSE=GPL-2
 RESTRICT=test
 SLOT=0
-_eclasses_=check-reqs	21aa24510a44d259c03425a957336b3b
+_eclasses_=check-reqs	2c6f909675083dce8430b648bf737cb0
 _md5_=e776c86138cf03368f939cc4f6c8cc45
