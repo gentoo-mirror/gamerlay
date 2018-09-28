@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=http://graphitemaster.github.com/gmqcc/
 LICENSE=MIT
 SLOT=0
-_eclasses_=git-2	249c1a0962573f4ce2c28f0d5b6b35d4	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=git-2	249c1a0962573f4ce2c28f0d5b6b35d4	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=1ad046b4ff1e6a6aaf68c421e5880946
