@@ -1,12 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 inherit games
 
 MY_P=${P/-/}
 
-DESCRIPTION="An action/RPG sidescoller, focused not just on fighting, but on story and character development."
+DESCRIPTION="An action/RPG sidescoller, focused on story and character development."
 HOMEPAGE="http://jordan.trudgett.com/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 

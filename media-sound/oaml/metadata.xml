@@ -3,14 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tomboy64@sina.cn</email>
-		 <name>tomboy64</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>games@gentoo.org</email>
-		<name>Gentoo Games</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>tomboy64</name>
 	</maintainer>
 </pkgmetadata>

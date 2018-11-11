@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="4"
+EAPI=4
 
 EGIT_NOUNPACK="true"
 ESVN_DISABLE_DEPENDENCIES="true"

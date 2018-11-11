@@ -4,8 +4,8 @@
 <use>
     <flag name="headless">Build headless version of simgear (useful for terragear on a server)</flag>
 </use>
-<maintainer>
-<email>chris@ilovelinux.de</email>
-<name>Christian Schmitt</name>
+<maintainer type="person">
+	<email>chris@ilovelinux.de</email>
+	<name>Christian Schmitt</name>
 </maintainer>
 </pkgmetadata>

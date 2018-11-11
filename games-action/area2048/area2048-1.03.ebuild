@@ -1,8 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="2"
+EAPI=2
 
 inherit d-games
 
@@ -10,9 +9,8 @@ MY_PN=a2k
 MY_PV=${PV//./_}
 
 DESCRIPTION="jumpei isshiki's HelloWorldProject (2005/01/17) "
-HOMEPAGE="http://homepage2.nifty.com/isshiki/prog_win_d.html"
-SRC_URI="http://homepage2.nifty.com/isshiki/${MY_PN}.zip
-	http://homepage2.nifty.com/isshiki/${MY_PN}_src.zip"
+HOMEPAGE="https://sourceforge.net/projects/area2048/"
+SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-linux.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

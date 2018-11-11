@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit flag-o-matic
 
-DESCRIPTION="Program which translates gamepad/joystick input into key strokes/mouse actions in X"
+DESCRIPTION="Tool which translates gamepad/joystick input into key strokes/mouse actions in X"
 HOMEPAGE="http://rejoystick.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -21,7 +21,7 @@ RDEPEND="
 	x11-libs/libX11
 	media-libs/libsdl[joystick]"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 src_prepare() {
 	# dirty hack

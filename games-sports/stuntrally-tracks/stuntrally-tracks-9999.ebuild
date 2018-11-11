@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=5
 
 inherit games cmake-utils git-2
 
@@ -10,7 +9,7 @@ DESCRIPTION="A set of tracks for ${CATEGORY}/${P//-tracks}"
 HOMEPAGE="http://code.google.com/p/vdrift-ogre/"
 
 SLOT="0"
-LICENSE="GPL3"
+LICENSE="GPL-3"
 IUSE=""
 
 SRC_URI=""
@@ -20,7 +19,7 @@ EGIT_PROJECT="${PN}"
 # Shallowing, since we don't want to fetch few GB of history
 #EGIT_OPTIONS="--depth 1"
 
-RDEPEND="=${CATEGORY}/${P//-tracks}"
+RDEPEND="~${CATEGORY}/${P//-tracks}"
 DEPEND="${RDEPEND}"
 
 src_configure() {

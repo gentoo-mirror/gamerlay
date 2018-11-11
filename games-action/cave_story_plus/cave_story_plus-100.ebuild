@@ -1,16 +1,15 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=5
 
 inherit games
 
 DESCRIPTION="2D action-adventure game with semil-linear storyline"
-HOMEPAGE="http://www.nicalis.com/games.php?game=cavestory"
+HOMEPAGE="https://www.nicalis.com/games/cavestory+"
 
 SLOT="0"
-LICENSE="as-is"
+LICENSE="HPND"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch strip"
 IUSE=""
@@ -44,14 +43,14 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	x86? ( x11-libs/libXi )
 	amd64? (
-	        media-libs/aalib
-	        net-libs/libasyncns
-	        sys-apps/attr
-	        sys-apps/dbus
-	        sys-apps/tcp-wrappers
-	        sys-libs/gpm
-	        sys-libs/libcap
-	        sys-libs/ncurses
+		media-libs/aalib
+		net-libs/libasyncns
+		sys-apps/attr
+		sys-apps/dbus
+		sys-apps/tcp-wrappers
+		sys-libs/gpm
+		sys-libs/libcap
+		sys-libs/ncurses:0
 	)
 "
 DEPEND="${RDEPEND}"
@@ -60,9 +59,9 @@ MY_PN="CaveStory+"
 S="${WORKDIR}/${MY_PN/+/Plus}"
 
 pkg_nofetch() {
-        ewarn
-        ewarn "Place ${A} to ${DISTDIR}"
-        ewarn
+	ewarn
+	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn
 }
 
 src_install() {

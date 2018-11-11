@@ -1,6 +1,6 @@
-diff -Naur Zelda3T_US-src-linux/src/Joueur.cpp Zelda3T_US-src-linux/src/Joueur.cpp
---- Zelda3T_US-src-linux/src/Joueur.cpp	2010-01-16 17:58:24.000000000 +0100
-+++ Zelda3T_US-src-linux/src/Joueur.cpp	2010-10-10 11:31:13.000000000 +0200
+diff -Naur a/Joueur.cpp b/Joueur.cpp
+--- a/Joueur.cpp	2010-01-16 17:58:24.000000000 +0100
++++ b/Joueur.cpp	2010-10-10 11:31:13.000000000 +0200
 @@ -18,6 +18,7 @@
  #include "Projectile.h"
  #include "Jeu.h"
@@ -60,9 +60,9 @@ diff -Naur Zelda3T_US-src-linux/src/Joueur.cpp Zelda3T_US-src-linux/src/Joueur.c
      if(!f.is_open()) return;
      f.read((char *)&temps,sizeof(int));
      f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
-diff -Naur Zelda3T_US-src-linux/src/Keyboard.cpp Zelda3T_US-src-linux/src/Keyboard.cpp
---- Zelda3T_US-src-linux/src/Keyboard.cpp	2009-08-14 08:10:58.000000000 +0200
-+++ Zelda3T_US-src-linux/src/Keyboard.cpp	2010-10-10 11:28:51.000000000 +0200
+diff -Naur a/Keyboard.cpp b/Keyboard.cpp
+--- a/Keyboard.cpp	2009-08-14 08:10:58.000000000 +0200
++++ b/Keyboard.cpp	2010-10-10 11:28:51.000000000 +0200
 @@ -13,6 +13,7 @@
  #include <SDL/SDL.h>
  

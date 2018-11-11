@@ -1,8 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=5
 AUTOTOOLS_AUTORECONF=1
 EGIT_REPO_URI="git://git.xonotic.org/xonotic/d0_blind_id.git"
 
@@ -20,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-RDEPEND="dev-libs/gmp"
+RDEPEND="dev-libs/gmp:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

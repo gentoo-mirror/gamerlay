@@ -1,14 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="6"
+EAPI=6
 
 [[ ${PV} = 9999* ]] && GIT="git-r3"
 
 inherit cmake-utils ${GIT}
 
-DESCRIPTION="Rally game focused on closed rally tracks with possible stunt elements (jumps, loops, pipes)."
+DESCRIPTION="Rally game focused on closed rally tracks with possible stunt elements."
 HOMEPAGE="http://stuntrally.tuxfamily.org/"
 
 SLOT="0"
@@ -55,7 +54,6 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 }
-
 
 src_install() {
 	cmake-utils_src_install

@@ -2,11 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>azamat.hackimov@gmail.com</email>
-<name>Azamat H. Hackimov</name>
+<email>git@mva.name</email>
+<name>Vadim A. Misbakh-Soloviov</name>
 </maintainer>
+<use>
+<flag name="c++11">
+Add support for C++11
+</flag>
+</use>
 <longdescription lang="en">
-A game/runtime interpreter for the Adventure Game Studio engine.
+A Fuzzy Logic Control Library in C++
 </longdescription>
 </pkgmetadata>
-

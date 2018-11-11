@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
@@ -12,30 +11,20 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="no-c++11 static-libs"
-
-DEPEND=""
-RDEPEND="
-	${DEPEND}
-"
+KEYWORDS="~amd64 ~x86"
+IUSE="+c++11 static-libs"
 
 S="${WORKDIR}/${P}/${PN}"
 
 src_configure() {
-    local mycmakeargs=(
-		$(cmake-utils_use static-libs FL_BUILD_STATIC)
+	local mycmakeargs=(
+		-DFL_BUILD_STATIC=$(usex static-libs)
 		-DFL_USE_FLOAT=ON
 		-DFL_BACKTRACE=ON
-		$(cmake-utils_useno no-c++11 FL_CPP11)
+		-DFL_CPP11=$(usex c++11)
 	)
-
 	cmake-utils_src_configure
 }
-
-#src_install() {
-#    cmake-utils_src_install
-#}
 
 #pkg_postinst() {
 #    games_pkg_postinst

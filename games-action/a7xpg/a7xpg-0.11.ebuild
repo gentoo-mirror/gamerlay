@@ -1,8 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="2"
+EAPI=2
 
 inherit d-games
 
@@ -10,8 +9,8 @@ MY_PV=${PV//./_}
 
 DESCRIPTION="The retro modern high speed shooting game"
 HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/a7xpg_e.html"
-SRC_URI="mirror://www.asahi-net.or.jp/~cs8k-cyu/windows/${PN}${MY_PV}.zip
-	mirror://debian/pool/main/a/${PN}/${PN}_${PV}.dfsg1-4.diff.gz"
+SRC_URI="http://abagames.sakura.ne.jp/windows/${PN}${MY_PV}.zip
+	http://old-releases.ubuntu.com/ubuntu/pool/universe/a/${PN}/${PN}_${PV}.dfsg1-4.diff.gz"
 
 LICENSE="BSD"
 SLOT="0"
