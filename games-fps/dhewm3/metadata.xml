@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>azamat.hackimov@gmail.com</email>
 <name>Azamat H. Hackimov</name>
 </maintainer>
@@ -15,7 +15,4 @@ Compared to the original DOOM 3, the changes of dhewm 3 worth mentioning are:
   * A portable build system based on CMake
   * (Cross-)compilation with mingw-w64
 </longdescription>
-<use>
-    <flag name="roe">Adds support for the Resurrection of Evil expansion</flag>
-</use>
 </pkgmetadata>

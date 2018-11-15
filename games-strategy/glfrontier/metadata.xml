@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
-<maintainer>
-  <email>yamakuzure@gmx.net</email>
-  <description>The creator of this ebuild, but not the official maintainer</description>
+<maintainer type="person">
+<email>yamakuzure@gmx.net</email>
+<description>The creator of this ebuild, but not the official maintainer</description>
 </maintainer>
 <longdescription>
-MISSING
+Frontier: Elite 2 with OpenGL support
 </longdescription>
 <use />
 </pkgmetadata>
