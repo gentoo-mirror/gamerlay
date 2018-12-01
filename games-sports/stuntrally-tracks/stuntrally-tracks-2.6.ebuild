@@ -3,21 +3,19 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="A set of tracks for ${CATEGORY}/${P//-tracks}"
-HOMEPAGE="https://stuntrally.tuxfamily.org/"
+HOMEPAGE="http://stuntrally.tuxfamily.org/"
 
 SLOT="0"
 LICENSE="GPL-3"
 IUSE=""
 
-SRC_URI=""
-KEYWORDS=""
-EGIT_REPO_URI="https://github.com/stuntrally/tracks"
-EGIT_PROJECT="${PN}"
-# Shallowing, since we don't want to fetch few GB of history
-#EGIT_OPTIONS="--depth 1"
+SRC_URI="https://github.com/stuntrally/tracks/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
+
+S="${WORKDIR}/tracks-${PV}"
 
 src_configure() {
 	local mycmakeargs+=(
