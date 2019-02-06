@@ -18,6 +18,10 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/stuntrally/stuntrally"
+#	^ dead
+#	EGIT_REPO_URI="https://github.com/akien-mga/stuntrally"
+#	EGIT_BRANCH="ogre-1.11"
+#	^ TODO (ogre-1.11 is hardmasked for now)
 	LIVE_PDEPEND="~${CATEGORY}/${PN}-tracks-${PV}"
 else
 	KEYWORDS="~amd64 ~x86"
@@ -27,7 +31,7 @@ fi
 DEPEND="
 	game? (
 		dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision]
-		dev-games/mygui[ogre]
+		dev-games/mygui[ogre,plugins]
 		media-libs/libsdl2[haptic]
 		media-libs/libvorbis
 		media-libs/libogg

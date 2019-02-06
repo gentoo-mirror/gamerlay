@@ -27,7 +27,7 @@ fi
 DEPEND="
 	game? (
 		dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision]
-		dev-games/mygui[ogre]
+		dev-games/mygui[ogre,plugins]
 		media-libs/libsdl2[haptic]
 		media-libs/libvorbis
 		media-libs/libogg
