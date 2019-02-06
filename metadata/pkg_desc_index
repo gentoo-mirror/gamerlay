@@ -9,4 +9,5 @@ games-rpg/unepic 1.50.05: A combination of platformer and role playing game
 games-rpg/victor_vran 2.12.0.14: An isometric Action-RPG with a massive selection of items, powers and so on
 games-simulation/kerbal-space-program 1.4.5.02243: A space flight simulation
 games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-only.
+media-libs/freeimage 3.18.0: Image library supporting many formats
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
