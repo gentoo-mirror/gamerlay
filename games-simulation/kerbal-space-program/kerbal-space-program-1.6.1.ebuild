@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,19 +8,11 @@ inherit eutils
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="22594"
+GOG_MAGIC="26533"
 
 SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
 SRC_URI="
-	l10n_de? ( ${SRC_PH//@PH@/_de} )
-	l10n_en? ( ${SRC_PH//@PH@/_en} )
-	l10n_es? ( ${SRC_PH//@PH@/_es} )
-	l10n_fr? ( ${SRC_PH//@PH@/_fr} )
-	l10n_it? ( ${SRC_PH//@PH@/_it} )
-	l10n_ja? ( ${SRC_PH//@PH@/_ja} )
-	l10n_pt-BR? ( ${SRC_PH//@PH@/_pt} )
-	l10n_ru? ( ${SRC_PH//@PH@/_ru} )
-	l10n_zh-CN? ( ${SRC_PH//@PH@/_zh} )
+	l10n_en? ( ${SRC_PH//@PH@/} )
 "
 
 RESTRICT="fetch strip"
@@ -29,7 +21,7 @@ LICENSE="EULA"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-L10NS="l10n_de l10n_en l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
+L10NS="l10n_en " #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
 IUSE="${L10NS}"
 REQUIRED_USE="^^ ( ${L10NS} )"
 
@@ -69,25 +61,24 @@ src_unpack() {
 
 	cd "${S}"
 
-	use l10n_de && unzip -oq ksp-lang-de-de.zip && rm ksp-lang-de-de.zip
-	use l10n_es && unzip -oq ksp-lang-es-es.zip && rm ksp-lang-es-es.zip
-	use l10n_fr && unzip -oq ksp-lang-fr-fr.zip && rm ksp-lang-fr-fr.zip
-	use l10n_it && unzip -oq ksp-lang-it-it.zip && rm ksp-lang-it-it.zip
-	use l10n_ja && unzip -oq ksp-lang-ja.zip && rm ksp-lang-ja.zip
-	use l10n_pt-BR && unzip -oq ksp-lang-pt-br.zip && rm ksp-lang-pt-br.zip
-	use l10n_ru && unzip -oq ksp-lang-ru.zip && rm ksp-lang-ru.zip
-	use l10n_zh-CN && unzip -oq ksp-lang-zh-cn.zip && rm ksp-lang-zh-cn.zip
+	#use l10n_de && unzip -oq ksp-lang-de-de.zip && rm ksp-lang-de-de.zip
+	#use l10n_es && unzip -oq ksp-lang-es-es.zip && rm ksp-lang-es-es.zip
+	#use l10n_fr && unzip -oq ksp-lang-fr-fr.zip && rm ksp-lang-fr-fr.zip
+	#use l10n_it && unzip -oq ksp-lang-it-it.zip && rm ksp-lang-it-it.zip
+	#use l10n_ja && unzip -oq ksp-lang-ja.zip && rm ksp-lang-ja.zip
+	#use l10n_pt-BR && unzip -oq ksp-lang-pt-br.zip && rm ksp-lang-pt-br.zip
+	#use l10n_ru && unzip -oq ksp-lang-ru.zip && rm ksp-lang-ru.zip
+	#use l10n_zh-CN && unzip -oq ksp-lang-zh-cn.zip && rm ksp-lang-zh-cn.zip
 
 	rm -r "${WORKDIR}/tmp"
 
 	find . -name .DS_Store -delete
 
-	sed -e "s@__PV__@${PV}@" "${FILESDIR}/ksp-wrapper" > "${T}"/ksp-wrapper
+	sed -e "s@__PV__@${PV}@" -e "s@__PN__@${PN}@" "${FILESDIR}/ksp-wrapper" > "${T}"/ksp-wrapper
 }
 
 src_install() {
-	local arch="${ARCH//amd/x86_}"
-	local dir="/usr/share/${PF}"
+	local dir="/usr/share/${PN}"
 	insinto "${dir}"
 	exeinto "${dir}"
 

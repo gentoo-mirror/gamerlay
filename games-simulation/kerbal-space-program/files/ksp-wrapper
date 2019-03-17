@@ -3,8 +3,9 @@
 arch="$(uname -m)"
 arch="${arch/i[2-6]/x}"
 PV="__PV__"
-s_dir="/usr/share/kerbal-space-program-${PV}"
-t_dir="${HOME}/.local/share/kerbal-space-program"
+PN="__PN__"
+s_dir="/usr/share/${PN}"
+t_dir="${HOME}/.local/share/${PN}"
 
 
 mkdir -p "${t_dir}"
