@@ -5,4 +5,7 @@
 		<email>tomboy64@sina.cn</email>
 		<name>tomboy64</name>
 	</maintainer>
+	<use>
+		<flag name='soxr'>Enable SOXR support</flag>
+	</use>
 </pkgmetadata>
