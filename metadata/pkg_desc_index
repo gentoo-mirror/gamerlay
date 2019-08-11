@@ -1,3 +1,155 @@
+dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
+dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
+dev-games/simgear 9999: Development library for simulation games
+dev-libs/box2d 2.3.1: Box2D is an open source physics engine written primarily for games.
+dev-libs/d0_blind_id 0.5 9999: Blind-ID library for user identification using RSA blind signatures
+dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 dev-libs/libbulletml 0.0.6-r1: A Library of Bullet Markup Language
+dev-util/adobe-air-sdk-bin 2.6: Adobe AIR SDK
+games-action/a7xpg 0.11: The retro modern high speed shooting game
+games-action/ardentryst 1.71: An action/RPG sidescoller, focused on story and character development.
+games-action/area2048 1.03: jumpei isshiki's HelloWorldProject (2005/01/17)
+games-action/cave_story_plus 100: 2D action-adventure game with semil-linear storyline
+games-action/d2x-xl 1.16.15 1.16.27: Descent 2 engine supporting high-resolution textures
+games-action/deadlysoccerball 0.1: space soccer ball shooting missiles around
+games-action/dex 2.1.0.2: 2D Action-RPG with a rich cyberpunk world
+games-action/exception_conflict 1.09: outstanding shmup using opengl and sdl
+games-action/fieldrunners 1.0.0: Defend and control the field using a diverse selection of upgradeable towers.
+games-action/gradleunison 0.10: jumpei isshiki's HelloWorldProject (2006/09/02)
+games-action/gunroar 0.15: Guns, Guns, Guns! 360-degree gunboat shooter, 'Gunroar'
+games-action/gunroarhi 0.30: Guns, Guns, Guns! 360-degree gunboat shooter, fork of ABAs 'Gunroar'
+games-action/hammerfight 20110812: 2D battles of flying machines equipped with various slashing, piercing and blunt weaponry
+games-action/lugaru 9999: 3D arcade with unique fighting system and anthropomorphic characters
+games-action/overgrowth 1_alpha194: 3d action-adventure game. Spiritual successor to Lugaru.
+games-action/parsec47 0.2: Defeat retro enemies modenly. Retromodern hispeed shmup, 'PARSEC47'.
+games-action/projectl 1.001: Sword action STG inspired by projectN developed by D.K
+games-action/psychonauts 2012.08.15: A mind-bending platforming adventure from Double Fine Productions.
+games-action/reflectball 0.11: jumpei isshiki's HelloWorldProject (2006/09/09)
+games-action/rochard 1.42: A side-scrolling platformer packed with action, gravity-bending puzzles, space bandits and absurdly powerful astro-mining tools.
+games-action/shadowgrounds-bin 1: an epic action experience combining modern technology with addictive playability
+games-action/shadowgrounds-survivor-bin 1: human survivors who battle against the ongoing alien onslaught
+games-action/supertirititran 0.9: super hero shoot em up
+games-action/titanion 0.3: Strike down super high-velocity swooping insects. Fixed shooter in the good old days, 'Titanion'.
+games-action/torustrooper 0.22: Speed! More speed! Speeding ship sailing through barrage, 'Torus Trooper'
+games-action/torustrooperpure 0.2: Brake down and Burn up! original:Torus Trooper (ABA)
+games-action/tumikifighters 0.2: Stick more enemies and become much stronger. Sticky 2D shooter, 'TUMIKI Fighters'.
+games-action/twoworlds 2.0.0.2: Action RPG with open world
+games-action/valandrick 0.1a: Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
+games-action/voxatron 0.2.3: A voxelicious action adventure
+games-action/zlock 0.20: jumpei isshiki's HelloWorldProject (2006/09/09)
+games-arcade/VVVVVV 2.01: Retro-styled open-world 2D puzzle platformer
+games-arcade/alex4 1.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors guaranteed!
+games-arcade/alienhunter32k 1.0: Transplant remake (Amiga-PD) - multiscrolling arcade shootergame
+games-arcade/aquaria 9999: A 2D scroller set in a massive ocean world
+games-arcade/atomorun2008 1.0: Matthias Thurau's great OpenGL 3D platform-game Atomorun2008
+games-arcade/canabalt 2p: Retro-styled 2D platformer-autorunner
+games-arcade/capsized 06102013: A fast paced 2d platformer, focused on intense action and exploration.
+games-arcade/dave 1.0: Dave - The ordinary spaceman
+games-arcade/dustforce 1.0.20141222: An acrobatic janitor 2d platformer
+games-arcade/edgar 0.25: The Legend of Edgar, 2d jump n run
+games-arcade/edge 20130703: Develop your telekinetic strength by pushing a Cube within a geometric universe.
+games-arcade/fretsonfire 1.3.110: A game of musical skill and fast fingers
+games-arcade/frogatto 1.3.1: a frog, and a platform game
+games-arcade/funkysmugglers 20130613: Enjoy a funky 70s-style soundtrack while keeping the airport safe from hammers, scissors, and other illegal goods.
+games-arcade/gannatsu 104: multiplatform platform puzzle game
+games-arcade/gianasreturn 1.001: Unofficial sequel of The Great Giana Sisters
+games-arcade/greenisland 100: multiplatform platform puzzle game
+games-arcade/jamestown 1.0.1.1324610248: A neo-classical top-down shooter for up to four players set on 17th-century British Colonial Mars.
+games-arcade/mars-game 0.7.6: M.A.R.S. a ridiculous shooter
+games-arcade/megamario 1.6: Mario remake
+games-arcade/metalslug3 20140609: Famous 2D shooting game
+games-arcade/myman 0.7.0: Text-based pacman clone with many variants, sizes and other features
+games-arcade/openggs 0.111: reimplementation of The Great Giana Sisters as an easily portable Free Software/Open Source project.
+games-arcade/rotategear 105: multiplatform platform puzzle game
+games-arcade/rush 20130703: A simple puzzler that’ll have you mesmerized with a synchronized swarm of brightly colored blocks.
+games-arcade/shatter 1.0.20130609: Retro-inspired brick-breaking game
+games-arcade/sleepwalker 20130613: Guide a hero safely through various traps, clear obstructions from his path, and shift his surroundings to create a safe passage to the cozy bed.
+games-arcade/smw 1.7: Super Mario War is a Super Mario multiplayer game.
+games-arcade/stealthbastarddeluxe 1.63.4: The fast-paced, nail-biting antidote to tippy-toed sneaking simulators that the world had so desperately been craving.
+games-arcade/supermeatboy 2013.11.11: A platformer where you play as an animated cube of meat
+games-arcade/tokitori 20130703: Help a baby chicken save all the eggs.
+games-arcade/waking-mars 1.0.4: 
+games-engines/ags 3.3.5.7: A game/runtime interpreter for the Adventure Game Studio engine
+games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
+games-engines/fifechan 0.1.4 9999: Lightweight cross platform GUI C++ library designed for games
+games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
+games-engines/massacre 9999: A crossplatform despair simulator engine
+games-engines/openxcom 1.0.0_p20171215: An open-source reimplementation of the popular UFO: Enemy Unknown
+games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
+games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
+games-fps/brutal-doom 21: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
+games-fps/dhewm3 1.5.1_pre1: A Doom 3 GPL source modification.
+games-fps/zdoom 2.8.1: ZDoom is an enhanced port of the official DOOM source code
+games-puzzle/2048-qt 0.1.5-r1: A Qt-based version of the game 2048
+games-puzzle/braid 1.0.2-r9999: Platform game where you manipulate flow of time
+games-puzzle/caph 1.1: sandbox physics game
+games-puzzle/closure 1.1: Play as a strange spider-like demon who explores the stories of three human characters.
+games-puzzle/cogs 20110811: Immersed in a steampunk world with stunning visual design. Build an incredible variety of machines from sliding tiles.
+games-puzzle/crayon-physics-deluxe 55: 2D physics puzzle / sandbox game, where your drawings would be magically transformed into real physical objects.
+games-puzzle/cubosphere 0.3: game similar to the PSX game Kula World / Roll Away
+games-puzzle/hex-a-hop 1.1.0: a hexagonal tile-based puzzle game
+games-puzzle/laserreaction 1.0: laser game entry for ludum dare 10
+games-puzzle/londonlaw 0.3.0_pre2 9999: Clone of the famous Scotland Yard board game
+games-puzzle/offspringfling 1.1.3: A game about a poor forest creature that has misplaced all of her children.
+games-puzzle/osmos 1.6.1: Play as a single-celled organism absorbing others
+games-puzzle/osmosdemo 1.6.0: Play as a single-celled organism absorbing others
+games-puzzle/phlipple 0.8.5: An unique puzzle game with the goal to reduce a 3D shape to a single square
+games-puzzle/polly-b-gone 1.0: a 3D physics platform game - won the grand prize in the 10th annual CS 248 video game competition!
+games-puzzle/puzzlemoppet 1.0: a serenely peaceful yet devilishly challenging 3D puzzle game
+games-puzzle/snapshot 28: Join PIC on his awesome journey into the unknown armed with only his camera that can capture the world around him!
+games-puzzle/spacechem 1012: A design-based puzzle game from Zachtronics Industries.
+games-puzzle/spirits 1.0.1: Save the spirits of leaf litters
+games-puzzle/vessel 02222013: Platform game where you manipulate liquids.
+games-puzzle/zen-puzzle-garden 1.3: Try to solve seemingly impossible puzzles that take place in a relaxing zen garden.
+games-puzzle/zenbound2 20120325: A calm and meditative game of wrapping rope around wooden sculptures.
+games-rpg/amnesia-tdd 1.2.1: Amnesia: The Dark Descent is a first person survival horror. A game about immersion, discovery and living through a nightmare.
+games-rpg/avadon 1.0: Epic fantasy role-playing adventure in an enormous and unique world.
+games-rpg/divinity-original-sin-ee 2.0.0.1: Divinity: Original Sin - Enhanced Edition (GOG edition)
+games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel (English translation)
+games-rpg/lonesurvivor 1.11d_p1-r1: 2D sidescrolling psychological survival adventure game
+games-rpg/machinarium 1.0: Point-and-click adventure about robot in steam-punk world
+games-rpg/solarus 9999: Zelda Mystery of Solarus DX
+games-rpg/soulfu 1.5.2: Secret of Ultimate Legendary Fantasy: Unleashed
+games-rpg/torchlight 1.15.20120926 1.15.20130521: An action role-playing game, made by the creators of Diablo
+games-rpg/torchlight2 20150401: An action role-playing game, made by the creators of Diablo
+games-rpg/unepic 1.50.05: A combination of platformer and role playing game
+games-rpg/victor_vran 2.12.0.14: An isometric Action-RPG with a massive selection of items, powers and so on
+games-rpg/zelda3t 1.9: The Legend of Zelda - Time to Triumph
+games-rpg/zeldaolb 3.6: The Legend of Zelda - Onilink Begins
+games-rpg/zeldaroth 6.11: The Legend of Zelda - Return of the Hylian
+games-simulation/babylon5-ifh-dao 1.15: Danger and Opportunity - a prequel for Babylon 5: I've Found Her
+games-simulation/kerbal-space-program 1.6.1: A space flight simulation
+games-sports/stuntrally 2.6 9999: Rally game focused on closed rally tracks with possible stunt elements.
+games-sports/stuntrally-tracks 2.6 9999: A set of tracks for games-sports/stuntrally-9999
+games-strategy/anomaly 20130402: An extraordinary mixture of action and strategy in a reversed tower defense formula.
+games-strategy/anomaly-korea 20130613: An extraordinary mixture of action and strategy in a reversed tower defense formula.
+games-strategy/anomaly-mobilecampaign 20130613: An extraordinary mixture of action and strategy in a reversed tower defense formula.
+games-strategy/curseofwar 1.2.0: A fast-paced action strategy game implemented using ncurses user interface.
+games-strategy/defcon 1.6.1: http://www.introversion.co.uk/defcon/
+games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
+games-strategy/opendungeons 0.7.1: An open source, real time strategy game based on the Dungeon Keeper series
+games-strategy/revenge-of-the-titans 1.80.20: Defeat the returning Titan horde in a series of epic ground battles.
+games-strategy/swordsandsoldiers 20120325: A vibrant, side-scrolling strategy game.
+games-strategy/unknown-horizons 2017.2 9999: Anno-like real time strategy game
+games-strategy/uplink 1.6: Crack into virtual computer systems
+games-strategy/vcmi 0.98 9999: Heroes of Might and Magic III game engine rewrite
+games-strategy/vcmi-data 0.90: Core data for vcmi
+games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-only.
+games-strategy/wyrmsun 2.7.1: Strategy game based on history, mythology and fiction
+games-util/desurium 0.8.0_rc9 0.8.0_rc9-r1 0.8.0_rc10-r1 0.8.0_rc10-r2 9999: Free software version of Desura game client
+games-util/desurium-meta 0 1: Desurium game client and dependencies (meta)
+games-util/fgcom 9999: A VoIP client for FlightGear
+games-util/fteqcc-xonotic 9999: QC compiler for Xonotic
+games-util/gmqcc 0.2.9 9999: An Improved Quake C Compiler
+games-util/massacre-data 9999: A crossplatform despair simulator data
+games-util/nforenum 4.0.0 9999: A tool checking NFO code for errors
+games-util/qjoypad 4.3.0-r1: Translate gamepad/joystick input into key strokes/mouse actions in X
+games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
+games-util/taxidraw 9999: a taxiway editor for FlightGear and X-Plane
+games-util/terragear 9999: Terrain editing programs for FlightGear
+media-libs/desurium-cef 4 5 5-r1 9999: highly patched CEF by desurium.
+media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
 media-libs/freeimage 3.18.0: Image library supporting many formats
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
+media-libs/nite 1.4.1.2: primesense nite kinect drivers
+media-sound/oaml 1.3.4: Open Adaptive Music Library
