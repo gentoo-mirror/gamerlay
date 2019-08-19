@@ -29,7 +29,6 @@ games-arcade/frogatto:extras - Install additional modules
 games-arcade/myman:internal - Use internal display engine. Instead of ncurses/slang
 games-arcade/openggs:editor - useflag for the optional leveleditor
 games-arcade/smw:editor - useflag for the optional leveleditor
-games-arcade/ultrastardx:projectm - enable visuals
 games-engines/fifechan:allegro - Support for media-libs/allegro
 games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
 games-fps/zdoom:asm - Enable assembly implementations

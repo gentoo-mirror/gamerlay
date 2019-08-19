@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=prepare unpack
+DEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-ttf x11-libs/libX11 dev-libs/box2d sys-libs/zlib
+DESCRIPTION=A drawing puzzle game in the spirit of Crayon Physics
+EAPI=7
+HOMEPAGE=https://github.com/thp/numptyphysics
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-ttf x11-libs/libX11 dev-libs/box2d sys-libs/zlib
+SLOT=0
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_md5_=caaafc6cc8de7864bfaa303821e290a8
