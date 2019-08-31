@@ -10,8 +10,8 @@ DESCRIPTION="Core data for vcmi"
 HOMEPAGE="http://forum.vcmi.eu/index.php"
 MY_P="core"
 SRC_URI="
-	http://download.vcmi.eu/core.zip
-	http://download.vcmi.eu/WoG/wog.zip
+	http://download.vcmi.eu/core.zip -> ${PN}-core-${PV}.zip
+	http://download.vcmi.eu/WoG/wog.zip -> ${PN}-wog-${PV}.zip
 "
 
 LICENSE="GPL-2"
