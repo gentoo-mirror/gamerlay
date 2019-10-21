@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: games-puzzle/phlipple/phlipple-0.8.1.ebuild frostwork Exp $
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils games flag-o-matic
+inherit autotools eutils xdg-utils
 
 DESCRIPTION="An unique puzzle game with the goal to reduce a 3D shape to a single square"
 HOMEPAGE="http://phlipple.sourceforge.net/"
@@ -23,7 +22,16 @@ DEPEND="media-libs/libsdl:0
 	virtual/glu"
 
 src_prepare() {
+	default
 	# fix fails to link on new glibc
-	epatch "${FILESDIR}/${P}_check-math-lib.patch"
+	eapply "${FILESDIR}/${P}_check-math-lib.patch"
 	eautoreconf
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
