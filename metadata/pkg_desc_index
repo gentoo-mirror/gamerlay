@@ -148,6 +148,7 @@ games-util/qjoypad 4.3.0-r1: Translate gamepad/joystick input into key strokes/m
 games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/taxidraw 9999: a taxiway editor for FlightGear and X-Plane
 games-util/terragear 9999: Terrain editing programs for FlightGear
+media-gfx/recoil 4.3.2: Retro Computer Image Library
 media-libs/desurium-cef 4 5 5-r1 9999: highly patched CEF by desurium.
 media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
 media-libs/freeimage 3.18.0: Image library supporting many formats
