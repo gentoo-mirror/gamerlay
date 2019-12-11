@@ -83,7 +83,8 @@ src_unpack() {
 			"deps/fmod/fmod_files_linux_${arch}" \
 			"deps/pcre/pcre_files_linux_${arch}" \
 			"deps/SDL2/SDL2_files_linux_${arch}" \
-			"deps/CEGUI/CEGUI_files_linux_${arch}"
+			"deps/CEGUI/CEGUI_files_linux_${arch}" \
+			"deps/GLUT/GLUT_files_linux_${arch}"
 	# We just installed some crap to avoid broken depends
 }
 
