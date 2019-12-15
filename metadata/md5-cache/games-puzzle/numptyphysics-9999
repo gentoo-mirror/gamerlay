@@ -8,5 +8,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-ttf x11-libs/libX11 dev-libs/box2d sys-libs/zlib
 SLOT=0
-_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
 _md5_=caaafc6cc8de7864bfaa303821e290a8
