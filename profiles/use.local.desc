@@ -22,7 +22,6 @@ dev-games/netradiant:tremulous - Install Tremulous non GPL pack
 dev-games/netradiant:ufoai - Install UFO: Alien Invasion non GPL pack
 dev-games/netradiant:warsow - Install Warsow pack
 dev-games/netradiant:xonotic - Install Xonotic pack
-dev-games/simgear:headless - Build headless version of simgear (useful for terragear on a server)
 dev-libs/fuzzylite:c++11 - Add support for C++11
 games-arcade/fretsonfire:guitarhero - Enable Guitar Hero song importer
 games-arcade/frogatto:extras - Install additional modules
