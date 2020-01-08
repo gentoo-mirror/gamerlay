@@ -75,6 +75,7 @@ games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 21: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
 games-fps/dhewm3 1.5.1_pre1: A Doom 3 GPL source modification.
 games-fps/zdoom 2.8.1: ZDoom is an enhanced port of the official DOOM source code
+games-puzzle/2048-qt 0.1.6 9999: A Qt-based version of the game 2048
 games-puzzle/braid 1.0.2-r9999: Platform game where you manipulate flow of time
 games-puzzle/caph 1.1: sandbox physics game
 games-puzzle/closure 1.1: Play as a strange spider-like demon who explores the stories of three human characters.
