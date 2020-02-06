@@ -1,55 +1,46 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=6
 
-inherit games multilib
+inherit multilib-minimal
 
-DESCRIPTION=""
+DESCRIPTION="Waking Mars - Bring A Sleeping Planet Back To Life"
 HOMEPAGE="http://www.tigerstylegames.com/wakingmars/"
 
 SLOT="0"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch"
 IUSE="multilib"
 
 SRC_URI="WakingMars-${PV}-Linux.tar.gz"
 
-RDEPEND="
-	app-arch/bzip2
-	dev-libs/json-c
-	media-libs/alsa-lib
-	media-libs/flac
-	media-libs/freetype:2
-	media-libs/libogg
-	media-libs/libsdl
-	media-libs/libsndfile
-	media-libs/libvorbis
+RDEPEND="app-arch/bzip2[${MULTILIB_USEDEP}]
+	dev-libs/json-c[${MULTILIB_USEDEP}]
+	media-libs/alsa-lib[${MULTILIB_USEDEP}]
+	media-libs/flac[${MULTILIB_USEDEP}]
+	media-libs/freetype:2[${MULTILIB_USEDEP}]
+	media-libs/libogg[${MULTILIB_USEDEP}]
+	media-libs/libsdl[${MULTILIB_USEDEP}]
+	media-libs/libsndfile[${MULTILIB_USEDEP}]
+	media-libs/libvorbis[${MULTILIB_USEDEP}]
 	virtual/opengl
-	media-sound/pulseaudio
-	sys-libs/zlib
-	x11-libs/libdrm
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXau
-	x11-libs/libxcb
-	x11-libs/libXdamage
-	x11-libs/libXdmcp
-	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXi
-	x11-libs/libXtst
-	x11-libs/libXxf86vm
-	amd64? (
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-opengl
-		app-emulation/emul-linux-x86-sdl
-		app-emulation/emul-linux-x86-soundlibs
-		app-emulation/emul-linux-x86-xlibs
-	)
+	media-sound/pulseaudio[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libICE[${MULTILIB_USEDEP}]
+	x11-libs/libSM[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXau[${MULTILIB_USEDEP}]
+	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage[${MULTILIB_USEDEP}]
+	x11-libs/libXdmcp[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXi[${MULTILIB_USEDEP}]
+	x11-libs/libXtst[${MULTILIB_USEDEP}]
+	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
@@ -64,7 +55,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 
 	insinto "${dir}"
 	exeinto "${dir}"
@@ -73,9 +64,8 @@ src_install() {
 	rm "${MY_PN}" "${MY_PN}.png"
 	doins -r GameData lib
 
-	games_make_wrapper "${PN}" "./${MY_PN}" "${dir}" "${dir}/lib"
+	make_wrapper "${PN}" "./${MY_PN}" "${dir}" "${dir}/lib"
 	make_desktop_entry "${PN}" "Waking Mars" "Waking Mars"
 
 	dodoc "../README.txt"
-	prepgamesdirs
 }

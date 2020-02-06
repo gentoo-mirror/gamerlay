@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit versionator
+inherit desktop eutils versionator
 
 MY_PN=SuperMeatBoy
 MY_PV=$(version_format_string '${2}${3}${1}')
@@ -12,19 +12,17 @@ DESCRIPTION="A platformer where you play as an animated cube of meat"
 HOMEPAGE="http://www.supermeatboy.com/"
 SRC_URI="${PN}-linux-${MY_PV}-bin"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+system-mariadb"
+IUSE=""
 
 RESTRICT="fetch"
 
 DEPEND="app-arch/zip"
 RDEPEND="
-	${DEPEND}
 	media-libs/openal
 	media-libs/libsdl2
-	system-mariadb? ( <dev-db/mariadb-connector-c-3.0 )
 "
 
 S="${WORKDIR}/data"
@@ -54,9 +52,6 @@ src_install() {
 
 	insinto "${GAMEDIR}/${ARCH}"
 	doins "${ARCH}"/libsteam_api.so
-
-	use system-mariadb &&
-	dosym /usr/lib64/mariadb/libmariadb.so "${GAMEDIR}/${ARCH}"/libmariadb.so.1 ||
 	doins "${ARCH}"/libmariadb.so.1
 
 	exeinto "${GAMEDIR}/${ARCH}"

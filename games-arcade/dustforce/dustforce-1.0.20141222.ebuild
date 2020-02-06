@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=6
 
-inherit games multilib unpacker-nixstaller
+inherit multilib unpacker-nixstaller
 
 TIMESTAMP="2014-12-22"
 
@@ -14,7 +13,7 @@ SRC_URI="Dustforce-Linux-${TIMESTAMP}.sh"
 
 RESTRICT="fetch"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
@@ -71,11 +70,9 @@ src_install() {
 	# Broken dep
 	insinto "${dir}/$(get_libdir)"
 	doins -r "data/${arch}/$(get_libdir)"/*
-#/libcurl.so.3"
 	doicon "data/noarch/${MY_PN}.png"
 	make_desktop_entry "${PN}" "${MY_PN}" "${MY_PN}"
-	games_make_wrapper "${PN}" "./${exe}" "${dir}" "${dir}/$(get_libdir)"
+	make_wrapper "${PN}" "./${exe}" "${dir}" "${dir}/$(get_libdir)"
 
 	dodoc data/noarch/README.linux
-	prepgamesdirs
 }
