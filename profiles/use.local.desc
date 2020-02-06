@@ -23,7 +23,6 @@ dev-games/netradiant:ufoai - Install UFO: Alien Invasion non GPL pack
 dev-games/netradiant:warsow - Install Warsow pack
 dev-games/netradiant:xonotic - Install Xonotic pack
 dev-libs/fuzzylite:c++11 - Add support for C++11
-games-arcade/fretsonfire:guitarhero - Enable Guitar Hero song importer
 games-arcade/frogatto:extras - Install additional modules
 games-arcade/myman:internal - Use internal display engine. Instead of ncurses/slang
 games-arcade/openggs:editor - useflag for the optional leveleditor
@@ -34,10 +33,4 @@ games-fps/zdoom:asm - Enable assembly implementations
 games-sports/stuntrally:editor - Build and install maps editor
 games-sports/stuntrally:game - Build and install game client itself
 games-strategy/revenge-of-the-titans:hib - Install game from Humble Indie Bundle package
-games-util/desurium:32bit - add support for 32bit games in desurium
-games-util/desurium:bundled-wxgtk - build own wxGTK+-2.9.3 (recommended)
-games-util/desurium:gtest - enable runtime checks through gtest
-games-util/desurium:tools - install useful tools e.g. uploader
-games-util/desurium-meta:32bit - add support for 32bit games in desurium
-games-util/desurium-meta:games-deps - RUNTIME USE FLAG install known dependencies of games in desura
 media-sound/oaml:soxr - Enable SOXR support

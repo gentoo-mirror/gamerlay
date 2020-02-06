@@ -32,18 +32,15 @@ games-action/twoworlds 2.0.0.2: Action RPG with open world
 games-action/valandrick 0.1a: Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
 games-action/voxatron 0.2.3: A voxelicious action adventure
 games-action/zlock 0.20: jumpei isshiki's HelloWorldProject (2006/09/09)
-games-arcade/VVVVVV 2.01: Retro-styled open-world 2D puzzle platformer
+games-arcade/VVVVVV 2.02_p20200206: Retro-styled open-world 2D puzzle platformer
 games-arcade/alex4 1.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors guaranteed!
 games-arcade/alienhunter32k 1.0: Transplant remake (Amiga-PD) - multiscrolling arcade shootergame
 games-arcade/aquaria 9999: A 2D scroller set in a massive ocean world
 games-arcade/atomorun2008 1.0: Matthias Thurau's great OpenGL 3D platform-game Atomorun2008
-games-arcade/canabalt 2p: Retro-styled 2D platformer-autorunner
 games-arcade/capsized 06102013: A fast paced 2d platformer, focused on intense action and exploration.
-games-arcade/dave 1.0: Dave - The ordinary spaceman
 games-arcade/dustforce 1.0.20141222: An acrobatic janitor 2d platformer
 games-arcade/edgar 0.25: The Legend of Edgar, 2d jump n run
 games-arcade/edge 20130703: Develop your telekinetic strength by pushing a Cube within a geometric universe.
-games-arcade/fretsonfire 1.3.110: A game of musical skill and fast fingers
 games-arcade/frogatto 1.3.1: a frog, and a platform game
 games-arcade/funkysmugglers 20130613: Enjoy a funky 70s-style soundtrack while keeping the airport safe from hammers, scissors, and other illegal goods.
 games-arcade/gannatsu 104: multiplatform platform puzzle game
@@ -63,14 +60,12 @@ games-arcade/smw 1.7: Super Mario War is a Super Mario multiplayer game.
 games-arcade/stealthbastarddeluxe 1.63.4: The fast-paced, nail-biting antidote to tippy-toed sneaking simulators that the world had so desperately been craving.
 games-arcade/supermeatboy 2013.11.11: A platformer where you play as an animated cube of meat
 games-arcade/tokitori 20130703: Help a baby chicken save all the eggs.
-games-arcade/waking-mars 1.0.4: 
+games-arcade/waking-mars 1.0.4: Waking Mars - Bring A Sleeping Planet Back To Life
 games-engines/ags 3.3.5.7: A game/runtime interpreter for the Adventure Game Studio engine
 games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
 games-engines/fifechan 0.1.4 9999: Lightweight cross platform GUI C++ library designed for games
 games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
-games-engines/massacre 9999: A crossplatform despair simulator engine
 games-engines/openxcom 1.0.0_p20171215: An open-source reimplementation of the popular UFO: Enemy Unknown
-games-engines/residualvm-tools 9999: Utilities for the GrimE game engine
 games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 21: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
 games-fps/dhewm3 1.5.1_pre1: A Doom 3 GPL source modification.
@@ -132,19 +127,11 @@ games-strategy/vcmi 0.99 9999: Heroes of Might and Magic III game engine rewrite
 games-strategy/vcmi-data 0.99: Core data for vcmi
 games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-only.
 games-strategy/wyrmsun 2.7.1: Strategy game based on history, mythology and fiction
-games-util/desurium 0.8.0_rc9 0.8.0_rc9-r1 0.8.0_rc10-r1 0.8.0_rc10-r2 9999: Free software version of Desura game client
-games-util/desurium-meta 0 1: Desurium game client and dependencies (meta)
 games-util/fgcom 9999: A VoIP client for FlightGear
-games-util/fteqcc-xonotic 9999: QC compiler for Xonotic
 games-util/gmqcc 0.2.9 9999: An Improved Quake C Compiler
-games-util/massacre-data 9999: A crossplatform despair simulator data
-games-util/nforenum 4.0.0 9999: A tool checking NFO code for errors
-games-util/qjoypad 4.3.0-r1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
-games-util/taxidraw 9999: a taxiway editor for FlightGear and X-Plane
 games-util/terragear 9999: Terrain editing programs for FlightGear
 media-gfx/recoil 4.3.2: Retro Computer Image Library
-media-libs/desurium-cef 4 5 5-r1 9999: highly patched CEF by desurium.
 media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
 media-libs/nite 1.4.1.2: primesense nite kinect drivers
 media-sound/oaml 1.3.4: Open Adaptive Music Library
