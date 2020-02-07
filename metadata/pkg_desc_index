@@ -9,9 +9,7 @@ games-action/cave_story_plus 100: 2D action-adventure game with semil-linear sto
 games-action/d2x-xl 1.16.15 1.16.27: Descent 2 engine supporting high-resolution textures
 games-action/deadlysoccerball 0.1: space soccer ball shooting missiles around
 games-action/dex 2.1.0.2: 2D Action-RPG with a rich cyberpunk world
-games-action/exception_conflict 1.09: outstanding shmup using opengl and sdl
 games-action/fieldrunners 1.0.0: Defend and control the field using a diverse selection of upgradeable towers.
-games-action/gradleunison 0.10: jumpei isshiki's HelloWorldProject (2006/09/02)
 games-action/gunroar 0.15: Guns, Guns, Guns! 360-degree gunboat shooter, 'Gunroar'
 games-action/gunroarhi 0.30: Guns, Guns, Guns! 360-degree gunboat shooter, fork of ABAs 'Gunroar'
 games-action/hammerfight 20110812: 2D battles of flying machines equipped with various slashing, piercing and blunt weaponry
@@ -19,7 +17,6 @@ games-action/overgrowth 1_alpha194: 3d action-adventure game. Spiritual successo
 games-action/parsec47 0.2: Defeat retro enemies modenly. Retromodern hispeed shmup, 'PARSEC47'.
 games-action/projectl 1.001: Sword action STG inspired by projectN developed by D.K
 games-action/psychonauts 2012.08.15: A mind-bending platforming adventure from Double Fine Productions.
-games-action/reflectball 0.11: jumpei isshiki's HelloWorldProject (2006/09/09)
 games-action/rochard 1.42: A side-scrolling platformer packed with action, gravity-bending puzzles, space bandits and absurdly powerful astro-mining tools.
 games-action/shadowgrounds-bin 1: an epic action experience combining modern technology with addictive playability
 games-action/shadowgrounds-survivor-bin 1: human survivors who battle against the ongoing alien onslaught
@@ -31,7 +28,6 @@ games-action/tumikifighters 0.2: Stick more enemies and become much stronger. St
 games-action/twoworlds 2.0.0.2: Action RPG with open world
 games-action/valandrick 0.1a: Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
 games-action/voxatron 0.2.3: A voxelicious action adventure
-games-action/zlock 0.20: jumpei isshiki's HelloWorldProject (2006/09/09)
 games-arcade/VVVVVV 2.02_p20200206: Retro-styled open-world 2D puzzle platformer
 games-arcade/alex4 1.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors guaranteed!
 games-arcade/alienhunter32k 1.0: Transplant remake (Amiga-PD) - multiscrolling arcade shootergame
