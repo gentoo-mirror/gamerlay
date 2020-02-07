@@ -1,0 +1,12 @@
+diff -Nuar work.orig/Makefile work/Makefile
+--- work.orig/Makefile	2020-02-07 22:57:48.858696072 +0300
++++ work/Makefile	2020-02-07 22:57:59.321696533 +0300
+@@ -20,7 +20,7 @@
+ 
+ #---- Compilador
+ CC = gcc
+-CFLAGS = -Wall  `sdl-config --cflags` `sdl-config --libs` -lSDL_image -lSDL_ttf -lSDL_mixer -lexpat
++CFLAGS = -Wall  `sdl-config --cflags` `sdl-config --libs` -lSDL_image -lSDL_ttf -lSDL_mixer -lexpat -lm
+ 
+ 
+ #---------------------------
