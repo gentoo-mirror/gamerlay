@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="26533"
+GOG_MAGIC="02694_33460"
 
 SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
 SRC_URI="
@@ -19,7 +19,7 @@ RESTRICT="fetch strip"
 LICENSE="EULA"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 L10NS="l10n_en " #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
 IUSE="${L10NS}"
@@ -83,9 +83,9 @@ src_install() {
 	exeinto "${dir}"
 
 	doins -r .
-	doexe {KSP,Launcher}.x86{,_64} || die "Failed to install executables"
+	doexe {KSP,KSPLauncher}.x86_64 || die "Failed to install executables"
 
 	newbin "${T}/ksp-wrapper" "${PN}"
-	newicon "Launcher_Data/Resources/UnityPlayer.png" "${PN}.png"
+	newicon "KSPLauncher_Data/Resources/UnityPlayer.png" "${PN}.png"
 	make_desktop_entry "${PN}" "Kerbal Space Program" "${PN}" || die "make_desktop_entry failed"
 }
