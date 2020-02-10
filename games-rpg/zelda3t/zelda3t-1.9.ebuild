@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,17 +24,15 @@ RDEPEND="
 "
 
 S="${WORKDIR}/${MY_PN}/src"
+PATCHES=( "${FILESDIR}/${PN}-homedir.patch" )
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}/${PN}-homedir.patch"
 	sed -i -e "s:Zelda3T:"${PN}":g" -i Makefile
 	sed -i -e "s:CFLAGS  =:#CFLAGS  =:g" -i Makefile
-#	for i in `find ${MY_PN}/src -name *.cpp`; do sed -i "$i" -e "s:data/:"${GAMES_DATADIR}"/"${PN}/data/":g"; done
-}
-
-src_compile() {
-	emake || die "emake failed"
+	for i in `find . -name "*.cpp"`; do
+		sed -i "$i" -e "s:data/:/usr/share/"${PN}"/data/:g";
+	done
 }
 
 src_install() {

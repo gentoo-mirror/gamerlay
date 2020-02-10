@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit desktop eutils
 
 DESCRIPTION="An isometric Action-RPG with a massive selection of items, powers and so on"
 HOMEPAGE="https://www.victorvran.com/"
@@ -12,10 +12,10 @@ SRC_URI="
 "
 
 RESTRICT="fetch strip"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
@@ -23,7 +23,7 @@ RDEPEND="
 	app-crypt/mit-krb5
 	app-crypt/p11-kit
 	dev-db/sqlite
-	dev-libs/libgcrypt:11/11
+	dev-libs/libgcrypt-compat
 	dev-libs/libgpg-error
 	media-libs/libsdl2
 	media-libs/openal
@@ -45,7 +45,6 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXt
 "
-
 
 pkg_nofetch() {
 	einfo ""

@@ -1,6 +1,6 @@
-diff -Naur ZeldaROTH_US-src-linux/src/Joueur.cpp ZeldaROTH_US-src-linux/src/Joueur.cpp
---- ZeldaROTH_US-src-linux/src/Joueur.cpp	2009-02-18 23:59:34.000000000 +0100
-+++ ZeldaROTH_US-src-linux/src/Joueur.cpp	2010-10-10 11:48:46.000000000 +0200
+diff -Naur a/Joueur.cpp b/Joueur.cpp
+--- a/Joueur.cpp	2009-02-18 23:59:34.000000000 +0100
++++ b/Joueur.cpp	2010-10-10 11:48:46.000000000 +0200
 @@ -17,6 +17,7 @@
  #include "Texte.h"
  #include "Projectile.h"
@@ -58,9 +58,9 @@ diff -Naur ZeldaROTH_US-src-linux/src/Joueur.cpp ZeldaROTH_US-src-linux/src/Joue
      if(!f.is_open()) return;
      f.read((char *)&temps,sizeof(int));
      f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
-diff -Naur ZeldaROTH_US-src-linux/src/Keyboard.cpp ZeldaROTH_US-src-linux/src/Keyboard.cpp
---- ZeldaROTH_US-src-linux/src/Keyboard.cpp	2009-02-18 23:56:22.000000000 +0100
-+++ ZeldaROTH_US-src-linux/src/Keyboard.cpp	2010-10-10 11:49:55.000000000 +0200
+diff -Naur a/Keyboard.cpp b/Keyboard.cpp
+--- a/Keyboard.cpp	2009-02-18 23:56:22.000000000 +0100
++++ b/Keyboard.cpp	2010-10-10 11:49:55.000000000 +0200
 @@ -19,6 +19,7 @@
  #include "Projectile.h"
  #include "Jeu.h"*/
