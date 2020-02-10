@@ -17,9 +17,7 @@ dev-games/netradiant:qdata3 - Install qdata3 tool
 dev-games/netradiant:quake1 - Install Quake non GPL pack
 dev-games/netradiant:quake2 - Install Quake2 non GPL pack
 dev-games/netradiant:quake2world - Install Quake2World pack
-dev-games/netradiant:quake3 - Install Quake3 non GPL pack
 dev-games/netradiant:tremulous - Install Tremulous non GPL pack
-dev-games/netradiant:ufoai - Install UFO: Alien Invasion non GPL pack
 dev-games/netradiant:warsow - Install Warsow pack
 dev-games/netradiant:xonotic - Install Xonotic pack
 dev-libs/fuzzylite:c++11 - Add support for C++11

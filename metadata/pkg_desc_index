@@ -1,5 +1,5 @@
 dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
-dev-games/netradiant 1.5.0_p20120515 9999: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
+dev-games/netradiant 1.5.0_p20120515: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 dev-util/adobe-air-sdk-bin 2.6: Adobe AIR SDK
 games-action/a7xpg 0.11: The retro modern high speed shooting game
@@ -90,13 +90,9 @@ games-puzzle/vessel 02222013: Platform game where you manipulate liquids.
 games-puzzle/zen-puzzle-garden 1.4.0: Try to solve puzzles that take place in a relaxing zen garden.
 games-puzzle/zenbound2 20120325: A calm and meditative game of wrapping rope around wooden sculptures.
 games-rpg/amnesia-tdd 1.3: A first person survival horror. Immersion, discovery and living in a nightmare.
-games-rpg/avadon 1.0: Epic fantasy role-playing adventure in an enormous and unique world.
 games-rpg/divinity-original-sin-ee 2.0.0.1: Divinity: Original Sin - Enhanced Edition (GOG edition)
-games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel (English translation)
 games-rpg/lonesurvivor 1.11d_p1-r1: 2D sidescrolling psychological survival adventure game
 games-rpg/machinarium 1.0: Point-and-click adventure about robot in steam-punk world
-games-rpg/solarus 9999: Zelda Mystery of Solarus DX
-games-rpg/soulfu 1.5.2: Secret of Ultimate Legendary Fantasy: Unleashed
 games-rpg/torchlight 1.15.20120926 1.15.20130521: An action role-playing game, made by the creators of Diablo
 games-rpg/torchlight2 20150401: An action role-playing game, made by the creators of Diablo
 games-rpg/unepic 1.50.05: A combination of platformer and role playing game
