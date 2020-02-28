@@ -21,7 +21,6 @@ games-action/rochard 1.42: A side-scrolling platformer packed with action, gravi
 games-action/shadowgrounds-bin 1: an epic action experience combining modern technology with addictive playability
 games-action/shadowgrounds-survivor-bin 1: human survivors who battle against the ongoing alien onslaught
 games-action/supertirititran 0.9: super hero shoot em up
-games-action/titanion 0.3: Strike down super high-velocity swooping insects. Fixed shooter in the good old days, 'Titanion'.
 games-action/torustrooper 0.22: Speed! More speed! Speeding ship sailing through barrage, 'Torus Trooper'
 games-action/torustrooperpure 0.2: Brake down and Burn up! original:Torus Trooper (ABA)
 games-action/tumikifighters 0.2: Stick more enemies and become much stronger. Sticky 2D shooter, 'TUMIKI Fighters'.
@@ -123,7 +122,7 @@ games-util/fgcom 9999: A VoIP client for FlightGear
 games-util/gmqcc 0.2.9 9999: An Improved Quake C Compiler
 games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/terragear 9999: Terrain editing programs for FlightGear
-media-gfx/recoil 4.3.2: Retro Computer Image Library
+media-gfx/recoil 5.0.0: Retro Computer Image Library
 media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
 media-libs/nite 1.4.1.2: primesense nite kinect drivers
 media-sound/oaml 1.3.4: Open Adaptive Music Library
