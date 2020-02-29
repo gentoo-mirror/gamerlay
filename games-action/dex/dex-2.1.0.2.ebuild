@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
@@ -18,15 +17,15 @@ SRC_URI="
 "
 
 RESTRICT="fetch strip"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+gog"
 
 DEPEND="
 	app-arch/unzip
-	dev-util/xdelta3
+	dev-util/xdelta:3
 "
 RDEPEND="
 	dev-libs/glib

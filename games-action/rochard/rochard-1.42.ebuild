@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit games multilib
+inherit desktop eutils
 
 TIMESTAMP="1371746492"
 
@@ -18,7 +17,7 @@ AMD64_URI="${MY_PN}_v${PV}_Linux_x64_${TIMESTAMP}.tar.gz"
 HT_X86_URI="${MY_PN}_Hard_Times_v${PV}_Linux_x86_${TIMESTAMP}.tar.gz"
 HT_AMD64_URI="${MY_PN}_Hard_Times_v${PV}_Linux_x64_${TIMESTAMP}.tar.gz"
 
-DESCRIPTION="A side-scrolling platformer packed with action, gravity-bending puzzles, space bandits and absurdly powerful astro-mining tools."
+DESCRIPTION="A side-scrolling platformer packed with action, gravity-bending puzzles."
 HOMEPAGE="http://rochardthegame.com/"
 
 SLOT="0"
@@ -54,7 +53,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}";
+	local dir="/opt/${PN}";
 	local bit;
 
 	use x86 && bit=86;
@@ -68,10 +67,9 @@ src_install() {
 	exeinto "${dir}"
 	doexe "${MY_PN}"
 
-	games_make_wrapper "${PN}" "./${MY_PN}" "${dir}" "${dir}"
+	make_wrapper "${PN}" "./${MY_PN}" "${dir}" "${dir}"
 	newicon "${FILESDIR}/${MY_PN}.png" "${PN}.png" || die
 	make_desktop_entry "${PN}" "${MY_PN}" "${MY_PN}"
 
 	dodoc README.txt changelog.txt
-	prepgamesdirs
 }

@@ -1,16 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=3
+EAPI=7
 
-inherit games versionator
-
-MY_PV=$(version_format_string '${2}${3}${1}')
+inherit desktop eutils multilib-minimal
 
 DESCRIPTION="A mind-bending platforming adventure from Double Fine Productions."
 HOMEPAGE="http://www.psychonauts.com/"
-SRC_URI="${PN}-linux-${MY_PV}-bin"
+SRC_URI="${PN}-linux-$(ver_cut 2)$(ver_cut 3)$(ver_cut 1)-bin"
 
 LICENSE="Psychonauts-EULA"
 SLOT="0"
@@ -19,8 +16,8 @@ IUSE=""
 
 DEPEND="app-arch/unzip"
 RDEPEND="virtual/opengl
-	amd64? ( app-emulation/emul-linux-x86-sdl )
-	x86? ( media-libs/openal media-libs/libsdl )"
+	media-libs/openal[${MULTILIB_USEDEP}]
+	media-libs/libsdl[${MULTILIB_USEDEP}]"
 
 RESTRICT="fetch strip"
 
@@ -43,7 +40,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	dodoc "Psychonauts Manual Win.pdf"
 	dodoc Documents/Readmes/*
 	exeinto ${dir}
@@ -51,8 +48,6 @@ src_install() {
 	insinto ${dir}
 	doins -r DisplaySettings.ini PsychonautsData2.pkg WorkResource || die
 	doicon ${PN}.png
-	games_make_wrapper ${PN} ./Psychonauts "${dir}" "${dir}"
+	make_wrapper ${PN} ./Psychonauts "${dir}" "${dir}"
 	make_desktop_entry ${PN} Psychonauts ${PN}
-
-	prepgamesdirs
 }
