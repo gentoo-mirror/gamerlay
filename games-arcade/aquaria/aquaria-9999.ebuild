@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 EHG_REPO_URI="http://hg.icculus.org/icculus/aquaria"
 
-inherit eutils flag-o-matic cmake-utils mercurial versionator
+inherit eutils flag-o-matic cmake-utils mercurial
 
 DESCRIPTION="A 2D scroller set in a massive ocean world"
 HOMEPAGE="http://www.bit-blot.com/aquaria/"

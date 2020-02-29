@@ -1,16 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils versionator
+inherit desktop eutils
 
 MY_PN=SuperMeatBoy
-MY_PV=$(version_format_string '${2}${3}${1}')
 
 DESCRIPTION="A platformer where you play as an animated cube of meat"
 HOMEPAGE="http://www.supermeatboy.com/"
-SRC_URI="${PN}-linux-${MY_PV}-bin"
+SRC_URI="${PN}-linux-$(ver_cut 2)$(ver_cut 3)$(ver_cut 1)-bin"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -26,7 +25,6 @@ RDEPEND="
 "
 
 S="${WORKDIR}/data"
-GAMEDIR="/usr/share/${P}"
 
 pkg_nofetch() {
 	einfo "Please download ${A}"
@@ -45,19 +43,20 @@ src_unpack() {
 }
 
 src_install() {
-	insinto "${GAMEDIR}"
+	local dest="/opt/${PN}"
+	insinto ${dest}
 	doins -r resources Levels buttonmap.cfg \
 		gameaudio.dat gamedata.dat locdb.txt \
 		steam_appid.txt
 
-	insinto "${GAMEDIR}/${ARCH}"
+	insinto "${dest}/${ARCH}"
 	doins "${ARCH}"/libsteam_api.so
 	doins "${ARCH}"/libmariadb.so.1
 
-	exeinto "${GAMEDIR}/${ARCH}"
+	exeinto "${dest}/${ARCH}"
 	doexe "${ARCH}/${MY_PN}"
 
-	make_wrapper "${PN}" "./${ARCH}/${MY_PN}" "${GAMEDIR}" "./${ARCH}"
+	make_wrapper "${PN}" "./${ARCH}/${MY_PN}" "${dest}" "./${ARCH}"
 
 	doicon "${PN}".png
 	make_desktop_entry "${PN}" "${MY_PN}" "${PN}"

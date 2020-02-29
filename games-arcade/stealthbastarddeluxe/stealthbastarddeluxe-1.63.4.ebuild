@@ -1,44 +1,33 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit games
+inherit desktop eutils multilib-minimal
 
 TS=1371673270
 MY_PN=StealthBastardDeluxe
 
-DESCRIPTION="The fast-paced, nail-biting antidote to tippy-toed sneaking simulators that the world had so desperately been craving."
+DESCRIPTION="The fast-paced, nail-biting antidote to tippy-toed sneaking simulators."
 HOMEPAGE="http://www.stealthbastard.com/"
 SRC_URI="${MY_PN}_${PV}_Linux_${TS}.tar.gz"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RESTRICT="fetch strip"
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
-	x86? (
-		dev-libs/openssl
-		media-libs/openal
-		sys-libs/zlib
-		x11-libs/libX11
-		x11-libs/libXxf86vm
-	)
-	amd64? (
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-sdl
-		app-emulation/emul-linux-x86-xlibs
-	)
+	dev-libs/openssl[${MULTILIB_USEDEP}]
+	media-libs/openal[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_PN}"
-GAMEDIR="${GAMES_PREFIX_OPT}/${PN}"
 
 pkg_nofetch() {
 	einfo "Please download ${A}"
@@ -48,13 +37,12 @@ pkg_nofetch() {
 }
 
 src_install() {
-	insinto "${GAMEDIR}"
+	local dir="/opt/${PN}"
+	insinto ${dir}
 	doins -r assets
-	exeinto "${GAMEDIR}"
+	exeinto ${dir}
 	doexe "${MY_PN}"
-	games_make_wrapper "${PN}" "./${MY_PN}" "${GAMEDIR}"
+	make_wrapper "${PN}" "./${MY_PN}" "${dir}"
 	newicon "assets/icon.png" "${PN}.png"
 	make_desktop_entry "${PN}" "${MY_PN}" "${PN}"
-
-	prepgamesdirs
 }

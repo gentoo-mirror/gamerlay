@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 MULTILIB_COMPAT=( abi_x86_32 )
 
 inherit eutils multilib-minimal unpacker-nixstaller
@@ -12,9 +12,9 @@ SRC_URI="Shatter-Release-2013-06-09.sh"
 
 RESTRICT="fetch strip"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

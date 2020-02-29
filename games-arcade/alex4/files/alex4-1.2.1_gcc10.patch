@@ -1,0 +1,197 @@
+From 7217c85f84d2c8143304f9273710e946d2382fbf Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 28 Feb 2020 23:07:52 +0300
+Subject: [PATCH] Fix compilation with GCC 10
+
+GCC 10 enables -fno-common by default with cause to compilation failure with multiple defined variables.
+---
+ src/bullet.c   |  2 ++
+ src/bullet.h   |  2 +-
+ src/edit.c     |  3 +--
+ src/particle.c |  5 ++++-
+ src/particle.h |  2 +-
+ src/player.c   |  2 ++
+ src/player.h   |  2 +-
+ src/script.c   |  4 +++-
+ src/script.h   |  2 +-
+ src/timer.c    |  8 +++++++-
+ src/timer.h    | 12 ++++++------
+ 11 files changed, 29 insertions(+), 15 deletions(-)
+
+diff --git a/src/bullet.c b/src/bullet.c
+index c1100ac..0efb78a 100644
+--- a/src/bullet.c
++++ b/src/bullet.c
+@@ -22,6 +22,8 @@
+ #include "timer.h"
+ #include "../data/data.h"
+ 
++Tbullet bullet[MAX_BULLETS];
++
+ // sets values on a bullet
+ void set_bullet(Tbullet *b, int x, int y, double dx, double dy, BITMAP *bmp, int bad) {
+ 	b->x = x;
+diff --git a/src/bullet.h b/src/bullet.h
+index 1b26cba..51f6dee 100644
+--- a/src/bullet.h
++++ b/src/bullet.h
+@@ -40,7 +40,7 @@ typedef struct {
+ #define MAX_BULLETS	64
+ 
+ // the bullets themselves
+-Tbullet bullet[MAX_BULLETS];
++extern Tbullet bullet[MAX_BULLETS];
+ 
+ // functions
+ void reset_bullets(Tbullet *b, int max);
+diff --git a/src/edit.c b/src/edit.c
+index 1fb41b9..a40f4c7 100644
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -18,7 +18,6 @@
+  **************************************************************/
+ 
+ #include <allegro.h>
+-#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "main.h"
+@@ -32,7 +31,7 @@ int edit_tile = 0;
+ // path to current map
+ char edit_path_and_file[1024];
+ // datafile to use
+-DATAFILE *data;
++extern DATAFILE *data;
+ // current edit mode
+ int edit_mode;
+ 
+diff --git a/src/particle.c b/src/particle.c
+index ccd922f..59ffa59 100644
+--- a/src/particle.c
++++ b/src/particle.c
+@@ -19,8 +19,11 @@
+ 
+ #include "particle.h"
+ 
++// the particles themselves
++Tparticle particle[MAX_PARTICLES];
++
+ // pointer to datafile
+-DATAFILE *data;
++extern DATAFILE *data;
+ 
+ // set datafile to use
+ void set_datafile(DATAFILE *d) {
+diff --git a/src/particle.h b/src/particle.h
+index d3a2e86..6666f1f 100644
+--- a/src/particle.h
++++ b/src/particle.h
+@@ -37,7 +37,7 @@ typedef struct {
+ } Tparticle;
+ 
+ // the particles themselves
+-Tparticle particle[MAX_PARTICLES];
++extern Tparticle particle[MAX_PARTICLES];
+ 
+ // functions
+ void set_datafile(DATAFILE *d);
+diff --git a/src/player.c b/src/player.c
+index 4e13943..b64bf08 100644
+--- a/src/player.c
++++ b/src/player.c
+@@ -21,6 +21,8 @@
+ #include "timer.h"
+ #include "../data/data.h"
+ 
++Tplayer player;
++
+ // draws the player depending on his state
+ void draw_player(BITMAP *bmp, Tplayer *p, int x, int y) {
+ 	BITMAP *head, *body;
+diff --git a/src/player.h b/src/player.h
+index 2bbf353..fdc5469 100644
+--- a/src/player.h
++++ b/src/player.h
+@@ -49,7 +49,7 @@ typedef struct {
+ } Tplayer;
+ 
+ // the player 
+-Tplayer player;
++extern Tplayer player;
+ 
+ // functions
+ void draw_player(BITMAP *bmp, Tplayer *p, int x, int y);
+diff --git a/src/script.c b/src/script.c
+index 8c71a51..f71ed60 100644
+--- a/src/script.c
++++ b/src/script.c
+@@ -30,8 +30,10 @@
+ // silly value 
+ #define		NO_CHANGE	-3249587
+ 
++int active_sounds[MAX_SCRIPT_SOUNDS];
++
+ // datafile to use
+-DATAFILE *data;
++extern DATAFILE *data;
+ // internal buffers
+ BITMAP *buffer;
+ BITMAP *swap_buffer;
+diff --git a/src/script.h b/src/script.h
+index bd7face..10f6b5a 100644
+--- a/src/script.h
++++ b/src/script.h
+@@ -39,7 +39,7 @@ typedef struct {
+ // max number of sounds played by the script
+ #define MAX_SCRIPT_SOUNDS	16
+ // array holding the sounds ids
+-int active_sounds[MAX_SCRIPT_SOUNDS];
++extern int active_sounds[MAX_SCRIPT_SOUNDS];
+ 
+ // functions
+ int run_script(char *script, DATAFILE *d);
+diff --git a/src/timer.c b/src/timer.c
+index f7335e1..67422c0 100644
+--- a/src/timer.c
++++ b/src/timer.c
+@@ -18,7 +18,13 @@
+  **************************************************************/
+ 
+ #include "allegro.h"
+-#include "timer.h"
++
++volatile int frame_count;
++volatile int fps;
++volatile int logic_count;
++volatile int lps;
++volatile int cycle_count;
++volatile int game_count;
+ 
+ // keeps track of frames each second
+ void fps_counter(void) {
+diff --git a/src/timer.h b/src/timer.h
+index c7b1235..c777de1 100644
+--- a/src/timer.h
++++ b/src/timer.h
+@@ -21,12 +21,12 @@
+ #define TIMERS_H
+ 
+ // the variables used by the timers
+-volatile int frame_count;
+-volatile int fps;
+-volatile int logic_count;
+-volatile int lps;
+-volatile int cycle_count;
+-volatile int game_count;
++extern volatile int frame_count;
++extern volatile int fps;
++extern volatile int logic_count;
++extern volatile int lps;
++extern volatile int cycle_count;
++extern volatile int game_count;
+ 
+ // functions
+ int install_timers();
+-- 
+2.24.1
+

@@ -1,13 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: games-arcade/gianasreturn-1.0.ebuild,v 1.0 2011/01/12 12:06:59 frostwork Exp $
 
-EAPI="2"
-inherit games
+EAPI=7
+
+inherit desktop eutils
 
 DESCRIPTION="Unofficial sequel of The Great Giana Sisters"
 HOMEPAGE="http://www.gianas-return.de/"
-SRC_URI="http://www.gianas-return.de/gr-v${PV/./}-ubuntu.zip"
+SRC_URI="http://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz -> ${PN}-v${PV}-linux.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
@@ -18,27 +18,22 @@ RDEPEND="media-libs/libsdl
 	media-libs/sdl-mixer[flac,mad,mikmod,vorbis]
 	sys-libs/zlib"
 
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/${PN}
+S="${WORKDIR}/giana"
 
 src_install() {
-	if use amd64; then
-		local bin=giana_ubuntu64
-	fi
-	if use x86; then
-		local bin=giana_ubuntu32
-	fi
+	local dir="/opt/${PN}"
+	local bin
+
+	use amd64 && bin="giana_linux64"
+	use x86 && bin="giana_linux32"
 
 	insinto "${dir}"
 	doins -r data || die "doins failed"
 	exeinto "${dir}"
 	doexe "${bin}" || die "doexe failed"
 
-	games_make_wrapper gianasreturn ./"${bin}" "${dir}" "${dir}"
+	make_wrapper gianasreturn ./"${bin}" "${dir}" "${dir}"
 	doicon giana.png
 	make_desktop_entry gianasreturn "Giana's Return" giana
 	dodoc {config,options,readme}.txt
-
-	prepgamesdirs
 }
