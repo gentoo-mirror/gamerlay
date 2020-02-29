@@ -21,6 +21,9 @@ dev-games/netradiant:tremulous - Install Tremulous non GPL pack
 dev-games/netradiant:warsow - Install Warsow pack
 dev-games/netradiant:xonotic - Install Xonotic pack
 dev-libs/fuzzylite:c++11 - Add support for C++11
+games-action/dex:gog - Use GOG archive
+games-action/rochard:dlc - Install DLC
+games-action/twoworlds:gog - Use GOG archive
 games-arcade/frogatto:extras - Install additional modules
 games-engines/fifechan:allegro - Support for media-libs/allegro
 games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
