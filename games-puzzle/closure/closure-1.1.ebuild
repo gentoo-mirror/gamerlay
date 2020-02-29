@@ -1,26 +1,24 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit games unpacker-nixstaller
+inherit desktop eutils unpacker-nixstaller
 
 TIMESTAMP="2012-12-28"
 MY_PN="${PN/c/C}"
 
-DESCRIPTION="Play as a strange spider-like demon who explores the stories of three human characters."
+DESCRIPTION="Play as a strange demon who explores the stories of three human characters."
 HOMEPAGE="http://closuregame.com/"
 SRC_URI="${MY_PN}-Linux-${PV}-${TIMESTAMP}.sh"
 
 RESTRICT="fetch strip"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
 RDEPEND="
 	dev-libs/json-c
 	media-gfx/nvidia-cg-toolkit
@@ -71,20 +69,18 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	local arch=x86;
-	use amd64 && arch=x86_64;
-
-        nixstaller_unpack \
-                instarchive_all \
-                instarchive_linux_${arch}
+	local arch=x86
+	use amd64 && arch=x86_64
+	nixstaller_unpack \
+		instarchive_all \
+		instarchive_linux_${arch}
 }
 
-
 src_install() {
-        local arch=x86;
-        use amd64 && arch=x86_64;
+	local arch=x86
+	use amd64 && arch=x86_64
 
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	insinto "${dir}"
 	doins -r resources
 
@@ -93,7 +89,5 @@ src_install() {
 
 	doicon "${MY_PN}.png"
 	make_desktop_entry "${PN}" "${MY_PN}" "${MY_PN}"
-	games_make_wrapper "${PN}" "./${MY_PN}.bin.${arch}" "${dir}"
-
-	prepgamesdirs
+	make_wrapper "${PN}" "./${MY_PN}.bin.${arch}" "${dir}"
 }

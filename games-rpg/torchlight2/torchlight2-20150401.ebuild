@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit eutils unpacker
 
@@ -11,7 +11,7 @@ DESCRIPTION="An action role-playing game, made by the creators of Diablo"
 HOMEPAGE="http://torchlight2game.com/"
 
 SLOT="0"
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch"
 

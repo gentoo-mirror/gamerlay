@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,10 @@ SRC_URI="
 "
 
 RESTRICT="fetch strip"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="-* ~amd64"
 
 L10NS="l10n_en " #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
 IUSE="${L10NS}"
@@ -73,7 +73,10 @@ src_unpack() {
 	rm -r "${WORKDIR}/tmp"
 
 	find . -name .DS_Store -delete
+}
 
+src_prepare() {
+	default
 	sed -e "s@__PV__@${PV}@" -e "s@__PN__@${PN}@" "${FILESDIR}/ksp-wrapper" > "${T}"/ksp-wrapper
 }
 

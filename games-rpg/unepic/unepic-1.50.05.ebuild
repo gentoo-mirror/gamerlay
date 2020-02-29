@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="
 "
 
 RESTRICT="fetch strip"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -31,7 +31,6 @@ RDEPEND="
 	sys-libs/glibc
 	sys-libs/zlib
 "
-
 
 pkg_setup() {
 	ewarn "Just be noticed, that both variants (GOG and HumbleBundle)"

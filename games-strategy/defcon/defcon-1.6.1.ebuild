@@ -1,33 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils unpacker versionator
+inherit eutils unpacker
 
-MY_PV=$(replace_version_separator 2 '-')
-
-DESCRIPTION="http://www.introversion.co.uk/defcon/"
-HOMEPAGE="Global thermonuclear war simulation with multiplayer support"
-BASE_URI="https://www.introversion.co.uk/defcon/downloads/${PN}_${MY_PV}___ARCH__.deb"
+HOMEPAGE="http://www.introversion.co.uk/defcon/"
+DESCRIPTION="Global thermonuclear war simulation with multiplayer support"
 SRC_URI="
-	x86? ( ${BASE_URI/__ARCH__/i386} )
-	amd64? ( ${BASE_URI/__ARCH__/amd64} )
+	x86? ( https://www.introversion.co.uk/defcon/downloads/${PN}_$(ver_rs 2 -)_i386.deb )
+	amd64? ( https://www.introversion.co.uk/defcon/downloads/${PN}_$(ver_rs 2 -)_amd64.deb )
 "
 
 LICENSE="Introversion"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
 IUSE=""
 
-DEPEND=""
 RDEPEND="
-		${DEPEND}
-		virtual/glu
-		media-libs/libogg
-		media-libs/libvorbis
-		media-libs/libsdl:0
+	virtual/glu
+	media-libs/libogg
+	media-libs/libvorbis
+	media-libs/libsdl:0
 "
 
 S="${WORKDIR}"

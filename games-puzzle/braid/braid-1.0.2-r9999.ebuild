@@ -1,23 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
-inherit unpacker games versionator
-
-MY_PV="$(get_version_component_range 3)"
+inherit desktop eutils unpacker
 
 DESCRIPTION="Platform game where you manipulate flow of time"
 HOMEPAGE="http://braid-game.com"
-SRC_URI="${PN}-linux-build${MY_PV}.run.bin
-	linguas_ru? ( ${PN}-rus.tar.bz2 )"
+SRC_URI="${PN}-linux-build$(ver_cut 3).run.bin
+	l10n_ru? ( ${PN}-rus.tar.bz2 )"
 
 LICENSE="Arphic MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="linguas_ru"
+IUSE="l10n_ru"
 RESTRICT="strip fetch"
 
 DEPEND="app-arch/unzip"
@@ -30,7 +27,7 @@ RDEPEND="media-libs/libsdl[joystick,sound,video]
 	virtual/opengl
 	media-gfx/nvidia-cg-toolkit"
 
-S=${WORKDIR}/data
+S="${WORKDIR}/data"
 
 pkg_nofetch() {
 	echo
@@ -42,7 +39,7 @@ src_unpack() {
 	local a="${DISTDIR}/${PN}-linux-build${MY_PV}.run.bin"
 	unpack_zip "${a}"
 
-	if use linguas_ru; then
+	if use l10n_ru; then
 		unpack "${PN}-rus.tar.bz2"
 		mv "${S}/package0.zip" "${S}/gamedata/data"
 		mv "${S}/strings/english.mo" "${S}/gamedata/data/strings"
@@ -50,7 +47,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 
 	insinto "${dir}"
 	exeinto "${dir}"
@@ -62,8 +59,6 @@ src_install() {
 	doicon gamedata/"${PN}.png"
 	dodoc gamedata/README-linux.txt
 
-	games_make_wrapper "${PN}" "./${PN}" "${dir}"
+	make_wrapper "${PN}" "./${PN}" "${dir}"
 	make_desktop_entry "${PN}" "Braid" "${PN}"
-
-	prepgamesdirs
 }

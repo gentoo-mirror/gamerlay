@@ -1,6 +1,5 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -15,17 +14,17 @@ HOMEPAGE="http://www.amnesiagame.com/"
 SRC_URI="${MY_SRC_PN}_Linux.zip"
 
 RESTRICT="fetch strip bindist"
-LICENSE="Frictional_Games-EULA"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc linguas_de linguas_es linguas_fr linguas_it linguas_ru"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="doc l10n_de l10n_es l10n_fr l10n_it l10n_ru"
 
 DEPEND="app-arch/xz-utils"
 RDEPEND="media-libs/freealut
 	>=media-libs/glew-1.5
-	media-libs/jpeg:62
-	media-libs/libpng:1.2
+	virtual/jpeg-compat
+	media-libs/libpng-compat:1.2
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/openal
@@ -74,7 +73,6 @@ src_prepare() {
 		"${libdropdir}"
 	)
 
-
 	KEEP=("${libdir}/libsteam_api.so")
 
 	if use doc && [[ ( "${linguas_in_use}" == "0" || "${docs_eng}" != "0" ) ]]; then
@@ -119,7 +117,6 @@ src_install() {
 		! -name "*.sh" \
 		! -name "*.txt" \
 		-exec doins '{}' \; || die "doins other files failed"
-
 
 	# Install libraries and executables
 	einfo " Installing libraries and executables ..."

@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>frostworks@gmx.de</email>
-	<name>Marcel Unbehaun</name>
+<email>mva@mva.name</email>
+<name>Vadim A. Misbakh-Soloviov</name>
 </maintainer>
+<use>
+<flag name="hb">Use HIB archive</flag>
+<flag name="gog">USE GOG archive</flag>
+</use>
 </pkgmetadata>

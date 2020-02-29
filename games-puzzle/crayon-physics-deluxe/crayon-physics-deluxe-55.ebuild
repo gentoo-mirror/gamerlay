@@ -1,87 +1,70 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit eutils multilib games
+inherit desktop eutils multilib-minimal
 
-DESCRIPTION="2D physics puzzle / sandbox game, where your drawings would be magically transformed into real physical objects."
+DESCRIPTION="2D physics puzzle / sandbox game."
 HOMEPAGE="http://crayonphysics.com/"
 
 SRC_URI="${PN//-/_}-linux-release${PV}.tar.gz"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="multilib"
 RESTRICT="strip fetch"
 
 RDEPEND="
-	sys-devel/gcc
-	x86? (
-		app-arch/bzip2
-		dev-libs/expat
-		dev-libs/glib
-		dev-libs/libffi
-		media-libs/fontconfig
-		media-libs/freetype:2
-		virtual/glu
-		media-libs/libogg
-		media-libs/libpng
-		virtual/opengl
-		sys-apps/util-linux
-		sys-libs/zlib
-		x11-libs/libdrm
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXau
-		x11-libs/libxcb
-		x11-libs/libXdamage
-		x11-libs/libXdmcp
-		x11-libs/libXext
-		x11-libs/libXfixes
-		x11-libs/libXinerama
-		x11-libs/libXrandr
-		x11-libs/libXrender
-		x11-libs/libXxf86vm
-		dev-qt/qtcore
-		dev-qt/qtgui
-		media-libs/smpeg
-		media-libs/libvorbis
-		media-libs/libmikmod
-		media-libs/sdl-mixer
-		media-libs/sdl-image
-	)
-	amd64? (
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-opengl
-		app-emulation/emul-linux-x86-qtlibs
-		app-emulation/emul-linux-x86-soundlibs
-		app-emulation/emul-linux-x86-sdl
-		app-emulation/emul-linux-x86-xlibs
-	)
+	app-arch/bzip2[${MULTILIB_USEDEP}]
+	dev-libs/expat[${MULTILIB_USEDEP}]
+	dev-libs/glib[${MULTILIB_USEDEP}]
+	dev-libs/libffi[${MULTILIB_USEDEP}]
+	media-libs/fontconfig[${MULTILIB_USEDEP}]
+	media-libs/freetype:2[${MULTILIB_USEDEP}]
+	virtual/glu[${MULTILIB_USEDEP}]
+	media-libs/libogg[${MULTILIB_USEDEP}]
+	media-libs/libpng[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]
+	sys-apps/util-linux[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libICE[${MULTILIB_USEDEP}]
+	x11-libs/libSM[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXau[${MULTILIB_USEDEP}]
+	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage[${MULTILIB_USEDEP}]
+	x11-libs/libXdmcp[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXinerama[${MULTILIB_USEDEP}]
+	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	x11-libs/libXrender[${MULTILIB_USEDEP}]
+	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+	media-libs/smpeg[${MULTILIB_USEDEP}]
+	media-libs/libvorbis[${MULTILIB_USEDEP}]
+	media-libs/libmikmod[${MULTILIB_USEDEP}]
+	media-libs/sdl-mixer[${MULTILIB_USEDEP}]
+	media-libs/sdl-image[${MULTILIB_USEDEP}]
 "
-
-REQUIRED_USE="amd64? ( multilib )"
 
 MY_PN="CrayonPhysicsDeluxe"
 S="${WORKDIR}/${MY_PN}"
 
 src_install() {
 	( use amd64 && use multilib ) && ABI=x86
-	GAMEDIR="${GAMES_PREFIX_OPT}/${MY_PN}"
+	local dir="/opt/${MY_PN}"
 
-	insinto "${GAMEDIR}"
-	exeinto "${GAMEDIR}"
+	insinto "${dir}"
+	exeinto "${dir}"
 
 	# install icon
-	newicon "icon.png" "${PN}.png" \
-		|| die "install icon"
+	newicon "icon.png" "${PN}.png" || die "install icon"
 
 	# install docs
-	dohtml readme.html
+	dodoc readme.html
 
 	# cleanup unneeded files
 	rm -rf "./$(get_libdir)"
@@ -106,8 +89,6 @@ src_install() {
 	doexe crayon || die "doexe failed"
 
 	# install shortcuts
-	games_make_wrapper "${PN}" "./crayon" "${GAMEDIR}" || die "install shortcut"
+	make_wrapper "${PN}" "./crayon" "${dir}" || die "install shortcut"
 	make_desktop_entry "${PN}" "Crayon Physics Deluxe" "${PN}"
-
-	prepgamesdirs
 }
