@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Famous 2D shooting game
+EAPI=7
+HOMEPAGE=http://www.snkplaymore.co.jp/us/games/steam/metalslug3/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/libsdl2 media-libs/sdl2-mixer sys-libs/zlib
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=MetalSlug3-Linux-2014-06-09.sh
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_md5_=62afe0af0e5577473a783a034c9f8998

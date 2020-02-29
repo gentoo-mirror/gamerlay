@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/zip
+DESCRIPTION=A platformer where you play as an animated cube of meat
+EAPI=7
+HOMEPAGE=http://www.supermeatboy.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/openal media-libs/libsdl2
+RESTRICT=fetch
+SLOT=0
+SRC_URI=supermeatboy-linux-11112013-bin
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=77b8262b6f814912bd4ce1950687c249
