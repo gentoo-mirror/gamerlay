@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf
+DESCRIPTION=a hexagonal tile-based puzzle game
+EAPI=7
+HOMEPAGE=http://hexahop.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf
+SLOT=0
+SRC_URI=mirror://sourceforge/hexahop/hex-a-hop/1.1.0/hex-a-hop-1.1.0.tar.gz
+_md5_=f346953d5f55341adb4a8d933ba1de15

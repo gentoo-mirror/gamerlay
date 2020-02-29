@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Immersed in a steampunk world with stunning visual design.
+EAPI=7
+HOMEPAGE=http://www.cogsgame.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=x86? ( dev-libs/json-c media-libs/alsa-lib media-libs/flac media-libs/libogg =media-libs/libsdl-1.2* media-libs/libsndfile media-libs/libvorbis media-libs/openal media-sound/pulseaudio sys-apps/util-linux sys-libs/gdbm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst virtual/opengl ) amd64? ( app-arch/bzip2 dev-libs/json-c media-libs/aalib media-libs/alsa-lib media-libs/flac media-libs/freeglut media-libs/freetype:2 media-libs/ftgl media-libs/glu media-libs/libcaca media-libs/libogg =media-libs/libsdl-1.2* media-libs/libsndfile media-libs/libvorbis media-libs/openal virtual/opengl media-sound/pulseaudio net-libs/libasyncns sys-apps/attr sys-apps/dbus sys-apps/tcp-wrappers sys-libs/gpm sys-libs/libcap sys-libs/ncurses sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/libXxf86vm )
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=cogs_20110811_all.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=cd25e2246e6c35ad7486e4514fcc892b

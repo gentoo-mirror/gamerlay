@@ -25,6 +25,8 @@ games-arcade/frogatto:extras - Install additional modules
 games-engines/fifechan:allegro - Support for media-libs/allegro
 games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
 games-fps/zdoom:asm - Enable assembly implementations
+games-rpg/unepic:gog - USE GOG archive
+games-rpg/unepic:hb - Use HIB archive
 games-sports/stuntrally:editor - Build and install maps editor
 games-sports/stuntrally:game - Build and install game client itself
 games-strategy/revenge-of-the-titans:hib - Install game from Humble Indie Bundle package

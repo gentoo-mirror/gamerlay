@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-lang/lua:0 virtual/jpeg media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/glew:0 virtual/opengl virtual/glu
+DESCRIPTION=game similar to the PSX game Kula World / Roll Away
+EAPI=7
+HOMEPAGE=http://cubosphere.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/lua:0 virtual/jpeg media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/glew:0 virtual/opengl virtual/glu
+SLOT=0
+SRC_URI=https://download.sourceforge.net/cubosphere/cubosphere_beta0.3a_linux_src.tar.gz
+_md5_=3e821efff3db1111be6964c203d76628

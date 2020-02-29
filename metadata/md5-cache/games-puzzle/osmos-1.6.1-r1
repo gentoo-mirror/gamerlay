@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch
+DEPEND=virtual/opengl virtual/glu x11-libs/libX11 media-libs/freetype:2 sys-libs/glibc media-libs/openal media-libs/libvorbis
+DESCRIPTION=Play as a single-celled organism absorbing others
+EAPI=7
+HOMEPAGE=http://www.hemispheregames.com/osmos/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=OSMOS
+RDEPEND=virtual/opengl virtual/glu x11-libs/libX11 media-libs/freetype:2 sys-libs/glibc media-libs/openal media-libs/libvorbis
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=Osmos_1.6.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=b75666723df7b4df815f7d275d39cc46

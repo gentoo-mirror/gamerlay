@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Platform game where you manipulate liquids.
+EAPI=7
+HOMEPAGE=http://strangeloopgames.com
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=vessel-02222013-bin
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_md5_=3c31a18cdee02d50fd045731de78efc3
