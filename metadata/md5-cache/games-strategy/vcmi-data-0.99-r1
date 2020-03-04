@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DEPEND=app-arch/unzip
+DESCRIPTION=Core data for vcmi
+EAPI=7
+HOMEPAGE=http://forum.vcmi.eu/index.php
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://download.vcmi.eu/core.zip -> vcmi-data-core-0.99.zip http://download.vcmi.eu/WoG/wog.zip -> vcmi-data-wog-0.99.zip
+_md5_=c87d943890fc3a035f4b42b1a33d16c2

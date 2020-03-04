@@ -1,0 +1,15 @@
+BDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_6? ( dev-python/setuptools[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/setuptools[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/setuptools[python_targets_python3_8(-)] )
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-python/pyyaml dev-python/pillow >=games-engines/fifengine-0.4.2[python] >=games-engines/fifechan-0.1.5 python_single_target_python3_6? ( dev-lang/python:3.6[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) test? ( dev-python/greenlet dev-python/polib dev-python/isort dev-python/pylint dev-python/mock dev-python/nose dev-python/pycodestyle )
+DESCRIPTION=Anno-like real time strategy game
+EAPI=7
+HOMEPAGE=http://www.unknown-horizons.org/
+IUSE=test python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-python/pyyaml dev-python/pillow >=games-engines/fifengine-0.4.2[python] >=games-engines/fifechan-0.1.5 python_single_target_python3_6? ( dev-lang/python:3.6[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_6? ( dev-lang/python:3.6[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[sqlite] >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
+SLOT=0
+SRC_URI=https://github.com/unknown-horizons/unknown-horizons/archive/2019.1.tar.gz -> unknown-horizons-2019.1.tar.gz
+_eclasses_=distutils-r1	0d71c97a0c899f1f11ee4453ebeae2cd	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=bbb9c2375a2826816bb6beb6c85bfa0f

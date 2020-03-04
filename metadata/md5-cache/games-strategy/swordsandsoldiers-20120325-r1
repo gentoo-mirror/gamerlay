@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=A vibrant, side-scrolling strategy game.
+EAPI=7
+HOMEPAGE=http://www.swordsandsoldiers.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/json-c media-libs/aalib media-libs/alsa-lib media-libs/flac media-libs/fontconfig media-libs/freetype media-libs/glu media-libs/libogg media-libs/libsdl media-libs/libsndfile media-libs/libvorbis virtual/opengl media-libs/openal media-sound/pulseaudio net-libs/libasyncns sys-apps/attr sys-apps/dbus sys-apps/tcp-wrappers sys-apps/util-linux sys-devel/gcc sys-libs/gdbm sys-libs/glibc sys-libs/gpm sys-libs/libcap sys-libs/ncurses sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrender x11-libs/libXtst x11-libs/libXxf86vm
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=x86? ( swordsandsoldiers-20120325-i386.tar.gz ) amd64? ( swordsandsoldiers-20120325-amd64.tar.gz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=f6e54c82a01626f8a4a56e7b01040500

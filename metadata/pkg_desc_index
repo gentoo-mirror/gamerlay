@@ -46,8 +46,8 @@ games-arcade/tokitori 20130703: Help a baby chicken save all the eggs.
 games-arcade/waking-mars 1.0.4: Waking Mars - Bring A Sleeping Planet Back To Life
 games-engines/ags 3.3.5.7: A game/runtime interpreter for the Adventure Game Studio engine
 games-engines/bbge 9999: The Bit-Blot Game Engine, used by Aquaria
-games-engines/fifechan 0.1.4 9999: Lightweight cross platform GUI C++ library designed for games
-games-engines/fifengine 0.4.1 9999: Flexible Isometric Free Engine, 2D
+games-engines/fifechan 0.1.5: Lightweight cross platform GUI C++ library designed for games
+games-engines/fifengine 0.4.2: Flexible Isometric Free Engine, 2D
 games-engines/openxcom 1.0.0_p20171215: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
 games-fps/brutal-doom 21: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
@@ -86,20 +86,20 @@ games-simulation/babylon5-ifh-dao 1.15: Danger and Opportunity - a prequel for B
 games-simulation/kerbal-space-program 1.8.1: A space flight simulation
 games-sports/stuntrally 2.6 9999: Rally game focused on closed rally tracks with possible stunt elements.
 games-sports/stuntrally-tracks 2.6 9999: A set of tracks for games-sports/stuntrally-9999
-games-strategy/anomaly 20130402: An extraordinary mixture of action and strategy in a reversed tower defense formula.
-games-strategy/anomaly-korea 20130613: An extraordinary mixture of action and strategy in a reversed tower defense formula.
-games-strategy/anomaly-mobilecampaign 20130613: An extraordinary mixture of action and strategy in a reversed tower defense formula.
-games-strategy/curseofwar 1.2.0: A fast-paced action strategy game implemented using ncurses user interface.
+games-strategy/anomaly 20130402-r1: An extraordinary mixture of action and strategy.
+games-strategy/anomaly-korea 20130613-r1: An extraordinary mixture of action and strategy.
+games-strategy/anomaly-mobilecampaign 20130613-r1: An extraordinary mixture of action and strategy/
+games-strategy/curseofwar 1.2.0-r1: A fast-paced action strategy game implemented using ncurses user interface.
 games-strategy/defcon 1.6.1: Global thermonuclear war simulation with multiplayer support
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 games-strategy/opendungeons 0.7.1: An open source, real time strategy game based on the Dungeon Keeper series
-games-strategy/revenge-of-the-titans 1.80.20: Defeat the returning Titan horde in a series of epic ground battles.
-games-strategy/swordsandsoldiers 20120325: A vibrant, side-scrolling strategy game.
-games-strategy/unknown-horizons 2017.2 9999: Anno-like real time strategy game
-games-strategy/uplink 1.6: Crack into virtual computer systems
-games-strategy/vcmi 0.99 9999: Heroes of Might and Magic III game engine rewrite
-games-strategy/vcmi-data 0.99: Core data for vcmi
-games-strategy/worms-reloaded 20131016: Legendary Worms™ Game. SinglePlayer-only.
+games-strategy/revenge-of-the-titans 1.80.20-r1: Defeat the returning Titan horde in a series of epic ground battles.
+games-strategy/swordsandsoldiers 20120325-r1: A vibrant, side-scrolling strategy game.
+games-strategy/unknown-horizons 2019.1: Anno-like real time strategy game
+games-strategy/uplink 1.6-r1: Crack into virtual computer systems
+games-strategy/vcmi 0.99: Heroes of Might and Magic III game engine rewrite
+games-strategy/vcmi-data 0.99-r1: Core data for vcmi
+games-strategy/worms-reloaded 20131016-r1: Legendary Worms Game. SinglePlayer-only.
 games-strategy/wyrmsun 2.7.1: Strategy game based on history, mythology and fiction
 games-util/fgcom 9999: A VoIP client for FlightGear
 games-util/gmqcc 0.3.5: An Improved Quake C Compiler

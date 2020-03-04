@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=Crack into virtual computer systems
+EAPI=7
+HOMEPAGE=http://www.uplink.co.uk
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/libsdl[opengl] media-libs/sdl-mixer[mikmod] media-libs/freetype:2
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( uplink_1.6-1_amd64.tar.gz ) x86? ( uplink_1.6-1_i386.tar.gz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=0406adc69ec67c48f30501cbe7c2880f
