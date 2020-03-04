@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>krytzz@soylent.eu</email>
 	<name>steffen stramm</name>
 </maintainer>
+<use>
+<flag name="cegui">Enable cegui support</flag>
+<flag name="fifechan">Enable Fifechan GUI subsystem</flag>
+<flag name="log">Enable logging</flag>
+</use>
 </pkgmetadata>

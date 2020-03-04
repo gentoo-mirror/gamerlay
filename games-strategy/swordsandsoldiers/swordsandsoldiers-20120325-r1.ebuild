@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit games
+inherit desktop eutils
 
 DESCRIPTION="A vibrant, side-scrolling strategy game."
 HOMEPAGE="http://www.swordsandsoldiers.com/"
@@ -13,7 +12,7 @@ SRC_URI="
 		amd64? ( ${P}-amd64.tar.gz )
 "
 RESTRICT="fetch strip"
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
@@ -83,8 +82,8 @@ src_install() {
 	newicon "SwordsAndSoldiersSetup.png" "${PN}-setup.png"
 	make_desktop_entry "${PN}" "Swords & Soldiers" "${PN}"
 	make_desktop_entry "${PN}-setup" "Swords & Soldiers (setup)" "${PN}-setup"
-	games_make_wrapper "${PN}" "./SwordsAndSoldiers.bin" "${dir}"
-	games_make_wrapper "${PN}-setup" "./SwordsAndSoldiersSetup.bin" "${dir}"
+	make_wrapper "${PN}" "./SwordsAndSoldiers.bin" "${dir}"
+	make_wrapper "${PN}-setup" "./SwordsAndSoldiersSetup.bin" "${dir}"
 	exeinto "${dir}"
 	insinto "${dir}"
 	doins -r "Data"
@@ -92,6 +91,4 @@ src_install() {
 	doins "SwordsAndSoldiersSetup.png"
 	doexe "./SwordsAndSoldiers.bin"
 	doexe "./SwordsAndSoldiersSetup.bin"
-
-	prepgamesdirs
 }

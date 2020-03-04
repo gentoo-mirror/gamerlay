@@ -1,40 +1,33 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit eutils games unpacker
+inherit desktop eutils multilib-minimal
 
 TS="1381858841"
 
-DESCRIPTION="Legendary Worms™ Game. SinglePlayer-only."
+DESCRIPTION="Legendary Worms Game. SinglePlayer-only."
 HOMEPAGE="http://www.team17.com/games/worms/worms-reloaded/"
 SRC_URI="WormsReloaded_Linux_${TS}.sh"
 
 RESTRICT="fetch strip"
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="
-	amd64? (
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-sdl
-	)
-	x86? (
-		media-libs/libsdl2
-		media-libs/openal
-		sys-libs/zlib
-	)
+	media-libs/libsdl2[${MULTILIB_USEDEP}]
+	media-libs/openal[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
 "
 
 S="${WORKDIR}/data"
 
-GAMEDIR="${GAMES_PREFIX_OPT}/${PN}"
+GAMEDIR="/opt/${PN}"
 
 pkg_nofetch() {
 	einfo ""
@@ -45,10 +38,11 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unpack_zip "${A}";
+	unpack_zip ${A}
 }
 
 src_prepare() {
+	default
 	rm -r "${S}/x86/lib/libopenal.so.1"
 }
 
@@ -66,8 +60,7 @@ src_install() {
 	# Install icon and desktop file
 	newicon "x86/WormsReloaded.png" "${PN}.png"
 	make_desktop_entry "${PN}" "Worms Reloaded" "${PN}"
-	games_make_wrapper "${PN}" "./WormsReloaded.bin.x86" "${GAMEDIR}" "${GAMEDIR}/lib"
+	make_wrapper "${PN}" "./WormsReloaded.bin.x86" "${GAMEDIR}" "${GAMEDIR}/lib"
 
 	# Setting permissions.
-	prepgamesdirs
 }

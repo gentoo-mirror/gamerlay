@@ -1,54 +1,44 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit unpacker games
+inherit desktop eutils multilib-minimal unpacker
 
-DESCRIPTION="An extraordinary mixture of action and strategy in a reversed tower defense formula."
+DESCRIPTION="An extraordinary mixture of action and strategy."
 HOMEPAGE="http://www.anomalythegame.com/"
 # Is it non-HiB distfile?
 SRC_URI="AnomalyWarzoneEarth-Installer_Humble_Linux_1364850491.zip"
 RESTRICT="fetch strip"
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="multilib"
+IUSE=""
 
 DEPEND=""
 RDEPEND="
-	x86? (
-		media-libs/openal
-		x11-libs/libdrm
-		x11-libs/libX11
-		x11-libs/libXau
-		x11-libs/libxcb
-		x11-libs/libXdamage
-		x11-libs/libXdmcp
-		x11-libs/libXext
-		x11-libs/libXfixes
-		x11-libs/libXxf86vm
-	)
-	amd64? (
-		app-emulation/emul-linux-x86-xlibs
-		app-emulation/emul-linux-x86-opengl
-		app-emulation/emul-linux-x86-sdl
-	)
+	media-libs/openal[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXau[${MULTILIB_USEDEP}]
+	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage[${MULTILIB_USEDEP}]
+	x11-libs/libXdmcp[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 	virtual/opengl
 	app-arch/unzip
 "
-
-REQUIRED_USE="amd64? ( multilib )"
 
 S="${WORKDIR}"
 
 src_unpack() {
 	#double-zipped files, lol
 	unpack ${A}
-        # self unpacking zip archive; unzip warns about the exe stuff
-        local a="${S}/AnomalyWarzoneEarth-Installer"
-        unpack_zip "${a}"
+	# self unpacking zip archive; unzip warns about the exe stuff
+	local a="${S}/AnomalyWarzoneEarth-Installer"
+	unpack_zip "${a}"
 	rm "${a}" # save space
 }
 
@@ -60,11 +50,11 @@ pkg_nofetch() {
 
 src_install() {
 	cd "${S}/data"
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 
 	newicon "icon.png" "${PN}.png"
 	make_desktop_entry "${PN}" "Anomaly: Warzone Earth" "${PN}"
-	games_make_wrapper "${PN}" "./AnomalyWarzoneEarth" "${dir}"
+	make_wrapper "${PN}" "./AnomalyWarzoneEarth" "${dir}"
 	dodoc README
 	exeinto "${dir}"
 	doexe "AnomalyWarzoneEarth"
@@ -82,6 +72,4 @@ src_install() {
 		"Copyright license Xpm"
 	insinto "${dir}"
 	doins -r .
-
-	prepgamesdirs
 }

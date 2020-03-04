@@ -1,6 +1,5 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
@@ -23,7 +22,8 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	sed -i -e "s:%VERSION%:${PV}:g" ${PN}{,-sdl}.6
-	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/:g" path.c
+	sed -i -e "s:/usr/local/share/:/usr/share/:g" path.c
+	sed -i -e "s:TARGET_LINK_LIBRARIES( curseofwar \${COMMON_LIBS} ncurses ):TARGET_LINK_LIBRARIES( curseofwar \${COMMON_LIBS} ncurses tinfo ):g" CMakeLists.txt
 	epatch "${FILESDIR}/${P}-fix-gcc-error-compilation.patch"
 	cmake-utils_src_prepare
 }

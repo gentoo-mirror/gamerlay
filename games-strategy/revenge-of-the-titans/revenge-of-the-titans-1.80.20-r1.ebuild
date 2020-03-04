@@ -1,15 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
-inherit games java-pkg-2 versionator
+inherit desktop eutils java-pkg-2
 
 MY_PN=RevengeOfTheTitans
 # Divide second subversion by 10, i.e. 1.80.10 => 1810
 #MY_PV=$(version_format_string '${1}$((${2} / 10))${3}')
-MY_PV=$(delete_all_version_separators)
+MY_PV=$(ver_rs 1-2 "")
 
 DESCRIPTION="Defeat the returning Titan horde in a series of epic ground battles."
 HOMEPAGE="http://www.puppygames.net/revenge-of-the-titans/"
@@ -20,7 +19,7 @@ SRC_URI="hib? (
 	amd64? ( http://d4ec1k3inlcla.cloudfront.net/${MY_PN}-amd64.tar.gz -> ${P}-amd64.tar.gz )
 	x86? ( http://d4ec1k3inlcla.cloudfront.net/${MY_PN}-i386.tar.gz -> ${P}-i386.tar.gz )	)"
 
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="hib"
@@ -31,7 +30,7 @@ DEPEND=""
 
 RESTRICT="mirror strip"
 
-dir="${GAMES_PREFIX_OPT}/${MY_PN}"
+dir="/opt/${MY_PN}"
 S="${WORKDIR}/revengeofthetitans"
 
 pkg_nofetch() {
@@ -60,9 +59,7 @@ src_install() {
 	exeinto "${dir}"
 	doexe *.so revenge.sh || die "doexe"
 
-	games_make_wrapper ${PN} ./revenge.sh "${dir}" "${dir}"
+	make_wrapper ${PN} ./revenge.sh "${dir}" "${dir}"
 	doicon revenge.png
 	make_desktop_entry ${PN} "Revenge of the Titans" revenge
-
-	prepgamesdirs
 }

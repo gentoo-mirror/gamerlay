@@ -1,6 +1,9 @@
-EAPI=5
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
-inherit games
+EAPI=7
+
+inherit desktop eutils
 
 MY_P="${PN}_${PV}-1"
 
@@ -11,11 +14,11 @@ SRC_URI="amd64? ( ${MY_P}_amd64.tar.gz )
 RESTRICT="fetch"
 
 # Bundled libs :(
-QA_PRESTRIPPED="${GAMES_PREFIX_OPT}/${PN}/lib.*"
+QA_PRESTRIPPED="/opt/${PN}/lib.*"
 
-LICENSE="introversion"
+LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -33,7 +36,7 @@ pkg_nofetch() {
 src_unpack() {
 	local root
 
-	unpack "${A}"
+	unpack ${A}
 
 	if use amd64; then
 		root=uplink-x64
@@ -49,7 +52,7 @@ src_unpack() {
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	local exe lib
 
 	insinto "${dir}"
@@ -77,9 +80,7 @@ src_install() {
 
 	doicon uplink.png
 	make_desktop_entry "${PN}" Uplink uplink
-	games_make_wrapper "${PN}" "${dir}/$exe"
+	make_wrapper "${PN}" "${dir}/$exe"
 
 	dodoc changes.txt mods.txt readme.txt
-
-	prepgamesdirs
 }

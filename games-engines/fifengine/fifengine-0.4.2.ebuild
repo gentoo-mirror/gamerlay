@@ -1,26 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-#PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5}} )
-# py3 is not yet tested by upstream -> not merged in master
-PYTHON_COMPAT=( pypy python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit eutils python-single-r1 cmake-utils git-r3
+inherit eutils python-single-r1 cmake-utils
 
 DESCRIPTION="Flexible Isometric Free Engine, 2D"
 HOMEPAGE="http://fifengine.de"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug +log +opengl +zip +fifechan librocket cegui python"
+IUSE="debug +log +opengl +zip +fifechan cegui python"
 
 RDEPEND="
-	librocket? ( dev-libs/libRocket )
 	cegui? ( dev-games/cegui )
 	fifechan? ( games-engines/fifechan )
 	dev-libs/tinyxml
@@ -39,7 +36,7 @@ RDEPEND="
 	virtual/opengl
 	virtual/glu
 	python? (
-		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/pyyaml
 		${PYTHON_DEPS}
 	)
 "
@@ -50,26 +47,22 @@ DEPEND="
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-
-usx() { usex $* ON OFF; }
+PATCHES=(
+	"${FILESDIR}/${P}-unbundle-libpng.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-unbundle-libpng.patch"
-	default
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-Dopengl=$(usx opengl)
-		-Dfifechan=$(usx fifechan)
-		-Dlibrocket=$(usx librocket)
-		-Dcegui=$(usx cegui)
-		-Dlogging=$(usx log)
-		-Dbuild-python=$(usx python)
+		-Dopengl=$(usex opengl)
+		-Dfifechan=$(usex fifechan)
+		-Dlibrocket=OFF
+		-Dcegui=$(usex cegui)
+		-Dlogging=$(usex log)
+		-Dbuild-python=$(usex python)
 		-Dbuild-library=ON
 	)
 

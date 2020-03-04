@@ -1,10 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
-
-inherit games
+EAPI=7
 
 DESCRIPTION="Core data for vcmi"
 HOMEPAGE="http://forum.vcmi.eu/index.php"
@@ -16,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
@@ -25,7 +22,7 @@ RDEPEND=""
 S="${WORKDIR}"
 
 src_install() {
-	insinto "${GAMES_DATADIR}/${PN%-data}"
+	insinto "/usr/share/${PN%-data}"
 	rm -rf Mods/vcmi/Data/s
 	doins -r *
 }
@@ -34,7 +31,7 @@ pkg_postinst() {
 	elog "For the game to work properly, please copy your"
 	elog 'Heroes Of Might and Magic ("The Wake Of Gods" or'
 	elog '"Shadow of Death" or "Complete edition")'
-	elog "game directory into ${GAMES_DATADIR}/${PN}."
+	elog "game directory into /usr/share/${PN}."
 	elog "or use 'vcmibuilder' utility on your:"
 	elog "   a) One or two CD's or CD images"
 	elog "   b) gog.com installer"
