@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit games
+inherit desktop eutils
 
 DESCRIPTION="2D action-adventure game with semil-linear storyline"
 HOMEPAGE="https://www.nicalis.com/games/cavestory+"
@@ -65,7 +65,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	local exe;
 
 	use amd64 && exe="${MY_PN}_64"
@@ -79,9 +79,7 @@ src_install() {
 
 	doicon "${FILESDIR}/${PN}.png"
 
-	games_make_wrapper "${PN}" "./${exe}" "${dir}"
+	make_wrapper "${PN}" "./${exe}" "${dir}"
 	doicon "${FILESDIR}/${PN}.png" || die
 	make_desktop_entry "${PN}" "${MY_PN}"
-
-	prepgamesdirs
 }

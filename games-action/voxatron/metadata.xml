@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd></herd>
-<maintainer>
+<maintainer type="person">
 <email>ComputerDruid@gmail.com</email>
 <name>Dan Johnson</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 <email>azamat.hackimov@gmail.com</email>
 <name>Azamat H. Hackimov</name>
 </maintainer>

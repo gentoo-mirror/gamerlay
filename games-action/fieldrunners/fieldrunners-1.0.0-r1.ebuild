@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit games
+inherit desktop eutils
 
 TIMESTAMP_x86="1346296515"
 TIMESTAMP_amd64="1346776333"
@@ -13,13 +12,13 @@ DESCRIPTION="Defend and control the field using a diverse selection of upgradeab
 HOMEPAGE="http://subatomicstudios.com/games/fieldrunners/"
 
 SLOT="0"
-LICENSE="as-is"
+LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch strip"
 IUSE=""
 
 SRC_URI="
-	x86? ( ${PN}-${PV}-32bit-${TIMESTAMP_x86}.tar.gz )
+	x86? ( ${P}-32bit-${TIMESTAMP_x86}.tar.gz )
 	amd64? ( ${PN}-linux-${PV}-64bit-${TIMESTAMP_amd64}.tar.gz )
 "
 
@@ -52,13 +51,13 @@ MY_PN="${PN/f/F}"
 DOCS=( README )
 
 pkg_nofetch() {
-        ewarn
-        ewarn "Place ${A} to ${DISTDIR}"
-        ewarn
+	ewarn
+	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	local arch;
 	use amd64 && arch="x86_64" || arch="x86"
 
@@ -68,9 +67,7 @@ src_install() {
 	exeinto "${dir}"
 	doexe "${PN}/${MY_PN}"
 
-	games_make_wrapper "${PN}" "./${MY_PN}" "${dir}"
+	make_wrapper "${PN}" "./${MY_PN}" "${dir}"
 	doicon "${FILESDIR}/${PN}.png" || die
 	make_desktop_entry "${PN}" "${MY_PN}"
-
-	prepgamesdirs
 }

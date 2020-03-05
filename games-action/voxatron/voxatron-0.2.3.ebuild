@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
+
+inherit multilib-minimal
 
 DESCRIPTION="A voxelicious action adventure"
 HOMEPAGE="http://www.lexaloffle.com/voxatron.php"
@@ -11,13 +12,11 @@ RESTRICT="fetch"
 
 LICENSE="Voxatron"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
-	media-libs/libsdl[abi_x86_32,opengl]
+	media-libs/libsdl[${MULTILIB_USEDEP},opengl]
 "
 
 pkg_nofetch() {
@@ -29,7 +28,7 @@ pkg_nofetch() {
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 	insinto ${dir}
 	doins vox.dat
 	exeinto ${dir}
