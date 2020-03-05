@@ -1,28 +1,19 @@
 dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
 dev-games/netradiant 1.5.0_p20120515: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
-dev-util/adobe-air-sdk-bin 2.6: Adobe AIR SDK
 games-action/a7xpg 0.11: The retro modern high speed shooting game
 games-action/area2048 1.03: jumpei isshiki's HelloWorldProject (2005/01/17)
-games-action/cave_story_plus 100: 2D action-adventure game with semil-linear storyline
-games-action/d2x-xl 1.16.15 1.16.27: Descent 2 engine supporting high-resolution textures
+games-action/cave_story_plus 100-r1: 2D action-adventure game with semil-linear storyline
 games-action/deadlysoccerball 0.1: space soccer ball shooting missiles around
 games-action/dex 2.1.0.2: 2D Action-RPG with a rich cyberpunk world
-games-action/fieldrunners 1.0.0: Defend and control the field using a diverse selection of upgradeable towers.
-games-action/gunroar 0.15: Guns, Guns, Guns! 360-degree gunboat shooter, 'Gunroar'
-games-action/gunroarhi 0.30: Guns, Guns, Guns! 360-degree gunboat shooter, fork of ABAs 'Gunroar'
+games-action/fieldrunners 1.0.0-r1: Defend and control the field using a diverse selection of upgradeable towers.
 games-action/hammerfight 20110812: 2D battles of flying machines equipped with various weaponry
-games-action/projectl 1.001: Sword action STG inspired by projectN developed by D.K
 games-action/psychonauts 2013.05.06: A mind-bending platforming adventure from Double Fine Productions.
 games-action/rochard 1.42: A side-scrolling platformer packed with action, gravity-bending puzzles.
 games-action/shadowgrounds-bin 1: an epic action experience combining modern technology with addictive playability
 games-action/shadowgrounds-survivor-bin 1-r1: human survivors who battle against the ongoing alien onslaught
 games-action/supertirititran 0.9: super hero shoot em up
-games-action/torustrooper 0.22: Speed! More speed! Speeding ship sailing through barrage, 'Torus Trooper'
-games-action/torustrooperpure 0.2: Brake down and Burn up! original:Torus Trooper (ABA)
-games-action/tumikifighters 0.2: Stick more enemies and become much stronger. Sticky 2D shooter, 'TUMIKI Fighters'.
 games-action/twoworlds 2.0.0.2: Action RPG with open world
-games-action/valandrick 0.1a: Guns, Guns, Guns! Inofficial and secret 1st version of gunroar
 games-action/voxatron 0.2.3: A voxelicious action adventure
 games-arcade/VVVVVV 2.02_p20200206: Retro-styled open-world 2D puzzle platformer
 games-arcade/alex4 1.2.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors!
@@ -50,9 +41,8 @@ games-engines/fifechan 0.1.5: Lightweight cross platform GUI C++ library designe
 games-engines/fifengine 0.4.2: Flexible Isometric Free Engine, 2D
 games-engines/openxcom 1.0.0_p20171215: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/wyrmgus 2.7.1: Modified Stratagus engine for Wyrmsun
-games-fps/brutal-doom 21: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
+games-fps/brutal-doom 21-r1: A mod that attempts to make Doom faster placed, harder, gorier and more violent.
 games-fps/dhewm3 1.5.1_pre1: A Doom 3 GPL source modification.
-games-fps/zdoom 2.8.1: ZDoom is an enhanced port of the official DOOM source code
 games-puzzle/2048-qt 0.1.6 9999: A Qt-based version of the game 2048
 games-puzzle/braid 1.0.2-r9999: Platform game where you manipulate flow of time
 games-puzzle/caph 1.1: sandbox physics game
@@ -106,5 +96,4 @@ games-util/gmqcc 0.3.5: An Improved Quake C Compiler
 games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/terragear 9999: Terrain editing programs for FlightGear
 media-gfx/recoil 5.0.0: Retro Computer Image Library
-media-libs/fmod 4.44.50: music and sound effects library, and a sound processing system
 media-sound/oaml 1.3.4: Open Adaptive Music Library

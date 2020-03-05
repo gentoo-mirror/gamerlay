@@ -30,7 +30,6 @@ games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
 games-engines/fifengine:cegui - Enable cegui support
 games-engines/fifengine:fifechan - Enable Fifechan GUI subsystem
 games-engines/fifengine:log - Enable logging
-games-fps/zdoom:asm - Enable assembly implementations
 games-rpg/unepic:gog - USE GOG archive
 games-rpg/unepic:hb - Use HIB archive
 games-sports/stuntrally:editor - Build and install maps editor
