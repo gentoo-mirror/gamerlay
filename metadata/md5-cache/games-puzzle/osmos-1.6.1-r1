@@ -9,5 +9,5 @@ RDEPEND=virtual/opengl virtual/glu x11-libs/libX11 media-libs/freetype:2 sys-lib
 RESTRICT=fetch strip
 SLOT=0
 SRC_URI=Osmos_1.6.1.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=b75666723df7b4df815f7d275d39cc46

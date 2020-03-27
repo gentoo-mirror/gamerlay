@@ -9,5 +9,5 @@ RDEPEND=dev-libs/json-c media-libs/flac virtual/glu media-libs/libogg media-libs
 RESTRICT=fetch strip
 SLOT=0
 SRC_URI=cave_story_plus-linux-r100.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=49845816214a29eaccbdc65d69965e88

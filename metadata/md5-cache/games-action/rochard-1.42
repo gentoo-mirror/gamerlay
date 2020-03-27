@@ -10,5 +10,5 @@ RDEPEND=virtual/opengl app-arch/gzip x11-libs/libdrm x11-libs/libX11 x11-libs/li
 RESTRICT=fetch
 SLOT=0
 SRC_URI=!dlc? ( x86? ( Rochard_v1.42_Linux_x86_1371746493.tar.gz ) amd64? ( Rochard_v1.42_Linux_x64_1371746492.tar.gz ) ) dlc? ( x86? ( Rochard_Hard_Times_v1.42_Linux_x86_1371746492.tar.gz ) amd64? ( Rochard_Hard_Times_v1.42_Linux_x64_1371746492.tar.gz ) )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=98769f4a81f3e0f541b3b496db7aa2c8
