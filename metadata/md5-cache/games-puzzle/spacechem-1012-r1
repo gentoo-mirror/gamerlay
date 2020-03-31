@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/mono-2.10.3[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi
 RESTRICT=strip fetch
 SLOT=0
 SRC_URI=amd64? ( spacechem-linux-1345144627-amd64.deb ) x86? ( SpaceChem-i386.deb )
-_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2c69a0e9618d051912032d34f44e7a7c

@@ -8,5 +8,5 @@ LICENSE=all-rights-reserved
 RESTRICT=strip fetch
 SLOT=0
 SRC_URI=vessel-02222013-bin
-_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	adf17fdc9e28e5120b70bc0de7630985
 _md5_=3c31a18cdee02d50fd045731de78efc3
