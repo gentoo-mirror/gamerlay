@@ -1,5 +1,5 @@
-dev-games/aseprite 1.1.9: Animated sprite editor & pixel art tool
-dev-games/netradiant 1.5.0_p20120515: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
+dev-games/netradiant 1.5.0_p20200521: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
+dev-games/netradiant-gamepacks 1.5.0.20200419: Gamepacks for NetRadiant editor
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 games-action/a7xpg 0.11: The retro modern high speed shooting game
 games-action/area2048 1.03: jumpei isshiki's HelloWorldProject (2005/01/17)
@@ -51,7 +51,6 @@ games-puzzle/cogs 20110811-r1: Immersed in a steampunk world with stunning visua
 games-puzzle/crayon-physics-deluxe 55: 2D physics puzzle / sandbox game.
 games-puzzle/cubosphere 0.3a: game similar to the PSX game Kula World / Roll Away
 games-puzzle/hex-a-hop 1.1.0-r1: a hexagonal tile-based puzzle game
-games-puzzle/numptyphysics 9999: A drawing puzzle game in the spirit of Crayon Physics
 games-puzzle/osmos 1.6.1-r1: Play as a single-celled organism absorbing others
 games-puzzle/phlipple 0.8.5: An unique puzzle game with the goal to reduce a 3D shape to a single square
 games-puzzle/puzzlemoppet 1.0: a serenely peaceful yet devilishly challenging 3D puzzle game

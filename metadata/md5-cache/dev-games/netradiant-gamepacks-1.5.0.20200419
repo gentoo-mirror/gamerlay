@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Gamepacks for NetRadiant editor
+EAPI=7
+HOMEPAGE=https://netradiant.gitlab.io/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://dl.illwieckz.net/b/netradiant/build/preversions/netradiant_1.5.0-20200419-illwieckz-linux-amd64.tar.xz
+_md5_=c53c680e25beb0482b08fefd461e6091
