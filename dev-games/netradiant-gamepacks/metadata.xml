@@ -2,16 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nikoli@lavabit.com</email>
-    <name>Nikoli</name>
-  </maintainer>
-  <maintainer type="person">
     <email>azamat.hackimov@gmail.com</email>
     <name>Azamat H. Hackimov</name>
   </maintainer>
-  <use>
-    <flag name="tools">Install additional tools</flag>
-  </use>
   <upstream>
     <remote-id type="gitlab">xonotic/netradiant</remote-id>
   </upstream>
