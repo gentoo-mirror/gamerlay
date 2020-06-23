@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-GIT_TAG="458a91b4539ea68ae6a02f5ad93c6fbc93a725a0"
+GIT_TAG="acd4026b70958a6371bf09c8f1618f98db625234"
 
 DESCRIPTION="NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5"
 HOMEPAGE="https://netradiant.gitlab.io/"
@@ -40,10 +40,6 @@ DEPEND="${RDEPEND}
 	"
 
 S="${WORKDIR}/${PN}-${GIT_TAG}"
-
-PATCHES=(
-	"${FILESDIR}/${P}_DBUILD_SHARED_LIBS.patch"
-)
 
 src_configure() {
 	local mycmakeargs=(
