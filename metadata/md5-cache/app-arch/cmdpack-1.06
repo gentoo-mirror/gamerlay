@@ -1,0 +1,10 @@
+BDEPEND=app-text/asciidoc
+DEFINED_PHASES=install prepare
+DESCRIPTION=Utilites from Neill Corlett, bin2ecm included
+EAPI=7
+HOMEPAGE=https://github.com/chungy/cmdpack
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/chungy/cmdpack/archive/1.06.tar.gz -> cmdpack-1.06.tar.gz
+_md5_=65c9dd413cf2403ec45536651d44c3ac

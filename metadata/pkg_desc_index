@@ -1,4 +1,5 @@
-dev-games/netradiant 1.5.0_p20200521: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
+app-arch/cmdpack 1.06: Utilites from Neill Corlett, bin2ecm included
+dev-games/netradiant 1.5.0_p20200525: NetRadiant is a fork of map editor for Q3 based games, GtkRadiant 1.5
 dev-games/netradiant-gamepacks 1.5.0.20200419: Gamepacks for NetRadiant editor
 dev-libs/fuzzylite 5.0: A Fuzzy Logic Control Library in C++
 games-action/a7xpg 0.11: The retro modern high speed shooting game
