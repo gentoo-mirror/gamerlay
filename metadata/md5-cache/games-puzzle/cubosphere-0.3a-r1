@@ -1,0 +1,14 @@
+DEFINED_PHASES=prepare setup
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) virtual/jpeg media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/glew:0 virtual/opengl virtual/glu
+DESCRIPTION=game similar to the PSX game Kula World / Roll Away
+EAPI=7
+HOMEPAGE=http://cubosphere.sourceforge.net/
+IUSE=+lua_single_target_lua5-1
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) virtual/jpeg media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/glew:0 virtual/opengl virtual/glu
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
+SLOT=0
+SRC_URI=https://download.sourceforge.net/cubosphere/cubosphere_beta0.3a_linux_src.tar.gz
+_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=7801a2ade67ca4e0e9cb913fd6d3c8c1
