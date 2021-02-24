@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="02694_33460"
+GOG_MAGIC="03066_44517"
 
 SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
 SRC_URI="
@@ -21,7 +21,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-L10NS="l10n_en " #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
+L10NS="l10n_en" #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
 IUSE="${L10NS}"
 REQUIRED_USE="^^ ( ${L10NS} )"
 
