@@ -3,10 +3,11 @@ DEPEND=media-libs/libpng:0=
 DESCRIPTION=Retro Computer Image Library
 EAPI=7
 HOMEPAGE=http://recoil.sourceforge.net/
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=media-libs/libpng:0=
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/recoil/recoil/5.0.0/recoil-5.0.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=266f17b32dc3e24a829856c56a6e29ee

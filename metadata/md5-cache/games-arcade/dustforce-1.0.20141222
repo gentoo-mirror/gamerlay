@@ -2,6 +2,7 @@ DEFINED_PHASES=install nofetch unpack
 DESCRIPTION=An acrobatic janitor 2d platformer
 EAPI=6
 HOMEPAGE=http://dustforce.com
+INHERIT=multilib unpacker-nixstaller
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=all-rights-reserved
 RDEPEND=virtual/opengl app-arch/bzip2 dev-libs/expat media-libs/fontconfig media-libs/freealut media-libs/freetype:2 media-libs/libsdl media-libs/libogg media-libs/openal media-libs/libvorbis net-dns/libidn sys-libs/zlib x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXrender x11-libs/libxcb

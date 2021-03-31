@@ -3,6 +3,7 @@ DEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbullet
 DESCRIPTION=jumpei isshiki's HelloWorldProject (2005/01/17)
 EAPI=2
 HOMEPAGE=https://sourceforge.net/projects/area2048/
+INHERIT=d-games
 KEYWORDS=~ppc ~x86
 LICENSE=BSD
 RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer dev-libs/libbulletml

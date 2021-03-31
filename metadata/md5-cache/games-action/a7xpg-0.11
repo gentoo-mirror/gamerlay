@@ -3,6 +3,7 @@ DEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer
 DESCRIPTION=The retro modern high speed shooting game
 EAPI=2
 HOMEPAGE=http://www.asahi-net.or.jp/~cs8k-cyu/windows/a7xpg_e.html
+INHERIT=d-games
 KEYWORDS=~ppc ~x86
 LICENSE=BSD
 RDEPEND=media-libs/libsdl media-libs/mesa media-libs/sdl-mixer
