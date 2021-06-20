@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl2 media-libs/sdl2-mixer media-libs/sdl2-image[png] media-libs/sdl2-ttf sys-libs/zlib:=
 SLOT=0
 SRC_URI=https://github.com/riksweeney/edgar/releases/download/1.32/edgar-1.32-1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	ebdbaed22e873a5abe6205f41349b479
+_eclasses_=toolchain-funcs	2545dc6f0aaecb2dea61424911e82674	multilib	ba7da83f763a749a2870c28785c6dc0b
 _md5_=7b68105ea6742933d0bbfa579dcc45c9
