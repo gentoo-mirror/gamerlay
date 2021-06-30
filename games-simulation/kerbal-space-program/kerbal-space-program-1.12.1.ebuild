@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="03066_44517"
+GOG_MAGIC="03142_48164"
 
 SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
 SRC_URI="
