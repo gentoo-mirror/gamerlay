@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils prefix
+inherit cmake prefix
 
 MY_PN="marsshooter"
 MY_P="${MY_PN}-${PV}"
@@ -23,6 +23,7 @@ DEPEND="
 	virtual/opengl
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/M.A.R.S.-${MY_P}"
 
@@ -31,7 +32,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	hprefixify src/System/settings.cpp
 }
 
@@ -42,9 +43,5 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils cmake-utils flag-o-matic
+inherit eutils cmake flag-o-matic
 
 DESCRIPTION="Heroes of Might and Magic III game engine rewrite"
 HOMEPAGE="http://forum.vcmi.eu/index.php"
@@ -19,7 +19,7 @@ CDEPEND="
 	media-libs/sdl2-image
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
-	virtual/ffmpeg
+	media-video/ffmpeg
 	sys-libs/zlib[minizip]
 	launcher? (
 		dev-qt/qtgui
@@ -61,10 +61,6 @@ src_configure() {
 		# ^ or not?
 	)
 	export CCACHE_SLOPPINESS="time_macros"
-	cmake-utils_src_configure
+	cmake_src_configure
 	strip-cppflags -DNDEBUG
-}
-
-src_install() {
-	cmake-utils_src_install
 }

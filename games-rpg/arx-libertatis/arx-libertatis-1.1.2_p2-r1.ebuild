@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,8 +34,8 @@ RDEPEND="${COMMON_DEPEND}
 	crash-reporter? ( sys-devel/gdb )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	virtual/pkgconfig
 	static? ( media-libs/glew[static-libs] )"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.md AUTHORS CHANGELOG )
 
@@ -68,9 +68,6 @@ src_configure() {
 }
 
 pkg_postinst() {
-	elog "optional dependencies:"
-	elog "  games-rpg/arx-fatalis-data (from CD or GOG)"
-	elog "  games-rpg/arx-fatalis-demo (free demo)"
 	elog
 	elog "This package only installs the game binary."
 	elog "You need the demo or full game data. Also see:"
@@ -79,7 +76,3 @@ pkg_postinst() {
 	elog "If you have already installed the game or use the STEAM version,"
 	elog "run \"/usr/bin/arx-install-data\""
 }
-
-#pkg_postrm() {
-#	gnome2_icon_cache_update
-#}

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Lightweight cross platform GUI C++ library designed for games"
 HOMEPAGE="http://fifengine.github.io/fifechan/"
@@ -34,16 +34,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-usx() { usex $* ON OFF; }
-
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_ALLEGRO=$(usx allegro)
-		-DENABLE_OPENGL=$(usx opengl)
+		-DENABLE_ALLEGRO=$(usex allegro)
+		-DENABLE_OPENGL=$(usex opengl)
 #		-DENABLE_OPENGL_CONTRIB=$(usx opengl)
-		-DENABLE_SDL=$(usx sdl)
-		-DENABLE_SDL_CONTRIB=$(usx sdl)
-		-DENABLE_IRRLICHT=$(usx irrlicht)
+		-DENABLE_SDL=$(usex sdl)
+		-DENABLE_SDL_CONTRIB=$(usex sdl)
+		-DENABLE_IRRLICHT=$(usex irrlicht)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

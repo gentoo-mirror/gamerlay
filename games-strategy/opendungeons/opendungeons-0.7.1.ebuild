@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="An open source, real time strategy game based on the Dungeon Keeper series"
 HOMEPAGE="http://opendungeons.github.io/"
@@ -20,8 +20,8 @@ RDEPEND=">=dev-games/cegui-0.8.0[ogre,opengl]
 	dev-games/ois
 	dev-libs/boost:=
 	>=media-libs/libsfml-2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(

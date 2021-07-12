@@ -1,31 +1,28 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A game/runtime interpreter for the Adventure Game Studio engine"
-HOMEPAGE="http://www.adventuregamestudio.co.uk/ http://www.adventuregamestudio.co.uk/"
-SRC_URI="https://github.com/adventuregamestudio/ags/releases/download/v.${PV}/${PN}_linux_v.${PV}.tar.xz"
+HOMEPAGE="http://www.adventuregamestudio.co.uk/"
+SRC_URI="https://github.com/adventuregamestudio/ags/archive/refs/tags/v.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
-	>=media-libs/aldumb-0.9.3
-	media-libs/allegro:0
-	>=media-libs/dumb-0.9.3
+	media-libs/dumb[allegro]
 	media-libs/freetype:2
 	media-libs/libogg
 	media-libs/libtheora
 	media-libs/libvorbis"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}_linux_v.${PV}"
+S="${WORKDIR}/${PN}-v.${PV}"
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i -e "s:-O2 -g -fsigned-char::" Engine/Makefile-defs.linux \
 		|| die
 }

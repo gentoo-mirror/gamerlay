@@ -5,11 +5,6 @@
 <email>git@mva.name</email>
 <name>Vadim A. Misbakh-Soloviov</name>
 </maintainer>
-<use>
-<flag name="c++11">
-Add support for C++11
-</flag>
-</use>
 <longdescription lang="en">
 A Fuzzy Logic Control Library in C++
 </longdescription>
