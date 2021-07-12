@@ -3,17 +3,14 @@
 # * generated automatically using pmaint *
 
 dev-games/netradiant:tools - Install additional tools
-dev-libs/fuzzylite:c++11 - Add support for C++11
 games-action/dex:gog - Use GOG archive
 games-action/rochard:dlc - Install DLC
-games-action/twoworlds:gog - Use GOG archive
 games-arcade/frogatto:extras - Install additional modules
 games-engines/fifechan:allegro - Support for media-libs/allegro
 games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
 games-engines/fifengine:cegui - Enable cegui support
 games-engines/fifengine:fifechan - Enable Fifechan GUI subsystem
 games-engines/fifengine:log - Enable logging
-games-rpg/arx-fatalis-data:gog - Extract the data from the GOG.com installer.
 games-rpg/arx-libertatis:c++11 - Build using the C++11 standard.
 games-rpg/arx-libertatis:crash-reporter - Build a dev-qt/qtgui-based tool that allows to submit crash information to the upstream backtracker.
 games-rpg/arx-libertatis:debug - Enable asserts and debug logging.
