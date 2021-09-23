@@ -10,7 +10,7 @@ HOMEPAGE="http://openxcom.org/"
 # For translation files
 #SRC_URI="http://openxcom.org/git_builds/openxcom_git_master_2015_09_25_2120.zip"
 EGIT_REPO_URI="https://github.com/SupSuper/OpenXcom.git"
-EGIT_COMMIT=8d45159bf3e27d6aef62aff6035d9f6a59caf00b
+EGIT_COMMIT=6ef797008e50dc548bb5b0b33d0b858a12792bb5
 
 LICENSE="GPL-3"
 SLOT="0"
