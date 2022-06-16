@@ -92,5 +92,5 @@ games-util/fgcom 9999: A VoIP client for FlightGear
 games-util/gmqcc 0.3.5: An Improved Quake C Compiler
 games-util/rejoystick 0.8.1: Tool which translates gamepad/joystick input into key strokes/mouse actions in X
 games-util/terragear 9999: Terrain editing programs for FlightGear
-media-gfx/recoil 5.0.0: Retro Computer Image Library
+media-gfx/recoil 5.0.0 6.1.1: Retro Computer Image Library
 media-sound/oaml 1.3.4: Open Adaptive Music Library
