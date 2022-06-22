@@ -9,5 +9,5 @@ RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/json-c media-libs/aalib media-lib
 RESTRICT=fetch
 SLOT=0
 SRC_URI=x86? ( zenbound2-20120325-i386.tar.gz ) amd64? ( zenbound2-20120325-amd64.tar.gz )
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	dab5d8ec471d025b79c9e6906bcf3bff
+_eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa	edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	dab5d8ec471d025b79c9e6906bcf3bff
 _md5_=dbb49d3e264033ac28427550a2472ffd
