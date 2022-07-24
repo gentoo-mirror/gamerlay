@@ -9,5 +9,5 @@ RDEPEND=media-libs/libsdl media-libs/sdl-mixer[flac,mad,mikmod,vorbis] sys-libs/
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz -> gianasreturn-v1.10-linux.tar.gz
-_eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa	edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	23cb2d46c80c12aa8b25973b4cdcb257
+_eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa	edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	6f9a4727973fc1e368f52777d871e769
 _md5_=6944d5b21dd1da8439071d30927bd2b4
