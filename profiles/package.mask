@@ -1,3 +1,0 @@
-# Michael Weber <xmw@gentoo.org> (10 Mar 2015)
-# Broken upstream repo
-=games-simulation/fgrun-9999

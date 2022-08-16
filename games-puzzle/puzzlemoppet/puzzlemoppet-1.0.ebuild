@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 MY_PN="PuzzleMoppet"
 
-inherit cmake-utils
+inherit cmake desktop
 
 DESCRIPTION="a serenely peaceful yet devilishly challenging 3D puzzle game"
 HOMEPAGE="http://garnetgames.com/puzzlemoppet"
@@ -26,19 +26,28 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}"/"${MY_PN}Source/Litha Engine"
-DAT="${WORKDIR}"/"${MY_PN}FullVersion"
+S="${WORKDIR}/${MY_PN}Source/Litha Engine"
+DAT="${WORKDIR}/${MY_PN}FullVersion"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-irrpatch.patch"
+	"${FILESDIR}/${PN}-irrhack.patch"
+	"${FILESDIR}/${PN}-cmake.patch"
+	"${FILESDIR}/${PN}-64bit.patch"
+)
 
 src_prepare() {
-	cp "${DISTDIR}"/${PN}.stb_vorbis.c "${S}"/source/SoundSystems/OpenALSoundSystem/stb_vorbis.c
-	eapply "${FILESDIR}"/${PN}-irrpatch.patch
-	eapply "${FILESDIR}"/${PN}-irrhack.patch
-	eapply "${FILESDIR}"/${PN}-cmake.patch
-	eapply "${FILESDIR}"/${PN}-64bit.patch
-	for i in `find projects/Puzzle -name *.cpp`; do sed -i "$i" -e "s:../projects:/usr/share/${PN}/projects:g"; done
-	for i in `find projects/ConfigApp -name *.cpp`; do sed -i "$i" -e "s:../projects:/usr/share/${PN}/projects:g"; done
+	cp "${DISTDIR}/${PN}.stb_vorbis.c" "${S}/source/SoundSystems/OpenALSoundSystem/stb_vorbis.c"
+
+	for i in `find projects/Puzzle -name *.cpp`; do
+		sed -i "$i" -e "s:../projects:/usr/share/${PN}/projects:g";
+	done
+	for i in `find projects/ConfigApp -name *.cpp`; do
+		sed -i "$i" -e "s:../projects:/usr/share/${PN}/projects:g";
+	done
 	sed -i -e "s:config:"${PN}-config":g" -i projects/ConfigApp/CMakeLists.txt
-	default
+
+	cmake_src_prepare
 }
 
 src_install() {

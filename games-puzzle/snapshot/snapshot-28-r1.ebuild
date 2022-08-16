@@ -4,7 +4,7 @@
 EAPI=7
 MY_PN="${PN/s/S}"
 BASE_URI="${MY_PN}-linux-v${PV}"
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="Join PIC on his awesome journey into the unknown armed with only his camera!"
 HOMEPAGE="http://www.retroaffect.com/games/1/snapshot/"
@@ -56,9 +56,9 @@ RDEPEND="${DEPEND}
 	x11-libs/libXfixes
 	x11-libs/libXtst
 	x11-libs/libXxf86vm
-	|| ( dev-lang/luajit:2 dev-lang/lua:0 )
+	|| ( dev-lang/luajit:2 dev-lang/lua:5.1 )
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( dev-lang/lua:0 )
+	!luajit? ( dev-lang/lua:5.1 )
 "
 S="${WORKDIR}"
 

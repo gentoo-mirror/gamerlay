@@ -50,6 +50,5 @@
 		<doc lang="en">http://wiki.arx-libertatis.org/</doc>
 		<remote-id type="github">arx/ArxLibertatis</remote-id>
 		<remote-id type="sourceforge">arx</remote-id>
-		<remote-id type="freecode">arx-libertatis</remote-id>
 	</upstream>
 </pkgmetadata>

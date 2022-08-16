@@ -1,11 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-[[ ${PV} = 9999* ]] && GIT="git-r3"
-
-inherit cmake-utils ${GIT}
+inherit cmake
 
 DESCRIPTION="Rally game focused on closed rally tracks with possible stunt elements."
 HOMEPAGE="http://stuntrally.tuxfamily.org/"
@@ -13,16 +11,8 @@ HOMEPAGE="http://stuntrally.tuxfamily.org/"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="dedicated +game editor"
-
-if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
-	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/stuntrally/stuntrally"
-	LIVE_PDEPEND="=${CATEGORY}/${PN}-tracks-${PV}"
-else
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tgz"
-fi
+KEYWORDS="~amd64 ~x86"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tgz"
 
 DEPEND="
 	game? (
@@ -32,11 +22,10 @@ DEPEND="
 		media-libs/libvorbis
 		media-libs/libogg
 		media-libs/openal
-		sci-physics/bullet[bullet3,extras]
+		sci-physics/bullet[extras]
 	)
 	dev-libs/boost
 	net-libs/enet:1.3
-	virtual/libstdc++
 "
 RDEPEND="${DEPEND}
 	~games-sports/stuntrally-tracks-${PV}
@@ -59,9 +48,9 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 		-DSHARE_INSTALL="share/stuntrally"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }
