@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils multilib-minimal
+inherit desktop multilib-minimal wrapper
 
 DESCRIPTION="2D physics puzzle / sandbox game."
 HOMEPAGE="http://crayonphysics.com/"
