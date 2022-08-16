@@ -1,0 +1,16 @@
+BDEPEND=>=dev-util/ninja-1.8.2 >=dev-util/cmake-3.20.5
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=game? ( dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision] dev-games/mygui[ogre,plugins] media-libs/libsdl2[haptic] media-libs/libvorbis media-libs/libogg media-libs/openal sci-physics/bullet[extras] ) dev-libs/boost net-libs/enet:1.3
+DESCRIPTION=Rally game focused on closed rally tracks with possible stunt elements.
+EAPI=8
+HOMEPAGE=http://stuntrally.tuxfamily.org/
+INHERIT=cmake
+IUSE=dedicated +game editor
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=game? ( dev-games/ogre[cg,boost,ois,freeimage,opengl,zip,-double-precision] dev-games/mygui[ogre,plugins] media-libs/libsdl2[haptic] media-libs/libvorbis media-libs/libogg media-libs/openal sci-physics/bullet[extras] ) dev-libs/boost net-libs/enet:1.3 ~games-sports/stuntrally-tracks-2.6
+REQUIRED_USE=editor? ( game )
+SLOT=0
+SRC_URI=https://github.com/stuntrally/stuntrally/archive/2.6.tar.gz -> stuntrally-2.6.tgz
+_eclasses_=toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	flag-o-matic	38d6ec96711cea42a5cb1cc723a6e906	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	58ec4e54962bf45d065fb95030701514	xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	cmake	44afbf15c35884f7c840470f1cf05d0d
+_md5_=e55c0c751677e06ef54b2701d9c54550

@@ -50,6 +50,7 @@ games-puzzle/cubosphere 0.3a-r1: game similar to the PSX game Kula World / Roll 
 games-puzzle/hex-a-hop 1.1.0-r1: a hexagonal tile-based puzzle game
 games-puzzle/osmos 1.6.1-r1: Play as a single-celled organism absorbing others
 games-puzzle/phlipple 0.8.5: An unique puzzle game with the goal to reduce a 3D shape to a single square
+games-puzzle/puzzlemoppet 1.0: a serenely peaceful yet devilishly challenging 3D puzzle game
 games-puzzle/snapshot 28-r1: Join PIC on his awesome journey into the unknown armed with only his camera!
 games-puzzle/spacechem 1012-r1: A design-based puzzle game from Zachtronics Industries.
 games-puzzle/spirits 1.0.1-r1: Save the spirits of leaf litters
@@ -57,9 +58,9 @@ games-puzzle/vessel 2013.02.22: Platform game where you manipulate liquids.
 games-puzzle/zen-puzzle-garden 1.4.0: Try to solve puzzles that take place in a relaxing zen garden.
 games-puzzle/zenbound2 20120325-r1: A calm and meditative game of wrapping rope around wooden sculptures.
 games-rpg/amnesia-tdd 1.3: A first person survival horror. Immersion, discovery and living in a nightmare.
-games-rpg/arx-libertatis 1.1.2_p2-r1: Cross-platform port of Arx Fatalis, a first-person role-playing game
+games-rpg/arx-libertatis 1.2.1: Cross-platform port of Arx Fatalis, a first-person role-playing game
 games-rpg/divinity-original-sin-ee 2.0.0.1: Divinity: Original Sin - Enhanced Edition (GOG edition)
-games-rpg/lonesurvivor 1.11d_p1-r1: 2D sidescrolling psychological survival adventure game
+games-rpg/lonesurvivor 1.11d_p1-r2: 2D sidescrolling psychological survival adventure game
 games-rpg/machinarium 1.0-r1: Point-and-click adventure about robot in steam-punk world
 games-rpg/torchlight 1.15.20130521-r1: An action role-playing game, made by the creators of Diablo
 games-rpg/torchlight2 20150401: An action role-playing game, made by the creators of Diablo
@@ -70,6 +71,8 @@ games-rpg/zeldaolb 3.6: The Legend of Zelda - Onilink Begins
 games-rpg/zeldaroth 6.11: The Legend of Zelda - Return of the Hylian
 games-simulation/babylon5-ifh-dao 1.15: Danger and Opportunity - a prequel for Babylon 5: I've Found Her
 games-simulation/kerbal-space-program 1.12.1: A space flight simulation
+games-sports/stuntrally 2.6: Rally game focused on closed rally tracks with possible stunt elements.
+games-sports/stuntrally-tracks 2.6: A set of tracks for games-sports/stuntrally-2.6
 games-strategy/anomaly 20130402-r1: An extraordinary mixture of action and strategy.
 games-strategy/anomaly-korea 20130613-r1: An extraordinary mixture of action and strategy.
 games-strategy/anomaly-mobilecampaign 20130613-r1: An extraordinary mixture of action and strategy/
