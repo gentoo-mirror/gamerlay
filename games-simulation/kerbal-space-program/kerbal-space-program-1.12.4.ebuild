@@ -1,19 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit eutils
+inherit desktop unpacker
 
 DESCRIPTION="A space flight simulation"
 HOMEPAGE="http://kerbalspaceprogram.com/"
 
-GOG_MAGIC="03142_48164"
+GOG_MAGIC="03187_59948"
 
-SRC_PH="${PN//-/_}@PH@_${PV//./_}_${GOG_MAGIC}.sh"
-SRC_URI="
-	l10n_en? ( ${SRC_PH//@PH@/} )
-"
+SRC_URI="${PN//-/_}_${PV//./_}_${GOG_MAGIC}.sh"
 
 RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
@@ -21,9 +18,8 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-L10NS="l10n_en" #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
-IUSE="${L10NS}"
-REQUIRED_USE="^^ ( ${L10NS} )"
+#L10NS="l10n_en" #l10n_es l10n_fr l10n_it l10n_ja l10n_pt-BR l10n_ru l10n_zh-CN"
+IUSE=""
 
 DEPEND="app-arch/unzip"
 RDEPEND="
@@ -53,13 +49,12 @@ src_unpack() {
 
 	mkdir "${tmp}" || die "mkdir 'tmp' failed"
 	cd "${tmp}" || die "cd 'tmp' failed"
-
-	unzip -q "${DISTDIR}/${A}"
+	unpack_zip "${A}"
 	local gpath="data/noarch/game"
 
-	mv "${gpath}" "${S}"
+	mv "${gpath}" "${S}" || die "mv failed"
 
-	cd "${S}"
+	cd "${S}" || die "cd 'workdir' failed"
 
 	#use l10n_de && unzip -oq ksp-lang-de-de.zip && rm ksp-lang-de-de.zip
 	#use l10n_es && unzip -oq ksp-lang-es-es.zip && rm ksp-lang-es-es.zip
