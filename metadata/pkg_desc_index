@@ -14,7 +14,7 @@ games-action/shadowgrounds-bin 1: an epic action experience combining modern tec
 games-action/shadowgrounds-survivor-bin 1-r1: human survivors who battle against the ongoing alien onslaught
 games-action/supertirititran 0.9: super hero shoot em up
 games-action/voxatron 0.2.3: A voxelicious action adventure
-games-arcade/VVVVVV 2.02_p20200206: Retro-styled open-world 2D puzzle platformer
+games-arcade/VVVVVV 2.4_pre20230416: Retro-styled open-world 2D puzzle platformer
 games-arcade/alex4 1.2.1: Alex the Allegator 4 - Plenty of classic platforming in four nice colors!
 games-arcade/capsized 2013.10.06: A fast paced 2d platformer, focused on intense action and exploration.
 games-arcade/dustforce 1.0.20141222: An acrobatic janitor 2d platformer
@@ -53,7 +53,6 @@ games-puzzle/phlipple 0.8.5: An unique puzzle game with the goal to reduce a 3D 
 games-puzzle/puzzlemoppet 1.0: a serenely peaceful yet devilishly challenging 3D puzzle game
 games-puzzle/snapshot 28-r1: Join PIC on his awesome journey into the unknown armed with only his camera!
 games-puzzle/spacechem 1012-r1: A design-based puzzle game from Zachtronics Industries.
-games-puzzle/spirits 1.0.1-r1: Save the spirits of leaf litters
 games-puzzle/vessel 2013.02.22: Platform game where you manipulate liquids.
 games-puzzle/zen-puzzle-garden 1.4.0: Try to solve puzzles that take place in a relaxing zen garden.
 games-puzzle/zenbound2 20120325-r1: A calm and meditative game of wrapping rope around wooden sculptures.
@@ -77,15 +76,12 @@ games-strategy/anomaly 20130402-r1: An extraordinary mixture of action and strat
 games-strategy/anomaly-korea 20130613-r1: An extraordinary mixture of action and strategy.
 games-strategy/anomaly-mobilecampaign 20130613-r1: An extraordinary mixture of action and strategy/
 games-strategy/curseofwar 1.3.0: A fast-paced action strategy game implemented using ncurses user interface.
-games-strategy/defcon 1.6.1: Global thermonuclear war simulation with multiplayer support
-games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 games-strategy/opendungeons 0.7.1: An open source, real time strategy game based on the Dungeon Keeper series
 games-strategy/revenge-of-the-titans 1.80.20-r1: Defeat the returning Titan horde in a series of epic ground battles.
 games-strategy/swordsandsoldiers 20120325-r1: A vibrant, side-scrolling strategy game.
 games-strategy/unknown-horizons 2019.1: Anno-like real time strategy game
 games-strategy/uplink 1.6-r1: Crack into virtual computer systems
-games-strategy/vcmi 0.99: Heroes of Might and Magic III game engine rewrite
-games-strategy/vcmi-data 0.99-r1: Core data for vcmi
+games-strategy/vcmi 1.2.0: Heroes of Might and Magic III game engine rewrite
 games-strategy/worms-reloaded 20131016-r1: Legendary Worms Game. SinglePlayer-only.
 games-strategy/wyrmsun 4.1.3: Strategy game based on history, mythology and fiction
 games-util/gmqcc 0.3.5: An Improved Quake C Compiler

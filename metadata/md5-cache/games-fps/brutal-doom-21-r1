@@ -1,11 +1,11 @@
+BDEPEND=app-arch/unrar
 DEFINED_PHASES=install postinst
-DEPEND=app-arch/unrar
 DESCRIPTION=A mod that attempts to make Doom faster placed, harder, gorier and more violent.
-EAPI=7
-HOMEPAGE=http://www.moddb.com/mods/brutal-doom/
+EAPI=8
+HOMEPAGE=https://www.moddb.com/mods/brutal-doom/
 KEYWORDS=~amd64 ~x86
 LICENSE=HPND
 RDEPEND=games-fps/gzdoom
 SLOT=0
-SRC_URI=https://www.moddb.com/downloads/mirror/95667/100/b8fb37ddb10c39462f9625533fab59d2 -> brutalv21.rar
-_md5_=c50abee58092f460ac18864ecfea5196
+SRC_URI=https://www.moddb.com/downloads/mirror/95667/130/0a5526fb58bc1f38fee7e14f586ddd7b -> brutalv21.rar
+_md5_=cf51ecc489378ece58d9fa9fd04c49c5
