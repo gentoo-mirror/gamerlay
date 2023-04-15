@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Anno-like real time strategy game"
 HOMEPAGE="https://www.unknown-horizons.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

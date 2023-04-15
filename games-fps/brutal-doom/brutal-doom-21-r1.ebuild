@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A mod that attempts to make Doom faster placed, harder, gorier and more violent."
-HOMEPAGE="http://www.moddb.com/mods/brutal-doom/"
-SRC_URI="https://www.moddb.com/downloads/mirror/95667/100/b8fb37ddb10c39462f9625533fab59d2 -> brutalv${PV}.rar"
+HOMEPAGE="https://www.moddb.com/mods/brutal-doom/"
+SRC_URI="https://www.moddb.com/downloads/mirror/95667/130/0a5526fb58bc1f38fee7e14f586ddd7b -> brutalv${PV}.rar"
 
 LICENSE="HPND"
 SLOT="0"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="games-fps/gzdoom"
-DEPEND="app-arch/unrar"
+BDEPEND="app-arch/unrar"
 
 S="${WORKDIR}"
 

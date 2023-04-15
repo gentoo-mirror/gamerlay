@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="PuzzleMoppet"
 
 inherit cmake desktop
 
 DESCRIPTION="a serenely peaceful yet devilishly challenging 3D puzzle game"
-HOMEPAGE="http://garnetgames.com/puzzlemoppet"
+HOMEPAGE="https://garnetgames.com/puzzlemoppet"
 SRC_URI="
-	http://garnetgames.com/${MY_PN}Full.tar.gz
-	http://garnetgames.com/${MY_PN}Source.tar.gz
+	https://garnetgames.com/${MY_PN}Full.tar.gz
+	https://garnetgames.com/${MY_PN}Source.tar.gz
 	https://raw.githubusercontent.com/nothings/stb/e2caccb811d70af0dc359be5522e6b0d3b503e46/stb_vorbis.c -> ${PN}.stb_vorbis.c
 "
 
