@@ -82,6 +82,7 @@ games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 games-strategy/opendungeons 0.7.1: An open source, real time strategy game based on the Dungeon Keeper series
 games-strategy/revenge-of-the-titans 1.80.20-r1: Defeat the returning Titan horde in a series of epic ground battles.
 games-strategy/swordsandsoldiers 20120325-r1: A vibrant, side-scrolling strategy game.
+games-strategy/unknown-horizons 2019.1: Anno-like real time strategy game
 games-strategy/uplink 1.6-r1: Crack into virtual computer systems
 games-strategy/vcmi 0.99: Heroes of Might and Magic III game engine rewrite
 games-strategy/vcmi-data 0.99-r1: Core data for vcmi
