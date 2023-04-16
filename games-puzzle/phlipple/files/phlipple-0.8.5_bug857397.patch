@@ -1,0 +1,11 @@
+--- a/src/engine.h	2023-03-12 18:12:42.957837900 +1100
++++ b/src/engine.h	2023-03-12 18:12:50.461155967 +1100
+@@ -44,7 +44,7 @@
+ 
+ #define VERTEX_DRAW_INNER_OFFSET 	0.15f
+ 
+-char debugOutput[1024];
++extern char debugOutput[1024];
+ 
+ #include "renderstate.h"
+ 
