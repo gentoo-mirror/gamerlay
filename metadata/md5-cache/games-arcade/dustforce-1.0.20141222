@@ -9,5 +9,5 @@ RDEPEND=virtual/opengl app-arch/bzip2 dev-libs/expat media-libs/fontconfig media
 RESTRICT=fetch
 SLOT=0
 SRC_URI=Dustforce-Linux-2014-12-22.sh
-_eclasses_=multilib	c19072c3cd7ac5cb21de013f7e9832e0	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd
+_eclasses_=multilib	c19072c3cd7ac5cb21de013f7e9832e0	toolchain-funcs	513c31b3346458ed1f3878b57da6d61c	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd
 _md5_=ed05df35f7731b4503ebdbdbdf8d3f65
