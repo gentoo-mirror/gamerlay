@@ -4,7 +4,7 @@
 EAPI=8
 MY_PN="Spirits"
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="Save the spirits of leaf litters"
 HOMEPAGE="https://www.spacesofplay.com/spirits/"
@@ -51,8 +51,8 @@ src_install() {
 	doexe "${binary}"
 
 	# install shortcuts
-	make_wrapper "${PN}" "./${binary}" "${dir}" "${dir}/${libdir}" || die "install shortcut"
-	make_desktop_entry "${PN}" "${MY_PN}" "${PN}"
+	make_wrapper "${PN}" "./${binary}" "${dir}" "${dir}/${libdir}" || die
+	make_desktop_entry "${PN}" "${MY_PN}" "${PN}" || die
 }
 
 pkg_postinstall() {
