@@ -1,34 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 MY_PN=SuperMeatBoy
+MY_PV=$(ver_cut 2)$(ver_cut 3)$(ver_cut 1)
 
 DESCRIPTION="A platformer where you play as an animated cube of meat"
 HOMEPAGE="http://www.supermeatboy.com/"
-SRC_URI="${PN}-linux-$(ver_cut 2)$(ver_cut 3)$(ver_cut 1)-bin"
+SRC_URI="${PN}-linux-${MY_PV}-bin"
 
 LICENSE="all-rights-reserved"
+
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
-RESTRICT="fetch"
+RESTRICT="fetch bindist"
 
-DEPEND="app-arch/zip"
 RDEPEND="
 	media-libs/openal
 	media-libs/libsdl2
 "
+BDEPEND="app-arch/zip"
 
 S="${WORKDIR}/data"
+GAMEDIR="/usr/share/${P}"
 
 pkg_nofetch() {
 	einfo "Please download ${A}"
-	einfo "from your personal page in Humble Indie Bundle site"
+	einfo "from your library in Humble Indie Bundle site"
 	einfo "(http://www.humblebundle.com)"
 	einfo "and place it to ${DESTDIR}"
 }
@@ -43,20 +45,22 @@ src_unpack() {
 }
 
 src_install() {
-	local dest="/opt/${PN}"
-	insinto ${dest}
+	insinto "${GAMEDIR}"
 	doins -r resources Levels buttonmap.cfg \
 		gameaudio.dat gamedata.dat locdb.txt \
 		steam_appid.txt
 
-	insinto "${dest}/${ARCH}"
+	insinto "${GAMEDIR}/${ARCH}"
 	doins "${ARCH}"/libsteam_api.so
+
+	# use system-mariadb &&
+	# dosym /usr/lib64/mariadb/libmariadb.so "${GAMEDIR}/${ARCH}"/libmariadb.so.1 ||
 	doins "${ARCH}"/libmariadb.so.1
 
-	exeinto "${dest}/${ARCH}"
+	exeinto "${GAMEDIR}/${ARCH}"
 	doexe "${ARCH}/${MY_PN}"
 
-	make_wrapper "${PN}" "./${ARCH}/${MY_PN}" "${dest}" "./${ARCH}"
+	make_wrapper "${PN}" "./${ARCH}/${MY_PN}" "${GAMEDIR}" "./${ARCH}"
 
 	doicon "${PN}".png
 	make_desktop_entry "${PN}" "${MY_PN}" "${PN}"
