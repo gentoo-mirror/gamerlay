@@ -10,7 +10,7 @@ games-arcade/alex4 1.2.1: Alex the Allegator 4 - Plenty of classic platforming i
 games-arcade/dustforce 1.0.20141222: An acrobatic janitor 2d platformer
 games-arcade/edgar 1.32: The Legend of Edgar, 2d jump n run
 games-arcade/frogatto 1.3.1: a frog, and a platform game
-games-arcade/mars-game 0.7.6: M.A.R.S. a ridiculous shooter
+games-arcade/mars-game 0.7.6 0.7.6_p20211017: M.A.R.S. a ridiculous shooter
 games-arcade/supermeatboy 2013.11.11-r1: A platformer where you play as an animated cube of meat
 games-arcade/waking-mars 1.0.4: Waking Mars - Bring A Sleeping Planet Back To Life
 games-engines/ags 3.5.1.8: A game/runtime interpreter for the Adventure Game Studio engine
