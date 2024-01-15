@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 MY_PN="Osmos"
 MY_P="${MY_PN}_${PV}"
@@ -14,8 +14,7 @@ SRC_URI="${MY_P}.tar.gz"
 
 LICENSE="OSMOS"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch strip"
 
 RDEPEND="
@@ -23,7 +22,6 @@ RDEPEND="
 	virtual/glu
 	x11-libs/libX11
 	media-libs/freetype:2
-	sys-libs/glibc
 	media-libs/openal
 	media-libs/libvorbis
 "
@@ -32,7 +30,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_PN}"
 
 pkg_nofetch() {
-	einfo "Please download ${MY_P}.tar.gz and place it into ${DISTDIR}"
+	einfo "Please download ${MY_P}.tar.gz and place it into ${PORTAGE_ACTUAL_DISTDIR}"
 }
 
 src_install() {

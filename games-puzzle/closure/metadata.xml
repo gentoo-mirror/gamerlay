@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>mva@mva.name</email>
-<name>Vadim A. Misbakh-Soloviov</name>
-</maintainer>
 <longdescription lang="en">
 Shatter is a retro-inspired brick-breaking game that merges familiar action with unique twists and a modern-crafted production.
 </longdescription>
 </pkgmetadata>
-

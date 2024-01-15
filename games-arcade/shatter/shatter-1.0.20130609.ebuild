@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 MULTILIB_COMPAT=( abi_x86_32 )
 
-inherit eutils multilib-minimal unpacker-nixstaller
+inherit desktop wrapper multilib-minimal unpacker-nixstaller
 
 DESCRIPTION="Retro-inspired brick-breaking game"
 HOMEPAGE="http://www.shattergame.com"
@@ -14,10 +14,8 @@ RESTRICT="fetch strip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
 RDEPEND="
 	virtual/opengl
 	media-gfx/nvidia-cg-toolkit[${MULTILIB_USEDEP}]
@@ -43,7 +41,7 @@ QA_TEXTRELS="
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

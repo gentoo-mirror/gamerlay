@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal unpacker
+inherit desktop wrapper multilib-minimal unpacker
 
 MY_PN=Capsized
 
@@ -13,7 +13,7 @@ SRC_URI="${PN}-$(ver_cut 3)$(ver_cut 2)$(ver_cut 1)-bin"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="l10n_de l10n_es l10n_fr l10n_it"
 
 RESTRICT="fetch"
@@ -40,7 +40,7 @@ pkg_nofetch() {
 	einfo "Please download ${A}"
 	einfo "from your personal page in Humble Indie Bundle site"
 	einfo "(http://www.humblebundle.com)"
-	einfo "and place it to ${DESTDIR}"
+	einfo "and place it to ${PORTAGE_ACTUAL_DESTDIR}"
 }
 
 src_unpack() {

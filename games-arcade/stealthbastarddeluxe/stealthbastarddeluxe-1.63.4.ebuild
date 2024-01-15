@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal
+inherit desktop wrapper multilib-minimal
 
 TS=1371673270
 MY_PN=StealthBastardDeluxe
@@ -14,8 +14,7 @@ SRC_URI="${MY_PN}_${PV}_Linux_${TS}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RESTRICT="fetch strip"
 
@@ -33,7 +32,7 @@ pkg_nofetch() {
 	einfo "Please download ${A}"
 	einfo "from your personal page in Humble Indie Bundle site"
 	einfo "(http://www.humblebundle.com)"
-	einfo "and place it to ${DESTDIR}"
+	einfo "and place it to ${PORTAGE_ACTUAL_DESTDIR}"
 }
 
 src_install() {

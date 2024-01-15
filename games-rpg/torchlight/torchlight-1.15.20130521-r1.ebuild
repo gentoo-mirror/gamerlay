@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils unpacker-nixstaller
+inherit desktop wrapper unpacker-nixstaller
 
 TIMESTAMP="2013-05-21"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://torchlightgame.com/"
 
 SLOT="0"
 LICENSE="all-rights-reserved"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch"
 
 SRC_URI="Torchlight-${TIMESTAMP}.sh"
@@ -65,7 +65,7 @@ opt/torchlight/lib/*
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

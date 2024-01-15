@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils unpacker
+inherit desktop wrapper unpacker
 
 TS=1324610248
 
@@ -16,14 +16,13 @@ RESTRICT="fetch"
 LICENSE="Jamestown"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="app-arch/unzip"
 RDEPEND="media-libs/libsdl[opengl]"
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

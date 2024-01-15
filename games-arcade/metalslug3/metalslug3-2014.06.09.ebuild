@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit eutils unpacker
+inherit desktop wrapper unpacker
 
 DESCRIPTION="Famous 2D shooting game"
 HOMEPAGE="http://www.snkplaymore.co.jp/us/games/steam/metalslug3/"
@@ -13,8 +13,7 @@ RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
@@ -29,7 +28,7 @@ pkg_nofetch() {
 	einfo ""
 	einfo "Please buy and download \"${SRC_URI}\" from"
 	einfo "HumbleIndieBundle or ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "and move/link it to \"${PORTAGE_ACTUAL_DISTDIR}\""
 	einfo ""
 }
 

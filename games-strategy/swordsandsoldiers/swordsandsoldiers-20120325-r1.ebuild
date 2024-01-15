@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="A vibrant, side-scrolling strategy game."
 HOMEPAGE="http://www.swordsandsoldiers.com/"
@@ -14,10 +14,8 @@ SRC_URI="
 RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/expat
@@ -38,12 +36,8 @@ RDEPEND="
 	net-libs/libasyncns
 	sys-apps/attr
 	sys-apps/dbus
-	sys-apps/tcp-wrappers
 	sys-apps/util-linux
-	sys-devel/gcc
 	sys-libs/gdbm
-	sys-libs/glibc
-	sys-libs/gpm
 	sys-libs/libcap
 	sys-libs/ncurses
 	sys-libs/zlib
@@ -71,7 +65,7 @@ DOCS=( "README.linux" )
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Put ${A} (downloaded from Humble Store) to ${DISTDIR}, please"
+	ewarn "Put ${A} (downloaded from Humble Store) to ${PORTAGE_ACTUAL_DISTDIR}, please"
 	ewarn
 }
 

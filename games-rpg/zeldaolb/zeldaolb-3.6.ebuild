@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="ZeldaOLB_US-src-linux"
 
-inherit desktop eutils
+inherit desktop
 
 DESCRIPTION="The Legend of Zelda - Onilink Begins"
 HOMEPAGE="http://www.zeldaroth.fr/us/zolb.php"
@@ -14,7 +14,6 @@ SRC_URI="http://www.zeldaroth.fr/us/files/OLB/Linux/${MY_PN}.zip"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit eutils desktop multilib-minimal unpacker
+inherit wrapper desktop multilib-minimal unpacker
 
 DESCRIPTION="An extraordinary mixture of action and strategy."
 HOMEPAGE="http://www.anomalythegame.com/"
@@ -12,10 +12,8 @@ SRC_URI="AnomalyKorea-lin_1371139237-Installer"
 RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
 RDEPEND="
 	media-libs/openal[${MULTILIB_USEDEP}]
 	x11-libs/libdrm[${MULTILIB_USEDEP}]
@@ -39,7 +37,7 @@ src_unpack() {
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Put ${A} (downloaded from Humble Store) to ${DISTDIR}, please"
+	ewarn "Put ${A} (downloaded from Humble Store) to ${PORTAGE_ACTUAL_DISTDIR}, please"
 	ewarn
 }
 

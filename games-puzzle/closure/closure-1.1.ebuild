@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils unpacker-nixstaller
+inherit desktop wrapper unpacker-nixstaller
 
 TIMESTAMP="2012-12-28"
 MY_PN="${PN/c/C}"
@@ -16,8 +16,7 @@ RESTRICT="fetch strip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/json-c
@@ -36,12 +35,7 @@ RDEPEND="
 	net-libs/libasyncns
 	sys-apps/attr
 	sys-apps/dbus
-	sys-apps/tcp-wrappers
-	sys-apps/util-linux
-	sys-devel/gcc
 	sys-libs/gdbm
-	sys-libs/glibc
-	sys-libs/gpm
 	sys-libs/libcap
 	sys-libs/ncurses
 	x11-libs/libdrm
@@ -60,11 +54,9 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-#QA_TEXTRELS=""
-
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

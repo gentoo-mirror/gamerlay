@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="Unofficial sequel of The Great Giana Sisters"
 HOMEPAGE="http://www.gianas-return.de/"
@@ -11,8 +11,7 @@ SRC_URI="http://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
 RDEPEND="media-libs/libsdl
 	media-libs/sdl-mixer[flac,mad,mikmod,vorbis]

@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="2D battles of flying machines equipped with various weaponry"
-HOMEPAGE="http://www.koshutin.com/"
+HOMEPAGE="http://koshutin.com/"
 SRC_URI="hf-linux-${PV:4}${PV:0:4}-bin"
 
 LICENSE="HPND"
@@ -24,7 +24,7 @@ S="${WORKDIR}/data"
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Please, fetch the package from HB and place it to ${PORTAGE_ACTUAL_DISTDIR}/${A}"
 	ewarn
 }
 
@@ -37,7 +37,7 @@ src_install() {
 	local dir="/opt/${PN}"
 	local exe
 
-	if use l10n_ru ; then
+	if use l10n_ru ; then # TODO: FIXME
 		einfo "Russian is chosen for primary language"
 		mv Data/Dialogs/{russian,english}.seria
 	fi

@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal
+inherit desktop wrapper multilib-minimal
 
 DESCRIPTION="Point-and-click adventure about robot in steam-punk world"
 HOMEPAGE="http://machinarium.net/"
 
 SLOT="0"
 LICENSE="all-rights-reserved"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch mirror"
-IUSE=""
 
 MY_PN="${PN/ma/Ma}"
 SRC_URI="${MY_PN}_full_en.tar.gz"
@@ -61,7 +60,7 @@ S="${WORKDIR}/${MY_PN}"
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

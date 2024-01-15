@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal unpacker
+inherit desktop wrapper multilib-minimal unpacker
 
 DESCRIPTION="Keeping the airport safe from hammers, scissors, and other illegal goods."
 HOMEPAGE="http://www.11bitstudios.com/games/9/funky-smugglers"
@@ -12,7 +12,7 @@ SRC_URI="FunkySmugglers-lin_1371139237-Installer"
 RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="multilib"
 
 DEPEND="app-arch/unzip"
@@ -38,7 +38,7 @@ src_unpack() {
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Put ${A} (downloaded from Humble Store) to ${DISTDIR}, please"
+	ewarn "Put ${A} (downloaded from Humble Store) to ${PORTAGE_ACTUAL_DISTDIR}, please"
 	ewarn
 }
 

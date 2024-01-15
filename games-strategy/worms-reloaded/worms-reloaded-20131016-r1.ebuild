@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal
+inherit desktop wrapper multilib-minimal
 
 TS="1381858841"
 
@@ -15,10 +15,8 @@ RESTRICT="fetch strip"
 LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
 RDEPEND="
 	media-libs/libsdl2[${MULTILIB_USEDEP}]
 	media-libs/openal[${MULTILIB_USEDEP}]
@@ -33,7 +31,7 @@ pkg_nofetch() {
 	einfo ""
 	einfo "Please buy and download \"${SRC_URI}\" from"
 	einfo "HumbleIndieBundle or ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "and move/link it to \"${PORTAGE_ACTUAL_DISTDIR}\""
 	einfo ""
 }
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils unpacker-nixstaller
+inherit desktop wrapper unpacker-nixstaller
 
 MY_PN="${PN^^}"
 TS="1372878397"
@@ -16,8 +16,7 @@ RESTRICT="fetch"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	media-libs/libsdl2
@@ -27,7 +26,7 @@ RDEPEND="
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Place ${A} to ${PORTAGE_ACTUAL_DISTDIR}"
 	ewarn
 }
 

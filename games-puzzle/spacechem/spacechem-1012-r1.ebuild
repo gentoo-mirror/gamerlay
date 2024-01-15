@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils multilib-minimal
+inherit desktop wrapper multilib-minimal
 
 DESCRIPTION="A design-based puzzle game from Zachtronics Industries."
 HOMEPAGE="http://www.spacechemthegame.com/"
@@ -13,8 +13,7 @@ SRC_URI="amd64? ( ${PN}-linux-1345144627-amd64.deb )
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="strip fetch"
 
 RDEPEND="

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="Immersed in a steampunk world with stunning visual design."
 HOMEPAGE="http://www.cogsgame.com/"
@@ -12,8 +12,7 @@ SRC_URI="${P/-/_}_all.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="strip fetch"
 
 RDEPEND="

@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="2D action-adventure game with semil-linear storyline"
 HOMEPAGE="https://www.nicalis.com/games/cavestory+"
 
 SLOT="0"
 LICENSE="HPND"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch strip"
-IUSE=""
 
 SRC_URI="
 	${PN}-linux-r${PV}.tar.bz2
@@ -60,7 +59,7 @@ S="${WORKDIR}/${MY_PN/+/Plus}"
 
 pkg_nofetch() {
 	ewarn
-	ewarn "Place ${A} to ${DISTDIR}"
+	ewarn "Please, fetch the package from HB and place it to ${PORTAGE_ACTUAL_DISTDIR}/${A}"
 	ewarn
 }
 
