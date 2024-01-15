@@ -22,6 +22,9 @@ games-rpg/unepic:hb - Use HIB archive
 games-sports/stuntrally:editor - Build and install maps editor
 games-sports/stuntrally:game - Build and install game client itself
 games-strategy/revenge-of-the-titans:hib - Install game from Humble Indie Bundle package
+games-strategy/vcmi:editor - Enable editor support
 games-strategy/vcmi:erm - Enable compilation of ERM scripting module
 games-strategy/vcmi:launcher - Enable launcer support
+games-strategy/vcmi:nullkiller-ai - Enable NulKIller AI
+games-strategy/vcmi:translations - Install translations
 media-sound/oaml:soxr - Enable SOXR support
