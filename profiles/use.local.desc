@@ -8,7 +8,6 @@ games-action/rochard:dlc - Install DLC
 games-arcade/frogatto:extras - Install additional modules
 games-engines/fifechan:allegro - Support for media-libs/allegro
 games-engines/fifechan:irrlicht - Support for dev-games/irrlicht
-games-engines/fifengine:cegui - Enable cegui support
 games-engines/fifengine:fifechan - Enable Fifechan GUI subsystem
 games-engines/fifengine:log - Enable logging
 games-rpg/arx-libertatis:c++11 - Build using the C++11 standard.
