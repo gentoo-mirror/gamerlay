@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{9..12} pypy3 )
 
 inherit python-single-r1 cmake
 
@@ -15,10 +15,10 @@ LICENSE="GPL-2"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug +log +opengl +zip +fifechan cegui python"
+IUSE="debug +log +opengl +zip +fifechan python"
+# cegui
 
 RDEPEND="
-	cegui? ( dev-games/cegui )
 	fifechan? ( games-engines/fifechan )
 	dev-libs/tinyxml
 	media-libs/libpng
@@ -40,6 +40,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 	)
 "
+#	 cegui? ( dev-games/cegui )
 DEPEND="
 	${RDEPEND}
 	python? ( >=dev-lang/swig-1.3.40 )
@@ -49,6 +50,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-libpng.patch"
+	"${FILESDIR}/${P}-old-python-fix.patch"
+	"${FILESDIR}/${P}-cmakefile-fix.patch"
 )
 
 pkg_setup() {
@@ -60,11 +63,16 @@ src_configure() {
 		-Dopengl=$(usex opengl)
 		-Dfifechan=$(usex fifechan)
 		-Dlibrocket=OFF
-		-Dcegui=$(usex cegui)
+		# -Dcegui=$(usex cegui)
 		-Dlogging=$(usex log)
 		-Dbuild-python=$(usex python)
 		-Dbuild-library=ON
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	python_optimize
 }

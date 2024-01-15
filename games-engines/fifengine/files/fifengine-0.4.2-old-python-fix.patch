@@ -1,0 +1,190 @@
+--- a/engine/core/vfs/zip/zipnode.cpp	2022-09-03 17:39:25.372023618 +0200
++++ b/engine/core/vfs/zip/zipnode.cpp	2022-09-03 17:39:56.012024080 +0200
+@@ -28,6 +28,7 @@
+ #include "vfs/fife_boost_filesystem.h"
+ 
+ #include "zipnode.h"
++#include <algorithm>
+ 
+ namespace {
+     /** helper function to find a value in a ZipNodeContainer
+--- a/engine/python/fife/extensions/serializers/simplexml.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/serializers/simplexml.py	2022-09-08 14:09:05.331754405 +0200
+@@ -200,7 +200,7 @@
+ 		#get the module tree: for example find tree under module FIFE
+ 		moduleTree = self._getModuleTree(module)
+ 		element = None
+-		for e in moduleTree.getchildren():
++		for e in list(moduleTree):
+ 			if e.tag == "Setting" and e.get("name", "") == name:
+ 				element = e
+ 				break
+@@ -275,7 +275,7 @@
+ 			e_type = "str"
+ 			value = str(value)
+ 
+-		for e in moduleTree.getchildren():
++		for e in list(moduleTree):
+ 			if e.tag != "Setting": continue
+ 			if e.get("name", "") == name:
+ 				e.text = value
+@@ -305,7 +305,7 @@
+ 
+ 		moduleTree = self._getModuleTree(module)
+ 
+-		for e in moduleTree.getchildren():
++		for e in list(moduleTree):
+ 			if e.tag != "Setting": continue
+ 			if e.get("name", "") == name:
+ 				moduleTree.remove(e)
+@@ -321,7 +321,7 @@
+ 			self._initialized = True
+ 
+ 		moduleNames = []
+-		for c in self._root_element.getchildren():
++		for c in list(self._root_element):
+ 			if c.tag == "Module":
+ 				name = c.get("name","")
+ 				if not isinstance(name, basestring):
+@@ -344,7 +344,7 @@
+ 		
+ 		# now from the tree read every value, and put the necessary values
+ 		# to the list
+-		for e in moduleTree.getchildren():
++		for e in list(moduleTree):
+ 			if e.tag == "Setting":
+ 				name = e.get("name", "")
+ 	
+@@ -383,7 +383,7 @@
+ 		
+ 		Raises an InvalidFormat exception if there is a format error.
+ 		"""
+-		for c in self._root_element.getchildren():
++		for c in list(self._root_element):
+ 			if c.tag != "Module":
+ 				raise InvalidFormat("Invalid tag in " + self._file + \
+ 									". Expected Module, got: " + c.tag)
+@@ -391,7 +391,7 @@
+ 				raise InvalidFormat("Invalid tag in " + self._file + \
+ 									". Module name is empty.")
+ 			else:
+-				for e in c.getchildren():
++				for e in list(c):
+ 					if e.tag != "Setting":
+ 						raise InvalidFormat("Invalid tag in " + self._file + \
+ 											" in module: " + c.tag + \
+@@ -414,7 +414,7 @@
+ 			raise AttributeError("Settings:_getModuleTree: Invalid type for "
+ 								 "module argument.")
+ 
+-		for c in self._root_element.getchildren():
++		for c in list(self._root_element):
+ 			if c.tag == "Module" and c.get("name", "") == module:
+ 				return c
+ 
+--- a/engine/python/fife/extensions/pychan/widgets/widget.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/pychan/widgets/widget.py	2022-09-08 14:15:13.451755998 +0200
+@@ -1035,25 +1035,25 @@
+ 	def _setMargins(self, margin):
+ 		# Shorthand property
+ 		if isinstance(margin, tuple) or isinstance(margin, list):
+-			if len(margin) is 4:
++			if len(margin) == 4:
+ 				# 0=top, 1=right, 2=bottom, 3=left
+ 				self.real_widget.setMarginTop(margin[0])
+ 				self.real_widget.setMarginRight(margin[1])
+ 				self.real_widget.setMarginBottom(margin[2])
+ 				self.real_widget.setMarginLeft(margin[3])
+-			elif len(margin) is 3:
++			elif len(margin) == 3:
+ 				# 0=top, 1=right, 2=bottom, 1=left
+ 				self.real_widget.setMarginTop(margin[0])
+ 				self.real_widget.setMarginRight(margin[1])
+ 				self.real_widget.setMarginBottom(margin[2])
+ 				self.real_widget.setMarginLeft(margin[1])
+-			elif len(margin) is 2:
++			elif len(margin) == 2:
+ 				# 0=top, 1=right, 0=bottom, 1=left
+ 				self.real_widget.setMarginTop(margin[0])
+ 				self.real_widget.setMarginRight(margin[1])
+ 				self.real_widget.setMarginBottom(margin[0])
+ 				self.real_widget.setMarginLeft(margin[1])
+-			elif len(margin) is 1:
++			elif len(margin) == 1:
+ 				# 0=top, 0=right, 0=bottom, 0=left
+ 				self.real_widget.setMargin(margin[0])
+ 		else:
+@@ -1065,25 +1065,25 @@
+ 	def _setPadding(self, padding):
+ 		# Shorthand property
+ 		if isinstance(padding, tuple) or isinstance(padding, list):
+-			if len(padding) is 4:
++			if len(padding) == 4:
+ 				# 0=top, 1=right, 2=bottom, 3=left
+ 				self.real_widget.setPaddingTop(padding[0])
+ 				self.real_widget.setPaddingRight(padding[1])
+ 				self.real_widget.setPaddingBottom(padding[2])
+ 				self.real_widget.setPaddingLeft(padding[3])
+-			elif len(padding) is 3:
++			elif len(padding) == 3:
+ 				# 0=top, 1=right, 2=bottom, 1=left
+ 				self.real_widget.setPaddingTop(padding[0])
+ 				self.real_widget.setPaddingRight(padding[1])
+ 				self.real_widget.setPaddingBottom(padding[2])
+ 				self.real_widget.setPaddingLeft(padding[1])
+-			elif len(padding) is 2:
++			elif len(padding) == 2:
+ 				# 0=top, 1=right, 0=bottom, 1=left
+ 				self.real_widget.setPaddingTop(padding[0])
+ 				self.real_widget.setPaddingRight(padding[1])
+ 				self.real_widget.setPaddingBottom(padding[0])
+ 				self.real_widget.setPaddingLeft(padding[1])
+-			elif len(padding) is 1:
++			elif len(padding) == 1:
+ 				# 0=top, 0=right, 0=bottom, 0=left
+ 				self.real_widget.setPadding(padding[0])
+ 		else:
+--- a/engine/python/fife/extensions/pychan/widgets/animationicon.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/pychan/widgets/animationicon.py	2022-09-08 14:16:06.981756230 +0200
+@@ -190,7 +190,7 @@
+ 			if isinstance(anim, fife.Animation):
+ 				self._anim = anim
+ 			else:
+-				if anim is not "":
++				if anim != "":
+ 					# use xml loader
+ 					self._anim = loadXMLAnimation(get_manager().hook.engine, anim)
+ 			self.real_widget.setAnimation(self._anim)
+--- a/engine/python/fife/extensions/pychan/widgets/curvegraph.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/pychan/widgets/curvegraph.py	2022-09-08 14:16:58.821756454 +0200
+@@ -161,7 +161,7 @@
+ 
+ 	def _setCoordinates(self, coordinates):
+ 		# reset
+-		if coordinates is None or len(coordinates) is 0:
++		if coordinates is None or len(coordinates) == 0:
+ 			self.real_widget.resetPointVector()
+ 			return
+ 		# int list to point vector
+--- a/engine/python/fife/extensions/pychan/widgets/linegraph.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/pychan/widgets/linegraph.py	2022-09-08 14:17:29.241756586 +0200
+@@ -154,7 +154,7 @@
+ 
+ 	def _setCoordinates(self, coordinates):
+ 		# reset
+-		if coordinates is None or len(coordinates) is 0:
++		if coordinates is None or len(coordinates) == 0:
+ 			self.real_widget.resetPointVector()
+ 			return
+ 		# int list to point vector
+--- a/engine/python/fife/extensions/pychan/widgets/pointgraph.py	2019-01-11 18:24:38.000000000 +0100
++++ b/engine/python/fife/extensions/pychan/widgets/pointgraph.py	2022-09-08 14:17:57.531756709 +0200
+@@ -154,7 +154,7 @@
+ 
+ 	def _setCoordinates(self, coordinates):
+ 		# reset
+-		if coordinates is None or len(coordinates) is 0:
++		if coordinates is None or len(coordinates) == 0:
+ 			self.real_widget.resetPointVector()
+ 			return
+ 		# int list to point vector
