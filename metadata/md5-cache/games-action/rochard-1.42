@@ -1,0 +1,15 @@
+DEFINED_PHASES=install
+DEPEND=virtual/opengl app-arch/gzip x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXxf86vm
+DESCRIPTION=A side-scrolling platformer packed with action, gravity-bending puzzles.
+EAPI=8
+HOMEPAGE=http://rochardthegame.com/
+INHERIT=desktop wrapper
+IUSE=dlc
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Rochard-EULA
+RDEPEND=virtual/opengl app-arch/gzip x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXxf86vm
+RESTRICT=fetch
+SLOT=0
+SRC_URI=!dlc? ( x86? ( Rochard_v1.42_Linux_x86_1371746493.tar.gz ) amd64? ( Rochard_v1.42_Linux_x64_1371746492.tar.gz ) ) dlc? ( x86? ( Rochard_Hard_Times_v1.42_Linux_x86_1371746492.tar.gz ) amd64? ( Rochard_Hard_Times_v1.42_Linux_x64_1371746492.tar.gz ) )
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_md5_=188904a46b35b0bd8de00015677b0885

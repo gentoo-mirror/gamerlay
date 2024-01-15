@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch
+DEPEND=media-libs/alsa-lib media-libs/freeglut media-libs/libogg media-libs/libvorbis virtual/opengl x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXxf86vm
+DESCRIPTION=Defend and control the field using a diverse selection of upgradeable towers.
+EAPI=8
+HOMEPAGE=http://subatomicstudios.com/games/fieldrunners/
+INHERIT=desktop wrapper
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/alsa-lib media-libs/freeglut media-libs/libogg media-libs/libvorbis virtual/opengl x11-libs/libdrm x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXxf86vm
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=x86? ( fieldrunners-1.0.0-32bit-1346296515.tar.gz ) amd64? ( fieldrunners-linux-1.0.0-64bit-1346776333.tar.gz )
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_md5_=34d3dea094822e02ffc1bcb775d7d059

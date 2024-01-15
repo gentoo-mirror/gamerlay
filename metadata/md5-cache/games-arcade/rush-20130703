@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=A simple puzzler that'll have you mesmerized with a synchronized swarm of blocks
+EAPI=8
+HOMEPAGE=http://twotribes.com/message/rush/
+INHERIT=desktop wrapper unpacker-nixstaller
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/libsdl2 media-libs/openal sys-libs/zlib
+RESTRICT=fetch
+SLOT=0
+SRC_URI=RUSH_2013-07-03_Linux_1372878397.sh
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	wrapper	4a1902f969e5718126434fc35f3a0d9c	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd
+_md5_=b7e76ba0f006508da00cee0ac2b6c9e2

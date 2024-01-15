@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Platform game where you manipulate flow of time
+EAPI=8
+HOMEPAGE=http://braid-game.com
+INHERIT=desktop wrapper unpacker
+IUSE=l10n_ru
+KEYWORDS=~amd64 ~x86
+LICENSE=Arphic MIT
+RDEPEND=media-libs/libsdl[joystick,sound,video] x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdmcp x11-libs/libXext virtual/opengl media-gfx/nvidia-cg-toolkit
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=braid-linux-build2.run.bin l10n_ru? ( braid-rus.tar.bz2 )
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	wrapper	4a1902f969e5718126434fc35f3a0d9c	unpacker	adf17fdc9e28e5120b70bc0de7630985
+_md5_=9a52a70f9ceebd6759f350fd5b65016a
