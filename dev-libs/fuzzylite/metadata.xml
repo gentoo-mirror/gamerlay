@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>git@mva.name</email>
-<name>Vadim A. Misbakh-Soloviov</name>
-</maintainer>
-<longdescription lang="en">
-A Fuzzy Logic Control Library in C++
-</longdescription>
+  <upstream>
+    <remote-id type="github">fuzzylite/fuzzylite</remote-id>
+  </upstream>
 </pkgmetadata>

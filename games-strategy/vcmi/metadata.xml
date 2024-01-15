@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<use>
-<flag name="erm">Enable compilation of ERM scripting module</flag>
-<flag name="launcher">Enable launcer support</flag>
-</use>
+  <use>
+    <flag name="erm">Enable compilation of ERM scripting module</flag>
+    <flag name="launcher">Enable launcer support</flag>
+    <flag name="editor">Enable editor support</flag>
+    <flag name="nullkiller-ai">Enable NulKIller AI</flag>
+    <flag name="translations">Install translations</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">vcmi/vcmi</remote-id>
+  </upstream>
 </pkgmetadata>

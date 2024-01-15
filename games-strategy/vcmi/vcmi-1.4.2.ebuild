@@ -4,9 +4,9 @@
 EAPI=8
 
 LUA_COMPAT=(luajit)
-# TODO: other targets (buildsystem is fucked and needs patches)
+# TODO: other targets (buildsystem is crazy and needs patches)
 
-inherit cmake lua-single flag-o-matic
+inherit cmake lua-single
 
 DESCRIPTION="Heroes of Might and Magic III game engine rewrite"
 HOMEPAGE="http://forum.vcmi.eu/index.php"
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: other arches
-IUSE="+editor +debug +erm +launcher +lua +nullkiller-ai +translations"
+IUSE="+editor debug erm +launcher lua +nullkiller-ai +translations"
 
 REQUIRED_USE="
 	erm? ( lua )
@@ -74,10 +74,13 @@ src_configure() {
 		-DENABLE_NULLKILLER_AI=$(usex nullkiller-ai)
 
 		-DENABLE_MONOLITHIC_INSTALL=OFF
+		-DFORCE_BUNDLED_FL=OFF
+		-DFORCE_BUNDLED_MINIZIP=OFF
+		-DENABLE_GITVERSION=OFF
+		-DBoost_NO_BOOST_CMAKE=ON
 	)
 	export CCACHE_SLOPPINESS="time_macros"
 	cmake_src_configure
-	strip-cppflags -DNDEBUG
 }
 
 pkg_postinst() {

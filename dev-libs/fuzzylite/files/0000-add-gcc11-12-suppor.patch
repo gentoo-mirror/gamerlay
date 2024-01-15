@@ -1,0 +1,24 @@
+--- a/CMakeLists.txt	2023-04-28 18:52:00.282592705 +0200
++++ b/CMakeLists.txt	2023-04-28 21:15:51.596305542 +0200
+@@ -6,6 +6,9 @@
+ 
+ project(fuzzylite CXX)
+ 
++if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 12.0)
++	add_definitions(-DUSE_DEPRECATED_CPP11_CALLS)
++endif()
+ 
+ if (APPLE)
+ 	cmake_policy(SET CMP0042 NEW)
+--- a/src/main.cpp	2023-04-28 17:09:20.408988525 +0200
++++ b/src/main.cpp	2023-04-28 21:16:58.692975160 +0200
+@@ -21,7 +21,9 @@
+ 
+ int main(int argc, const char* argv[]) {
+     std::set_terminate(fl::Exception::terminate);
++#if (__cplusplus < 201703L) && defined(USE_DEPRECATED_CPP11_CALLS)
+     std::set_unexpected(fl::Exception::terminate);
++#endif
+     ::signal(SIGSEGV, fl::Exception::signalHandler);
+     ::signal(SIGABRT, fl::Exception::signalHandler);
+     ::signal(SIGILL, fl::Exception::signalHandler);
