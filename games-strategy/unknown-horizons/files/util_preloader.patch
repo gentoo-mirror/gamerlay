@@ -1,0 +1,14 @@
+--- a/horizons/util/preloader.py	2019-01-12 16:15:42.000000000 +0100
++++ b/horizons/util/preloader.py	2022-09-04 02:18:05.000073586 +0200
+@@ -79,9 +79,9 @@
+ 		"""
+ 		self.lock.acquire()
+ 		# wait until it finished its current action
+-		if self.isAlive():
++		if self.is_alive():
+ 			self.join()
+-			assert not self.isAlive()
++			assert not self.is_alive()
+ 		else:
+ 			try:
+ 				self.lock.release()

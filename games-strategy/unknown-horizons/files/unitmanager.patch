@@ -1,0 +1,20 @@
+--- a/horizons/ai/aiplayer/combat/unitmanager.py	2019-01-12 16:15:42.000000000 +0100
++++ b/horizons/ai/aiplayer/combat/unitmanager.py	2022-09-04 03:17:12.660088944 +0200
+@@ -151,7 +151,7 @@
+ 		"""
+ 		Rule stating that ship has to be in any of given states.
+ 		"""
+-		if not isinstance(ship_states, collections.Iterable):
++		if not isinstance(ship_states, collections.abc.Iterable):
+ 			ship_states = (ship_states,)
+ 		return lambda ship: (state_dict[ship] in ship_states)
+ 
+@@ -178,7 +178,7 @@
+ 		@param rules: conditions each ship has to meet (AND)
+ 		@type rules: iterable of lambda(ship) or single lambda(ship)
+ 		"""
+-		if not isinstance(rules, collections.Iterable):
++		if not isinstance(rules, collections.abc.Iterable):
+ 			rules = (rules,)
+ 		return [ship for ship in ships if all((rule(ship) for rule in rules))]
+ 

@@ -1,0 +1,19 @@
+--- a/setup.py	2022-09-01 12:49:18.429156294 +0200
++++ b/setup.py	2022-09-01 12:55:09.679161589 +0200
+@@ -26,6 +26,7 @@
+ import json
+ import os
+ import platform
++import distro
+ import sys
+ from distutils.command.build import build
+ from distutils.core import setup
+@@ -39,7 +40,7 @@
+ # Ensure we are in the correct directory
+ os.chdir(os.path.realpath(os.path.dirname(__file__)))
+ 
+-if platform.dist()[0].lower() in ('debian', 'ubuntu'):
++if distro.id().lower() in ('debian', 'ubuntu'):
+ 	executable_path = 'games'
+ else:
+ 	executable_path = 'bin'
