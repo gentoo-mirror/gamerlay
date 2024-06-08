@@ -5,7 +5,6 @@ dev-libs/fuzzylite 6.0: A Fuzzy Logic Control Library in C++
 games-action/a7xpg 0.11: The retro modern high speed shooting game
 games-action/cave_story_plus 100-r1: 2D action-adventure game with semil-linear storyline
 games-action/deadlysoccerball 0.1: space soccer ball shooting missiles around
-games-action/dex 2.1.0.2: 2D Action-RPG with a rich cyberpunk world
 games-action/fieldrunners 1.0.0-r1: Defend and control the field using a diverse selection of upgradeable towers.
 games-action/hammerfight 20110812: 2D battles of flying machines equipped with various weaponry
 games-action/rochard 1.42: A side-scrolling platformer packed with action, gravity-bending puzzles.
@@ -19,7 +18,6 @@ games-arcade/capsized 2013.10.06: A fast paced 2d platformer, focused on intense
 games-arcade/dustforce 1.0.20141222: An acrobatic janitor 2d platformer
 games-arcade/edgar 1.32: The Legend of Edgar, 2d jump n run
 games-arcade/edge 20130703: Develop your telekinetic strength by pushing a Cube within a geometric universe.
-games-arcade/frogatto 1.3.1: a frog, and a platform game
 games-arcade/funkysmugglers 20130613: Keeping the airport safe from hammers, scissors, and other illegal goods.
 games-arcade/gianasreturn 1.10: Unofficial sequel of The Great Giana Sisters
 games-arcade/jamestown 1.0.1: A neo-classical top-down shooter for up to four players.
@@ -58,17 +56,11 @@ games-puzzle/zen-puzzle-garden 1.4.0: Try to solve puzzles that take place in a 
 games-puzzle/zenbound2 20120325-r1: A calm and meditative game of wrapping rope around wooden sculptures.
 games-rpg/amnesia-tdd 1.3: A first person survival horror. Immersion, discovery and living in a nightmare.
 games-rpg/arx-libertatis 1.2.1: Cross-platform port of Arx Fatalis, a first-person role-playing game
-games-rpg/divinity-original-sin-ee 2.0.0.1: Divinity: Original Sin - Enhanced Edition (GOG edition)
 games-rpg/lonesurvivor 1.11d_p1-r2: 2D sidescrolling psychological survival adventure game
 games-rpg/machinarium 1.0-r1: Point-and-click adventure about robot in steam-punk world
 games-rpg/torchlight 1.15.20130521-r1: An action role-playing game, made by the creators of Diablo
-games-rpg/torchlight2 20150401: An action role-playing game, made by the creators of Diablo
-games-rpg/unepic 1.50.05: A combination of platformer and role playing game
-games-rpg/victor_vran 2.12.0.14: An isometric Action-RPG with a massive selection of items, powers and so on
-games-rpg/zelda3t 1.9: The Legend of Zelda - Time to Triumph
 games-rpg/zeldaolb 3.6: The Legend of Zelda - Onilink Begins
 games-rpg/zeldaroth 6.11: The Legend of Zelda - Return of the Hylian
-games-simulation/babylon5-ifh-dao 1.15: Danger and Opportunity - a prequel for Babylon 5: I've Found Her
 games-simulation/kerbal-space-program 1.12.4: A space flight simulation
 games-sports/stuntrally 2.6: Rally game focused on closed rally tracks with possible stunt elements.
 games-sports/stuntrally-tracks 2.6: A set of tracks for games-sports/stuntrally-2.6
