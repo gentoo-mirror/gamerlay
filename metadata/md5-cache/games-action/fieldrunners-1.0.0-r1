@@ -10,5 +10,5 @@ RDEPEND=media-libs/alsa-lib media-libs/freeglut media-libs/libogg media-libs/lib
 RESTRICT=fetch strip
 SLOT=0
 SRC_URI=x86? ( fieldrunners-1.0.0-32bit-1346296515.tar.gz ) amd64? ( fieldrunners-linux-1.0.0-64bit-1346776333.tar.gz )
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6	wrapper	8814ba474de61a773949805b4d85007d
 _md5_=34d3dea094822e02ffc1bcb775d7d059
