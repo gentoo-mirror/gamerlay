@@ -24,11 +24,11 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	media-libs/libsdl2[video]
-	media-libs/sdl2-image
-	media-libs/sdl2-mixer
-	media-libs/sdl2-ttf
-	media-video/ffmpeg
+	media-libs/libsdl2:=[video]
+	media-libs/sdl2-image:=
+	media-libs/sdl2-mixer:=
+	media-libs/sdl2-ttf:=
+	media-video/ffmpeg:=
 	launcher? (
 		dev-qt/qtgui
 		dev-qt/qtcore
@@ -43,13 +43,13 @@ CDEPEND="
 		dev-qt/qtwidgets
 		translations? ( dev-qt/linguist-tools )
 	)
-	dev-libs/fuzzylite
+	dev-libs/fuzzylite:=
 	nullkiller-ai? ( dev-cpp/tbb )
-	sys-libs/zlib[minizip]
+	sys-libs/zlib:=[minizip]
 "
 
 BDEPEND="
-	>dev-libs/boost-1.48.0
+	>dev-libs/boost-1.70.0
 	virtual/pkgconfig
 "
 DEPEND="
@@ -79,7 +79,7 @@ src_configure() {
 		-DENABLE_GITVERSION=OFF
 		-DBoost_NO_BOOST_CMAKE=ON
 	)
-	export CCACHE_SLOPPINESS="time_macros"
+	# export CCACHE_SLOPPINESS="time_macros"
 	cmake_src_configure
 }
 
