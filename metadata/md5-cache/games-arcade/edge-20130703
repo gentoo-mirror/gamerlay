@@ -9,5 +9,5 @@ RDEPEND=media-libs/libsdl2 media-libs/openal sys-libs/zlib
 RESTRICT=fetch
 SLOT=0
 SRC_URI=EDGE_2013-07-03_Linux_1372878397.sh
-_eclasses_=wrapper	11a2a3bd712784986679b60a0cab34a0	desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd
+_eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	wrapper	11a2a3bd712784986679b60a0cab34a0	unpacker	adf17fdc9e28e5120b70bc0de7630985	unpacker-nixstaller	850de22907d109efbf45d47a3bcd02cd
 _md5_=dbb330bef5dc42d5b91f8e98821d9f97
